@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://claude.ai/artifact/QPPQGaiy8AqX9fqsgjsgMV/sitemap.xml
+Sitemap: https://hassan200503.github.io/sitemap.xml
