@@ -927,3 +927,188 @@ a.shot:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); }
   cursor: pointer;
 }
 .copy-mail:hover { border-color: var(--ink); color: var(--ink); }
+
+/* =========================================================
+   UI REFINEMENTS
+   ========================================================= */
+
+/* Anchored sections were landing under the sticky header.
+   Offset them by the header's height plus a little air. */
+:target,
+section[id],
+main [id] {
+  scroll-margin-top: 96px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+/* Stop single-word last lines in body copy. */
+p, li, .skill-note, .avail-item p {
+  text-wrap: pretty;
+}
+
+/* Inline links inside prose: underlined from the start, so they read
+   as links without relying on colour alone. */
+.prose-link,
+.measure a:not(.btn):not(.livelink):not(.availability),
+.skill-note a,
+.avail-item a,
+.ledger-table a:not(.btn) {
+  color: var(--accent-ink);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2.5px;
+  text-decoration-color: color-mix(in srgb, var(--accent) 45%, transparent);
+  transition: text-decoration-color 160ms ease;
+}
+.prose-link:hover,
+.measure a:not(.btn):not(.livelink):not(.availability):hover,
+.skill-note a:hover,
+.avail-item a:hover,
+.ledger-table a:not(.btn):hover {
+  text-decoration-color: var(--accent);
+}
+
+/* Cards lift like the surface cards already did. */
+.card {
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--rule-strong);
+}
+/* the dashed quote card is a panel, not a target — hold it still */
+.card[style*="dashed"]:hover {
+  transform: none;
+  box-shadow: var(--shadow-sm);
+  border-color: var(--rule);
+}
+
+/* Stat tiles: heavier rule above the figure, so the row reads as a
+   set of columns in a table rather than four loose numbers. */
+.stat {
+  border-top-width: 2px;
+  border-top-color: var(--rule-strong);
+  transition: border-top-color 200ms ease;
+}
+.stat:hover { border-top-color: var(--accent); }
+.stat .n {
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+.stat .label { line-height: 1.4; }
+
+/* Table rows respond to the cursor, which helps on the wide
+   principle/priority tables where a row spans the full measure. */
+.ledger-table tbody tr {
+  transition: background 160ms ease;
+}
+.ledger-table tbody tr:hover {
+  background: color-mix(in srgb, var(--accent-soft) 45%, transparent);
+}
+@media (max-width: 640px) {
+  .ledger-table tbody tr:hover { background: transparent; }
+}
+
+/* Skill rows: a hover band makes a long list scannable. */
+.skill-row {
+  transition: background 150ms ease;
+  padding-inline: 8px;
+  margin-inline: -8px;
+  border-radius: var(--radius-s);
+}
+.skill-row:hover {
+  background: color-mix(in srgb, var(--surface) 70%, transparent);
+}
+
+/* Availability rows get the same treatment. */
+.avail-item {
+  transition: border-top-color 180ms ease;
+}
+.avail-item:hover { border-top-color: var(--good); }
+
+/* Headings sit a little tighter, and the folio number reads as a
+   printed page number rather than body text. */
+h1 { letter-spacing: -0.025em; }
+h2 { letter-spacing: -0.012em; }
+.folio-num { letter-spacing: -0.01em; }
+
+/* Section index gains a hairline that runs the full height of its
+   column, reinforcing the register conceit. */
+@media (min-width: 721px) {
+  .ledger-index { align-self: stretch; }
+}
+
+/* Mobile navigation: full-width rows with real tap targets. */
+@media (max-width: 780px) {
+  .nav-links.open a {
+    display: block;
+    width: 100%;
+    padding-block: 10px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .nav-links.open a:last-child { border-bottom: none; }
+  .nav-links.open .nav-cta {
+    width: auto;
+    padding: 11px 18px;
+    margin-top: 6px;
+    border-bottom: none;
+  }
+  .nav-toggle, .theme-toggle { min-height: 40px; }
+  .nav-toggle { min-width: 56px; justify-content: center; }
+}
+
+/* Buttons: a crisper pressed state and a wider tap target on touch. */
+.btn { line-height: 1.2; }
+@media (hover: none) {
+  .btn { padding-block: 15px; }
+}
+
+/* The CTA band picks up a hairline accent along its top edge. */
+.cta-band {
+  position: relative;
+  overflow: hidden;
+}
+.cta-band::before {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: 2px;
+  background: linear-gradient(to right, var(--accent), color-mix(in srgb, var(--accent) 20%, transparent));
+}
+
+/* Screenshot frames: caption sits on its own band. */
+.shot-cap {
+  border-top: 1px solid var(--rule);
+  margin-top: 0;
+  padding: 9px 14px;
+  background: var(--surface-2);
+}
+
+/* Selection and focus, tuned per theme. */
+::selection { background: var(--accent-soft); color: var(--accent-ink); }
+:focus-visible { outline-width: 2px; outline-offset: 3px; border-radius: 2px; }
+
+/* Print: a recruiter who prints this should get something readable —
+   no grain, no sticky chrome, and links that show their destination. */
+@media print {
+  body { background: #fff; color: #000; padding: 0; font-size: 11pt; }
+  body::before, .progress-rail, .site-header, .theme-toggle,
+  .nav-toggle, .cta-band, .shot, .skip-link { display: none !important; }
+  .section { padding-block: 14pt; border-top: 1px solid #ccc; }
+  .section + .section { border-top: 1px solid #ccc; }
+  a { color: #000; text-decoration: underline; }
+  main a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 8pt; color: #555; }
+  .ledger-row { grid-template-columns: 48px 1fr; }
+  .availability { border: 1px solid #000; color: #000; background: none; }
+  .meter { outline: 1px solid #999; }
+  h1, h2, h3 { break-after: avoid; }
+  .skill-row, .avail-item, tr { break-inside: avoid; }
+}

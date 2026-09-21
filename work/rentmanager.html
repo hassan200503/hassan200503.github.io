@@ -1,13 +1,13 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>RentManager — Engineering Case Study | Hassan Tsuma</title>
-<meta name="description" content="How RentManager's tenant isolation, append-only ledger, and M-Pesa integration are actually built — architecture, decisions, and what's still open." />
+<meta name="description" content="How RentManager's tenant isolation, append-only ledger and M-Pesa integration are built: the architecture, the decisions, and what is still open." />
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23171B1A'/%3E%3Ctext x='32' y='43' font-family='IBM Plex Mono,monospace' font-size='25' font-weight='700' fill='%23F1F3F1' text-anchor='middle'%3EHT%3C/text%3E%3C/svg%3E" />
 <link rel="canonical" href="https://hassan200503.github.io/work/rentmanager.html" />
 <meta property="og:url" content="https://hassan200503.github.io/work/rentmanager.html" />
 <meta property="og:type" content="article" />
 <meta property="og:title" content="RentManager — Engineering Case Study" />
-<meta property="og:description" content="A Kenya-first rental-management SaaS: modular monolith, tenant isolation, M-Pesa Daraja, and an append-only ledger. How it's actually built." />
+<meta property="og:description" content="A Kenya-first rental-management SaaS: modular monolith, tenant isolation, M-Pesa Daraja, and an append-only ledger. How it's built." />
 <meta property="og:image" content="https://hassan200503.github.io/images/og-card.jpg" />
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -76,12 +76,12 @@
             RentManager is software for landlords and property managers in Kenya to run their
             rental business: list properties and units, manage leases, collect rent by M-Pesa,
             see a running ledger of every payment, and compute the monthly rental income tax those
-            payments create an obligation for — behind a gate that stays shut until a
-            human confirms it applies. Tenants get their own portal to
+            payments create an obligation for, behind a gate that stays shut until a human
+            confirms it applies. Tenants get their own portal to
             pay rent, see their lease, raise maintenance requests, and message their landlord.
           </p>
           <p class="mt-16 measure">
-            <strong>It's deployed and running</strong> — you can open it right now at
+            <strong>It's deployed and running.</strong> You can open it right now at
             <a class="livelink" href="https://rentmanager-ke.netlify.app/" target="_blank" rel="noopener">rentmanager-ke.netlify.app ↗</a>.
             The web app is on Netlify, the Spring Boot API on Render, and PostgreSQL on Neon,
             with a scheduled ping keeping the free-tier container awake so M-Pesa callbacks and
@@ -91,10 +91,10 @@
             I want to be equally precise about what that does and doesn't mean. Deployed is not
             the same as battle-tested: it is live and usable, but it has not yet run a full
             month of real landlords' rent through it. I've been explicit with myself, in the
-            project's own documentation, about which parts have been audited and which haven't —
-            and that documentation is part of what this case study is actually about. If you're
-            evaluating me, the honest claim is that I built and shipped a real system, not that
-            I've operated one at scale.
+            project's own documentation, about which parts have been audited and which haven't.
+            That documentation is part of what this case study is about. If you're evaluating me,
+            the honest claim is that I built and shipped a real system, not that I've run one at
+            scale.
           </p>
         </div>
       </div>
@@ -109,21 +109,21 @@
         <div>
           <h2>What makes this hard</h2>
           <p class="mt-16 measure">
-            A rental platform looks simple from the outside — list a unit, collect rent — until
-            you have to make every one of these true at once: a landlord's data has to stay
-            completely separate from every other landlord's; a rent payment has to update a
-            ledger, calculate a platform commission, and trigger a payout, atomically enough that
-            a crash mid-flow can't lose money or double-pay it; the same M-Pesa STK push can't be
-            allowed to fire twice because a tenant tapped "pay" twice; and the tax obligation a
-            landlord incurs the moment rent lands has real legal weight behind it — this isn't a
-            display number, it's an input to a government filing.
+            From the outside a rental platform looks simple. List a unit, collect rent. It stops
+            being simple once all of these have to hold at the same time. A landlord's data has to
+            stay completely separate from every other landlord's. A rent payment has to update a
+            ledger, calculate a platform commission and trigger a payout, atomically enough that a
+            crash halfway through can't lose money or pay it twice. The same M-Pesa STK push must
+            not fire twice because a tenant tapped "pay" twice. And the tax obligation a landlord
+            incurs the moment rent lands carries real legal weight. That figure isn't for display.
+            It feeds a government filing.
           </p>
           <p class="mt-16 measure">
-            RentManager's design treats each of those as a constraint to engineer around, not an
-            edge case to handle later. That shows up concretely in the sections below: tenant
-            isolation enforced at two layers, not one; a rent ledger that can't be edited, only
-            reversed; STK push idempotency with an explicit time window; and a tax module that's
-            fail-closed by default until a human turns each gate on.
+            RentManager treats each of those as a constraint to engineer around instead of an
+            edge case to handle later. The sections below show how. Tenant isolation sits at two
+            layers instead of one. The rent ledger can be reversed but never edited. STK push
+            idempotency uses an explicit time window. The tax module fails closed until a human
+            turns each gate on.
           </p>
         </div>
       </div>
@@ -136,21 +136,21 @@
       <div class="ledger-row reveal">
         <div class="ledger-index"><span class="folio-num">03</span><span class="folio-label">MY ROLE</span></div>
         <div>
-          <h2>What I actually built</h2>
+          <h2>What I built</h2>
           <p class="mt-16 measure">I designed and built RentManager end to end, solo:</p>
           <ul class="mt-16 measure" style="padding-left:20px; display:flex; flex-direction:column; gap:8px;">
-            <li>System architecture — the modular-monolith boundary, the ports/adapters shape, the decision to keep it that way instead of splitting into services</li>
-            <li>Backend — all 21 Spring Boot modules: domain models, application services, persistence, security</li>
-            <li>Database design — the schema and all 99 Flyway migrations, in order, none edited after they ran</li>
-            <li>Frontend — the Next.js application: the landlord dashboard, the tenant portal, the public listing and reservation flow, the platform-admin console</li>
-            <li>Mobile — a 44-screen React Native (Expo) app sharing the same generated API client as the web app, with push notifications, offline detection and secure token storage</li>
-            <li>Deployment — containerising the API and getting the whole stack live on free infrastructure: Render, Netlify, Neon, plus scheduled encrypted backups</li>
-            <li>Integrations — M-Pesa Daraja (STK push and B2C), Africa's Talking SMS, Clerk authentication</li>
-            <li>Testing — the backend's 1,588 tests, the ArchUnit rules that enforce the module boundaries, and the frontend's Vitest suite</li>
+            <li>System architecture: the modular-monolith boundary, the ports/adapters shape, the decision to keep it that way instead of splitting into services</li>
+            <li>Backend: all 21 Spring Boot modules: domain models, application services, persistence, security</li>
+            <li>Database design: the schema and all 99 Flyway migrations, in order, none edited after they ran</li>
+            <li>Frontend: the Next.js application: the landlord dashboard, the tenant portal, the public listing and reservation flow, the platform-admin console</li>
+            <li>Mobile: a 44-screen React Native (Expo) app sharing the same generated API client as the web app, with push notifications, offline detection and secure token storage</li>
+            <li>Deployment: containerising the API and getting the whole stack live on free infrastructure: Render, Netlify, Neon, plus scheduled encrypted backups</li>
+            <li>Integrations: M-Pesa Daraja (STK push and B2C), Africa's Talking SMS, Clerk authentication</li>
+            <li>Testing: the backend's 1,588 tests, the ArchUnit rules that enforce the module boundaries, and the frontend's Vitest suite</li>
           </ul>
           <p class="mt-16 measure small faint">
             I use AI tools during development, the way most engineers now do. The architecture,
-            the trade-offs, and the decisions on this page are mine — I can walk through any of
+            the trade-offs and the decisions on this page are mine. I can walk through any of
             them, and I do, in the project's own decision log.
           </p>
         </div>
@@ -164,12 +164,12 @@
       <div class="ledger-row reveal">
         <div class="ledger-index"><span class="folio-num">04</span><span class="folio-label">ARCHITECTURE</span></div>
         <div>
-          <h2>How a request actually flows</h2>
+          <h2>How a request flows</h2>
           <p class="mt-16 measure">
             The one detail worth understanding before anything else: the frontend sends a
             tenant/organization id on every request, and the backend <strong>ignores it completely</strong>.
-            Tenant identity is resolved only from the verified JWT — a header is something anyone
-            can set; a signed token isn't.
+            Tenant identity comes only from the verified JWT. Anyone can set a header. Nobody can
+            forge a signed token.
           </p>
 
           <figure class="mt-32">
@@ -195,8 +195,8 @@
                 <text x="440" y="149">Clerk</text>
                 <text x="440" y="167" font-size="11" opacity="0.65">issues a JWT, verified against JWKS</text>
                 <text x="440" y="257">Next.js 16 (App Router)</text>
-                <text x="440" y="275" font-size="11" opacity="0.65">proxy.ts — fail-closed route policy</text>
-                <text x="440" y="374">Spring Boot — modular monolith</text>
+                <text x="440" y="275" font-size="11" opacity="0.65">proxy.ts · fail-closed route policy</text>
+                <text x="440" y="374">Spring Boot · modular monolith</text>
                 <text x="440" y="392" font-size="11" opacity="0.65">21 modules, ports &amp; adapters</text>
                 <text x="440" y="408" font-size="11" fill="currentColor" opacity="0.85">TenantContext resolved from JWT claim only</text>
                 <text x="440" y="489">PostgreSQL</text>
@@ -224,11 +224,11 @@
               </g>
             </svg>
             </div>
-            <figcaption class="shot-cap mt-16">The client-supplied tenant header is sent but never trusted — tenant identity comes only from the verified JWT, resolved server-side on every request.</figcaption>
+            <figcaption class="shot-cap mt-16">The client-supplied tenant header is sent but never trusted. Tenant identity comes only from the verified JWT, resolved server-side on every request.</figcaption>
           </figure>
 
           <p class="mt-32 measure">
-            Why it's built this way: a header is client-controlled, full stop — trusting one for
+            Why it's built this way: a header is client-controlled, full stop. Trusting one for
             tenant scoping means any authenticated user could, in principle, read or write another
             landlord's data by editing a request. Resolving tenancy from a cryptographically
             verified claim instead removes that entire class of bug. The cost is one extra lookup
@@ -243,8 +243,8 @@
   <section class="section">
     <div class="wrap">
       <div class="pull-quote reveal">
-        <blockquote>"A header is client-controlled, full stop — trusting one for tenant scoping means any authenticated user could read another landlord's data by editing a request."</blockquote>
-        <cite>— from 04 / ARCHITECTURE, above</cite>
+        <blockquote>"A header is client-controlled, full stop. Trusting one for tenant scoping means any authenticated user could read another landlord's data by editing a request."</blockquote>
+        <cite>from 04 / ARCHITECTURE, above</cite>
       </div>
     </div>
   </section>
@@ -258,26 +258,26 @@
           <h2>Why a modular monolith, not microservices</h2>
           <p class="mt-16 measure">
             The backend is one deployable Spring Boot application, internally split into 21
-            modules — <code class="mono small">property</code>, <code class="mono small">lease</code>,
+            modules: <code class="mono small">property</code>, <code class="mono small">lease</code>,
             <code class="mono small">rentledger</code>, <code class="mono small">tenant</code>,
             <code class="mono small">deposit</code>, <code class="mono small">tax</code>,
             <code class="mono small">reservation</code>, <code class="mono small">notification</code>,
             <code class="mono small">integration</code>, <code class="mono small">platformadmin</code>
-            among them — each shaped the same way: <code class="mono small">api → application →
+            among them, each shaped the same way: <code class="mono small">api → application →
             domain → infrastructure</code>. That shape isn't a convention I hope people follow; an
             ArchUnit test fails the build if a module reaches into another module's internals
             instead of going through its public surface.
           </p>
           <p class="mt-16 measure">
-            I deliberately did not reach for microservices, a message broker, Kafka, or Redis —
+            I deliberately did not reach for microservices, a message broker, Kafka or Redis.
             docker-compose has containers for some of these sitting unused, and the project's own
             engineering notes are explicit that they should stay that way. A queue and a
             broker solve a scaling and deployment-independence problem RentManager doesn't have
             yet. What it needs is clear internal boundaries so the system can be pulled apart later
-            if it ever does need that — and it has them, enforced by a test, not just a diagram.
+            if it ever does need that, and it has them, enforced by a test rather than a diagram.
           </p>
           <p class="mt-16 measure">
-            Real decisions are written down as I make them, not reconstructed after the fact — two
+            Real decisions get written down as I make them rather than reconstructed later. Two
             examples that guard the money paths specifically: <strong>ADR-0018</strong> documents
             why a disbursement reserves its entitlement under a database lock taken in a separate
             transactional bean, because a self-invoked call would silently skip the lock; <strong>ADR-0016</strong>
@@ -299,7 +299,7 @@
           <p class="mt-16 measure">
             One decision worth explaining because getting it wrong is exactly the kind of bug that
             doesn't show up until it's serious: in the database, <code class="mono small">tenants</code>
-            is the <em>landlord's</em> organization — the paying customer — and the actual renter
+            is the <em>landlord's</em> organization, meaning the paying customer, and the renter
             is a separate table, <code class="mono small">tenant_profile</code>. So
             <code class="mono small">tenant_id</code> on any row means "which landlord owns this,"
             never "which renter." Reading that backwards anywhere in the codebase silently crosses
@@ -309,7 +309,7 @@
             I wrote that distinction down explicitly in the project's own engineering notes,
             in bold, at the top, because I'd rather over-document a sharp edge than have it cause
             a real incident. Every controller method that touches tenant-scoped data is required to
-            carry both an authorization check <em>and</em> a repository-level tenant filter — not
+            carry both an authorization check <em>and</em> a repository-level tenant filter, not
             one or the other. New landlord organizations aren't auto-provisioned either: a signed-in
             user with no matching tenant record gets a pending-onboarding role and nothing else,
             rather than being silently attached to the wrong organization or given a default one.
@@ -332,7 +332,7 @@
             Roles are fine-grained on purpose: <code class="mono small">OWNER</code>,
             <code class="mono small">MANAGER</code>, and <code class="mono small">STAFF</code> for a
             landlord organization, each with different money-moving permissions. Recording a rent
-            payment is available to staff — a caretaker collecting cash needs that — but refunds,
+            payment is available to staff, since a caretaker collecting cash needs it, but refunds,
             adjustments, and changing M-Pesa credentials are owner/manager only. That split maps to
             how a real rental business is actually staffed, not to a generic "admin vs. user" model.
           </p>
@@ -350,7 +350,7 @@
           <h2>Frontend architecture</h2>
           <p class="mt-16 measure">
             Next.js 16 (App Router) with React 19 and TypeScript, organized by feature rather than
-            by file type — a <code class="mono small">rentledger</code> feature folder holds its own
+            by file type. A <code class="mono small">rentledger</code> feature folder holds its own
             API client, React Query hooks, components, and types, mirroring the backend module it
             talks to. Route-level access control runs in a pure, fail-closed policy function so
             "can this persona see this route" is one function you can unit-test, not logic spread
@@ -358,9 +358,9 @@
             cache to keep in sync by hand.
           </p>
           <p class="mt-16 measure">
-            It's a real, working application — landlord dashboard, tenant portal, a public listing
+            It's a real, working application: landlord dashboard, tenant portal, a public listing
             and reservation flow with M-Pesa checkout, and a platform-admin console for the business
-            running RentManager itself — and it renders correctly on mobile down to a single-column
+            running RentManager itself, and it renders correctly on mobile down to a single-column
             layout, not just the marketing page.
           </p>
           <div class="shot mt-24 reveal" style="max-width:360px;">
@@ -380,7 +380,7 @@
         <div>
           <h2>Schema evolution and the ledger</h2>
           <p class="mt-16 measure">
-            PostgreSQL, with 99 sequential Flyway migrations as of this writing — each one applied
+            PostgreSQL, with 99 sequential Flyway migrations as of this writing. Each one applied
             once and never edited afterward; a schema change is always a new migration, so the
             database's own history stays an honest record of what actually happened, in what order.
             Money gets the strictest treatment in the schema: a database trigger makes
@@ -405,12 +405,12 @@
           <h2>Testing strategy</h2>
           <p class="mt-16 measure">
             1,588 backend tests as of the last full run, using real PostgreSQL via Testcontainers
-            rather than mocking the database for anything that touches persistence — a query that
+            rather than mocking the database for anything that touches persistence. A query that
             works against an in-memory fake and breaks against real Postgres is exactly the bug
             this catches. ArchUnit tests enforce the module-boundary rules at build time, so an
             architecture violation fails CI the same way a broken test does, not just a code-review
             comment someone might miss. The frontend has its own Vitest suite, and I intentionally
-            don't claim "fully tested" anywhere in the project — I say what's covered, and I keep an
+            don't claim "fully tested" anywhere in the project. I say what's covered, and I keep an
             explicit list of what isn't (the tax and platform-integration modules, and the landlord
             dashboard UI, are flagged in my own notes as not yet audited, distinct from the renter
             portal which has had a full pass).
@@ -432,33 +432,33 @@
             <div class="card">
               <h3>A scheduled tax rate staged under the wrong legal basis</h3>
               <p class="muted mt-8">
-                <strong>Problem —</strong> a 10% tax rate, effective mid-2026, was seeded into the
+                <strong>Problem.</strong> a 10% tax rate, effective mid-2026, was seeded into the
                 system as a scheduled replacement for the existing 7.5% resident rental-income tax.
-                <strong>Why it was dangerous —</strong> researching it properly showed the 10% figure
-                is a real rate, but for a <em>different</em> regime entirely — a new non-resident
+                <strong>Why it was dangerous.</strong> researching it properly showed the 10% figure
+                is a real rate, but it belongs to a different regime entirely: a new non-resident
                 landlord tax the same law introduced on the same date. Activating the scheduled row
                 as written would have charged every resident landlord a third more tax than the law
-                actually requires, on a personal tax liability. <strong>What I did —</strong> deleted
+                actually requires, on a personal tax liability. <strong>What I did.</strong> deleted
                 the mis-scoped row in a new migration that fails loudly if any environment had
                 already activated it, left the correct 7.5% rate untouched and active, and logged
                 non-resident support as a separate, deliberately unbuilt feature rather than a rate
-                flip. <strong>Trade-off —</strong> the system computes resident tax only, today, and says so.
+                flip. <strong>Trade-off.</strong> the system computes resident tax only, today, and says so.
               </p>
             </div>
 
             <div class="card">
               <h3>Payment aggregation and a licensing constraint I built around, not past</h3>
               <p class="muted mt-8">
-                <strong>Problem —</strong> the obvious way to run a rent-collection platform — rent
+                <strong>Problem.</strong> the obvious way to run a rent-collection platform, where rent
                 lands in one platform-controlled M-Pesa account, a commission is deducted, the rest
-                is paid out — is payment aggregation, and Safaricom's M-Pesa merchant terms prohibit
+                is paid out, is payment aggregation, and Safaricom's M-Pesa merchant terms prohibit
                 that without their written consent; it also implicates Central Bank of Kenya payment-service-provider
-                licensing. <strong>What I did —</strong> the compliant path already exists in the code
-                and predates this finding — per-landlord M-Pesa credentials, encrypted at rest, where
+                licensing. <strong>What I did.</strong> the compliant path already exists in the code
+                and predates this finding: per-landlord M-Pesa credentials, encrypted at rest, where
                 rent lands directly in the landlord's own till and the platform never takes custody.
-                <strong>Trade-off —</strong> I documented, in the project's own rules, that the
+                <strong>Trade-off.</strong> I documented, in the project's own rules, that the
                 commission/payout code stays behind a flag and does not become the default billing
-                mode until the licensing question is actually resolved — a business decision, not
+                mode until the licensing question is resolved. That's a business decision, not
                 something I get to route around with a config default.
               </p>
             </div>
@@ -466,16 +466,16 @@
             <div class="card">
               <h3>A race condition that could have silently underpaid a landlord</h3>
               <p class="muted mt-8">
-                <strong>Problem —</strong> disbursement math reads a ledger entry's settleable
+                <strong>Problem.</strong> disbursement math reads a ledger entry's settleable
                 amount and reserves it for payout; if two disbursement attempts for the same entry
-                interleaved, both could read the same unreserved amount and pay out twice — or,
+                interleaved, both could read the same unreserved amount and pay out twice, or,
                 depending on ordering, corrupt the reserved-amount bookkeeping so a landlord's payout
-                came up short. <strong>What I did —</strong> the entitlement reservation now happens
+                came up short. <strong>What I did.</strong> the entitlement reservation now happens
                 under a pessimistic database lock taken <em>before</em> the settleable amount is
-                read, in a separate transactional service — self-invoking the locked method from the
+                read, in a separate transactional service. Self-invoking the locked method from the
                 same class would bypass Spring's proxy and silently take neither the lock nor the
                 transaction. A regression test asserts the lock is acquired before the read, not
-                after. <strong>Trade-off —</strong> the Daraja network call has to stay outside that
+                after. <strong>Trade-off.</strong> the Daraja network call has to stay outside that
                 locked transaction, or a slow payment-provider response would hold the lock open far
                 longer than it should be held.
               </p>
@@ -484,14 +484,14 @@
             <div class="card">
               <h3>One active commission policy per landlord, enforced by the database</h3>
               <p class="muted mt-8">
-                <strong>Problem —</strong> commission rate lookups assumed exactly one active policy
+                <strong>Problem.</strong> commission rate lookups assumed exactly one active policy
                 per landlord, but nothing stopped two from existing at once. When it happened, the
-                lookup threw — <em>inside</em> the M-Pesa callback, after the ledger had already been
+                lookup threw, and it threw <em>inside</em> the M-Pesa callback, after the ledger had already been
                 credited and before the disbursement was created. Rent was recorded; the landlord
                 wasn't paid, and the failure was invisible until someone went looking.
-                <strong>What I did —</strong> added a unique partial index at the database level so a
+                <strong>What I did.</strong> added a unique partial index at the database level so a
                 second active policy for the same landlord can't be created, not just a check in
-                application code that a future code path could skip. <strong>Trade-off —</strong>
+                application code that a future code path could skip. <strong>Trade-off.</strong>
                 it's a stricter constraint than the original design assumed, which is exactly why it
                 needed to be enforced where application logic can't quietly work around it.
               </p>
@@ -509,17 +509,17 @@
         <div class="ledger-index"><span class="folio-num">12</span><span class="folio-label">NEXT</span></div>
         <div>
           <h2>What I'd improve next</h2>
-          <p class="mt-16 measure">In the order I'd actually tackle them:</p>
+          <p class="mt-16 measure">In the order I'd tackle them:</p>
           <table class="ledger-table mt-32">
             <thead><tr><th class="col-label">Priority</th><th>Item</th></tr></thead>
             <tbody>
-              <tr><td class="col-label mono">High</td><td>Get a tax advisor to sign off on the tax module before any filing gate is switched on — the engineering is fail-closed by design, but a lawyer, not an engineer, should be the one to open it.</td></tr>
+              <tr><td class="col-label mono">High</td><td>Get a tax advisor to sign off on the tax module before any filing gate is switched on. The engineering is fail-closed by design, but a lawyer should be the one to open it, not an engineer.</td></tr>
               <tr><td class="col-label mono">High</td><td>Resolve the payment-aggregation licensing question and either obtain the CBK/Safaricom approvals or switch the default billing mode to per-landlord credentials.</td></tr>
-              <tr><td class="col-label mono">High</td><td>Automated-payout path currently writes its record after sending money and applies no entitlement cap — the manual payout path does both correctly; bring the automated path up to the same standard.</td></tr>
+              <tr><td class="col-label mono">High</td><td>Automated-payout path currently writes its record after sending money and applies no entitlement cap. The manual payout path does both correctly, so the automated one needs bringing up to that standard.</td></tr>
               <tr><td class="col-label mono">Medium</td><td>Audit the tax, platform-integration, and landlord-dashboard-UI code paths, which haven't had the same review pass the renter portal and core ledger have had.</td></tr>
-              <tr><td class="col-label mono">Medium</td><td>Build a real WhatsApp sender (Meta Cloud API) — the announcements system is fully built and tested against a stub, but nothing sends yet.</td></tr>
+              <tr><td class="col-label mono">Medium</td><td>Build a real WhatsApp sender (Meta Cloud API). The announcements system is fully built and tested against a stub, but nothing sends yet.</td></tr>
               <tr><td class="col-label mono">Medium</td><td>Move provider credentials (SMS, email, Cloudinary) out of environment variables and into the encrypted, database-backed integrations console that already exists for M-Pesa.</td></tr>
-              <tr><td class="col-label mono">Medium</td><td>Nightly encrypted backups now run on a schedule and are kept for 90 days, but I have never performed a full restore drill, and there is still no staging environment — a backup you have not restored from is a hypothesis, not a backup.</td></tr>
+              <tr><td class="col-label mono">Medium</td><td>Nightly encrypted backups now run on a schedule and are kept for 90 days, but I have never done a full restore drill and there is still no staging environment. A backup you have not restored from is a hypothesis, not a backup.</td></tr>
             </tbody>
           </table>
         </div>
