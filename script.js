@@ -2,7 +2,7 @@
 (function () {
   "use strict";
 
-  var EMAIL = "tsumaengineer03@gmail.com";
+  var EMAIL = "karungwahassan03@gmail.com";
   var WA = "254714931575";
 
   // ---- theme toggle ----
