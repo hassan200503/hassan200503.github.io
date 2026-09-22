@@ -114,7 +114,7 @@
             <div class="skill-row">
               <span class="skill-name">Modular-monolith architecture</span>
               <span class="meter" style="--lvl:4" role="img" aria-label="4 out of 5"></span>
-              <span class="skill-note">Ports and adapters with explicit module boundaries, plus ArchUnit tests that fail the build when one module reaches into another's internals. CI enforces the boundary so I don't have to rely on remembering it.</span>
+              <span class="skill-note">Ports and adapters with explicit module boundaries. One ArchUnit rule currently enforces that the property module's application layer never depends on its infrastructure, so CI catches that particular drift rather than me remembering. The other modules rely on convention so far, which is a gap I'd rather name than paper over.</span>
             </div>
             <div class="skill-row">
               <span class="skill-name">Spring Security · JWT / JWKS</span>
@@ -249,7 +249,7 @@
             <div class="skill-row">
               <span class="skill-name">ArchUnit</span>
               <span class="meter" style="--lvl:3" role="img" aria-label="3 out of 5"></span>
-              <span class="skill-note">Architecture encoded as tests. A boundary that exists only in a diagram has usually been crossed already.</span>
+              <span class="skill-note">Architecture encoded as a test. A boundary that exists only in a diagram has usually been crossed already. Mine covers one module today, which makes it a start rather than a safety net.</span>
             </div>
             <div class="skill-row">
               <span class="skill-name">Vitest · RN Testing Library</span>

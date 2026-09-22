@@ -153,7 +153,7 @@
             <li>Mobile: a 44-screen React Native (Expo) app sharing the same generated API client as the web app, with push notifications, offline detection and secure token storage</li>
             <li>Deployment: containerising the API and getting the whole stack live on free infrastructure: Render, Netlify, Neon, plus scheduled encrypted backups</li>
             <li>Integrations: M-Pesa Daraja (STK push and B2C), Africa's Talking SMS, Clerk authentication</li>
-            <li>Testing: the backend's 1,588 tests, the ArchUnit rules that enforce the module boundaries, and the frontend's Vitest suite</li>
+            <li>Testing: the backend's 1,588 tests, the ArchUnit rule covering the property module's layering, and the frontend's Vitest suite</li>
           </ul>
           <p class="mt-16 measure small faint">
             I use AI tools during development, the way most engineers now do. The architecture,
@@ -271,9 +271,10 @@
             <code class="mono small">reservation</code>, <code class="mono small">notification</code>,
             <code class="mono small">integration</code>, <code class="mono small">platformadmin</code>
             among them, each shaped the same way: <code class="mono small">api → application →
-            domain → infrastructure</code>. That shape isn't a convention I hope people follow; an
-            ArchUnit test fails the build if a module reaches into another module's internals
-            instead of going through its public surface.
+            domain → infrastructure</code>. One ArchUnit test currently holds part of that shape in
+            place: it fails the build if the property module's application layer depends on its
+            infrastructure. The other modules keep the same shape by convention, which is weaker,
+            and extending the rule across all of them is work I still owe the project.
           </p>
           <p class="mt-16 measure">
             I deliberately did not reach for microservices, a message broker, Kafka or Redis.
@@ -414,9 +415,9 @@
             1,588 backend tests as of the last full run, using real PostgreSQL via Testcontainers
             rather than mocking the database for anything that touches persistence. A query that
             works against an in-memory fake and breaks against real Postgres is exactly the bug
-            this catches. ArchUnit tests enforce the module-boundary rules at build time, so an
-            architecture violation fails CI the same way a broken test does, not just a code-review
-            comment someone might miss. The frontend has its own Vitest suite, and I intentionally
+            this catches. One ArchUnit rule runs at build time, so that particular layering violation
+            fails CI the same way a broken test does rather than waiting for a code-review comment
+            someone might miss. The frontend has its own Vitest suite, and I intentionally
             don't claim "fully tested" anywhere in the project. I say what's covered, and I keep an
             explicit list of what isn't (the tax and platform-integration modules, and the landlord
             dashboard UI, are flagged in my own notes as not yet audited, distinct from the renter

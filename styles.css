@@ -1112,3 +1112,100 @@ h2 { letter-spacing: -0.012em; }
   h1, h2, h3 { break-after: avoid; }
   .skill-row, .avail-item, tr { break-inside: avoid; }
 }
+
+/* =========================================================
+   CODE EXCERPTS — a quoted passage from a source file, set
+   like an exhibit: filename above, commentary below.
+   ========================================================= */
+
+.excerpt {
+  margin: 0 0 clamp(28px, 4vw, 44px);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-m);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+.excerpt:last-of-type { margin-bottom: 0; }
+
+.excerpt figcaption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+  padding: 10px 16px;
+  background: var(--surface-2);
+  border-bottom: 1px solid var(--rule);
+}
+.excerpt figcaption .mono {
+  font-size: 12px;
+  color: var(--ink-muted);
+}
+.excerpt figcaption a {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--accent-ink);
+  text-decoration: none;
+  white-space: nowrap;
+  border-bottom: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
+}
+.excerpt figcaption a:hover { border-bottom-color: var(--accent); }
+
+.excerpt pre {
+  margin: 0;
+  padding: 18px 16px;
+  border-left: 2px solid var(--accent);
+  /* These excerpts are prose comments, not code that depends on column
+     alignment, so wrapping beats a horizontal scrollbar. Without the
+     min-width reset the <pre> refuses to shrink inside the grid track and
+     drags the whole page wider than the phone. */
+  max-width: 100%;
+  min-width: 0;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.excerpt { max-width: 100%; min-width: 0; }
+.excerpt code {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  line-height: 1.72;
+  color: var(--ink);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+@media (max-width: 640px) {
+  .excerpt code { font-size: 11.5px; line-height: 1.65; }
+  .excerpt pre { padding: 14px 13px; }
+}
+
+.excerpt-note {
+  margin: 0;
+  padding: 14px 16px 16px;
+  border-top: 1px solid var(--rule);
+  font-size: 0.9rem;
+  color: var(--ink-muted);
+}
+.excerpt-note code {
+  font-family: var(--font-mono);
+  font-size: 0.86em;
+  background: var(--surface-2);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-s);
+  padding: 1px 5px;
+}
+
+/* inline code used in running prose elsewhere on the site */
+.measure code, .skill-note code, td code {
+  font-family: var(--font-mono);
+  font-size: 0.87em;
+  background: var(--surface-2);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-s);
+  padding: 1px 5px;
+}
+
+@media print {
+  .excerpt { break-inside: avoid; box-shadow: none; }
+  .excerpt pre { border-left: 2px solid #999; }
+}

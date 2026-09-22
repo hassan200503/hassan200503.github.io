@@ -269,7 +269,7 @@
             <div class="skill-row">
               <span class="skill-name">API &amp; domain design</span>
               <span class="meter" style="--lvl:4" role="img" aria-label="4 out of 5"></span>
-              <span class="skill-note">Ports and adapters, with ArchUnit rules that fail the build on a boundary violation.</span>
+              <span class="skill-note">Ports and adapters, with one ArchUnit rule holding the property module's layering in place. Widening it to the other modules is on my list.</span>
             </div>
             <div class="skill-row">
               <span class="skill-name">Spring Security · JWT / JWKS</span>
@@ -350,7 +350,7 @@
             <div class="skill-row">
               <span class="skill-name">Testcontainers · ArchUnit</span>
               <span class="meter" style="--lvl:3" role="img" aria-label="3 out of 5"></span>
-              <span class="skill-note">Real PostgreSQL in integration tests, with the architecture rules enforced by the test suite itself.</span>
+              <span class="skill-note">Real PostgreSQL in integration tests through Testcontainers, with one architecture rule enforced by the suite itself.</span>
             </div>
             <div class="skill-row">
               <span class="skill-name">Docker · deployment</span>
@@ -375,11 +375,85 @@
     </div>
   </section>
 
-  <!-- 04 WHAT I BUILD -->
+
+  <!-- 04 IN THE CODE -->
   <section class="section">
     <div class="wrap">
       <div class="ledger-row reveal">
-        <div class="ledger-index"><span class="folio-num">04</span><span class="folio-label">WORK</span></div>
+        <div class="ledger-index"><span class="folio-num">04</span><span class="folio-label">IN THE CODE</span></div>
+        <div>
+          <h2>Judgement, in the code itself</h2>
+          <p class="lede mt-16 measure">
+            Anyone can describe how they think. These are three comments from RentManager's
+            backend, unedited, each linked to the file it lives in. They are the clearest
+            evidence I can give you of how I reason about a system.
+          </p>
+
+          <figure class="excerpt reveal mt-48">
+            <figcaption>
+              <span class="mono">StkPushRateLimiter.java</span>
+              <a class="small" href="https://github.com/hassan200503/rentmanager-backend/blob/main/src/main/java/com/rentmanager/modules/rentledger/application/service/StkPushRateLimiter.java#L26" target="_blank" rel="noopener">view on GitHub ↗</a>
+            </figcaption>
+            <pre><code>This does NOT replace the DB-level idempotency guard
+(uk_rent_transactions_tenant_external_reference) — that's what prevents a
+successful payment from ever being double-applied. This only prevents
+wasted/duplicate STK prompts from being sent to Safaricom in the first
+place, which is a cost/UX concern, not a correctness one.</code></pre>
+            <p class="excerpt-note">
+              Knowing which guard actually protects the money, and refusing to let a convenience
+              feature take credit for it, is the difference between a system that looks safe and
+              one that is.
+            </p>
+          </figure>
+
+          <figure class="excerpt reveal">
+            <figcaption>
+              <span class="mono">SlidingWindowRateLimiter.java</span>
+              <a class="small" href="https://github.com/hassan200503/rentmanager-backend/blob/main/src/main/java/com/rentmanager/shared/security/throttle/SlidingWindowRateLimiter.java#L14" target="_blank" rel="noopener">view on GitHub ↗</a>
+            </figcaption>
+            <pre><code>Replaces SimpleRateLimiter, which could not work.
+
+It kept an int per key with no time component at all, so its limit of 100
+was a lifetime cap that latched closed permanently. Its putIfAbsent / get
+/ put sequence was a non-atomic read-modify-write, so two concurrent
+requests could read the same count and both write count + 1,
+undercounting under exactly the load a limiter exists to stop. And its map
+never evicted anything.</code></pre>
+            <p class="excerpt-note">
+              That is me reviewing my own earlier code and finding a race condition in it. The
+              replacement mutates inside <code>ConcurrentHashMap.compute</code>, so the check and
+              the record are one atomic step.
+            </p>
+          </figure>
+
+          <figure class="excerpt reveal">
+            <figcaption>
+              <span class="mono">AuditLogJpaEntity.java</span>
+              <a class="small" href="https://github.com/hassan200503/rentmanager-backend/blob/main/src/main/java/com/rentmanager/modules/audit/infrastructure/persistence/entity/AuditLogJpaEntity.java#L19" target="_blank" rel="noopener">view on GitHub ↗</a>
+            </figcaption>
+            <pre><code>Stands alone rather than extending BaseTenantEntity: the base carries
+updated_at and an @Version column, and V86 forbids updates outright.
+Inheriting mutability machinery onto an append-only table adds two columns
+that can never move and invites someone to try.</code></pre>
+            <p class="excerpt-note">
+              Designing so the wrong thing is hard to express, rather than merely forbidden in a
+              document, is the habit I most want to keep.
+            </p>
+          </figure>
+
+          <p class="mt-32">
+            <a class="btn btn-ghost btn-sm" href="https://github.com/hassan200503/rentmanager-backend" target="_blank" rel="noopener">Read the backend ↗</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 WHAT I BUILD -->
+  <section class="section">
+    <div class="wrap">
+      <div class="ledger-row reveal">
+        <div class="ledger-index"><span class="folio-num">05</span><span class="folio-label">WORK</span></div>
         <div>
           <h2>What I build</h2>
           <p class="lede mt-16 measure">Software for businesses with real workflows and real rules to enforce. Not marketing sites, and not prototypes that stop at the demo.</p>
@@ -407,11 +481,11 @@
     </div>
   </section>
 
-  <!-- 05 APPROACH -->
+  <!-- 06 APPROACH -->
   <section class="section">
     <div class="wrap">
       <div class="ledger-row reveal">
-        <div class="ledger-index"><span class="folio-num">05</span><span class="folio-label">APPROACH</span></div>
+        <div class="ledger-index"><span class="folio-num">06</span><span class="folio-label">APPROACH</span></div>
         <div>
           <h2>How I think about building this kind of system</h2>
           <p class="lede mt-16 measure">Five things I've come to hold as rules, from building RentManager's money paths.</p>
@@ -423,7 +497,7 @@
               <tr><td><strong>Don't reach for distributed complexity you don't need yet.</strong></td><td class="muted">RentManager runs as a modular monolith with a database-backed outbox instead of a message broker. A queue would have been a more "impressive" architecture diagram and a worse decision at this scale.</td></tr>
               <tr><td><strong>Fail closed on anything legal or financial.</strong></td><td class="muted">The tax module computes VAT and rental-income tax against real Kenyan law, but every gate defaults to off until a human confirms it applies. Wrong-by-default is not an acceptable failure mode for a tax calculation.</td></tr>
               <tr><td><strong>The schema is a historical record, not a draft.</strong></td><td class="muted">99 sequential migrations, never edited after they've run. If something needs to change it gets a new migration, so the database's history stays honest.</td></tr>
-              <tr><td><strong>If it isn't tested, assume it's broken.</strong></td><td class="muted">1,588 backend tests, including architecture tests that fail the build when a module boundary gets violated. The number isn't the point. The parts I haven't tested are the parts I don't trust, and I'll tell you which those are.</td></tr>
+              <tr><td><strong>If it isn't tested, assume it's broken.</strong></td><td class="muted">1,588 backend tests, including an architecture test that fails the build if the property module's application layer reaches into its infrastructure. The number isn't the point. The parts I haven't tested are the parts I don't trust, and I'll tell you which those are.</td></tr>
             </tbody>
           </table>
         </div>
@@ -431,11 +505,11 @@
     </div>
   </section>
 
-  <!-- 06 PROCESS -->
+  <!-- 07 PROCESS -->
   <section class="section">
     <div class="wrap">
       <div class="ledger-row reveal">
-        <div class="ledger-index"><span class="folio-num">06</span><span class="folio-label">PROCESS</span></div>
+        <div class="ledger-index"><span class="folio-num">07</span><span class="folio-label">PROCESS</span></div>
         <div>
           <h2>How I work</h2>
           <ol class="mt-32" style="list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:0;">
@@ -451,11 +525,11 @@
     </div>
   </section>
 
-  <!-- 07 ABOUT -->
+  <!-- 08 ABOUT -->
   <section class="section">
     <div class="wrap">
       <div class="ledger-row reveal">
-        <div class="ledger-index"><span class="folio-num">07</span><span class="folio-label">ABOUT</span></div>
+        <div class="ledger-index"><span class="folio-num">08</span><span class="folio-label">ABOUT</span></div>
         <div class="grid-2" style="align-items:center;">
           <div>
             <h2>A bit about me</h2>
