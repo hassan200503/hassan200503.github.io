@@ -529,6 +529,9 @@
               <tr><td class="col-label mono">Medium</td><td>Build a real WhatsApp sender (Meta Cloud API). The announcements system is fully built and tested against a stub, but nothing sends yet.</td></tr>
               <tr><td class="col-label mono">Medium</td><td>Move provider credentials (SMS, email, Cloudinary) out of environment variables and into the encrypted, database-backed integrations console that already exists for M-Pesa.</td></tr>
               <tr><td class="col-label mono">Medium</td><td>Nightly encrypted backups now run on a schedule and are kept for 90 days, but I have never done a full restore drill and there is still no staging environment. A backup you have not restored from is a hypothesis, not a backup.</td></tr>
+              <tr><td class="col-label mono">High</td><td>Photo upload fails in production. The three Cloudinary keys were never set on the host, so the storage client has no provider and every upload returns a 500 that reads like a bug in the upload code. Found by uploading an image to a live listing and following the failure back. The keys are now declared; they still need values.</td></tr>
+              <tr><td class="col-label mono">High</td><td>Writes submitted while the free-tier container is cold are lost silently. Creating two units during a spin-up produced no error and no rows. A form that cannot reach the server should say so and retry rather than appear to succeed.</td></tr>
+              <tr><td class="col-label mono">Medium</td><td>Deep links to a property render "Property not found". The detail fetch fires before tenant context resolves on a hard navigation, and a 404 is shown instead of a retry. Clicking through from the list works, which is what hid it.</td></tr>
             </tbody>
           </table>
         </div>
