@@ -88,17 +88,29 @@
             pay rent, see their lease, raise maintenance requests, and message their landlord.
           </p>
           <p class="mt-16 measure">
-            <strong>It's deployed and running.</strong> You can open it right now at
+            <strong>It is deployed, and it is a real system rather than a demo.</strong> You can
+            open it right now at
             <a class="livelink" href="https://rentmanager-ke.netlify.app/" target="_blank" rel="noopener">rentmanager-ke.netlify.app ↗</a>.
-            The web app is on Netlify, the Spring Boot API on Render, and PostgreSQL on Neon,
-            with a scheduled ping keeping the free-tier container awake so M-Pesa callbacks and
-            the outbox sweeps never arrive at a sleeping service.
+            The Next.js web app runs on Netlify, the Spring Boot API in a container on Render under
+            the <code class="mono small">prod</code> profile, and PostgreSQL on Neon. It serves over
+            HTTPS behind a health check, the scheduled payment and notification sweeps run on their
+            timers, a cron ping keeps the free-tier container awake so an M-Pesa callback never
+            arrives at a sleeping service, and the database is dumped, encrypted and kept off-site
+            every night with ninety days of retention. That is the same code, the same schema and
+            the same migrations described on this page, running on infrastructure I set up and
+            operate — not a localhost screenshot.
           </p>
           <p class="mt-16 measure">
-            I want to be equally precise about what that does and doesn't mean. Deployed is not
-            the same as battle-tested: it is live and usable, but it has not yet run a full
-            month of real landlords' rent through it, and Clerk is still serving it from a
-            development instance rather than a production one, which is a step I have not taken. I've been explicit with myself, in the
+            I want to be exact about the line between deployed and commercially live, because
+            they are not the same thing and the difference is easy to blur. The deployment talks to
+            <strong>Safaricom's sandbox</strong>, on the public test short code, and to Africa's
+            Talking's sandbox for SMS; sign-in is served by a Clerk <strong>development</strong>
+            instance. Concretely: the payment code paths are exercised end to end, but no real
+            money has moved through this system and it could not currently accept any. Switching
+            that on is three pieces of configuration and a licensing decision, not a rewrite — and
+            the licensing question, set out below, is the reason I have not rushed it. If you are
+            evaluating me, the honest claim is that I designed, built, deployed and operate a real
+            system, not that I have run one carrying other people's rent. I've been explicit with myself, in the
             project's own documentation, about which parts have been audited and which haven't.
             That documentation is part of what this case study is about. If you're evaluating me,
             the honest claim is that I built and shipped a real system, not that I've run one at
