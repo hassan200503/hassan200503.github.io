@@ -385,7 +385,7 @@
         <div>
           <h2>Judgement, in the code itself</h2>
           <p class="lede mt-16 measure">
-            Anyone can describe how they think. These are three comments from RentManager's
+            Anyone can describe how they think. These are four comments from RentManager's
             backend, unedited, each linked to the file it lives in. They are the clearest
             evidence I can give you of how I reason about a system.
           </p>
@@ -439,6 +439,30 @@ that can never move and invites someone to try.</code></pre>
             <p class="excerpt-note">
               Designing so the wrong thing is hard to express, rather than merely forbidden in a
               document, is the habit I most want to keep.
+            </p>
+          </figure>
+
+          <figure class="excerpt reveal">
+            <figcaption>
+              <span class="mono">V103__tenant_profile_landlord_added_renters.sql</span>
+              <a class="small" href="https://github.com/hassan200503/rentmanager-backend/blob/main/src/main/resources/db/migration/V103__tenant_profile_landlord_added_renters.sql#L4" target="_blank" rel="noopener">view on GitHub ↗</a>
+            </figcaption>
+            <pre><code>Until now the ONLY production code that created a tenant_profile row was
+a stranger reserving a vacant unit on the public site and paying a
+deposit by M-Pesa. A landlord signing up with tenants already living in
+their units had no way to enter them, so no lease, ledger, payment or
+renter portal could exist for an existing tenancy. That is the normal
+case in Kenya, which made the product unusable for it.
+
+  clerk_user_id NOT NULL — a renter added by their landlord has no
+    Clerk account yet, and may never create one (a caretaker collects
+    cash).
+  email NOT NULL — many renters give only a phone number.</code></pre>
+            <p class="excerpt-note">
+              The bug here was not in the code. It was an assumption in the schema: that every
+              renter arrives through the website. Most Kenyan tenancies already exist before the
+              software does, and two <code>NOT NULL</code> constraints quietly made the product
+              useless for them.
             </p>
           </figure>
 
