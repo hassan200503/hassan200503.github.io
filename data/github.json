@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-27T15:07:16Z",
+  "generatedAt": "2026-09-27T15:21:22Z",
   "user": {
     "login": "hassan200503",
     "name": "Hassan Tsuma ",
@@ -16,16 +16,43 @@
     "languageBytes": {
       "Java": 4626176,
       "TypeScript": 3411769,
-      "CSS": 212021,
-      "HTML": 142869,
-      "JavaScript": 32198,
+      "CSS": 224686,
+      "HTML": 164451,
+      "JavaScript": 45760,
       "PLpgSQL": 18917,
       "Shell": 5504,
+      "Python": 4796,
       "Dockerfile": 4600
     },
-    "lastPush": "2026-09-23T19:39:44Z"
+    "lastPush": "2026-09-27T15:21:09Z"
   },
   "repos": [
+    {
+      "name": "hassan200503.github.io",
+      "description": "Portfolio site for Hassan Tsuma",
+      "url": "https://github.com/hassan200503/hassan200503.github.io",
+      "homepage": null,
+      "language": "HTML",
+      "languages": {
+        "HTML": 164451,
+        "CSS": 47972,
+        "JavaScript": 22033,
+        "Python": 4796
+      },
+      "topics": [],
+      "stars": 0,
+      "forks": 0,
+      "sizeKb": 494,
+      "license": null,
+      "createdAt": "2026-09-14T20:38:01Z",
+      "pushedAt": "2026-09-27T15:21:09Z",
+      "lastCommit": {
+        "sha": "a33007c",
+        "message": "Live GitHub section, a portrait hero, education, interests, principles, documents",
+        "date": "2026-09-27T15:21:05Z",
+        "url": "https://github.com/hassan200503/hassan200503.github.io/commit/a33007cd04c9cf9c53bf049a1be85e180fff65b5"
+      }
+    },
     {
       "name": "whatsapp-persona-bot",
       "description": "Auto-replies to WhatsApp messages in your own voice while you're offline, learns your writing style over time, and pitches freelance work to leads.",
@@ -116,31 +143,6 @@
         "message": "Clean up the fixtures two tests were leaking into the shared container",
         "date": "2026-09-23T07:17:20Z",
         "url": "https://github.com/hassan200503/rentmanager-backend/commit/7861d001155159fe8d35d40986eddb910a97e4f4"
-      }
-    },
-    {
-      "name": "hassan200503.github.io",
-      "description": "Portfolio site for Hassan Tsuma",
-      "url": "https://github.com/hassan200503/hassan200503.github.io",
-      "homepage": null,
-      "language": "HTML",
-      "languages": {
-        "HTML": 142869,
-        "CSS": 35307,
-        "JavaScript": 8471
-      },
-      "topics": [],
-      "stars": 0,
-      "forks": 0,
-      "sizeKb": 494,
-      "license": null,
-      "createdAt": "2026-09-14T20:38:01Z",
-      "pushedAt": "2026-09-23T05:41:20Z",
-      "lastCommit": {
-        "sha": "adbc7f3",
-        "message": "Add the migration comment that explains a product, not a schema",
-        "date": "2026-09-23T05:41:18Z",
-        "url": "https://github.com/hassan200503/hassan200503.github.io/commit/adbc7f3d0f4de7dfe99c2190543af5be98e890de"
       }
     },
     {
