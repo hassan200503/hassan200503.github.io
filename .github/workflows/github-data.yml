@@ -1,0 +1,94 @@
+name: Refresh GitHub data
+
+# The site paints from data/github.json, then refreshes itself from the live
+# API in the visitor's browser. This job keeps the committed snapshot close
+# enough to current that the first paint is never wrong, and carries the
+# whole load whenever the live call is rate limited (60/hour per IP,
+# unauthenticated, shared by every visitor).
+#
+# Hourly rather than on every push: Actions minutes are free on public repos,
+# and the browser-side refresh already covers the minutes in between.
+
+on:
+  schedule:
+    - cron: "17 * * * *"
+  workflow_dispatch:
+  # Lets any other repository announce a change and have the site catch up
+  # at once:  gh api repos/hassan200503/hassan200503.github.io/dispatches \
+  #             -f event_type=refresh-github-data
+  repository_dispatch:
+    types: [refresh-github-data]
+  push:
+    branches: [main]
+    paths:
+      - "scripts/build_github_data.py"
+      - ".github/workflows/github-data.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: github-data
+  cancel-in-progress: true
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build the snapshot
+        env:
+          # gh reads this automatically. The default token is scoped to this
+          # repository, which is all the public endpoints here need, and it
+          # lifts the rate limit from 60 to 5,000 requests an hour.
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/build_github_data.py hassan200503 data/github.json
+
+      - name: Fail if the snapshot came back empty
+        # Better to keep yesterday's correct data than to publish an empty
+        # projects section because the API had a bad minute.
+        run: |
+          python - <<'PY'
+          import json, sys
+          d = json.load(open("data/github.json", encoding="utf-8"))
+          if d["totals"]["repos"] < 1:
+              sys.exit("snapshot has no repositories; refusing to commit it")
+          print("ok: %d repos, %d languages" % (
+              d["totals"]["repos"], len(d["totals"]["languageBytes"])))
+          PY
+
+      - name: Commit if anything moved
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # generatedAt changes on every run, so compare everything else and
+          # skip the commit when only the timestamp moved. Otherwise this
+          # writes a commit an hour, forever, for no reason.
+          if git diff --quiet -- data/github.json; then
+            echo "no change"
+            exit 0
+          fi
+          if python - <<'PY'
+          import json, subprocess, sys
+          new = json.load(open("data/github.json", encoding="utf-8"))
+          old_raw = subprocess.run(
+              ["git", "show", "HEAD:data/github.json"],
+              capture_output=True, text=True)
+          if old_raw.returncode != 0:
+              sys.exit(1)          # no previous file: this is a real change
+          old = json.loads(old_raw.stdout)
+          new.pop("generatedAt", None)
+          old.pop("generatedAt", None)
+          sys.exit(0 if new == old else 1)
+          PY
+          then
+            echo "only the timestamp moved; not committing"
+            git checkout -- data/github.json
+            exit 0
+          fi
+          git add data/github.json
+          git commit -m "Refresh GitHub snapshot
+
+          Rebuilt by the scheduled job from the public API."
+          git push

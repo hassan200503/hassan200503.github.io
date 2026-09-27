@@ -134,27 +134,35 @@
   }
 
   // ---- scroll reveal ----
-  var revealEls = document.querySelectorAll(".reveal");
-  if ("IntersectionObserver" in window && revealEls.length) {
-    var io = new IntersectionObserver(
+  // Exposed as window.htReveal so content rendered after load — the GitHub
+  // cards arrive from a fetch — joins the same choreography instead of
+  // appearing fully formed while everything around it animates.
+  var supportsIO = "IntersectionObserver" in window;
+  var revealIo = null;
+
+  if (supportsIO) {
+    revealIo = new IntersectionObserver(
       function (entries) {
         entries.forEach(function (entry) {
           if (entry.isIntersecting) {
             entry.target.classList.add("is-visible");
-            io.unobserve(entry.target);
+            revealIo.unobserve(entry.target);
           }
         });
       },
       { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
     );
-    revealEls.forEach(function (el) {
-      io.observe(el);
-    });
-  } else {
-    revealEls.forEach(function (el) {
-      el.classList.add("is-visible");
-    });
   }
+
+  window.htReveal = function (scope) {
+    var nodes = (scope || document).querySelectorAll(".reveal:not(.is-visible)");
+    nodes.forEach(function (el) {
+      if (revealIo) revealIo.observe(el);
+      else el.classList.add("is-visible");
+    });
+  };
+
+  window.htReveal(document);
 
   // ---- copy-email buttons ----
   document.querySelectorAll("[data-copy]").forEach(function (btn) {

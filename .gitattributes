@@ -1,3 +1,9 @@
 *.pdf binary
 *.jpg binary
 *.png binary
+# LF enforced: these run on the Linux runner, and a CR would break the
+# shell heredocs inside the workflow.
+*.py  text eol=lf
+*.yml text eol=lf
+*.sh  text eol=lf
+*.json text eol=lf

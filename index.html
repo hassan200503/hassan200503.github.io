@@ -54,6 +54,7 @@
       <a href="skills.html">Skills</a>
       <a href="services.html">Services</a>
       <a href="about.html">About</a>
+      <a href="documents.html">Documents</a>
       <a href="contact.html" class="nav-cta">Contact</a>
     </nav>
   </div>
@@ -62,31 +63,47 @@
 <main id="main">
 
   <!-- HERO -->
-  <section class="section" style="padding-top: clamp(44px, 8vw, 92px);">
+  <section class="section hero">
     <div class="wrap">
-      <span class="eyebrow">Backend &amp; full-stack engineer · Kenya</span>
-      <h1 class="mt-16" style="max-width: 15ch;">Software that can't afford to get the money wrong.</h1>
-      <p class="lede mt-24 measure">
-        I build the backend logic, database design and payment integrations behind systems that
-        move real money. <strong>RentManager</strong> is mine end to end: a rental platform for
-        Kenyan landlords that collects rent over M-Pesa, keeps an append-only ledger of it, and
-        works out the tax owed under Kenyan law. It's deployed and running on web, mobile and
-        its own API.
-      </p>
+      <div class="hero-grid">
+        <div>
+          <span class="eyebrow rise rise-1">Backend &amp; full-stack engineer · Kenya</span>
+          <h1 class="rise rise-2" style="max-width: 16ch;">Software that can't afford to get the money wrong.</h1>
+          <p class="lede mt-24 measure rise rise-3">
+            I build the backend logic, database design and payment integrations behind systems
+            that move real money. <strong>RentManager</strong> is mine end to end: a rental
+            platform for Kenyan landlords that collects rent over M-Pesa, keeps an append-only
+            ledger of it, and works out the tax owed under Kenyan law. It is deployed and
+            running on web, mobile and its own API.
+          </p>
 
-      <div class="mt-32" style="display:flex; gap:14px; flex-wrap:wrap; align-items:center;">
-        <a class="btn btn-primary" href="https://rentmanager-ke.netlify.app/" target="_blank" rel="noopener">Open the live product ↗</a>
-        <a class="btn btn-ghost" href="work/rentmanager.html">Read how it's built</a>
+          <div class="mt-32 rise rise-4" style="display:flex; gap:14px; flex-wrap:wrap; align-items:center;">
+            <a class="btn btn-primary" href="https://rentmanager-ke.netlify.app/" target="_blank" rel="noopener">Open the live product ↗</a>
+            <a class="btn btn-ghost" href="work/rentmanager.html">Read how it's built</a>
+          </div>
+
+          <div class="mt-24 rise rise-5" style="display:flex; gap:14px; flex-wrap:wrap; align-items:center;">
+            <a class="availability" href="#available"><span class="pip" aria-hidden="true"></span> Open to work · available now</a>
+            <span class="small faint">Graduate &amp; junior roles · internships · contract work</span>
+          </div>
+        </div>
+
+        <figure class="portrait-frame rise rise-3" style="margin:0;">
+          <div class="portrait">
+            <img src="images/hassan-portrait.jpg" width="900" height="1125"
+                 fetchpriority="high" decoding="async"
+                 alt="Hassan Tsuma, photographed straight on against a plain warm background." />
+          </div>
+          <figcaption class="portrait-caption">Hassan Tsuma · Homabay, Kenya</figcaption>
+        </figure>
       </div>
 
-      <div class="mt-32" style="display:flex; gap:14px; flex-wrap:wrap; align-items:center;">
-        <a class="availability" href="#available"><span class="pip" aria-hidden="true"></span> Open to work · available now</a>
-        <span class="small faint">Graduate &amp; junior roles · internships · contract work · remote or on-site</span>
+      <div class="figures rise rise-5">
+        <div><span class="fig-n" data-count="1588" data-sep>1,588</span><span class="fig-l">backend tests</span></div>
+        <div><span class="fig-n" data-count="99">99</span><span class="fig-l">database migrations</span></div>
+        <div><span class="fig-n" data-count="21">21</span><span class="fig-l">backend modules</span></div>
+        <div><span class="fig-n" data-count="3">3</span><span class="fig-l">shipped surfaces</span></div>
       </div>
-
-      <p class="small faint mono mt-32">
-        1,588 backend tests · 99 database migrations · 21 modules · no shortcuts on the ledger
-      </p>
     </div>
   </section>
 
@@ -237,11 +254,48 @@
     </div>
   </section>
 
-  <!-- 03 SKILLS -->
+
+  <!-- 03 LIVE FROM GITHUB -->
+  <section class="section" id="github" data-github>
+    <div class="wrap">
+      <div class="ledger-row reveal">
+        <div class="ledger-index"><span class="folio-num">03</span><span class="folio-label">GITHUB</span></div>
+        <div>
+          <div class="flex-between">
+            <h2>Everything I am building, live</h2>
+            <span class="gh-stamp" data-github-stamp>Loading…</span>
+          </div>
+          <p class="lede mt-16 measure">
+            This section is not a list I maintain by hand. It reads my public repositories
+            directly, so a project I push tonight is on this page tonight, and a claim I stop
+            being able to back disappears on its own.
+          </p>
+
+          <div class="grid-4 mt-32" data-github-stats></div>
+
+          <h3 class="mt-48">Language footprint</h3>
+          <p class="small muted mt-8 measure">
+            Share of bytes across every public repository. It is a measure of where my time
+            has gone, not a measure of skill, and it is counted rather than claimed.
+          </p>
+          <div class="mt-16" data-github-footprint></div>
+
+          <h3 class="mt-48">Repositories</h3>
+          <div class="repo-grid mt-24" data-github-repos></div>
+
+          <p class="mt-32">
+            <a class="btn btn-ghost btn-sm" href="https://github.com/hassan200503" target="_blank" rel="noopener">See the profile on GitHub ↗</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 SKILLS -->
   <section class="section">
     <div class="wrap">
       <div class="ledger-row reveal">
-        <div class="ledger-index"><span class="folio-num">03</span><span class="folio-label">SKILLS</span></div>
+        <div class="ledger-index"><span class="folio-num">04</span><span class="folio-label">SKILLS</span></div>
         <div>
           <h2>What I can do</h2>
           <p class="lede mt-16 measure">
@@ -377,11 +431,11 @@
   </section>
 
 
-  <!-- 04 IN THE CODE -->
+  <!-- 05 IN THE CODE -->
   <section class="section">
     <div class="wrap">
       <div class="ledger-row reveal">
-        <div class="ledger-index"><span class="folio-num">04</span><span class="folio-label">IN THE CODE</span></div>
+        <div class="ledger-index"><span class="folio-num">05</span><span class="folio-label">IN THE CODE</span></div>
         <div>
           <h2>Judgement, in the code itself</h2>
           <p class="lede mt-16 measure">
@@ -474,11 +528,11 @@ case in Kenya, which made the product unusable for it.
     </div>
   </section>
 
-  <!-- 05 WHAT I BUILD -->
+  <!-- 06 WHAT I BUILD -->
   <section class="section">
     <div class="wrap">
       <div class="ledger-row reveal">
-        <div class="ledger-index"><span class="folio-num">05</span><span class="folio-label">WORK</span></div>
+        <div class="ledger-index"><span class="folio-num">06</span><span class="folio-label">WORK</span></div>
         <div>
           <h2>What I build</h2>
           <p class="lede mt-16 measure">Software for businesses with real workflows and real rules to enforce. Not marketing sites, and not prototypes that stop at the demo.</p>
@@ -506,11 +560,11 @@ case in Kenya, which made the product unusable for it.
     </div>
   </section>
 
-  <!-- 06 APPROACH -->
+  <!-- 07 APPROACH -->
   <section class="section">
     <div class="wrap">
       <div class="ledger-row reveal">
-        <div class="ledger-index"><span class="folio-num">06</span><span class="folio-label">APPROACH</span></div>
+        <div class="ledger-index"><span class="folio-num">07</span><span class="folio-label">APPROACH</span></div>
         <div>
           <h2>How I think about building this kind of system</h2>
           <p class="lede mt-16 measure">Five things I've come to hold as rules, from building RentManager's money paths.</p>
@@ -530,11 +584,11 @@ case in Kenya, which made the product unusable for it.
     </div>
   </section>
 
-  <!-- 07 PROCESS -->
+  <!-- 08 PROCESS -->
   <section class="section">
     <div class="wrap">
       <div class="ledger-row reveal">
-        <div class="ledger-index"><span class="folio-num">07</span><span class="folio-label">PROCESS</span></div>
+        <div class="ledger-index"><span class="folio-num">08</span><span class="folio-label">PROCESS</span></div>
         <div>
           <h2>How I work</h2>
           <ol class="mt-32" style="list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:0;">
@@ -550,11 +604,11 @@ case in Kenya, which made the product unusable for it.
     </div>
   </section>
 
-  <!-- 08 ABOUT -->
+  <!-- 09 ABOUT -->
   <section class="section">
     <div class="wrap">
       <div class="ledger-row reveal">
-        <div class="ledger-index"><span class="folio-num">08</span><span class="folio-label">ABOUT</span></div>
+        <div class="ledger-index"><span class="folio-num">09</span><span class="folio-label">ABOUT</span></div>
         <div class="grid-2" style="align-items:center;">
           <div>
             <h2>A bit about me</h2>
@@ -607,6 +661,7 @@ case in Kenya, which made the product unusable for it.
       <a href="skills.html">Skills</a>
       <a href="services.html">Services</a>
       <a href="about.html">About</a>
+      <a href="documents.html">Documents</a>
       <a href="contact.html">Contact</a>
       <a href="https://github.com/hassan200503" target="_blank" rel="noopener">GitHub</a>
       <a href="https://www.linkedin.com/in/hassan-tsuma" target="_blank" rel="noopener">LinkedIn</a>
@@ -615,3 +670,4 @@ case in Kenya, which made the product unusable for it.
 </footer>
 
 <script src="script.js"></script>
+<script src="github.js"></script>

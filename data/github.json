@@ -1,0 +1,199 @@
+{
+  "generatedAt": "2026-09-27T15:07:16Z",
+  "user": {
+    "login": "hassan200503",
+    "name": "Hassan Tsuma ",
+    "bio": " I am a full stack developer with 3 years of experience in building systems end to end  using  java for the backend, react & typescript for the frontend. ",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/235883538?v=4",
+    "url": "https://github.com/hassan200503",
+    "followers": 14,
+    "publicRepos": 6,
+    "createdAt": "2025-10-03T12:17:31Z"
+  },
+  "totals": {
+    "repos": 6,
+    "stars": 0,
+    "languageBytes": {
+      "Java": 4626176,
+      "TypeScript": 3411769,
+      "CSS": 212021,
+      "HTML": 142869,
+      "JavaScript": 32198,
+      "PLpgSQL": 18917,
+      "Shell": 5504,
+      "Dockerfile": 4600
+    },
+    "lastPush": "2026-09-23T19:39:44Z"
+  },
+  "repos": [
+    {
+      "name": "whatsapp-persona-bot",
+      "description": "Auto-replies to WhatsApp messages in your own voice while you're offline, learns your writing style over time, and pitches freelance work to leads.",
+      "url": "https://github.com/hassan200503/whatsapp-persona-bot",
+      "homepage": null,
+      "language": "JavaScript",
+      "languages": {
+        "JavaScript": 17430
+      },
+      "topics": [],
+      "stars": 0,
+      "forks": 0,
+      "sizeKb": 35,
+      "license": null,
+      "createdAt": "2026-09-23T07:02:22Z",
+      "pushedAt": "2026-09-23T19:39:44Z",
+      "lastCommit": {
+        "sha": "3458ac4",
+        "message": "Match ignore list against LID chats, log incoming messages, quiet Baileys",
+        "date": "2026-09-23T19:39:38Z",
+        "url": "https://github.com/hassan200503/whatsapp-persona-bot/commit/3458ac46881594b8af698a0813cdd2e0d3213bf9"
+      }
+    },
+    {
+      "name": "rentmanager-frontend",
+      "description": "RentManager web app: landlord dashboard and renter portal. Next.js, React, TypeScript, Clerk, M-Pesa.",
+      "url": "https://github.com/hassan200503/rentmanager-frontend",
+      "homepage": null,
+      "language": "TypeScript",
+      "languages": {
+        "TypeScript": 3145443,
+        "CSS": 176714,
+        "JavaScript": 2250,
+        "Dockerfile": 2221
+      },
+      "topics": [
+        "kenya",
+        "nextjs",
+        "property-management",
+        "react",
+        "saas",
+        "tailwindcss",
+        "typescript"
+      ],
+      "stars": 0,
+      "forks": 0,
+      "sizeKb": 100337,
+      "license": null,
+      "createdAt": "2026-06-20T17:09:22Z",
+      "pushedAt": "2026-09-23T07:22:18Z",
+      "lastCommit": {
+        "sha": "aa252dd",
+        "message": "Close TD-161: the fixture leak is fixed, not just its victims [skip netlify]",
+        "date": "2026-09-23T07:22:15Z",
+        "url": "https://github.com/hassan200503/rentmanager-frontend/commit/aa252ddbe1fc3f5615d099e143f9e258b156cb8a"
+      }
+    },
+    {
+      "name": "rentmanager-backend",
+      "description": "RentManager API: rental management for Kenyan landlords and renters. Spring Boot 3, Java 21, PostgreSQL, M-Pesa Daraja, Clerk auth, multi-tenant.",
+      "url": "https://github.com/hassan200503/rentmanager-backend",
+      "homepage": null,
+      "language": "Java",
+      "languages": {
+        "Java": 4626176,
+        "PLpgSQL": 18917,
+        "Shell": 5504,
+        "Dockerfile": 2379
+      },
+      "topics": [
+        "java",
+        "kenya",
+        "mpesa",
+        "multi-tenant",
+        "postgresql",
+        "property-management",
+        "saas",
+        "spring-boot"
+      ],
+      "stars": 0,
+      "forks": 0,
+      "sizeKb": 2061,
+      "license": null,
+      "createdAt": "2026-06-11T16:44:44Z",
+      "pushedAt": "2026-09-23T07:17:23Z",
+      "lastCommit": {
+        "sha": "7861d00",
+        "message": "Clean up the fixtures two tests were leaking into the shared container",
+        "date": "2026-09-23T07:17:20Z",
+        "url": "https://github.com/hassan200503/rentmanager-backend/commit/7861d001155159fe8d35d40986eddb910a97e4f4"
+      }
+    },
+    {
+      "name": "hassan200503.github.io",
+      "description": "Portfolio site for Hassan Tsuma",
+      "url": "https://github.com/hassan200503/hassan200503.github.io",
+      "homepage": null,
+      "language": "HTML",
+      "languages": {
+        "HTML": 142869,
+        "CSS": 35307,
+        "JavaScript": 8471
+      },
+      "topics": [],
+      "stars": 0,
+      "forks": 0,
+      "sizeKb": 494,
+      "license": null,
+      "createdAt": "2026-09-14T20:38:01Z",
+      "pushedAt": "2026-09-23T05:41:20Z",
+      "lastCommit": {
+        "sha": "adbc7f3",
+        "message": "Add the migration comment that explains a product, not a schema",
+        "date": "2026-09-23T05:41:18Z",
+        "url": "https://github.com/hassan200503/hassan200503.github.io/commit/adbc7f3d0f4de7dfe99c2190543af5be98e890de"
+      }
+    },
+    {
+      "name": "hassan200503",
+      "description": "Personal information",
+      "url": "https://github.com/hassan200503/hassan200503",
+      "homepage": null,
+      "language": null,
+      "languages": {},
+      "topics": [],
+      "stars": 0,
+      "forks": 0,
+      "sizeKb": 6,
+      "license": null,
+      "createdAt": "2026-03-14T17:45:02Z",
+      "pushedAt": "2026-09-16T05:39:12Z",
+      "lastCommit": {
+        "sha": "1b6269a",
+        "message": "Revise README with professional summary and skills",
+        "date": "2026-09-16T05:39:11Z",
+        "url": "https://github.com/hassan200503/hassan200503/commit/1b6269a6f063625b32b27f0fb508d2637e9908e4"
+      }
+    },
+    {
+      "name": "rentmanager-mobile",
+      "description": "RentManager mobile app for landlords and renters in Kenya (Expo, React Native, TypeScript)",
+      "url": "https://github.com/hassan200503/rentmanager-mobile",
+      "homepage": null,
+      "language": "TypeScript",
+      "languages": {
+        "TypeScript": 266326,
+        "JavaScript": 4047
+      },
+      "topics": [
+        "expo",
+        "kenya",
+        "mpesa",
+        "property-management",
+        "react-native",
+        "typescript"
+      ],
+      "stars": 0,
+      "forks": 0,
+      "sizeKb": 789,
+      "license": "MIT",
+      "createdAt": "2026-09-15T20:05:14Z",
+      "pushedAt": "2026-09-15T20:10:29Z",
+      "lastCommit": {
+        "sha": "61d7932",
+        "message": "Update Expo SDK 57 patch releases",
+        "date": "2026-09-15T20:10:24Z",
+        "url": "https://github.com/hassan200503/rentmanager-mobile/commit/61d793229a1dc54e15305e079345674beb678140"
+      }
+    }
+  ]
+}
