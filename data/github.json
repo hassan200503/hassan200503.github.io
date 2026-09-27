@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-27T15:22:28Z",
+  "generatedAt": "2026-09-27T19:46:27Z",
   "user": {
     "login": "hassan200503",
     "name": "Hassan Tsuma ",
@@ -17,14 +17,14 @@
       "Java": 4626176,
       "TypeScript": 3411769,
       "CSS": 224686,
-      "HTML": 164451,
+      "HTML": 164926,
       "JavaScript": 45760,
       "PLpgSQL": 18917,
       "Shell": 5504,
       "Python": 4796,
       "Dockerfile": 4600
     },
-    "lastPush": "2026-09-27T15:21:24Z"
+    "lastPush": "2026-09-27T15:23:18Z"
   },
   "repos": [
     {
@@ -34,7 +34,7 @@
       "homepage": "https://hassan200503.github.io",
       "language": "HTML",
       "languages": {
-        "HTML": 164451,
+        "HTML": 164926,
         "CSS": 47972,
         "JavaScript": 22033,
         "Python": 4796
@@ -47,15 +47,15 @@
       ],
       "stars": 0,
       "forks": 0,
-      "sizeKb": 494,
+      "sizeKb": 564,
       "license": null,
       "createdAt": "2026-09-14T20:38:01Z",
-      "pushedAt": "2026-09-27T15:21:24Z",
+      "pushedAt": "2026-09-27T15:23:18Z",
       "lastCommit": {
-        "sha": "7fcf082",
-        "message": "Refresh GitHub snapshot",
-        "date": "2026-09-27T15:21:22Z",
-        "url": "https://github.com/hassan200503/hassan200503.github.io/commit/7fcf0827cefcd6dc15bfb96a44d0762299ac9653"
+        "sha": "f22c73c",
+        "message": "Link the repositories to the live product, and describe the education in schema",
+        "date": "2026-09-27T15:23:14Z",
+        "url": "https://github.com/hassan200503/hassan200503.github.io/commit/f22c73c218fa9a20030d6647b4affa2112e7a267"
       }
     },
     {
