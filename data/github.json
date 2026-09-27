@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-27T15:21:22Z",
+  "generatedAt": "2026-09-27T15:22:28Z",
   "user": {
     "login": "hassan200503",
     "name": "Hassan Tsuma ",
@@ -24,14 +24,14 @@
       "Python": 4796,
       "Dockerfile": 4600
     },
-    "lastPush": "2026-09-27T15:21:09Z"
+    "lastPush": "2026-09-27T15:21:24Z"
   },
   "repos": [
     {
       "name": "hassan200503.github.io",
       "description": "Portfolio site for Hassan Tsuma",
       "url": "https://github.com/hassan200503/hassan200503.github.io",
-      "homepage": null,
+      "homepage": "https://hassan200503.github.io",
       "language": "HTML",
       "languages": {
         "HTML": 164451,
@@ -39,18 +39,23 @@
         "JavaScript": 22033,
         "Python": 4796
       },
-      "topics": [],
+      "topics": [
+        "css",
+        "github-pages",
+        "html",
+        "portfolio"
+      ],
       "stars": 0,
       "forks": 0,
       "sizeKb": 494,
       "license": null,
       "createdAt": "2026-09-14T20:38:01Z",
-      "pushedAt": "2026-09-27T15:21:09Z",
+      "pushedAt": "2026-09-27T15:21:24Z",
       "lastCommit": {
-        "sha": "a33007c",
-        "message": "Live GitHub section, a portrait hero, education, interests, principles, documents",
-        "date": "2026-09-27T15:21:05Z",
-        "url": "https://github.com/hassan200503/hassan200503.github.io/commit/a33007cd04c9cf9c53bf049a1be85e180fff65b5"
+        "sha": "7fcf082",
+        "message": "Refresh GitHub snapshot",
+        "date": "2026-09-27T15:21:22Z",
+        "url": "https://github.com/hassan200503/hassan200503.github.io/commit/7fcf0827cefcd6dc15bfb96a44d0762299ac9653"
       }
     },
     {
@@ -62,7 +67,13 @@
       "languages": {
         "JavaScript": 17430
       },
-      "topics": [],
+      "topics": [
+        "automation",
+        "baileys",
+        "freelance",
+        "nodejs",
+        "whatsapp"
+      ],
       "stars": 0,
       "forks": 0,
       "sizeKb": 35,
@@ -80,7 +91,7 @@
       "name": "rentmanager-frontend",
       "description": "RentManager web app: landlord dashboard and renter portal. Next.js, React, TypeScript, Clerk, M-Pesa.",
       "url": "https://github.com/hassan200503/rentmanager-frontend",
-      "homepage": null,
+      "homepage": "https://rentmanager-ke.netlify.app",
       "language": "TypeScript",
       "languages": {
         "TypeScript": 3145443,
@@ -114,7 +125,7 @@
       "name": "rentmanager-backend",
       "description": "RentManager API: rental management for Kenyan landlords and renters. Spring Boot 3, Java 21, PostgreSQL, M-Pesa Daraja, Clerk auth, multi-tenant.",
       "url": "https://github.com/hassan200503/rentmanager-backend",
-      "homepage": null,
+      "homepage": "https://rentmanager-ke.netlify.app",
       "language": "Java",
       "languages": {
         "Java": 4626176,
