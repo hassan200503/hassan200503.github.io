@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-28T17:40:12Z",
+  "generatedAt": "2026-09-28T23:17:47Z",
   "user": {
     "login": "hassan200503",
     "name": "Hassan Tsuma ",
@@ -14,19 +14,84 @@
     "repos": 6,
     "stars": 0,
     "languageBytes": {
-      "Java": 4626176,
-      "TypeScript": 3424880,
-      "CSS": 228839,
-      "HTML": 174536,
+      "Java": 4632846,
+      "TypeScript": 3431888,
+      "CSS": 230341,
+      "HTML": 174609,
       "JavaScript": 45760,
       "PLpgSQL": 18917,
       "Shell": 5504,
       "Python": 4796,
       "Dockerfile": 4600
     },
-    "lastPush": "2026-09-28T10:06:51Z"
+    "lastPush": "2026-09-28T22:51:05Z"
   },
   "repos": [
+    {
+      "name": "hassan200503.github.io",
+      "description": "Portfolio site for Hassan Tsuma",
+      "url": "https://github.com/hassan200503/hassan200503.github.io",
+      "homepage": "https://hassan200503.github.io",
+      "language": "HTML",
+      "languages": {
+        "HTML": 174609,
+        "CSS": 52125,
+        "JavaScript": 22033,
+        "Python": 4796
+      },
+      "topics": [
+        "css",
+        "github-pages",
+        "html",
+        "portfolio"
+      ],
+      "stars": 0,
+      "forks": 0,
+      "sizeKb": 756,
+      "license": null,
+      "createdAt": "2026-09-14T20:38:01Z",
+      "pushedAt": "2026-09-28T22:51:05Z",
+      "lastCommit": {
+        "sha": "ed9a051",
+        "message": "Replace CV with updated resume (live demo link, September 2026)",
+        "date": "2026-09-28T22:51:05Z",
+        "url": "https://github.com/hassan200503/hassan200503.github.io/commit/ed9a051d5dc3c2be1fbbb4088a7bce7d8b5c9b75"
+      }
+    },
+    {
+      "name": "rentmanager-frontend",
+      "description": "RentManager web app: landlord dashboard and renter portal. Next.js, React, TypeScript, Clerk, M-Pesa.",
+      "url": "https://github.com/hassan200503/rentmanager-frontend",
+      "homepage": "https://www.rentmanagerke.workers.dev",
+      "language": "TypeScript",
+      "languages": {
+        "TypeScript": 3165562,
+        "CSS": 178216,
+        "JavaScript": 2250,
+        "Dockerfile": 2221
+      },
+      "topics": [
+        "kenya",
+        "nextjs",
+        "property-management",
+        "react",
+        "saas",
+        "tailwindcss",
+        "typescript"
+      ],
+      "stars": 0,
+      "forks": 0,
+      "sizeKb": 100445,
+      "license": null,
+      "createdAt": "2026-06-20T17:09:22Z",
+      "pushedAt": "2026-09-28T22:29:57Z",
+      "lastCommit": {
+        "sha": "57fc4dd",
+        "message": "Sign-in did nothing, because the publishable key was still a placeholder",
+        "date": "2026-09-28T22:29:55Z",
+        "url": "https://github.com/hassan200503/rentmanager-frontend/commit/57fc4dda51bef815ba9cf6c6b52cdec3d82df9e0"
+      }
+    },
     {
       "name": "rentmanager-backend",
       "description": "RentManager API: rental management for Kenyan landlords and renters. Spring Boot 3, Java 21, PostgreSQL, M-Pesa Daraja, Clerk auth, multi-tenant.",
@@ -34,7 +99,7 @@
       "homepage": "https://www.rentmanagerke.workers.dev",
       "language": "Java",
       "languages": {
-        "Java": 4626176,
+        "Java": 4632846,
         "PLpgSQL": 18917,
         "Shell": 5504,
         "Dockerfile": 2379
@@ -54,77 +119,12 @@
       "sizeKb": 2070,
       "license": null,
       "createdAt": "2026-06-11T16:44:44Z",
-      "pushedAt": "2026-09-28T10:06:51Z",
+      "pushedAt": "2026-09-28T22:17:53Z",
       "lastCommit": {
-        "sha": "6e14630",
-        "message": "The API was asleep, so the first visitor got an error, not a slow page",
-        "date": "2026-09-28T10:06:47Z",
-        "url": "https://github.com/hassan200503/rentmanager-backend/commit/6e1463068bc42af1adffed629e72940b32233685"
-      }
-    },
-    {
-      "name": "rentmanager-frontend",
-      "description": "RentManager web app: landlord dashboard and renter portal. Next.js, React, TypeScript, Clerk, M-Pesa.",
-      "url": "https://github.com/hassan200503/rentmanager-frontend",
-      "homepage": "https://www.rentmanagerke.workers.dev",
-      "language": "TypeScript",
-      "languages": {
-        "TypeScript": 3158554,
-        "CSS": 176714,
-        "JavaScript": 2250,
-        "Dockerfile": 2221
-      },
-      "topics": [
-        "kenya",
-        "nextjs",
-        "property-management",
-        "react",
-        "saas",
-        "tailwindcss",
-        "typescript"
-      ],
-      "stars": 0,
-      "forks": 0,
-      "sizeKb": 100428,
-      "license": null,
-      "createdAt": "2026-06-20T17:09:22Z",
-      "pushedAt": "2026-09-28T10:00:52Z",
-      "lastCommit": {
-        "sha": "f371b4d",
-        "message": "The scheme fix believed the header that was lying, and a probe settled it",
-        "date": "2026-09-28T10:00:47Z",
-        "url": "https://github.com/hassan200503/rentmanager-frontend/commit/f371b4d23783a7d2ef58c3e0526f028ff79162c9"
-      }
-    },
-    {
-      "name": "hassan200503.github.io",
-      "description": "Portfolio site for Hassan Tsuma",
-      "url": "https://github.com/hassan200503/hassan200503.github.io",
-      "homepage": "https://hassan200503.github.io",
-      "language": "HTML",
-      "languages": {
-        "HTML": 174536,
-        "CSS": 52125,
-        "JavaScript": 22033,
-        "Python": 4796
-      },
-      "topics": [
-        "css",
-        "github-pages",
-        "html",
-        "portfolio"
-      ],
-      "stars": 0,
-      "forks": 0,
-      "sizeKb": 1032,
-      "license": null,
-      "createdAt": "2026-09-14T20:38:01Z",
-      "pushedAt": "2026-09-28T08:43:08Z",
-      "lastCommit": {
-        "sha": "e9224b4",
-        "message": "Refresh GitHub snapshot",
-        "date": "2026-09-28T08:43:07Z",
-        "url": "https://github.com/hassan200503/hassan200503.github.io/commit/e9224b41c6c0ae301626d4f42a8b27b7ca10b0bb"
+        "sha": "91ca3ef",
+        "message": "A demo listing was advertising a home that does not exist",
+        "date": "2026-09-28T22:17:50Z",
+        "url": "https://github.com/hassan200503/rentmanager-backend/commit/91ca3ef69c580ef2219e62b9233ed46625170c73"
       }
     },
     {
