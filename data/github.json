@@ -31,7 +31,7 @@
       "name": "rentmanager-backend",
       "description": "RentManager API: rental management for Kenyan landlords and renters. Spring Boot 3, Java 21, PostgreSQL, M-Pesa Daraja, Clerk auth, multi-tenant.",
       "url": "https://github.com/hassan200503/rentmanager-backend",
-      "homepage": "https://rentmanager-ke.netlify.app",
+      "homepage": "https://www.rentmanagerke.workers.dev",
       "language": "Java",
       "languages": {
         "Java": 4626176,
@@ -66,7 +66,7 @@
       "name": "rentmanager-frontend",
       "description": "RentManager web app: landlord dashboard and renter portal. Next.js, React, TypeScript, Clerk, M-Pesa.",
       "url": "https://github.com/hassan200503/rentmanager-frontend",
-      "homepage": "https://rentmanager-ke.netlify.app",
+      "homepage": "https://www.rentmanagerke.workers.dev",
       "language": "TypeScript",
       "languages": {
         "TypeScript": 3158554,
