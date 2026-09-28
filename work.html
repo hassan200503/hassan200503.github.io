@@ -98,7 +98,7 @@
           <p class="shot-cap">Click through to open the live product.</p>
         </a>
         <div class="grid-4 mt-32">
-          <div class="stat"><span class="n mono" data-count="21">21</span><span class="label">backend modules</span></div>
+          <div class="stat"><span class="n mono" data-count="20">20</span><span class="label">backend modules</span></div>
           <div class="stat"><span class="n mono" data-count="99">99</span><span class="label">database migrations</span></div>
           <div class="stat"><span class="n mono" data-count="1588" data-sep>1,588</span><span class="label">backend tests</span></div>
           <div class="stat"><span class="n mono" data-count="3">3</span><span class="label">shipped surfaces (web, mobile, API)</span></div>
@@ -139,22 +139,30 @@
         <div class="ledger-index">— / ALSO BUILT</div>
         <div>
           <div class="flex-between">
-            <h3>Kenya Keys Sponsorship System</h3>
-            <span class="tag">Not deployed</span>
+            <h3>whatsapp-persona-bot</h3>
+            <span class="tag">Personal tool · runs locally</span>
           </div>
           <p class="muted mt-16 measure">
-            A sponsorship-management system for matching sponsors to students, with institutions,
-            support requests, analytics and a financial ledger of its own. Java 21 and Spring Boot
-            again, this time as a multi-module Maven build, with the same layering I use
-            everywhere: <span class="mono small">api → application → domain → infrastructure</span>,
-            and ledger operations modelled as explicit command objects rather than service methods
-            that happen to move money.
+            A WhatsApp auto-responder that replies in my own voice while I’m offline. It
+            connects as a linked device, learns my writing style from the messages I actually
+            send, and uses the Claude API to answer incoming messages, including first
+            responses to freelance leads.
           </p>
           <p class="muted mt-16 measure">
-            I’m listing it because it shows the domain modelling is a habit rather than a one-off,
-            but I want to be straight about its state: roughly 390 Java files, <strong>no test
-            suite, no migrations and no deployment</strong>. It is not in the same condition as
-            RentManager and I would not ask you to judge me on it.
+            The interesting part is the guard rails rather than the AI call. Replies are capped
+            per chat per hour and sent after a randomised delay. The bot goes quiet in any chat
+            the moment I reply myself, and by default it stays out of group chats and never answers
+            numbers on an ignore list. It is instructed never to quote prices or commit to deadlines, and every
+            message it sends is logged so I can review it. Node.js 20, Baileys, the Anthropic
+            SDK and pino, kept running under pm2.
+          </p>
+          <p class="muted mt-16 measure">
+            It’s a small tool I built for myself, about 450 lines with no test suite, so judge
+            my engineering on RentManager. I’m including it because it’s how I handle AI in
+            practice: useful, but kept on a short leash.
+          </p>
+          <p class="mt-24">
+            <a class="btn btn-ghost btn-sm" href="https://github.com/hassan200503/whatsapp-persona-bot" target="_blank" rel="noopener">Read the code ↗</a>
           </p>
         </div>
       </div>

@@ -169,10 +169,10 @@
           <p class="mt-16 measure">I designed and built RentManager end to end, solo:</p>
           <ul class="mt-16 measure" style="padding-left:20px; display:flex; flex-direction:column; gap:8px;">
             <li>System architecture: the modular-monolith boundary, the ports/adapters shape, the decision to keep it that way instead of splitting into services</li>
-            <li>Backend: all 21 Spring Boot modules: domain models, application services, persistence, security</li>
+            <li>Backend: all 20 Spring Boot modules: domain models, application services, persistence, security</li>
             <li>Database design: the schema and all 99 Flyway migrations, in order, none edited after they ran</li>
             <li>Frontend: the Next.js application: the landlord dashboard, the tenant portal, the public listing and reservation flow, the platform-admin console</li>
-            <li>Mobile: a 44-screen React Native (Expo) app sharing the same generated API client as the web app, with push notifications, offline detection and secure token storage</li>
+            <li>Mobile: a 27-screen React Native (Expo) app sharing the same generated API client as the web app, with push notifications, offline detection and secure token storage</li>
             <li>Deployment: containerising the API and getting the whole stack live on free infrastructure: Render, Netlify, Neon, plus scheduled encrypted backups</li>
             <li>Integrations: <span class="nw">M-Pesa</span> Daraja (STK push and B2C), Africa’s Talking SMS, Clerk authentication</li>
             <li>Testing: the backend’s 1,588 tests, the ArchUnit rule covering the property module’s layering, and the frontend’s Vitest suite</li>
@@ -226,7 +226,7 @@
                 <text x="440" y="257">Next.js 16 (App Router)</text>
                 <text x="440" y="275" font-size="11" opacity="0.65">proxy.ts · fail-closed route policy</text>
                 <text x="440" y="374">Spring Boot · modular monolith</text>
-                <text x="440" y="392" font-size="11" opacity="0.65">21 modules, ports &amp; adapters</text>
+                <text x="440" y="392" font-size="11" opacity="0.65">20 modules, ports &amp; adapters</text>
                 <text x="440" y="408" font-size="11" fill="currentColor" opacity="0.85">TenantContext resolved from JWT claim only</text>
                 <text x="440" y="489">PostgreSQL</text>
                 <text x="440" y="507" font-size="11" opacity="0.65">Flyway V1 → V96</text>
@@ -272,7 +272,7 @@
   <section class="section">
     <div class="wrap">
       <div class="pull-quote reveal">
-        <blockquote>“A header is client-controlled, full stop. Trusting one for tenant scoping means any authenticated user could read another landlord’s data by editing a request.”</blockquote>
+        <blockquote>“A header is client-controlled, full stop. Trusting one for tenant scoping means any authenticated user could, in principle, read or write another landlord’s data by editing a request.”</blockquote>
         <cite>from 04 / ARCHITECTURE, above</cite>
       </div>
     </div>
