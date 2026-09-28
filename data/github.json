@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-28T08:43:06Z",
+  "generatedAt": "2026-09-28T17:40:12Z",
   "user": {
     "login": "hassan200503",
     "name": "Hassan Tsuma ",
@@ -15,7 +15,7 @@
     "stars": 0,
     "languageBytes": {
       "Java": 4626176,
-      "TypeScript": 3423528,
+      "TypeScript": 3424880,
       "CSS": 228839,
       "HTML": 174536,
       "JavaScript": 45760,
@@ -24,9 +24,44 @@
       "Python": 4796,
       "Dockerfile": 4600
     },
-    "lastPush": "2026-09-28T08:17:45Z"
+    "lastPush": "2026-09-28T10:06:51Z"
   },
   "repos": [
+    {
+      "name": "rentmanager-backend",
+      "description": "RentManager API: rental management for Kenyan landlords and renters. Spring Boot 3, Java 21, PostgreSQL, M-Pesa Daraja, Clerk auth, multi-tenant.",
+      "url": "https://github.com/hassan200503/rentmanager-backend",
+      "homepage": "https://rentmanager-ke.netlify.app",
+      "language": "Java",
+      "languages": {
+        "Java": 4626176,
+        "PLpgSQL": 18917,
+        "Shell": 5504,
+        "Dockerfile": 2379
+      },
+      "topics": [
+        "java",
+        "kenya",
+        "mpesa",
+        "multi-tenant",
+        "postgresql",
+        "property-management",
+        "saas",
+        "spring-boot"
+      ],
+      "stars": 0,
+      "forks": 0,
+      "sizeKb": 2070,
+      "license": null,
+      "createdAt": "2026-06-11T16:44:44Z",
+      "pushedAt": "2026-09-28T10:06:51Z",
+      "lastCommit": {
+        "sha": "6e14630",
+        "message": "The API was asleep, so the first visitor got an error, not a slow page",
+        "date": "2026-09-28T10:06:47Z",
+        "url": "https://github.com/hassan200503/rentmanager-backend/commit/6e1463068bc42af1adffed629e72940b32233685"
+      }
+    },
     {
       "name": "rentmanager-frontend",
       "description": "RentManager web app: landlord dashboard and renter portal. Next.js, React, TypeScript, Clerk, M-Pesa.",
@@ -34,7 +69,7 @@
       "homepage": "https://rentmanager-ke.netlify.app",
       "language": "TypeScript",
       "languages": {
-        "TypeScript": 3157202,
+        "TypeScript": 3158554,
         "CSS": 176714,
         "JavaScript": 2250,
         "Dockerfile": 2221
@@ -50,15 +85,15 @@
       ],
       "stars": 0,
       "forks": 0,
-      "sizeKb": 100409,
+      "sizeKb": 100428,
       "license": null,
       "createdAt": "2026-06-20T17:09:22Z",
-      "pushedAt": "2026-09-28T08:17:45Z",
+      "pushedAt": "2026-09-28T10:00:52Z",
       "lastCommit": {
-        "sha": "cfb0cf8",
-        "message": "TEMP: probe how Deno Deploy reports the request scheme",
-        "date": "2026-09-28T08:17:41Z",
-        "url": "https://github.com/hassan200503/rentmanager-frontend/commit/cfb0cf80c11e73b68cbcf1084321c4dcf2c7402e"
+        "sha": "f371b4d",
+        "message": "The scheme fix believed the header that was lying, and a probe settled it",
+        "date": "2026-09-28T10:00:47Z",
+        "url": "https://github.com/hassan200503/rentmanager-frontend/commit/f371b4d23783a7d2ef58c3e0526f028ff79162c9"
       }
     },
     {
@@ -81,15 +116,15 @@
       ],
       "stars": 0,
       "forks": 0,
-      "sizeKb": 1028,
+      "sizeKb": 1032,
       "license": null,
       "createdAt": "2026-09-14T20:38:01Z",
-      "pushedAt": "2026-09-28T06:57:15Z",
+      "pushedAt": "2026-09-28T08:43:08Z",
       "lastCommit": {
-        "sha": "4500718",
-        "message": "Merge pull request #1 from hassan200503/claude/lucid-thompson-fb3cu7",
-        "date": "2026-09-28T06:57:14Z",
-        "url": "https://github.com/hassan200503/hassan200503.github.io/commit/450071824b78e40ee1128dce66f4ebba111aa20f"
+        "sha": "e9224b4",
+        "message": "Refresh GitHub snapshot",
+        "date": "2026-09-28T08:43:07Z",
+        "url": "https://github.com/hassan200503/hassan200503.github.io/commit/e9224b41c6c0ae301626d4f42a8b27b7ca10b0bb"
       }
     },
     {
@@ -119,41 +154,6 @@
         "message": "Match ignore list against LID chats, log incoming messages, quiet Baileys",
         "date": "2026-09-23T19:39:38Z",
         "url": "https://github.com/hassan200503/whatsapp-persona-bot/commit/3458ac46881594b8af698a0813cdd2e0d3213bf9"
-      }
-    },
-    {
-      "name": "rentmanager-backend",
-      "description": "RentManager API: rental management for Kenyan landlords and renters. Spring Boot 3, Java 21, PostgreSQL, M-Pesa Daraja, Clerk auth, multi-tenant.",
-      "url": "https://github.com/hassan200503/rentmanager-backend",
-      "homepage": "https://rentmanager-ke.netlify.app",
-      "language": "Java",
-      "languages": {
-        "Java": 4626176,
-        "PLpgSQL": 18917,
-        "Shell": 5504,
-        "Dockerfile": 2379
-      },
-      "topics": [
-        "java",
-        "kenya",
-        "mpesa",
-        "multi-tenant",
-        "postgresql",
-        "property-management",
-        "saas",
-        "spring-boot"
-      ],
-      "stars": 0,
-      "forks": 0,
-      "sizeKb": 2061,
-      "license": null,
-      "createdAt": "2026-06-11T16:44:44Z",
-      "pushedAt": "2026-09-23T07:17:23Z",
-      "lastCommit": {
-        "sha": "7861d00",
-        "message": "Clean up the fixtures two tests were leaking into the shared container",
-        "date": "2026-09-23T07:17:20Z",
-        "url": "https://github.com/hassan200503/rentmanager-backend/commit/7861d001155159fe8d35d40986eddb910a97e4f4"
       }
     },
     {
