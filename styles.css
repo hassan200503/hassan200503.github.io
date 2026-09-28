@@ -1772,3 +1772,12 @@ h2 { letter-spacing: -0.012em; }
 
 
 .nw { white-space: nowrap; }
+
+/* hero footnote: the AI-tools line, set quieter than the lede with a rule */
+.hero-note {
+  font-size: 0.9rem;
+  color: var(--ink-muted);
+  padding-left: 12px;
+  border-left: 2px solid var(--accent);
+}
+
