@@ -281,6 +281,9 @@ p { margin: 0; }
   position: sticky;
   top: 0;
   z-index: 100;
+  /* body carries the page gutter; the bar itself runs edge to edge */
+  margin-inline: calc(-1 * var(--gutter));
+  padding-inline: var(--gutter);
   background: color-mix(in srgb, var(--bg) 88%, transparent);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--rule);
@@ -348,6 +351,7 @@ p { margin: 0; }
   border-bottom: none !important;
 }
 .nav-cta:hover { background: var(--accent-ink); color: var(--bg) !important; }
+.nav-links a.nav-cta::after { display: none; }
 
 .nav-toggle {
   display: none;
@@ -884,6 +888,17 @@ a.availability:hover { border-color: var(--good); transform: translateY(-1px); }
 
 .header-tools { display: inline-flex; align-items: center; gap: 12px; }
 
+/* Header order: brand and status on the left, navigation and the theme
+   switch on the right. The markup keeps the tools before the nav so the
+   mobile menu button stays next to the brand in reading order. */
+.site-header .brand { order: 0; }
+.site-header .availability { order: 1; margin-right: auto; }
+.site-header .nav-links { order: 2; margin-left: auto; }
+.site-header .header-tools { order: 3; }
+@media (max-width: 780px) {
+  .site-header .header-tools { margin-left: auto; }
+}
+
 /* =========================================================
    MISC
    ========================================================= */
@@ -1018,13 +1033,14 @@ p, li, .skill-note, .avail-item p {
 
 /* Skill rows: a hover band makes a long list scannable. */
 .skill-row {
-  transition: background 150ms ease;
-  padding-inline: 8px;
-  margin-inline: -8px;
-  border-radius: var(--radius-s);
+  --band: color-mix(in srgb, var(--surface) 70%, var(--bg));
+  transition: background 150ms ease, box-shadow 150ms ease;
 }
+/* the band extends past the text with side shadows, so the row rules
+   stay flush with the column and with the group heading's rule */
 .skill-row:hover {
-  background: color-mix(in srgb, var(--surface) 70%, transparent);
+  background: var(--band);
+  box-shadow: -8px 0 0 var(--band), 8px 0 0 var(--band);
 }
 
 /* Availability rows get the same treatment. */
@@ -1061,7 +1077,7 @@ h2 { letter-spacing: -0.012em; }
     border-bottom: none;
   }
   .nav-toggle, .theme-toggle { min-height: 40px; }
-  .nav-toggle { min-width: 56px; justify-content: center; }
+  .nav-toggle { min-width: 56px; justify-content: center; align-items: center; }
 }
 
 /* Buttons: a crisper pressed state and a wider tap target on touch. */
@@ -1127,6 +1143,10 @@ h2 { letter-spacing: -0.012em; }
   overflow: hidden;
 }
 .excerpt:last-of-type { margin-bottom: 0; }
+/* the shorthand above would otherwise swallow the spacing utilities */
+.excerpt.mt-24 { margin-top: 24px; }
+.excerpt.mt-32 { margin-top: 32px; }
+.excerpt.mt-48 { margin-top: 48px; }
 
 .excerpt figcaption {
   display: flex;
@@ -1223,6 +1243,8 @@ h2 { letter-spacing: -0.012em; }
 
 .hero {
   position: relative;
+  margin-inline: calc(-1 * var(--gutter));
+  padding-inline: var(--gutter);
   padding-block: clamp(28px, 6vw, 76px) clamp(44px, 8vw, 104px);
   overflow: hidden;
 }
@@ -1241,6 +1263,9 @@ h2 { letter-spacing: -0.012em; }
     radial-gradient(42% 46% at 78% 18%, color-mix(in srgb, var(--accent) 17%, transparent) 0%, transparent 68%),
     radial-gradient(38% 44% at 14% 72%, color-mix(in srgb, var(--good) 14%, transparent) 0%, transparent 66%);
   filter: blur(6px);
+  /* fade out before the section edge so the wash never ends on a hard line */
+  -webkit-mask-image: linear-gradient(to bottom, #000 50%, transparent 84%);
+  mask-image: linear-gradient(to bottom, #000 50%, transparent 84%);
 }
 @media (prefers-reduced-motion: no-preference) {
   .hero::before { animation: hero-drift 26s ease-in-out infinite alternate; }
@@ -1268,78 +1293,86 @@ h2 { letter-spacing: -0.012em; }
 }
 .hero .lede { font-size: clamp(1.06rem, 0.45vw + 1rem, 1.22rem); }
 
-/* ---- portrait ---- */
+/* ---- profile card ----
+   A square photograph set in a card, with the facts a recruiter scans
+   for printed underneath like the header of a record. The offset
+   hairline behind it gives depth from geometry, not a heavier shadow. */
 
-.portrait {
+.hero-grid { position: relative; z-index: 0; }
+.profile-wrap {
   position: relative;
-  justify-self: center;
-  width: min(100%, 380px);
-  aspect-ratio: 4 / 5;
-  border-radius: 200px 200px 18px 18px;   /* arch — reads as a plate, not an avatar */
+  justify-self: end;
+  width: min(100%, 360px);
+}
+/* sits behind the card: the card is positioned, the hairline is at -1
+   inside the hero grid's stacking context */
+.profile-wrap::before {
+  content: "";
+  position: absolute;
+  inset: 16px -16px -16px 16px;
+  border: 1px solid var(--rule-strong);
+  border-radius: 14px;
+  z-index: -1;
+}
+.profile-card {
+  position: relative;
+  margin: 0;
+  padding: 12px;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 14px;
+  box-shadow: var(--shadow-lg);
+}
+.profile-photo {
+  aspect-ratio: 1 / 1;
+  border-radius: 8px;
   overflow: hidden;
   background: var(--surface-2);
-  box-shadow:
-    0 2px 4px color-mix(in srgb, var(--ink) 6%, transparent),
-    0 24px 60px -22px color-mix(in srgb, var(--ink) 34%, transparent);
-  isolation: isolate;
 }
-.portrait img {
+.profile-photo img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 50% 18%;
-  display: block;
+  object-position: 50% 30%;
   filter: contrast(1.03) saturate(0.96);
 }
-/* Warms the photograph's neutral ground into the page's own paper, so the
-   subject sits in the layout instead of on top of it. */
-.portrait::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  background:
-    linear-gradient(to bottom, transparent 52%, color-mix(in srgb, var(--bg) 82%, transparent) 100%),
-    linear-gradient(120deg, color-mix(in srgb, var(--accent) 12%, transparent), transparent 46%);
-  mix-blend-mode: multiply;
+.profile-meta { padding: 16px 6px 4px; }
+.profile-id strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.28rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
 }
-:root[data-theme="dark"] .portrait::after,
-:root:not([data-theme="light"]) .portrait::after {
-  mix-blend-mode: normal;
-  opacity: 0.55;
+.profile-id span { display: block; margin-top: 2px; font-size: 0.88rem; color: var(--ink-muted); }
+.profile-facts { margin: 14px 0 0; }
+.profile-facts > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  padding-block: 8px;
+  border-top: 1px solid var(--rule);
 }
-@media (prefers-color-scheme: light) {
-  :root:not([data-theme="dark"]) .portrait::after { mix-blend-mode: multiply; opacity: 1; }
-}
-
-/* A hairline arch offset behind the plate: depth from geometry rather than
-   from a heavier shadow. */
-.portrait-frame { position: relative; justify-self: center; }
-.portrait-frame::before {
-  content: "";
-  position: absolute;
-  inset: 18px -18px -18px 18px;
-  border: 1px solid var(--rule-strong);
-  border-radius: 200px 200px 18px 18px;
-  z-index: -1;
-}
-@media (prefers-reduced-motion: no-preference) {
-  .portrait { animation: portrait-rise 1100ms cubic-bezier(.16,.84,.34,1) both 180ms; }
-}
-@keyframes portrait-rise {
-  from { opacity: 0; transform: translateY(22px) scale(.975); }
-  to   { opacity: 1; transform: none; }
-}
-
-.portrait-caption {
-  margin-top: 14px;
+.profile-facts dt {
   font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.07em;
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--ink-faint);
-  text-align: center;
+  flex-shrink: 0;
+}
+.profile-facts dd {
+  margin: 0;
+  font-size: 0.84rem;
+  font-weight: 500;
+  text-align: right;
+}
+.profile-facts dd.is-good { color: var(--good); display: inline-flex; align-items: center; gap: 7px; }
+.profile-facts .pip { width: 7px; height: 7px; border-radius: 50%; background: var(--good); }
+@media (max-width: 900px) {
+  .profile-wrap { justify-self: start; width: min(100% - 16px, 360px); }
 }
 
 /* ---- entrance ---- */
@@ -1376,6 +1409,17 @@ h2 { letter-spacing: -0.012em; }
   letter-spacing: -0.02em;
   color: var(--ink);
 }
+.figures a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  border-top: 2px solid transparent;
+  margin-top: -22px;
+  padding-top: 20px;
+  transition: border-color 180ms ease;
+}
+.figures a:hover { border-top-color: var(--accent); }
+.figures a:hover .fig-l { color: var(--ink-muted); }
 .figures .fig-l {
   display: block;
   margin-top: 3px;
@@ -1637,6 +1681,94 @@ h2 { letter-spacing: -0.012em; }
 }
 
 @media print {
-  .hero::before, .portrait-frame::before { display: none !important; }
+  .hero::before, .profile-wrap::before { display: none !important; }
+  .profile-card { box-shadow: none; }
   .repo-card, .interest, .doc { break-inside: avoid; box-shadow: none; }
 }
+
+/* ---- numbered process steps (homepage "How I work") ---- */
+.steps { list-style: none; margin-bottom: 0; padding: 0; }
+.steps li {
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  gap: 16px;
+  padding-block: 16px;
+  border-top: 1px solid var(--rule);
+}
+.steps li:last-child { border-bottom: 1px solid var(--rule); }
+.steps li > span { padding-top: 1px; }
+
+/* ---- stack at a glance (homepage) ---- */
+.stack-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0 clamp(20px, 3vw, 36px);
+}
+@media (max-width: 900px) { .stack-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .stack-grid { grid-template-columns: 1fr; } }
+.stack-col { padding-block: 16px 20px; border-top: 1px solid var(--rule-strong); }
+.stack-col h3 {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.chips { list-style: none; margin: 12px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 7px; }
+.chips li {
+  font-size: 0.84rem;
+  line-height: 1.3;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  color: var(--ink);
+}
+.chips li.is-core {
+  border-color: color-mix(in srgb, var(--accent) 45%, transparent);
+  background: var(--accent-soft);
+  color: var(--accent-ink);
+  font-weight: 600;
+}
+.stack-key {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.stack-key span { display: inline-flex; align-items: center; gap: 8px; }
+.stack-key i {
+  width: 16px; height: 10px; border-radius: 999px; display: inline-block;
+  background: var(--surface); border: 1px solid var(--rule-strong);
+}
+.stack-key i.is-core { background: var(--accent-soft); border-color: var(--accent); }
+
+/* ---- quote card (homepage About) ---- */
+.quote-card {
+  margin: 0;
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius-m);
+  padding: clamp(22px, 3vw, 32px);
+  box-shadow: var(--shadow-sm);
+}
+.quote-card blockquote {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 0.8vw + 1rem, 1.45rem);
+  font-weight: 500;
+  line-height: 1.4;
+  text-wrap: balance;
+}
+.quote-card .quote-byline { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--rule); }
+.quote-card .quote-byline > span { display: flex; flex-direction: column; line-height: 1.35; font-size: 0.86rem; }
+
+
+.nw { white-space: nowrap; }
