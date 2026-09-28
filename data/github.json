@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-28T01:41:06Z",
+  "generatedAt": "2026-09-28T08:43:06Z",
   "user": {
     "login": "hassan200503",
     "name": "Hassan Tsuma ",
@@ -15,18 +15,52 @@
     "stars": 0,
     "languageBytes": {
       "Java": 4626176,
-      "TypeScript": 3411769,
-      "CSS": 224686,
-      "HTML": 164926,
+      "TypeScript": 3423528,
+      "CSS": 228839,
+      "HTML": 174536,
       "JavaScript": 45760,
       "PLpgSQL": 18917,
       "Shell": 5504,
       "Python": 4796,
       "Dockerfile": 4600
     },
-    "lastPush": "2026-09-27T23:04:22Z"
+    "lastPush": "2026-09-28T08:17:45Z"
   },
   "repos": [
+    {
+      "name": "rentmanager-frontend",
+      "description": "RentManager web app: landlord dashboard and renter portal. Next.js, React, TypeScript, Clerk, M-Pesa.",
+      "url": "https://github.com/hassan200503/rentmanager-frontend",
+      "homepage": "https://rentmanager-ke.netlify.app",
+      "language": "TypeScript",
+      "languages": {
+        "TypeScript": 3157202,
+        "CSS": 176714,
+        "JavaScript": 2250,
+        "Dockerfile": 2221
+      },
+      "topics": [
+        "kenya",
+        "nextjs",
+        "property-management",
+        "react",
+        "saas",
+        "tailwindcss",
+        "typescript"
+      ],
+      "stars": 0,
+      "forks": 0,
+      "sizeKb": 100409,
+      "license": null,
+      "createdAt": "2026-06-20T17:09:22Z",
+      "pushedAt": "2026-09-28T08:17:45Z",
+      "lastCommit": {
+        "sha": "cfb0cf8",
+        "message": "TEMP: probe how Deno Deploy reports the request scheme",
+        "date": "2026-09-28T08:17:41Z",
+        "url": "https://github.com/hassan200503/rentmanager-frontend/commit/cfb0cf80c11e73b68cbcf1084321c4dcf2c7402e"
+      }
+    },
     {
       "name": "hassan200503.github.io",
       "description": "Portfolio site for Hassan Tsuma",
@@ -34,8 +68,8 @@
       "homepage": "https://hassan200503.github.io",
       "language": "HTML",
       "languages": {
-        "HTML": 164926,
-        "CSS": 47972,
+        "HTML": 174536,
+        "CSS": 52125,
         "JavaScript": 22033,
         "Python": 4796
       },
@@ -47,15 +81,15 @@
       ],
       "stars": 0,
       "forks": 0,
-      "sizeKb": 566,
+      "sizeKb": 1028,
       "license": null,
       "createdAt": "2026-09-14T20:38:01Z",
-      "pushedAt": "2026-09-27T23:04:22Z",
+      "pushedAt": "2026-09-28T06:57:15Z",
       "lastCommit": {
-        "sha": "5e14061",
-        "message": "Refresh GitHub snapshot",
-        "date": "2026-09-27T23:04:21Z",
-        "url": "https://github.com/hassan200503/hassan200503.github.io/commit/5e14061fdfbba543ed3cf39a759c6fe5d02e46be"
+        "sha": "4500718",
+        "message": "Merge pull request #1 from hassan200503/claude/lucid-thompson-fb3cu7",
+        "date": "2026-09-28T06:57:14Z",
+        "url": "https://github.com/hassan200503/hassan200503.github.io/commit/450071824b78e40ee1128dce66f4ebba111aa20f"
       }
     },
     {
@@ -85,40 +119,6 @@
         "message": "Match ignore list against LID chats, log incoming messages, quiet Baileys",
         "date": "2026-09-23T19:39:38Z",
         "url": "https://github.com/hassan200503/whatsapp-persona-bot/commit/3458ac46881594b8af698a0813cdd2e0d3213bf9"
-      }
-    },
-    {
-      "name": "rentmanager-frontend",
-      "description": "RentManager web app: landlord dashboard and renter portal. Next.js, React, TypeScript, Clerk, M-Pesa.",
-      "url": "https://github.com/hassan200503/rentmanager-frontend",
-      "homepage": "https://rentmanager-ke.netlify.app",
-      "language": "TypeScript",
-      "languages": {
-        "TypeScript": 3145443,
-        "CSS": 176714,
-        "JavaScript": 2250,
-        "Dockerfile": 2221
-      },
-      "topics": [
-        "kenya",
-        "nextjs",
-        "property-management",
-        "react",
-        "saas",
-        "tailwindcss",
-        "typescript"
-      ],
-      "stars": 0,
-      "forks": 0,
-      "sizeKb": 100337,
-      "license": null,
-      "createdAt": "2026-06-20T17:09:22Z",
-      "pushedAt": "2026-09-23T07:22:18Z",
-      "lastCommit": {
-        "sha": "aa252dd",
-        "message": "Close TD-161: the fixture leak is fixed, not just its victims [skip netlify]",
-        "date": "2026-09-23T07:22:15Z",
-        "url": "https://github.com/hassan200503/rentmanager-frontend/commit/aa252ddbe1fc3f5615d099e143f9e258b156cb8a"
       }
     },
     {
