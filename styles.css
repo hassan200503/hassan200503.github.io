@@ -628,7 +628,7 @@ p { margin: 0; }
   .diagram-scroll { box-shadow: var(--shadow-sm), inset -16px 0 12px -12px var(--rule); }
 }
 
-/* ---- portrait treatment (About page) ---- */
+/* ---- photo column (About page) ---- */
 .grid-photo {
   display: grid;
   grid-template-columns: minmax(220px, 300px) 1fr;
@@ -638,32 +638,6 @@ p { margin: 0; }
 @media (max-width: 860px) {
   .grid-photo { grid-template-columns: 1fr; }
 }
-.portrait-frame {
-  position: relative;
-  margin: 0;
-  border-radius: var(--radius-m);
-  overflow: hidden;
-  box-shadow: var(--shadow-lg);
-  background: var(--surface-2);
-}
-.portrait-frame img { width: 100%; height: auto; display: block; }
-.portrait-frame figcaption {
-  position: absolute;
-  left: 14px;
-  bottom: 14px;
-  background: color-mix(in srgb, var(--ink) 86%, transparent);
-  color: var(--bg);
-  font-family: var(--font-mono);
-  font-size: 10.5px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  padding: 6px 10px;
-  border-radius: var(--radius-s);
-}
-@media (max-width: 860px) {
-  .portrait-frame { max-width: 280px; }
-}
-
 /* ---- avatar byline (homepage About preview) ---- */
 .quote-byline { display: flex; align-items: center; gap: 12px; }
 .avatar-badge {
@@ -997,12 +971,6 @@ p, li, .skill-note, .avail-item p {
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
   border-color: var(--rule-strong);
-}
-/* the dashed quote card is a panel, not a target — hold it still */
-.card[style*="dashed"]:hover {
-  transform: none;
-  box-shadow: var(--shadow-sm);
-  border-color: var(--rule);
 }
 
 /* Stat tiles: heavier rule above the figure, so the row reads as a
