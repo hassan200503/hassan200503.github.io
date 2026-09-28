@@ -102,8 +102,8 @@
           <p class="mt-16 measure">
             <strong>It is deployed, and it is a real system rather than a demo.</strong> You can
             open it right now at
-            <a class="livelink" href="https://rentmanager-ke.netlify.app/" target="_blank" rel="noopener">rentmanager-ke.netlify.app ↗</a>.
-            The Next.js web app runs on Netlify, the Spring Boot API in a container on Render under
+            <a class="livelink" href="https://www.rentmanagerke.workers.dev/" target="_blank" rel="noopener">www.rentmanagerke.workers.dev ↗</a>.
+            The Next.js web app runs on Cloudflare Workers, the Spring Boot API in a container on Render under
             the <code class="mono small">prod</code> profile, and PostgreSQL on Neon. It serves over
             HTTPS behind a health check, the scheduled payment and notification sweeps run on their
             timers, a cron ping keeps the free-tier container awake so an <span class="nw">M-Pesa</span> callback never
@@ -176,7 +176,7 @@
             <li>Database design: the schema and all 99 Flyway migrations, in order, none edited after they ran</li>
             <li>Frontend: the Next.js application: the landlord dashboard, the tenant portal, the public listing and reservation flow, the platform-admin console</li>
             <li>Mobile: a 27-screen React Native (Expo) app sharing the same generated API client as the web app, with push notifications, offline detection and secure token storage</li>
-            <li>Deployment: containerising the API and getting the whole stack live on free infrastructure: Render, Netlify, Neon, plus scheduled encrypted backups</li>
+            <li>Deployment: containerising the API and getting the whole stack live on free infrastructure: Render, Cloudflare, Neon, plus scheduled encrypted backups</li>
             <li>Integrations: <span class="nw">M-Pesa</span> Daraja (STK push and B2C), Africa’s Talking SMS, Clerk authentication</li>
             <li>Testing: the backend’s 1,588 tests, the ArchUnit rule covering the property module’s layering, and the frontend’s Vitest suite</li>
           </ul>
