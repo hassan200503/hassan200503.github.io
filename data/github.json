@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-29T05:45:48Z",
+  "generatedAt": "2026-09-29T12:55:33Z",
   "user": {
     "login": "hassan200503",
     "name": "Hassan Tsuma ",
@@ -17,14 +17,14 @@
       "Java": 4632846,
       "TypeScript": 3431888,
       "CSS": 230341,
-      "HTML": 174609,
-      "JavaScript": 45760,
+      "HTML": 174651,
+      "JavaScript": 74960,
       "PLpgSQL": 18917,
       "Shell": 5504,
       "Python": 4796,
       "Dockerfile": 4600
     },
-    "lastPush": "2026-09-28T23:17:48Z"
+    "lastPush": "2026-09-29T11:42:11Z"
   },
   "repos": [
     {
@@ -34,7 +34,7 @@
       "homepage": "https://hassan200503.github.io",
       "language": "HTML",
       "languages": {
-        "HTML": 174609,
+        "HTML": 174651,
         "CSS": 52125,
         "JavaScript": 22033,
         "Python": 4796
@@ -47,15 +47,44 @@
       ],
       "stars": 0,
       "forks": 0,
-      "sizeKb": 757,
+      "sizeKb": 917,
       "license": null,
       "createdAt": "2026-09-14T20:38:01Z",
-      "pushedAt": "2026-09-28T23:17:48Z",
+      "pushedAt": "2026-09-29T11:42:11Z",
       "lastCommit": {
-        "sha": "37ce954",
-        "message": "Refresh GitHub snapshot",
-        "date": "2026-09-28T23:17:47Z",
-        "url": "https://github.com/hassan200503/hassan200503.github.io/commit/37ce95492272f8a4280285bc8cb53fb519b40d20"
+        "sha": "fc4c18a",
+        "message": "Update CV: correct LinkedIn URL to hassan-karungwa",
+        "date": "2026-09-29T11:42:10Z",
+        "url": "https://github.com/hassan200503/hassan200503.github.io/commit/fc4c18a9eef552c6c7b75f2b2e88e6e0ad9eb43e"
+      }
+    },
+    {
+      "name": "whatsapp-persona-bot",
+      "description": "Auto-replies to WhatsApp messages in your own voice while you're offline, learns your writing style over time, and pitches freelance work to leads.",
+      "url": "https://github.com/hassan200503/whatsapp-persona-bot",
+      "homepage": null,
+      "language": "JavaScript",
+      "languages": {
+        "JavaScript": 46630
+      },
+      "topics": [
+        "automation",
+        "baileys",
+        "freelance",
+        "nodejs",
+        "whatsapp"
+      ],
+      "stars": 0,
+      "forks": 0,
+      "sizeKb": 89,
+      "license": null,
+      "createdAt": "2026-09-23T07:02:22Z",
+      "pushedAt": "2026-09-29T09:16:33Z",
+      "lastCommit": {
+        "sha": "f0ec874",
+        "message": "Add voice: send a voice note to the companion, it replies spoken",
+        "date": "2026-09-29T09:16:23Z",
+        "url": "https://github.com/hassan200503/whatsapp-persona-bot/commit/f0ec8745a3e12f7a8e9c01a6399e642bd8d87ce8"
       }
     },
     {
@@ -125,35 +154,6 @@
         "message": "A demo listing was advertising a home that does not exist",
         "date": "2026-09-28T22:17:50Z",
         "url": "https://github.com/hassan200503/rentmanager-backend/commit/91ca3ef69c580ef2219e62b9233ed46625170c73"
-      }
-    },
-    {
-      "name": "whatsapp-persona-bot",
-      "description": "Auto-replies to WhatsApp messages in your own voice while you're offline, learns your writing style over time, and pitches freelance work to leads.",
-      "url": "https://github.com/hassan200503/whatsapp-persona-bot",
-      "homepage": null,
-      "language": "JavaScript",
-      "languages": {
-        "JavaScript": 17430
-      },
-      "topics": [
-        "automation",
-        "baileys",
-        "freelance",
-        "nodejs",
-        "whatsapp"
-      ],
-      "stars": 0,
-      "forks": 0,
-      "sizeKb": 35,
-      "license": null,
-      "createdAt": "2026-09-23T07:02:22Z",
-      "pushedAt": "2026-09-23T19:39:44Z",
-      "lastCommit": {
-        "sha": "3458ac4",
-        "message": "Match ignore list against LID chats, log incoming messages, quiet Baileys",
-        "date": "2026-09-23T19:39:38Z",
-        "url": "https://github.com/hassan200503/whatsapp-persona-bot/commit/3458ac46881594b8af698a0813cdd2e0d3213bf9"
       }
     },
     {
