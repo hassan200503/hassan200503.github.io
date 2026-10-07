@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-06T20:21:55Z",
+  "generatedAt": "2026-10-07T00:43:55Z",
   "user": {
     "login": "hassan200503",
     "name": "Hassan Tsuma ",
@@ -24,9 +24,44 @@
       "Python": 4796,
       "Dockerfile": 4600
     },
-    "lastPush": "2026-10-06T15:13:35Z"
+    "lastPush": "2026-10-06T23:53:17Z"
   },
   "repos": [
+    {
+      "name": "rentmanager-backend",
+      "description": "RentManager API: rental management for Kenyan landlords and renters. Spring Boot 3, Java 21, PostgreSQL, M-Pesa Daraja, Clerk auth, multi-tenant.",
+      "url": "https://github.com/hassan200503/rentmanager-backend",
+      "homepage": "https://www.rentmanagerke.workers.dev",
+      "language": "Java",
+      "languages": {
+        "Java": 4632846,
+        "PLpgSQL": 18917,
+        "Shell": 5504,
+        "Dockerfile": 2379
+      },
+      "topics": [
+        "java",
+        "kenya",
+        "mpesa",
+        "multi-tenant",
+        "postgresql",
+        "property-management",
+        "saas",
+        "spring-boot"
+      ],
+      "stars": 0,
+      "forks": 0,
+      "sizeKb": 2075,
+      "license": null,
+      "createdAt": "2026-06-11T16:44:44Z",
+      "pushedAt": "2026-10-06T23:53:17Z",
+      "lastCommit": {
+        "sha": "5347abb",
+        "message": "Add demo property data for production launch - 20 properties across Kenya",
+        "date": "2026-10-06T23:53:03Z",
+        "url": "https://github.com/hassan200503/rentmanager-backend/commit/5347abb17a0dd5b747555734197c89b4fca77c1a"
+      }
+    },
     {
       "name": "hassan200503.github.io",
       "description": "Portfolio site for Hassan Tsuma",
@@ -47,15 +82,15 @@
       ],
       "stars": 0,
       "forks": 0,
-      "sizeKb": 950,
+      "sizeKb": 951,
       "license": null,
       "createdAt": "2026-09-14T20:38:01Z",
-      "pushedAt": "2026-10-06T15:13:35Z",
+      "pushedAt": "2026-10-06T20:21:57Z",
       "lastCommit": {
-        "sha": "005c7a1",
+        "sha": "705714c",
         "message": "Refresh GitHub snapshot",
-        "date": "2026-10-06T15:13:34Z",
-        "url": "https://github.com/hassan200503/hassan200503.github.io/commit/005c7a1538cc5b7dca405a01a49565ba44ae85ab"
+        "date": "2026-10-06T20:21:55Z",
+        "url": "https://github.com/hassan200503/hassan200503.github.io/commit/705714c550c9e2100d815ab00c438f9a03b45103"
       }
     },
     {
@@ -119,41 +154,6 @@
         "message": "Sign-in did nothing, because the publishable key was still a placeholder",
         "date": "2026-09-28T22:29:55Z",
         "url": "https://github.com/hassan200503/rentmanager-frontend/commit/57fc4dda51bef815ba9cf6c6b52cdec3d82df9e0"
-      }
-    },
-    {
-      "name": "rentmanager-backend",
-      "description": "RentManager API: rental management for Kenyan landlords and renters. Spring Boot 3, Java 21, PostgreSQL, M-Pesa Daraja, Clerk auth, multi-tenant.",
-      "url": "https://github.com/hassan200503/rentmanager-backend",
-      "homepage": "https://www.rentmanagerke.workers.dev",
-      "language": "Java",
-      "languages": {
-        "Java": 4632846,
-        "PLpgSQL": 18917,
-        "Shell": 5504,
-        "Dockerfile": 2379
-      },
-      "topics": [
-        "java",
-        "kenya",
-        "mpesa",
-        "multi-tenant",
-        "postgresql",
-        "property-management",
-        "saas",
-        "spring-boot"
-      ],
-      "stars": 0,
-      "forks": 0,
-      "sizeKb": 2075,
-      "license": null,
-      "createdAt": "2026-06-11T16:44:44Z",
-      "pushedAt": "2026-09-28T22:17:53Z",
-      "lastCommit": {
-        "sha": "91ca3ef",
-        "message": "A demo listing was advertising a home that does not exist",
-        "date": "2026-09-28T22:17:50Z",
-        "url": "https://github.com/hassan200503/rentmanager-backend/commit/91ca3ef69c580ef2219e62b9233ed46625170c73"
       }
     },
     {
