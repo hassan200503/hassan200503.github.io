@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-08T07:26:39Z",
+  "generatedAt": "2026-10-08T15:38:23Z",
   "user": {
     "login": "hassan200503",
     "name": "Hassan Tsuma ",
@@ -15,47 +15,53 @@
     "stars": 0,
     "languageBytes": {
       "Java": 4632846,
-      "TypeScript": 3431888,
+      "TypeScript": 3434859,
       "CSS": 230341,
       "HTML": 174651,
       "JavaScript": 74960,
       "PLpgSQL": 18917,
-      "Shell": 5504,
+      "Shell": 8875,
       "Python": 4796,
-      "Dockerfile": 4600
+      "Dockerfile": 4600,
+      "PowerShell": 4226
     },
-    "lastPush": "2026-10-08T01:01:29Z"
+    "lastPush": "2026-10-08T14:22:16Z"
   },
   "repos": [
     {
-      "name": "hassan200503.github.io",
-      "description": "Portfolio site for Hassan Tsuma",
-      "url": "https://github.com/hassan200503/hassan200503.github.io",
-      "homepage": "https://hassan200503.github.io",
-      "language": "HTML",
+      "name": "rentmanager-frontend",
+      "description": "RentManager web app: landlord dashboard and renter portal. Next.js, React, TypeScript, Clerk, M-Pesa.",
+      "url": "https://github.com/hassan200503/rentmanager-frontend",
+      "homepage": "https://www.rentmanagerke.workers.dev",
+      "language": "TypeScript",
       "languages": {
-        "HTML": 174651,
-        "CSS": 52125,
-        "JavaScript": 22033,
-        "Python": 4796
+        "TypeScript": 3168533,
+        "CSS": 178216,
+        "PowerShell": 4226,
+        "Shell": 3371,
+        "JavaScript": 2250,
+        "Dockerfile": 2221
       },
       "topics": [
-        "css",
-        "github-pages",
-        "html",
-        "portfolio"
+        "kenya",
+        "nextjs",
+        "property-management",
+        "react",
+        "saas",
+        "tailwindcss",
+        "typescript"
       ],
       "stars": 0,
       "forks": 0,
-      "sizeKb": 956,
+      "sizeKb": 101311,
       "license": null,
-      "createdAt": "2026-09-14T20:38:01Z",
-      "pushedAt": "2026-10-08T01:01:29Z",
+      "createdAt": "2026-06-20T17:09:22Z",
+      "pushedAt": "2026-10-08T14:22:16Z",
       "lastCommit": {
-        "sha": "c7d0afd",
-        "message": "Refresh GitHub snapshot",
-        "date": "2026-10-08T01:01:28Z",
-        "url": "https://github.com/hassan200503/hassan200503.github.io/commit/c7d0afda0f1c3de970899bfc758d065372cf12c5"
+        "sha": "9b2e747",
+        "message": "chore: trigger deployment with all secrets configured",
+        "date": "2026-10-08T14:22:06Z",
+        "url": "https://github.com/hassan200503/rentmanager-frontend/commit/9b2e74726cfb61d701c34c378b3a7c596d985607"
       }
     },
     {
@@ -82,15 +88,46 @@
       ],
       "stars": 0,
       "forks": 0,
-      "sizeKb": 2081,
+      "sizeKb": 2086,
       "license": null,
       "createdAt": "2026-06-11T16:44:44Z",
-      "pushedAt": "2026-10-06T23:53:17Z",
+      "pushedAt": "2026-10-08T13:00:44Z",
       "lastCommit": {
         "sha": "5347abb",
         "message": "Add demo property data for production launch - 20 properties across Kenya",
         "date": "2026-10-06T23:53:03Z",
         "url": "https://github.com/hassan200503/rentmanager-backend/commit/5347abb17a0dd5b747555734197c89b4fca77c1a"
+      }
+    },
+    {
+      "name": "hassan200503.github.io",
+      "description": "Portfolio site for Hassan Tsuma",
+      "url": "https://github.com/hassan200503/hassan200503.github.io",
+      "homepage": "https://hassan200503.github.io",
+      "language": "HTML",
+      "languages": {
+        "HTML": 174651,
+        "CSS": 52125,
+        "JavaScript": 22033,
+        "Python": 4796
+      },
+      "topics": [
+        "css",
+        "github-pages",
+        "html",
+        "portfolio"
+      ],
+      "stars": 0,
+      "forks": 0,
+      "sizeKb": 815,
+      "license": null,
+      "createdAt": "2026-09-14T20:38:01Z",
+      "pushedAt": "2026-10-08T07:26:40Z",
+      "lastCommit": {
+        "sha": "88d9d46",
+        "message": "Refresh GitHub snapshot",
+        "date": "2026-10-08T07:26:39Z",
+        "url": "https://github.com/hassan200503/hassan200503.github.io/commit/88d9d467d00593462126deb8d424d77aed8fc392"
       }
     },
     {
@@ -120,40 +157,6 @@
         "message": "Add voice: send a voice note to the companion, it replies spoken",
         "date": "2026-09-29T09:16:23Z",
         "url": "https://github.com/hassan200503/whatsapp-persona-bot/commit/f0ec8745a3e12f7a8e9c01a6399e642bd8d87ce8"
-      }
-    },
-    {
-      "name": "rentmanager-frontend",
-      "description": "RentManager web app: landlord dashboard and renter portal. Next.js, React, TypeScript, Clerk, M-Pesa.",
-      "url": "https://github.com/hassan200503/rentmanager-frontend",
-      "homepage": "https://www.rentmanagerke.workers.dev",
-      "language": "TypeScript",
-      "languages": {
-        "TypeScript": 3165562,
-        "CSS": 178216,
-        "JavaScript": 2250,
-        "Dockerfile": 2221
-      },
-      "topics": [
-        "kenya",
-        "nextjs",
-        "property-management",
-        "react",
-        "saas",
-        "tailwindcss",
-        "typescript"
-      ],
-      "stars": 0,
-      "forks": 0,
-      "sizeKb": 100448,
-      "license": null,
-      "createdAt": "2026-06-20T17:09:22Z",
-      "pushedAt": "2026-09-28T22:29:57Z",
-      "lastCommit": {
-        "sha": "57fc4dd",
-        "message": "Sign-in did nothing, because the publishable key was still a placeholder",
-        "date": "2026-09-28T22:29:55Z",
-        "url": "https://github.com/hassan200503/rentmanager-frontend/commit/57fc4dda51bef815ba9cf6c6b52cdec3d82df9e0"
       }
     },
     {
