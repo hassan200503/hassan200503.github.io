@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-13T21:16:12Z",
+  "generatedAt": "2026-10-14T00:21:43Z",
   "user": {
     "login": "hassan200503",
     "name": "Hassan Tsuma ",
@@ -20,14 +20,50 @@
       "HTML": 174651,
       "JavaScript": 74960,
       "PLpgSQL": 18917,
+      "PowerShell": 10067,
       "Shell": 8875,
       "Python": 4796,
-      "Dockerfile": 4600,
-      "PowerShell": 4226
+      "Dockerfile": 4600
     },
-    "lastPush": "2026-10-13T16:00:58Z"
+    "lastPush": "2026-10-13T21:22:50Z"
   },
   "repos": [
+    {
+      "name": "rentmanager-frontend",
+      "description": "RentManager web app: landlord dashboard and renter portal. Next.js, React, TypeScript, Clerk, M-Pesa.",
+      "url": "https://github.com/hassan200503/rentmanager-frontend",
+      "homepage": "https://www.rentmanagerke.workers.dev",
+      "language": "TypeScript",
+      "languages": {
+        "TypeScript": 3168533,
+        "CSS": 178216,
+        "PowerShell": 10067,
+        "Shell": 3371,
+        "JavaScript": 2250,
+        "Dockerfile": 2221
+      },
+      "topics": [
+        "kenya",
+        "nextjs",
+        "property-management",
+        "react",
+        "saas",
+        "tailwindcss",
+        "typescript"
+      ],
+      "stars": 0,
+      "forks": 0,
+      "sizeKb": 101318,
+      "license": null,
+      "createdAt": "2026-06-20T17:09:22Z",
+      "pushedAt": "2026-10-13T21:22:50Z",
+      "lastCommit": {
+        "sha": "6f85465",
+        "message": "fix(ci): harden Cloudflare secret checks and use --body when setting secrets",
+        "date": "2026-10-13T20:46:02Z",
+        "url": "https://github.com/hassan200503/rentmanager-frontend/commit/6f85465e249af8076c65abbedffd0c002b847b23"
+      }
+    },
     {
       "name": "hassan200503.github.io",
       "description": "Portfolio site for Hassan Tsuma",
@@ -48,51 +84,15 @@
       ],
       "stars": 0,
       "forks": 0,
-      "sizeKb": 837,
+      "sizeKb": 838,
       "license": null,
       "createdAt": "2026-09-14T20:38:01Z",
-      "pushedAt": "2026-10-13T16:00:58Z",
+      "pushedAt": "2026-10-13T21:16:13Z",
       "lastCommit": {
-        "sha": "ab0f3c5",
+        "sha": "e707d7a",
         "message": "Refresh GitHub snapshot",
-        "date": "2026-10-13T16:00:57Z",
-        "url": "https://github.com/hassan200503/hassan200503.github.io/commit/ab0f3c5c2ff0463bf89f1df4af9fddbcf37a6b06"
-      }
-    },
-    {
-      "name": "rentmanager-frontend",
-      "description": "RentManager web app: landlord dashboard and renter portal. Next.js, React, TypeScript, Clerk, M-Pesa.",
-      "url": "https://github.com/hassan200503/rentmanager-frontend",
-      "homepage": "https://www.rentmanagerke.workers.dev",
-      "language": "TypeScript",
-      "languages": {
-        "TypeScript": 3168533,
-        "CSS": 178216,
-        "PowerShell": 4226,
-        "Shell": 3371,
-        "JavaScript": 2250,
-        "Dockerfile": 2221
-      },
-      "topics": [
-        "kenya",
-        "nextjs",
-        "property-management",
-        "react",
-        "saas",
-        "tailwindcss",
-        "typescript"
-      ],
-      "stars": 0,
-      "forks": 0,
-      "sizeKb": 101311,
-      "license": null,
-      "createdAt": "2026-06-20T17:09:22Z",
-      "pushedAt": "2026-10-08T14:22:16Z",
-      "lastCommit": {
-        "sha": "9b2e747",
-        "message": "chore: trigger deployment with all secrets configured",
-        "date": "2026-10-08T14:22:06Z",
-        "url": "https://github.com/hassan200503/rentmanager-frontend/commit/9b2e74726cfb61d701c34c378b3a7c596d985607"
+        "date": "2026-10-13T21:16:12Z",
+        "url": "https://github.com/hassan200503/hassan200503.github.io/commit/e707d7a26824893acae7c985754d29985bc9f12e"
       }
     },
     {
