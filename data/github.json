@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-17T09:23:25Z",
+  "generatedAt": "2026-10-17T13:44:25Z",
   "user": {
     "login": "hassan200503",
     "name": "Hassan Tsuma ",
@@ -25,9 +25,76 @@
       "Python": 4796,
       "Dockerfile": 4600
     },
-    "lastPush": "2026-10-17T04:29:08Z"
+    "lastPush": "2026-10-17T13:16:21Z"
   },
   "repos": [
+    {
+      "name": "rentmanager-frontend",
+      "description": "RentManager web app: landlord dashboard and renter portal. Next.js, React, TypeScript, Clerk, M-Pesa.",
+      "url": "https://github.com/hassan200503/rentmanager-frontend",
+      "homepage": "https://www.rentmanagerke.workers.dev",
+      "language": "TypeScript",
+      "languages": {
+        "TypeScript": 3168533,
+        "CSS": 178216,
+        "PowerShell": 10067,
+        "Shell": 3371,
+        "JavaScript": 2250,
+        "Dockerfile": 2221
+      },
+      "topics": [
+        "kenya",
+        "nextjs",
+        "property-management",
+        "react",
+        "saas",
+        "tailwindcss",
+        "typescript"
+      ],
+      "stars": 0,
+      "forks": 0,
+      "sizeKb": 101340,
+      "license": null,
+      "createdAt": "2026-06-20T17:09:22Z",
+      "pushedAt": "2026-10-17T13:16:21Z",
+      "lastCommit": {
+        "sha": "11197fb",
+        "message": "Add usage SVG placeholder",
+        "date": "2026-10-17T12:58:29Z",
+        "url": "https://github.com/hassan200503/rentmanager-frontend/commit/11197fbd6fd4d2dd8948d57c3a717a1eee6eb6d6"
+      }
+    },
+    {
+      "name": "rentmanager-mobile",
+      "description": "RentManager mobile app for landlords and renters in Kenya (Expo, React Native, TypeScript)",
+      "url": "https://github.com/hassan200503/rentmanager-mobile",
+      "homepage": null,
+      "language": "TypeScript",
+      "languages": {
+        "TypeScript": 266326,
+        "JavaScript": 4047
+      },
+      "topics": [
+        "expo",
+        "kenya",
+        "mpesa",
+        "property-management",
+        "react-native",
+        "typescript"
+      ],
+      "stars": 0,
+      "forks": 0,
+      "sizeKb": 816,
+      "license": "MIT",
+      "createdAt": "2026-09-15T20:05:14Z",
+      "pushedAt": "2026-10-17T12:37:17Z",
+      "lastCommit": {
+        "sha": "7ff7afb",
+        "message": "Refine README to include missing env vars and clarify backend dependency",
+        "date": "2026-10-17T12:37:16Z",
+        "url": "https://github.com/hassan200503/rentmanager-mobile/commit/7ff7afb0187e95bb2ec0abb512a5ed6299507801"
+      }
+    },
     {
       "name": "hassan200503.github.io",
       "description": "Portfolio site for Hassan Tsuma",
@@ -48,15 +115,15 @@
       ],
       "stars": 0,
       "forks": 0,
-      "sizeKb": 857,
+      "sizeKb": 858,
       "license": null,
       "createdAt": "2026-09-14T20:38:01Z",
-      "pushedAt": "2026-10-17T04:29:08Z",
+      "pushedAt": "2026-10-17T09:23:26Z",
       "lastCommit": {
-        "sha": "3edca10",
+        "sha": "533a107",
         "message": "Refresh GitHub snapshot",
-        "date": "2026-10-17T04:29:07Z",
-        "url": "https://github.com/hassan200503/hassan200503.github.io/commit/3edca10e621730bce9e8228918e7abf050aad9a4"
+        "date": "2026-10-17T09:23:25Z",
+        "url": "https://github.com/hassan200503/hassan200503.github.io/commit/533a107ff392f995f7279445184c47ccbabc8187"
       }
     },
     {
@@ -116,42 +183,6 @@
       }
     },
     {
-      "name": "rentmanager-frontend",
-      "description": "RentManager web app: landlord dashboard and renter portal. Next.js, React, TypeScript, Clerk, M-Pesa.",
-      "url": "https://github.com/hassan200503/rentmanager-frontend",
-      "homepage": "https://www.rentmanagerke.workers.dev",
-      "language": "TypeScript",
-      "languages": {
-        "TypeScript": 3168533,
-        "CSS": 178216,
-        "PowerShell": 10067,
-        "Shell": 3371,
-        "JavaScript": 2250,
-        "Dockerfile": 2221
-      },
-      "topics": [
-        "kenya",
-        "nextjs",
-        "property-management",
-        "react",
-        "saas",
-        "tailwindcss",
-        "typescript"
-      ],
-      "stars": 0,
-      "forks": 0,
-      "sizeKb": 101318,
-      "license": null,
-      "createdAt": "2026-06-20T17:09:22Z",
-      "pushedAt": "2026-10-13T21:22:50Z",
-      "lastCommit": {
-        "sha": "6f85465",
-        "message": "fix(ci): harden Cloudflare secret checks and use --body when setting secrets",
-        "date": "2026-10-13T20:46:02Z",
-        "url": "https://github.com/hassan200503/rentmanager-frontend/commit/6f85465e249af8076c65abbedffd0c002b847b23"
-      }
-    },
-    {
       "name": "whatsapp-persona-bot",
       "description": "Auto-replies to WhatsApp messages in your own voice while you're offline, learns your writing style over time, and pitches freelance work to leads.",
       "url": "https://github.com/hassan200503/whatsapp-persona-bot",
@@ -178,37 +209,6 @@
         "message": "Add voice: send a voice note to the companion, it replies spoken",
         "date": "2026-09-29T09:16:23Z",
         "url": "https://github.com/hassan200503/whatsapp-persona-bot/commit/f0ec8745a3e12f7a8e9c01a6399e642bd8d87ce8"
-      }
-    },
-    {
-      "name": "rentmanager-mobile",
-      "description": "RentManager mobile app for landlords and renters in Kenya (Expo, React Native, TypeScript)",
-      "url": "https://github.com/hassan200503/rentmanager-mobile",
-      "homepage": null,
-      "language": "TypeScript",
-      "languages": {
-        "TypeScript": 266326,
-        "JavaScript": 4047
-      },
-      "topics": [
-        "expo",
-        "kenya",
-        "mpesa",
-        "property-management",
-        "react-native",
-        "typescript"
-      ],
-      "stars": 0,
-      "forks": 0,
-      "sizeKb": 789,
-      "license": "MIT",
-      "createdAt": "2026-09-15T20:05:14Z",
-      "pushedAt": "2026-09-15T20:10:29Z",
-      "lastCommit": {
-        "sha": "61d7932",
-        "message": "Update Expo SDK 57 patch releases",
-        "date": "2026-09-15T20:10:24Z",
-        "url": "https://github.com/hassan200503/rentmanager-mobile/commit/61d793229a1dc54e15305e079345674beb678140"
       }
     }
   ]
