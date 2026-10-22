@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-22T20:08:14Z",
+  "generatedAt": "2026-10-22T23:24:17Z",
   "user": {
     "login": "hassan200503",
     "name": "Hassan Tsuma ",
@@ -25,9 +25,40 @@
       "Python": 4796,
       "Dockerfile": 4600
     },
-    "lastPush": "2026-10-22T19:45:49Z"
+    "lastPush": "2026-10-22T20:08:15Z"
   },
   "repos": [
+    {
+      "name": "hassan200503.github.io",
+      "description": "Portfolio site for Hassan Tsuma",
+      "url": "https://github.com/hassan200503/hassan200503.github.io",
+      "homepage": "https://hassan200503.github.io",
+      "language": "HTML",
+      "languages": {
+        "HTML": 174651,
+        "CSS": 52125,
+        "JavaScript": 22033,
+        "Python": 4796
+      },
+      "topics": [
+        "css",
+        "github-pages",
+        "html",
+        "portfolio"
+      ],
+      "stars": 0,
+      "forks": 0,
+      "sizeKb": 857,
+      "license": null,
+      "createdAt": "2026-09-14T20:38:01Z",
+      "pushedAt": "2026-10-22T20:08:15Z",
+      "lastCommit": {
+        "sha": "8108fa3",
+        "message": "Refresh GitHub snapshot",
+        "date": "2026-10-22T20:08:14Z",
+        "url": "https://github.com/hassan200503/hassan200503.github.io/commit/8108fa3f2c8d61bf66f3edc44415459ab41016c6"
+      }
+    },
     {
       "name": "rentmanager-frontend",
       "description": "RentManager web app: landlord dashboard and renter portal. Next.js, React, TypeScript, Clerk, M-Pesa.",
@@ -53,7 +84,7 @@
       ],
       "stars": 0,
       "forks": 0,
-      "sizeKb": 101372,
+      "sizeKb": 101378,
       "license": null,
       "createdAt": "2026-06-20T17:09:22Z",
       "pushedAt": "2026-10-22T19:45:49Z",
@@ -62,37 +93,6 @@
         "message": "Remove request for companion documentation addition",
         "date": "2026-10-18T09:45:41Z",
         "url": "https://github.com/hassan200503/rentmanager-frontend/commit/97d82e4ed80b63273afda68164e046a6737f379f"
-      }
-    },
-    {
-      "name": "hassan200503.github.io",
-      "description": "Portfolio site for Hassan Tsuma",
-      "url": "https://github.com/hassan200503/hassan200503.github.io",
-      "homepage": "https://hassan200503.github.io",
-      "language": "HTML",
-      "languages": {
-        "HTML": 174651,
-        "CSS": 52125,
-        "JavaScript": 22033,
-        "Python": 4796
-      },
-      "topics": [
-        "css",
-        "github-pages",
-        "html",
-        "portfolio"
-      ],
-      "stars": 0,
-      "forks": 0,
-      "sizeKb": 856,
-      "license": null,
-      "createdAt": "2026-09-14T20:38:01Z",
-      "pushedAt": "2026-10-22T15:18:43Z",
-      "lastCommit": {
-        "sha": "ccb6cc6",
-        "message": "Refresh GitHub snapshot",
-        "date": "2026-10-22T15:18:42Z",
-        "url": "https://github.com/hassan200503/hassan200503.github.io/commit/ccb6cc68da27a0211726e1383fb4ddfdec2a9862"
       }
     },
     {
