@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-24T16:36:02Z",
+  "generatedAt": "2026-10-24T19:29:43Z",
   "user": {
     "login": "hassan200503",
     "name": "Hassan Tsuma ",
@@ -25,9 +25,40 @@
       "Python": 4796,
       "Dockerfile": 4600
     },
-    "lastPush": "2026-10-24T15:21:17Z"
+    "lastPush": "2026-10-24T16:36:03Z"
   },
   "repos": [
+    {
+      "name": "hassan200503.github.io",
+      "description": "Portfolio site for Hassan Tsuma",
+      "url": "https://github.com/hassan200503/hassan200503.github.io",
+      "homepage": "https://hassan200503.github.io",
+      "language": "HTML",
+      "languages": {
+        "HTML": 174651,
+        "CSS": 52125,
+        "JavaScript": 22033,
+        "Python": 4796
+      },
+      "topics": [
+        "css",
+        "github-pages",
+        "html",
+        "portfolio"
+      ],
+      "stars": 0,
+      "forks": 0,
+      "sizeKb": 868,
+      "license": null,
+      "createdAt": "2026-09-14T20:38:01Z",
+      "pushedAt": "2026-10-24T16:36:03Z",
+      "lastCommit": {
+        "sha": "dda4c98",
+        "message": "Refresh GitHub snapshot",
+        "date": "2026-10-24T16:36:02Z",
+        "url": "https://github.com/hassan200503/hassan200503.github.io/commit/dda4c98c368271146fd156c7e59efab6698e4c36"
+      }
+    },
     {
       "name": "rentmanager-frontend",
       "description": "RentManager web app: landlord dashboard and renter portal. Next.js, React, TypeScript, Clerk, M-Pesa.",
@@ -62,37 +93,6 @@
         "message": "refactor: improve code quality and documentation for __name polyfill",
         "date": "2026-10-24T14:07:34Z",
         "url": "https://github.com/hassan200503/rentmanager-frontend/commit/afb5fbcacf5c0c9121af1c839b7e742cd31366d1"
-      }
-    },
-    {
-      "name": "hassan200503.github.io",
-      "description": "Portfolio site for Hassan Tsuma",
-      "url": "https://github.com/hassan200503/hassan200503.github.io",
-      "homepage": "https://hassan200503.github.io",
-      "language": "HTML",
-      "languages": {
-        "HTML": 174651,
-        "CSS": 52125,
-        "JavaScript": 22033,
-        "Python": 4796
-      },
-      "topics": [
-        "css",
-        "github-pages",
-        "html",
-        "portfolio"
-      ],
-      "stars": 0,
-      "forks": 0,
-      "sizeKb": 867,
-      "license": null,
-      "createdAt": "2026-09-14T20:38:01Z",
-      "pushedAt": "2026-10-24T12:41:28Z",
-      "lastCommit": {
-        "sha": "e5edaa2",
-        "message": "Refresh GitHub snapshot",
-        "date": "2026-10-24T12:41:27Z",
-        "url": "https://github.com/hassan200503/hassan200503.github.io/commit/e5edaa2ca3015ec4aef74d58c961e9e4e531aa20"
       }
     },
     {
