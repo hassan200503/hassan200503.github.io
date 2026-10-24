@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-24T07:18:51Z",
+  "generatedAt": "2026-10-24T12:41:27Z",
   "user": {
     "login": "hassan200503",
     "name": "Hassan Tsuma ",
@@ -15,7 +15,7 @@
     "stars": 0,
     "languageBytes": {
       "Java": 4641260,
-      "TypeScript": 3434859,
+      "TypeScript": 3434921,
       "CSS": 230341,
       "HTML": 174651,
       "JavaScript": 74960,
@@ -25,40 +25,9 @@
       "Python": 4796,
       "Dockerfile": 4600
     },
-    "lastPush": "2026-10-24T01:36:10Z"
+    "lastPush": "2026-10-24T12:36:04Z"
   },
   "repos": [
-    {
-      "name": "hassan200503.github.io",
-      "description": "Portfolio site for Hassan Tsuma",
-      "url": "https://github.com/hassan200503/hassan200503.github.io",
-      "homepage": "https://hassan200503.github.io",
-      "language": "HTML",
-      "languages": {
-        "HTML": 174651,
-        "CSS": 52125,
-        "JavaScript": 22033,
-        "Python": 4796
-      },
-      "topics": [
-        "css",
-        "github-pages",
-        "html",
-        "portfolio"
-      ],
-      "stars": 0,
-      "forks": 0,
-      "sizeKb": 865,
-      "license": null,
-      "createdAt": "2026-09-14T20:38:01Z",
-      "pushedAt": "2026-10-24T01:36:10Z",
-      "lastCommit": {
-        "sha": "1ff9493",
-        "message": "Refresh GitHub snapshot",
-        "date": "2026-10-24T01:36:09Z",
-        "url": "https://github.com/hassan200503/hassan200503.github.io/commit/1ff9493ae527dc1decc985a23f67bf69560ec096"
-      }
-    },
     {
       "name": "rentmanager-frontend",
       "description": "RentManager web app: landlord dashboard and renter portal. Next.js, React, TypeScript, Clerk, M-Pesa.",
@@ -66,7 +35,7 @@
       "homepage": "https://www.rentmanagerke.workers.dev",
       "language": "TypeScript",
       "languages": {
-        "TypeScript": 3168533,
+        "TypeScript": 3168595,
         "CSS": 178216,
         "PowerShell": 10067,
         "Shell": 3371,
@@ -87,12 +56,43 @@
       "sizeKb": 101378,
       "license": null,
       "createdAt": "2026-06-20T17:09:22Z",
-      "pushedAt": "2026-10-22T19:45:49Z",
+      "pushedAt": "2026-10-24T12:36:04Z",
       "lastCommit": {
-        "sha": "97d82e4",
-        "message": "Remove request for companion documentation addition",
-        "date": "2026-10-18T09:45:41Z",
-        "url": "https://github.com/hassan200503/rentmanager-frontend/commit/97d82e4ed80b63273afda68164e046a6737f379f"
+        "sha": "b91565a",
+        "message": "fix: disable React Compiler to resolve __name is not defined error",
+        "date": "2026-10-24T12:35:16Z",
+        "url": "https://github.com/hassan200503/rentmanager-frontend/commit/b91565a88429ac98b4a7092c51ab85ce3868552f"
+      }
+    },
+    {
+      "name": "hassan200503.github.io",
+      "description": "Portfolio site for Hassan Tsuma",
+      "url": "https://github.com/hassan200503/hassan200503.github.io",
+      "homepage": "https://hassan200503.github.io",
+      "language": "HTML",
+      "languages": {
+        "HTML": 174651,
+        "CSS": 52125,
+        "JavaScript": 22033,
+        "Python": 4796
+      },
+      "topics": [
+        "css",
+        "github-pages",
+        "html",
+        "portfolio"
+      ],
+      "stars": 0,
+      "forks": 0,
+      "sizeKb": 866,
+      "license": null,
+      "createdAt": "2026-09-14T20:38:01Z",
+      "pushedAt": "2026-10-24T07:18:52Z",
+      "lastCommit": {
+        "sha": "075931d",
+        "message": "Refresh GitHub snapshot",
+        "date": "2026-10-24T07:18:51Z",
+        "url": "https://github.com/hassan200503/hassan200503.github.io/commit/075931d77e3869c968f5908d18411bfe17e0a14c"
       }
     },
     {
