@@ -1759,3 +1759,104 @@ h2 { letter-spacing: -0.012em; }
 @media (max-width: 860px) {
   .grid-photo .profile-wrap { width: min(100% - 16px, 340px); }
 }
+
+
+/* =========================================================
+   MOTION LAYER — premium, modern, "expensive" feel
+   Lenis smooth scroll + GSAP ScrollTrigger driven.
+   All motion is gated by prefers-reduced-motion.
+   ========================================================= */
+
+/* ---- Lenis ---- */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+/* ---- when GSAP is active, take over .reveal animation ---- */
+.js-gsap .reveal { transition: none !important; opacity: 1; transform: none; }
+
+/* ---- split text ---- */
+.split-word { display: inline-block; overflow: hidden; vertical-align: bottom; padding-bottom: 0.08em; }
+.split-inner { display: inline-block; will-change: transform; }
+
+/* ---- marquee band ---- */
+.marquee-band {
+  overflow: hidden;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding-block: 14px;
+  background: var(--surface-2);
+  white-space: nowrap;
+}
+.marquee-track {
+  display: inline-flex;
+  gap: 48px;
+  animation: marquee 40s linear infinite;
+  will-change: transform;
+}
+.marquee-track span {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ---- magnetic button ---- */
+[data-magnetic] { transition: transform 320ms cubic-bezier(.2,.7,.2,1); will-change: transform; }
+
+/* ---- cursor glow ---- */
+.cursor-glow {
+  position: fixed;
+  top: 0; left: 0;
+  width: 400px; height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--accent) 18%, transparent) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: screen;
+  opacity: 0.7;
+  filter: blur(8px);
+  will-change: transform;
+}
+@media (max-width: 900px) { .cursor-glow { display: none; } }
+
+/* ---- 3D tilt cards ---- */
+[data-tilt] {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 280ms cubic-bezier(.2,.7,.2,1), box-shadow 280ms ease;
+  will-change: transform;
+}
+[data-tilt] .glare {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 280ms ease;
+  mix-blend-mode: soft-light;
+}
+
+/* ---- parallax images ---- */
+[data-parallax] { will-change: transform; }
+
+/* ---- smoother card hovers ---- */
+.interest, .doc, .surface-card, .repo-card {
+  transition: transform 320ms cubic-bezier(.2,.7,.2,1), border-color 320ms ease, box-shadow 320ms ease;
+}
+
+/* ---- reduced motion: disable everything animated ---- */
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none !important; }
+  [data-magnetic] { transition: none !important; }
+  [data-tilt] { transition: none !important; transform: none !important; }
+  [data-parallax] { transform: none !important; }
+  .cursor-glow { display: none !important; }
+  .split-inner { transform: none !important; }
+}

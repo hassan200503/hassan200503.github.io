@@ -24,6 +24,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" />
   <link rel="stylesheet" href="styles.css" />
   <script>(function(){try{var t=localStorage.getItem("ht-theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
+  <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.css' />
 </head>
 <body>
 
@@ -195,32 +196,32 @@
                 What I do with the rest of my time. Some of it feeds the work more directly
                 than it looks like it should.
               </p>
-              <div class="interests mt-24">
-                <div class="interest reveal">
+              <div class="interest" data-tilts mt-24">
+                <div class="interest reveal" data-tilt>
                   <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 4.5a1.6 1.6 0 1 0 0-3.2 1.6 1.6 0 0 0 0 3.2z"/><path d="M8 22l2.2-6.2L8.4 13 7 17M13 6l-3 2-1.6 4.2L11 14l1.4 3.4L15 22M16 11l-3-2"/></svg></span>
                   <h3>Nature walks</h3>
                   <p>Long walks, usually alone. Most of the problems I have untangled were
                      untangled a few kilometres from a keyboard.</p>
                 </div>
-                <div class="interest reveal">
+                <div class="interest reveal" data-tilt>
                   <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></span>
                   <h3>Software engineering</h3>
                   <p>It is the work and it is also the hobby. I read other people’s code and
                      architecture decisions for the same reason other people read essays.</p>
                 </div>
-                <div class="interest reveal">
+                <div class="interest reveal" data-tilt>
                   <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></svg></span>
                   <h3>Music</h3>
                   <p>Listening, constantly, and usually while building. It sets the pace of a
                      long session better than coffee does.</p>
                 </div>
-                <div class="interest reveal">
+                <div class="interest reveal" data-tilt>
                   <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="5" r="2.2"/><path d="M12 9v5M5 21c1.5-3.5 4-5 7-5s5.5 1.5 7 5M7.5 13.5 12 15l4.5-1.5"/></svg></span>
                   <h3>Meditation</h3>
                   <p>Sitting still on purpose. It is the habit that makes the difference
                      between debugging carefully and debugging frantically.</p>
                 </div>
-                <div class="interest reveal">
+                <div class="interest reveal" data-tilt>
                   <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18M3.5 9h17M3.5 15h17"/></svg></span>
                   <h3>Philosophy</h3>
                   <p>Mostly questions about knowledge and ethics. Useful training for software,
@@ -263,6 +264,10 @@
   </div>
 </footer>
 
-<script src="script.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js'></script>
+<script src='script.js'></script>
+<script src='motion.js'></script>
 </body>
 </html>

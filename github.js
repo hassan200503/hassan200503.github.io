@@ -107,6 +107,7 @@
 
   function repoCard(repo) {
     var card = el("article", "repo-card reveal");
+    card.setAttribute("data-tilt", "");
 
     var head = el("div", "repo-head");
     var title = el("h3");
@@ -233,6 +234,7 @@
     if (grid) {
       grid.innerHTML = "";
       shown.forEach(function (r) { grid.appendChild(repoCard(r)); });
+      if (window.htTilt) grid.querySelectorAll("[data-tilt]").forEach(window.htTilt);
       if (window.htReveal) window.htReveal(grid);
     }
 

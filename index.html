@@ -54,6 +54,7 @@
     "sameAs": ["https://github.com/hassan200503", "https://www.linkedin.com/in/hassan-karungwa"]
   }
   </script>
+  <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.css' />
 </head>
 <body>
 
@@ -91,7 +92,7 @@
       <div class="hero-grid">
         <div>
           <span class="eyebrow rise rise-1">Hi, I’m Hassan · Software engineer</span>
-          <h1 class="rise rise-2" style="max-width: 19ch;">Let’s build something great together.</h1>
+          <h1 class="rise rise-2" style="max-width: 19ch;" data-split>Let’s build something great together.</h1>
           <p class="lede mt-24 measure rise rise-3">
             I’m a full-stack software engineer with more than three years of independent and freelance
             experience building complete systems, from the database schema to the deployed product. I work in <strong>Java and Spring
@@ -111,8 +112,8 @@
           </p>
 
           <div class="mt-32 rise rise-4" style="display:flex; gap:14px; flex-wrap:wrap; align-items:center;">
-            <a class="btn btn-primary" href="contact.html">Get in touch</a>
-            <a class="btn btn-ghost" href="https://www.rentmanagerke.workers.dev/" target="_blank" rel="noopener">See my work live ↗</a>
+            <a class="btn btn-primary" href="contact.html" data-magnetic>Get in touch</a>
+            <a class="btn btn-ghost" href="https://www.rentmanagerke.workers.dev/" target="_blank" rel="noopener" data-magnetic>See my work live ↗</a>
           </div>
 
           <div class="mt-24 rise rise-5" style="display:flex; gap:14px; flex-wrap:wrap; align-items:center;">
@@ -152,6 +153,14 @@
     </div>
   </section>
 
+  <!-- MARQUEE BAND -->
+  <div class="marquee-band" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Java · Spring Boot · PostgreSQL · Next.js · React · TypeScript · M-Pesa Daraja ·</span>
+      <span>Java · Spring Boot · PostgreSQL · Next.js · React · TypeScript · M-Pesa Daraja ·</span>
+    </div>
+  </div>
+
   <!-- 01 AVAILABLE -->
   <section class="section" id="available">
     <div class="wrap">
@@ -159,7 +168,7 @@
         <div class="ledger-index"><span class="folio-num">01</span><span class="folio-label">AVAILABLE</span></div>
         <div>
           <div class="flex-between">
-            <h2>I’m open to work</h2>
+            <h2 data-split>I’m open to work</h2>
           </div>
           <p class="lede mt-16 measure">
             I’m looking for a full-time role on an engineering team, ideally somewhere I can keep working on
@@ -232,7 +241,7 @@
         <div class="ledger-index"><span class="folio-num">02</span><span class="folio-label">CASE STUDY</span></div>
         <div>
           <div class="flex-between">
-            <h2>RentManager</h2>
+            <h2 data-split>RentManager</h2>
             <span class="tag good">Deployed · Live</span>
           </div>
           <p class="lede mt-16 measure">
@@ -266,19 +275,19 @@
 
           <h3 class="mt-48">It ships on three surfaces</h3>
           <div class="grid-3 mt-24">
-            <div class="surface-card reveal">
+            <div class="surface-card reveal" data-tilt>
               <span class="kicker">Web</span>
               <h3>Landlord &amp; tenant app</h3>
               <p>63 routes covering the landlord dashboard, the tenant portal, public listings and reservations, and an admin console.</p>
               <span class="stackline">Next.js 16 · React 19 · TanStack Query</span>
             </div>
-            <div class="surface-card reveal">
+            <div class="surface-card reveal" data-tilt>
               <span class="kicker">Mobile</span>
               <h3>Native app</h3>
               <p>27 screens with push notifications, offline detection, secure token storage and crash reporting.</p>
               <span class="stackline">React Native · Expo · Expo Router</span>
             </div>
-            <div class="surface-card reveal">
+            <div class="surface-card reveal" data-tilt>
               <span class="kicker">API</span>
               <h3>The backend both use</h3>
               <p>20 modules behind one contract. Tenant isolation comes from the verified token, never from a request header.</p>
@@ -300,7 +309,7 @@
         <div class="ledger-index"><span class="folio-num">03</span><span class="folio-label">GITHUB</span></div>
         <div>
           <div class="flex-between">
-            <h2>Everything I am building, live</h2>
+            <h2 data-split>Everything I am building, live</h2>
             <span class="gh-stamp" data-github-stamp>Loading…</span>
           </div>
           <p class="lede mt-16 measure">
@@ -335,7 +344,7 @@
       <div class="ledger-row reveal">
         <div class="ledger-index"><span class="folio-num">04</span><span class="folio-label">SKILLS</span></div>
         <div>
-          <h2>What I can do</h2>
+          <h2 data-split>What I can do</h2>
           <p class="lede mt-16 measure">
             The stack and practices behind RentManager, grouped the way a system is built. The
             skills page rates each one and points to the code behind it.
@@ -403,7 +412,7 @@
       <div class="ledger-row reveal">
         <div class="ledger-index"><span class="folio-num">05</span><span class="folio-label">IN THE CODE</span></div>
         <div>
-          <h2>Judgement, in the code itself</h2>
+          <h2 data-split>Judgement, in the code itself</h2>
           <p class="lede mt-16 measure">
             Anyone can describe how they think. These are four comments from RentManager’s
             backend, quoted word for word, each linked to the file it lives in. They are the clearest
@@ -503,7 +512,7 @@ Two columns blocked it:
       <div class="ledger-row reveal">
         <div class="ledger-index"><span class="folio-num">06</span><span class="folio-label">WORK</span></div>
         <div>
-          <h2>What I build</h2>
+          <h2 data-split>What I build</h2>
           <p class="lede mt-16 measure">Software for businesses with real workflows and real rules to enforce. Not marketing sites, and not prototypes that stop at the demo.</p>
 
           <div class="grid-2 mt-48">
@@ -535,7 +544,7 @@ Two columns blocked it:
       <div class="ledger-row reveal">
         <div class="ledger-index"><span class="folio-num">07</span><span class="folio-label">APPROACH</span></div>
         <div>
-          <h2>How I think about building this kind of system</h2>
+          <h2 data-split>How I think about building this kind of system</h2>
           <p class="lede mt-16 measure">Five things I’ve come to hold as rules, from building RentManager’s money paths.</p>
 
           <table class="ledger-table mt-48">
@@ -559,7 +568,7 @@ Two columns blocked it:
       <div class="ledger-row reveal">
         <div class="ledger-index"><span class="folio-num">08</span><span class="folio-label">PROCESS</span></div>
         <div>
-          <h2>How I work</h2>
+          <h2 data-split>How I work</h2>
           <ol class="steps mt-32">
             <li><span class="mono faint">01</span><div><strong>Understand the problem.</strong><p class="muted mt-8">What’s manual today, what has to never go wrong, who actually uses this.</p></div></li>
             <li><span class="mono faint">02</span><div><strong>Map the domain before writing code.</strong><p class="muted mt-8">Entities, rules, edge cases. The expensive mistakes happen in the model, not the syntax.</p></div></li>
@@ -580,7 +589,7 @@ Two columns blocked it:
         <div class="ledger-index"><span class="folio-num">09</span><span class="folio-label">ABOUT</span></div>
         <div class="grid-2" style="align-items:center;">
           <div>
-            <h2>A bit about me</h2>
+            <h2 data-split>A bit about me</h2>
             <p class="mt-16 measure">
               I’m a full-stack software engineer and Computer Science student in Kenya. Most of what I know about building
               software came from building RentManager end to end, not from a course. I like
@@ -607,7 +616,7 @@ Two columns blocked it:
     <div class="wrap">
       <div class="cta-band center reveal">
         <span class="availability"><span class="pip" aria-hidden="true"></span> Open to work · available now</span>
-        <h2 class="mt-24" style="max-width:20ch; margin-inline:auto;">Hiring, or have something that needs building?</h2>
+        <h2 data-split class="mt-24" style="max-width:20ch; margin-inline:auto;">Hiring, or have something that needs building?</h2>
         <p class="lede mt-16 measure" style="margin-inline:auto;">
           If it involves real business rules, money, or records that have to stay correct, that’s
           the problem I want to work on. Tell me what you’re building, or what the role is.
@@ -639,7 +648,11 @@ Two columns blocked it:
   </div>
 </footer>
 
-<script src="script.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js'></script>
+<script src='script.js'></script>
+<script src='motion.js'></script>
 <script src="github.js"></script>
 </body>
 </html>
