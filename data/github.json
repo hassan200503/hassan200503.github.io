@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-25T06:09:14Z",
+  "generatedAt": "2026-10-25T11:32:27Z",
   "user": {
     "login": "hassan200503",
     "name": "Hassan Tsuma ",
@@ -18,16 +18,63 @@
       "TypeScript": 3436473,
       "CSS": 230341,
       "HTML": 174651,
-      "JavaScript": 74960,
+      "JavaScript": 82081,
       "PLpgSQL": 18917,
       "PowerShell": 10067,
       "Shell": 8875,
       "Python": 4796,
       "Dockerfile": 4600
     },
-    "lastPush": "2026-10-25T01:11:37Z"
+    "lastPush": "2026-10-25T09:18:29Z"
   },
   "repos": [
+    {
+      "name": "rentmanager-frontend",
+      "description": "Kenya's trusted rental platform | Full-stack Property Management SaaS with M-Pesa integration, digital leases, real-time analytics, and automated rent   collection | React + Node.js + PostgreSQL + Cloudflare",
+      "url": "https://github.com/hassan200503/rentmanager-frontend",
+      "homepage": "https://www.rentmanagerke.workers.dev",
+      "language": "TypeScript",
+      "languages": {
+        "TypeScript": 3170147,
+        "CSS": 178216,
+        "PowerShell": 10067,
+        "JavaScript": 9371,
+        "Shell": 3371,
+        "Dockerfile": 2221
+      },
+      "topics": [
+        "cloudflare-workers",
+        "fintech",
+        "full-stack",
+        "kenya",
+        "kenya-tech",
+        "mpesa",
+        "nextjs",
+        "nodejs",
+        "payment-integration",
+        "postgresql",
+        "property-management",
+        "react",
+        "reactjs",
+        "rental-platform",
+        "saas",
+        "saas-application",
+        "tailwindcss",
+        "typescipt"
+      ],
+      "stars": 0,
+      "forks": 0,
+      "sizeKb": 103915,
+      "license": "MIT",
+      "createdAt": "2026-06-20T17:09:22Z",
+      "pushedAt": "2026-10-25T09:18:29Z",
+      "lastCommit": {
+        "sha": "1c96ce5",
+        "message": "ci: allow tests to continue on error to unblock pipeline",
+        "date": "2026-10-25T08:21:25Z",
+        "url": "https://github.com/hassan200503/rentmanager-frontend/commit/1c96ce585be1b6f72f83ac9c171ecde8dfc19894"
+      }
+    },
     {
       "name": "hassan200503.github.io",
       "description": "Portfolio site for Hassan Tsuma",
@@ -48,51 +95,15 @@
       ],
       "stars": 0,
       "forks": 0,
-      "sizeKb": 871,
+      "sizeKb": 872,
       "license": null,
       "createdAt": "2026-09-14T20:38:01Z",
-      "pushedAt": "2026-10-25T01:11:37Z",
+      "pushedAt": "2026-10-25T06:09:15Z",
       "lastCommit": {
-        "sha": "7ab7455",
+        "sha": "64d9694",
         "message": "Refresh GitHub snapshot",
-        "date": "2026-10-25T01:11:36Z",
-        "url": "https://github.com/hassan200503/hassan200503.github.io/commit/7ab74559d945366d84d26f1e66cee98d93e64b8a"
-      }
-    },
-    {
-      "name": "rentmanager-frontend",
-      "description": "RentManager web app: landlord dashboard and renter portal. Next.js, React, TypeScript, Clerk, M-Pesa.",
-      "url": "https://github.com/hassan200503/rentmanager-frontend",
-      "homepage": "https://www.rentmanagerke.workers.dev",
-      "language": "TypeScript",
-      "languages": {
-        "TypeScript": 3170147,
-        "CSS": 178216,
-        "PowerShell": 10067,
-        "Shell": 3371,
-        "JavaScript": 2250,
-        "Dockerfile": 2221
-      },
-      "topics": [
-        "kenya",
-        "nextjs",
-        "property-management",
-        "react",
-        "saas",
-        "tailwindcss",
-        "typescript"
-      ],
-      "stars": 0,
-      "forks": 0,
-      "sizeKb": 101388,
-      "license": null,
-      "createdAt": "2026-06-20T17:09:22Z",
-      "pushedAt": "2026-10-24T15:21:17Z",
-      "lastCommit": {
-        "sha": "afb5fbc",
-        "message": "refactor: improve code quality and documentation for __name polyfill",
-        "date": "2026-10-24T14:07:34Z",
-        "url": "https://github.com/hassan200503/rentmanager-frontend/commit/afb5fbcacf5c0c9121af1c839b7e742cd31366d1"
+        "date": "2026-10-25T06:09:14Z",
+        "url": "https://github.com/hassan200503/hassan200503.github.io/commit/64d9694f1400c76fd6bbf404196b2680a38629bd"
       }
     },
     {
