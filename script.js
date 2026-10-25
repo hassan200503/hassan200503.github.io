@@ -210,9 +210,11 @@
   }
 
   // ---- contact form ----
-  // This site is static — there is no server to POST to, so the form's job
-  // is to compose the message properly and hand it to a channel that does
-  // deliver: the visitor's mail client, or WhatsApp. No silent black hole.
+  // Delivery: a form relay (FormSubmit) posts the message straight into
+  // Hassan's Gmail. The relay needs a one-time activation — the very first
+  // submission emails a confirmation link to that address. If the relay or
+  // the network is unreachable, the form falls back to the visitor's mail
+  // client, or to WhatsApp. Nothing gets posted into a silent void.
   var form = document.getElementById("contact-form");
   if (!form) return;
 
@@ -220,6 +222,8 @@
   var handoff = document.getElementById("contact-handoff");
   var waLink = document.getElementById("handoff-wa");
   var copyBtn = document.getElementById("handoff-copy");
+  var submitBtn = form.querySelector('button[type="submit"]');
+  var RELAY = "https://formsubmit.co/ajax/" + EMAIL;
 
   function showStatus(kind, text) {
     statusEl.hidden = false;
@@ -241,6 +245,7 @@
     var project = form.elements["project"].value.trim();
     var kind = form.elements["kind"] ? form.elements["kind"].value : "";
     var details = form.elements["details"].value.trim();
+    var honey = form.elements["_honey"] ? form.elements["_honey"].value : "";
 
     if (!name || !email || !details) {
       showStatus(
@@ -254,7 +259,7 @@
       return;
     }
 
-    var subject = (kind ? kind : "Portfolio enquiry") + " — " + name;
+    var subject = (kind ? kind : "Portfolio enquiry") + " - " + name;
     var body = [
       "Name: " + name,
       "Email: " + email,
@@ -268,27 +273,93 @@
       })
       .join("\n");
 
-    // Give the visitor every route that actually works from a static page.
+    // Honeypot: bots that fill the hidden field get a quiet fake success.
+    if (honey) {
+      showStatus("success", "Sent — thank you. I'll get back to you the same day.");
+      return;
+    }
+
+    // Give the visitor the routes that work no matter what happens next.
     if (waLink) {
       waLink.href = "https://wa.me/" + WA + "?text=" + encodeURIComponent(body);
     }
     if (copyBtn) {
       copyBtn.setAttribute("data-copy", body);
     }
-    if (handoff) handoff.hidden = false;
 
-    window.location.href =
-      "mailto:" +
-      EMAIL +
-      "?subject=" +
-      encodeURIComponent(subject) +
-      "&body=" +
-      encodeURIComponent(body);
+    var btnLabel = submitBtn ? submitBtn.textContent : "";
+    var busy = submitBtn !== null;
+    if (busy) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Sending…";
+    }
+    showStatus("pending", "Sending — one moment.");
 
-    showStatus(
-      "success",
-      "Your email app should be opening with this message already written — send it from there. " +
-        "If nothing opened, use one of the two buttons below instead."
-    );
+    function resetButton() {
+      if (!busy) return;
+      submitBtn.disabled = false;
+      submitBtn.textContent = btnLabel;
+    }
+
+    function fallbackToMailApp(reason) {
+      // The relay can't be reached or refused the message. The honest path
+      // left: put the finished message in the visitor's own mail client
+      // addressed to Hassan, and offer the WhatsApp route beside it.
+      window.location.href =
+        "mailto:" +
+        EMAIL +
+        "?subject=" +
+        encodeURIComponent(subject) +
+        "&body=" +
+        encodeURIComponent(body);
+      if (handoff) handoff.hidden = false;
+      showStatus(
+        "success",
+        "The direct send didn't go through" +
+          (reason ? " (" + reason + ")" : "") +
+          ", so your email app is opening with this message already written — send it from there. " +
+          "WhatsApp works too."
+      );
+    }
+
+    fetch(RELAY, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      body: JSON.stringify({
+        _subject: subject,
+        _template: "table",
+        _captcha: "false",
+        _replyto: email,
+        name: name,
+        email: email,
+        project: project || "—",
+        about: kind,
+        message: details
+      })
+    })
+      .then(function (r) {
+        if (!r.ok) throw new Error("HTTP " + r.status);
+        return r.json();
+      })
+      .then(function (data) {
+        if (String((data && data.success) || "") !== "true") {
+          throw new Error((data && data.message) || "relay refused");
+        }
+        showStatus(
+          "success",
+          "Sent — the message is in my Gmail inbox now. I usually reply the same day, to " +
+            email +
+            "."
+        );
+        if (handoff) handoff.hidden = true;
+        form.reset();
+      })
+      .catch(function () {
+        fallbackToMailApp();
+      })
+      .finally(resetButton);
   });
 })();

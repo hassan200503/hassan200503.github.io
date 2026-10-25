@@ -711,6 +711,7 @@ p { margin: 0; text-wrap: pretty; }
 .field textarea { resize: vertical; min-height: 100px; }
 .form-msg { font-size: 0.88rem; padding: 10px 12px; border-radius: var(--radius-s); }
 .form-msg.success { background: var(--good-soft); color: var(--good); }
+.form-msg.pending { background: color-mix(in srgb, var(--accent) 10%, transparent); color: var(--accent-ink); }
 .form-msg.error { background: var(--warn-soft); color: var(--warn); }
 [hidden] { display: none !important; }
 

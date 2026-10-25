@@ -120,12 +120,19 @@
         <div class="card">
           <h3>Compose a message</h3>
           <p class="muted mt-8 small">
-            This site is a static page with no server behind it. Rather than pretend to send,
-            the form writes your message properly and hands it to your email app, or to WhatsApp
-            if you’d prefer. Nothing disappears into a form that never arrives.
+            Write the message here and hit send — it lands directly in
+            <span class="nw">karungwahassan03@gmail.com</span>, my Gmail inbox, and I usually reply
+            the same day. If the send relay is ever unreachable, the form falls back to your email
+            app, and WhatsApp is always an option. Nothing disappears into a form that never arrives.
           </p>
 
-          <form id="contact-form" class="mt-24 stack" style="gap:16px;" novalidate>
+          <form id="contact-form" class="mt-24 stack" style="gap:16px;" novalidate
+                action="https://formsubmit.co/karungwahassan03@gmail.com" method="POST">
+            <input type="hidden" name="_subject" value="Portfolio enquiry" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_next" value="https://hassan200503.github.io/contact.html" />
+            <input type="text" name="_honey" value="" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true" />
             <div class="field">
               <label for="f-name">Name *</label>
               <input id="f-name" name="name" type="text" autocomplete="name" required />
@@ -153,7 +160,7 @@
               <textarea id="f-details" name="details" required placeholder="The role and what the team works on. Or what you're trying to build, and what makes it hard right now."></textarea>
             </div>
             <div>
-              <button type="submit" class="btn btn-primary">Compose message</button>
+              <button type="submit" class="btn btn-primary">Send message</button>
             </div>
             <p id="contact-status" class="form-msg" role="status" hidden></p>
             <div id="contact-handoff" class="contact-row" hidden>
