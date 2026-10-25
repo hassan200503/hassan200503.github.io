@@ -1831,7 +1831,7 @@ html.lenis, html.lenis body { height: auto; }
 [data-tilt] {
   position: relative;
   transform-style: preserve-3d;
-  transition: transform 280ms cubic-bezier(.2,.7,.2,1), box-shadow 280ms ease;
+  transition: box-shadow 280ms ease;
   will-change: transform;
 }
 [data-tilt] .glare {
@@ -1849,7 +1849,7 @@ html.lenis, html.lenis body { height: auto; }
 
 /* ---- smoother card hovers ---- */
 .interest, .doc, .surface-card, .repo-card {
-  transition: transform 320ms cubic-bezier(.2,.7,.2,1), border-color 320ms ease, box-shadow 320ms ease;
+  transition: border-color 320ms ease, box-shadow 320ms ease;
 }
 
 /* ---- reduced motion: disable everything animated ---- */

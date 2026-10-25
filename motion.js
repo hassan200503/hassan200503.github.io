@@ -73,12 +73,13 @@
   if (!reduceMotion && window.matchMedia && window.matchMedia("(hover: hover)").matches) {
     document.querySelectorAll("[data-magnetic]").forEach(function (btn) {
       btn.addEventListener("mousemove", function (e) {
+        btn.style.transition = "none";
         var r = btn.getBoundingClientRect();
         var x = (e.clientX - r.left - r.width / 2) * 0.28;
         var y = (e.clientY - r.top - r.height / 2) * 0.28;
         btn.style.transform = "translate(" + x + "px," + y + "px)";
       });
-      btn.addEventListener("mouseleave", function () { btn.style.transform = ""; });
+      btn.addEventListener("mouseleave", function () { btn.style.transition = ""; btn.style.transform = ""; });
     });
   }
 
@@ -107,6 +108,7 @@
       card.appendChild(g);
     }
     card.addEventListener("mousemove", function (e) {
+      card.style.transition = "none";
       var r = card.getBoundingClientRect();
       var x = (e.clientX - r.left) / r.width - 0.5;
       var y = (e.clientY - r.top) / r.height - 0.5;
@@ -118,9 +120,11 @@
       }
     });
     card.addEventListener("mouseleave", function () {
+      card.style.transition = "transform 280ms cubic-bezier(.2,.7,.2,1)";
       card.style.transform = "";
       var glare = card.querySelector(".glare");
       if (glare) glare.style.opacity = "0";
+      setTimeout(function () { card.style.transition = ""; }, 300);
     });
   }
   window.htTilt = tiltCard;
