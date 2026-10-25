@@ -8,6 +8,7 @@
   var hasGSAP = !!(window.gsap && window.ScrollTrigger);
   if (hasGSAP) root.classList.add("js-gsap");
 
+  var canHover = !!(window.matchMedia && window.matchMedia("(hover: hover)").matches);
   // ---- Lenis smooth scroll ----
   var lenis = null;
   if (!reduceMotion && window.Lenis) {
@@ -18,20 +19,18 @@
         smoothWheel: true,
         smoothTouch: false
       });
-      function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
-      requestAnimationFrame(raf);
+      if (hasGSAP) {
+        lenis.on("scroll", window.ScrollTrigger.update);
+        window.gsap.ticker.add(function (time) { lenis.raf(time * 1000); });
+        window.gsap.ticker.lagSmoothing(0);
+      } else {
+        function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+        requestAnimationFrame(raf);
+      }
     } catch (e) { lenis = null; }
   }
-
-  // ---- GSAP ScrollTrigger motion ----
   if (hasGSAP) {
     window.gsap.registerPlugin(window.ScrollTrigger);
-    if (lenis) {
-      lenis.on("scroll", window.ScrollTrigger.update);
-      window.gsap.ticker.add(function (time) { lenis.raf(time * 1000); });
-      window.gsap.ticker.lagSmoothing(0);
-    }
-
     function revealEl(el) {
       window.gsap.fromTo(el,
         { opacity: 0, y: 30 },
@@ -62,7 +61,7 @@
         ease: "none",
         scrollTrigger: { trigger: el.parentElement || el, start: "top bottom", end: "bottom top", scrub: true }
       });
-    });    // override htReveal so dynamically added cards (GitHub) join the choreography
+    }); // override htReveal so dynamically added cards (GitHub) join the choreography
     window.htReveal = function (scope) {
       var nodes = (scope || document).querySelectorAll(".reveal:not(.is-visible)");
       nodes.forEach(function (el) { revealEl(el); });
@@ -97,9 +96,9 @@
       requestAnimationFrame(loop);
     }
     requestAnimationFrame(loop);
-  }  // ---- 3D tilt cards ----
+  } // ---- 3D tilt cards ----
   function tiltCard(card) {
-    if (reduceMotion) return;
+    if (reduceMotion || !canHover) return;
     if (!card || card.__tilt) return;
     card.__tilt = true;
     if (!card.querySelector(".glare")) {
