@@ -190,6 +190,25 @@
     });
   });
 
+  // ---- local time (footer) — Homabay, Kenya, UTC+3 ----
+  var timeEl = document.querySelector("[data-local-time]");
+  if (timeEl) {
+    function renderTime() {
+      try {
+        var fmt = new Intl.DateTimeFormat("en-GB", {
+          hour: "2-digit",
+          minute: "2-digit",
+          timeZone: "Africa/Nairobi"
+        });
+        timeEl.textContent = fmt.format(new Date()) + " EAT";
+      } catch (e) {
+        timeEl.textContent = "UTC+3";
+      }
+    }
+    renderTime();
+    setInterval(renderTime, 15000);
+  }
+
   // ---- contact form ----
   // This site is static — there is no server to POST to, so the form's job
   // is to compose the message properly and hand it to a channel that does
