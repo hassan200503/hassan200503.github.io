@@ -639,8 +639,8 @@ p { margin: 0; text-wrap: pretty; }
   color: var(--ink-faint);
 }
 .colophon { font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.03em; }
-.site-footer a { text-decoration: none; color: var(--ink-muted); }
-.site-footer a:hover { color: var(--ink); }
+.site-footer a:not(.btn):not(.foot-mail):not(.foot-status) { text-decoration: none; color: var(--ink-muted); }
+.site-footer a:not(.btn):not(.foot-mail):not(.foot-status):hover { color: var(--ink); }
 @media (max-width: 900px) {
   .foot-grid { grid-template-columns: 1fr; align-items: start; }
   .foot-cols { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -1389,14 +1389,6 @@ p, li, .skill-note, .avail-item p { text-wrap: pretty; }
   justify-self: end;
   width: min(100%, 370px);
 }
-.profile-wrap::before {
-  content: "";
-  position: absolute;
-  inset: 18px -18px -18px 18px;
-  border: 1px solid var(--rule-strong);
-  border-radius: var(--radius-l);
-  z-index: -1;
-}
 .profile-card {
   position: relative;
   margin: 0;
@@ -1456,6 +1448,45 @@ p, li, .skill-note, .avail-item p { text-wrap: pretty; }
 .profile-facts .pip { width: 7px; height: 7px; border-radius: 50%; background: var(--good); }
 @media (max-width: 900px) {
   .profile-wrap { justify-self: start; width: min(100% - 16px, 370px); }
+}
+
+/* ---- daily AI toolkit — the working stack, stated plainly ---- */
+.ai-toolkit {
+  border-top: 1px solid var(--rule);
+  max-width: var(--measure);
+}
+.ai-row {
+  display: grid;
+  grid-template-columns: minmax(120px, 168px) minmax(0, 1fr);
+  gap: 12px 26px;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.ai-kicker {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.ai-badges { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.ai-badges img {
+  display: block;
+  width: auto;
+  height: 20px;
+  border-radius: 3px;
+  box-shadow: var(--shadow-sm);
+}
+.ai-colophon {
+  margin-top: 10px;
+  font-size: 0.82rem;
+  color: var(--ink-faint);
+  line-height: 1.55;
+  max-width: var(--measure);
+}
+@media (max-width: 640px) {
+  .ai-row { grid-template-columns: 1fr; gap: 9px; padding: 13px 0; }
 }
 
 /* ---- entrance ---- */
