@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-25T11:32:27Z",
+  "generatedAt": "2026-10-25T16:23:34Z",
   "user": {
     "login": "hassan200503",
     "name": "Hassan Tsuma ",
@@ -7,27 +7,93 @@
     "avatarUrl": "https://avatars.githubusercontent.com/u/235883538?v=4",
     "url": "https://github.com/hassan200503",
     "followers": 16,
-    "publicRepos": 6,
+    "publicRepos": 7,
     "createdAt": "2025-10-03T12:17:31Z"
   },
   "totals": {
-    "repos": 6,
+    "repos": 7,
     "stars": 0,
     "languageBytes": {
       "Java": 4641260,
-      "TypeScript": 3436473,
-      "CSS": 230341,
-      "HTML": 174651,
-      "JavaScript": 82081,
+      "TypeScript": 4290984,
+      "CSS": 266397,
+      "HTML": 195125,
+      "JavaScript": 108027,
       "PLpgSQL": 18917,
       "PowerShell": 10067,
       "Shell": 8875,
       "Python": 4796,
       "Dockerfile": 4600
     },
-    "lastPush": "2026-10-25T09:18:29Z"
+    "lastPush": "2026-10-25T15:33:39Z"
   },
   "repos": [
+    {
+      "name": "hassan200503.github.io",
+      "description": "Portfolio site for Hassan Tsuma",
+      "url": "https://github.com/hassan200503/hassan200503.github.io",
+      "homepage": "https://hassan200503.github.io",
+      "language": "HTML",
+      "languages": {
+        "HTML": 195125,
+        "CSS": 62640,
+        "JavaScript": 35825,
+        "Python": 4796
+      },
+      "topics": [
+        "css",
+        "github-pages",
+        "html",
+        "portfolio"
+      ],
+      "stars": 0,
+      "forks": 0,
+      "sizeKb": 992,
+      "license": null,
+      "createdAt": "2026-09-14T20:38:01Z",
+      "pushedAt": "2026-10-25T15:33:39Z",
+      "lastCommit": {
+        "sha": "712df40",
+        "message": "Wire contact form to deliver to Gmail via FormSubmit with mailto/WhatsApp fallback",
+        "date": "2026-10-25T15:33:28Z",
+        "url": "https://github.com/hassan200503/hassan200503.github.io/commit/712df406a2f34432d3653f272443ed5f7bc1810f"
+      }
+    },
+    {
+      "name": "rentmanager-backend",
+      "description": "RentManager API: rental management for Kenyan landlords and renters. Spring Boot 3, Java 21, PostgreSQL, M-Pesa Daraja, Clerk auth, multi-tenant.",
+      "url": "https://github.com/hassan200503/rentmanager-backend",
+      "homepage": "https://www.rentmanagerke.workers.dev",
+      "language": "Java",
+      "languages": {
+        "Java": 4641260,
+        "PLpgSQL": 18917,
+        "Shell": 5504,
+        "Dockerfile": 2379
+      },
+      "topics": [
+        "java",
+        "kenya",
+        "mpesa",
+        "multi-tenant",
+        "postgresql",
+        "property-management",
+        "saas",
+        "spring-boot"
+      ],
+      "stars": 0,
+      "forks": 0,
+      "sizeKb": 2100,
+      "license": null,
+      "createdAt": "2026-06-11T16:44:44Z",
+      "pushedAt": "2026-10-25T14:05:39Z",
+      "lastCommit": {
+        "sha": "5f66797",
+        "message": "Add redundant edge API keep-alive",
+        "date": "2026-10-25T14:05:19Z",
+        "url": "https://github.com/hassan200503/rentmanager-backend/commit/5f667979ce337e297b9f7471de9e3f9bbee08b84"
+      }
+    },
     {
       "name": "rentmanager-frontend",
       "description": "Kenya's trusted rental platform | Full-stack Property Management SaaS with M-Pesa integration, digital leases, real-time analytics, and automated rent   collection | React + Node.js + PostgreSQL + Cloudflare",
@@ -76,37 +142,6 @@
       }
     },
     {
-      "name": "hassan200503.github.io",
-      "description": "Portfolio site for Hassan Tsuma",
-      "url": "https://github.com/hassan200503/hassan200503.github.io",
-      "homepage": "https://hassan200503.github.io",
-      "language": "HTML",
-      "languages": {
-        "HTML": 174651,
-        "CSS": 52125,
-        "JavaScript": 22033,
-        "Python": 4796
-      },
-      "topics": [
-        "css",
-        "github-pages",
-        "html",
-        "portfolio"
-      ],
-      "stars": 0,
-      "forks": 0,
-      "sizeKb": 872,
-      "license": null,
-      "createdAt": "2026-09-14T20:38:01Z",
-      "pushedAt": "2026-10-25T06:09:15Z",
-      "lastCommit": {
-        "sha": "64d9694",
-        "message": "Refresh GitHub snapshot",
-        "date": "2026-10-25T06:09:14Z",
-        "url": "https://github.com/hassan200503/hassan200503.github.io/commit/64d9694f1400c76fd6bbf404196b2680a38629bd"
-      }
-    },
-    {
       "name": "rentmanager-mobile",
       "description": "RentManager mobile app for landlords and renters in Kenya (Expo, React Native, TypeScript)",
       "url": "https://github.com/hassan200503/rentmanager-mobile",
@@ -138,41 +173,6 @@
       }
     },
     {
-      "name": "rentmanager-backend",
-      "description": "RentManager API: rental management for Kenyan landlords and renters. Spring Boot 3, Java 21, PostgreSQL, M-Pesa Daraja, Clerk auth, multi-tenant.",
-      "url": "https://github.com/hassan200503/rentmanager-backend",
-      "homepage": "https://www.rentmanagerke.workers.dev",
-      "language": "Java",
-      "languages": {
-        "Java": 4641260,
-        "PLpgSQL": 18917,
-        "Shell": 5504,
-        "Dockerfile": 2379
-      },
-      "topics": [
-        "java",
-        "kenya",
-        "mpesa",
-        "multi-tenant",
-        "postgresql",
-        "property-management",
-        "saas",
-        "spring-boot"
-      ],
-      "stars": 0,
-      "forks": 0,
-      "sizeKb": 2093,
-      "license": null,
-      "createdAt": "2026-06-11T16:44:44Z",
-      "pushedAt": "2026-10-14T21:44:56Z",
-      "lastCommit": {
-        "sha": "7f58ccc",
-        "message": "fix(db): neutralize broken V105 demo-seed migration",
-        "date": "2026-10-14T21:38:26Z",
-        "url": "https://github.com/hassan200503/rentmanager-backend/commit/7f58ccc3e5489e129f207ccacaa6f6d6d9a4db45"
-      }
-    },
-    {
       "name": "hassan200503",
       "description": "Personal information",
       "url": "https://github.com/hassan200503/hassan200503",
@@ -191,6 +191,31 @@
         "message": "Update README with technology and module details",
         "date": "2026-10-14T20:58:39Z",
         "url": "https://github.com/hassan200503/hassan200503/commit/e89442fabd58038ef9b15d1e97d826f804ead604"
+      }
+    },
+    {
+      "name": "our-universe",
+      "description": "Our Universe: Hassan's world, Whitney's world, our story, and live discoveries from the real world.",
+      "url": "https://github.com/hassan200503/our-universe",
+      "homepage": "https://our-universe-gamma-green.vercel.app",
+      "language": "TypeScript",
+      "languages": {
+        "TypeScript": 854511,
+        "CSS": 25541,
+        "JavaScript": 12154
+      },
+      "topics": [],
+      "stars": 0,
+      "forks": 0,
+      "sizeKb": 914,
+      "license": null,
+      "createdAt": "2026-09-27T10:36:32Z",
+      "pushedAt": "2026-09-29T19:53:33Z",
+      "lastCommit": {
+        "sha": "ebd08c4",
+        "message": "Calls never hang on \"Connecting…\"; show what each phone found (#5)",
+        "date": "2026-09-29T19:53:33Z",
+        "url": "https://github.com/hassan200503/our-universe/commit/ebd08c44cbff0071972c29f06b93588f8e7cef3d"
       }
     },
     {
