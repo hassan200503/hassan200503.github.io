@@ -4,7 +4,7 @@ Last updated: 2026-10-26
 
 ## Current task
 
-P0 baseline and audit. The repository was cloned from `https://github.com/hassan200503/hassan200503.github.io` and inspected without changing site behavior.
+G1 decision: choose whether to introduce a small custom static build/template step for the duplicated page shell.
 
 ## Completed work
 
@@ -50,8 +50,9 @@ P0 baseline and audit. The repository was cloned from `https://github.com/hassan
 - Owner approval is required before changing contact presentation (G5).
 - Owner approval is required before changing first-person factual copy or proficiency tiers (G5).
 - Owner decision is required before changing Pages deployment source (G2).
+- G1 is now reached: eight HTML pages each contain their own header/footer shell. A shared-partial implementation would require generated HTML or a template build step; no framework is required, but it is still a static-site-generator decision.
 - Owner must create/install the GitHub App and add Worker secrets at G3.
 
 ## Handover note
 
-P0 evidence is documented. Continue with the first unblocked P1 slice. Do not rely on visual quality or performance targets until the missing browser measurements have been run.
+P0 evidence and the initial P1 slices are documented. Work is paused at G1 pending the owner’s choice. Do not rely on visual quality or performance targets until the missing browser measurements have been run.
