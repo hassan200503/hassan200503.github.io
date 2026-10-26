@@ -20,7 +20,7 @@ import sys
 import base64
 from datetime import datetime, timezone
 
-from github_snapshot import build_snapshot, detect_technologies, include_repository, normalize_repository
+from github_snapshot import build_snapshot, detect_technologies, include_repository, keep_last_good_snapshot, normalize_repository
 
 USER = sys.argv[1] if len(sys.argv) > 1 else "hassan200503"
 OUT = sys.argv[2] if len(sys.argv) > 2 else os.path.join("data", "github.json")
@@ -123,6 +123,14 @@ language_bytes = dict(sorted(totals.items(), key=lambda kv: -kv[1]))
 
 snapshot = build_snapshot(profile, repos)
 snapshot["generatedAt"] = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+if os.path.exists(OUT):
+    try:
+        with open(OUT, encoding="utf-8") as previous_file:
+            previous = json.load(previous_file)
+        snapshot = keep_last_good_snapshot(previous, snapshot)
+    except (OSError, ValueError) as exc:
+        print("    ! could not read previous snapshot: %s" % exc)
 
 os.makedirs(os.path.dirname(OUT) or ".", exist_ok=True)
 with open(OUT, "w", encoding="utf-8", newline="\n") as fh:

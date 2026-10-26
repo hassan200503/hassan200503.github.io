@@ -7,7 +7,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
-from github_snapshot import build_snapshot, detect_technologies, include_repository, normalize_repository  # noqa: E402
+from github_snapshot import build_snapshot, detect_technologies, include_repository, keep_last_good_snapshot, normalize_repository  # noqa: E402
 
 
 class GithubSnapshotTests(unittest.TestCase):
@@ -22,6 +22,13 @@ class GithubSnapshotTests(unittest.TestCase):
         self.assertFalse(include_repository(self.repos[2]))
         self.assertFalse(include_repository(self.repos[3]))
         self.assertFalse(include_repository(self.repos[4]))
+
+    def test_last_good_snapshot_survives_error_and_empty_candidate(self):
+        previous = {"generatedAt": "old", "repos": [{"id": 101}]}
+        self.assertIs(keep_last_good_snapshot(previous, None), previous)
+        self.assertIs(keep_last_good_snapshot(previous, {"repos": []}), previous)
+        candidate = {"generatedAt": "new", "repos": [{"id": 102}]}
+        self.assertIs(keep_last_good_snapshot(previous, candidate), candidate)
 
     def test_normalization_preserves_untrusted_description_as_data(self):
         normalized = normalize_repository(self.repos[1], {})

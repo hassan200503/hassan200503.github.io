@@ -11,6 +11,15 @@ def include_repository(repo):
     return True
 
 
+def keep_last_good_snapshot(previous, candidate):
+    """Reject malformed or unexpectedly empty candidates."""
+    if not isinstance(candidate, dict) or not isinstance(candidate.get("repos"), list):
+        return previous
+    if isinstance(previous, dict) and previous.get("repos") and not candidate["repos"]:
+        return previous
+    return candidate
+
+
 def normalize_repository(repo, language_bytes=None, technologies=None):
     license_info = repo.get("license") or {}
     return {
