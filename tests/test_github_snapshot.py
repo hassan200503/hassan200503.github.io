@@ -7,7 +7,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
-from github_snapshot import build_snapshot, detect_technologies, include_repository, keep_last_good_snapshot, normalize_repository  # noqa: E402
+from github_snapshot import build_snapshot, compute_project_stats, detect_technologies, include_repository, keep_last_good_snapshot, normalize_repository  # noqa: E402
 
 
 class GithubSnapshotTests(unittest.TestCase):
@@ -60,6 +60,15 @@ class GithubSnapshotTests(unittest.TestCase):
         self.assertEqual([item["technology"] for item in technologies], ["Docker", "Python", "Spring Boot"])
         self.assertEqual(technologies[0]["evidence"][0]["path"], "Dockerfile")
         self.assertIn("blob/main/pom.xml", technologies[2]["evidence"][0]["url"])
+
+    def test_project_stats_use_explicit_counting_method(self):
+        stats = compute_project_stats(
+            ["src/main/java/com/example/modules/rent/App.java", "src/main/java/com/example/modules/property/App.java", "src/main/resources/db/migration/V1.sql", "src/test/java/AppTest.java"],
+            {},
+        )
+        self.assertEqual(stats["migrations"], 1)
+        self.assertEqual(stats["modules"], 2)
+        self.assertEqual(stats["tests"]["count"], 1)
 
 
 if __name__ == "__main__":
