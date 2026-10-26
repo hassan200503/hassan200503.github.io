@@ -22,7 +22,7 @@
 
   var API = "https://api.github.com/users/hassan200503/repos?per_page=100&sort=pushed";
   var CACHE_KEY = "ht-gh-live";
-  var CACHE_TTL_MS = 15 * 60 * 1000;
+  var CACHE_TTL_MS = 5 * 60 * 1000;
 
   var mount = document.querySelector("[data-github]");
   if (!mount) return;
@@ -249,19 +249,23 @@
 
   // ---- data -------------------------------------------------------------
 
-  function readCache() {
+  function readCacheEntry() {
     try {
       var raw = localStorage.getItem(CACHE_KEY);
       if (!raw) return null;
       var c = JSON.parse(raw);
-      if (Date.now() - c.at > CACHE_TTL_MS) return null;
-      return c.repos;
+      return c && Array.isArray(c.repos) ? c : null;
     } catch (e) { return null; }
   }
 
-  function writeCache(repos) {
+  function readCache() {
+    var c = readCacheEntry();
+    return c && Date.now() - c.at <= CACHE_TTL_MS ? c : null;
+  }
+
+  function writeCache(repos, etag) {
     try {
-      localStorage.setItem(CACHE_KEY, JSON.stringify({ at: Date.now(), repos: repos }));
+      localStorage.setItem(CACHE_KEY, JSON.stringify({ at: Date.now(), etag: etag || null, repos: repos }));
     } catch (e) { /* private mode, or the quota is full; the page is fine */ }
   }
 
@@ -272,18 +276,24 @@
    * repository too new to appear there falls back to its primary language. */
   function merge(snapshot, liveRepos) {
     var bySnapshot = {};
-    (snapshot.repos || []).forEach(function (r) { bySnapshot[r.name] = r; });
+    (snapshot.repos || []).forEach(function (r) { bySnapshot[String(r.id || r.name)] = r; });
 
     var merged = liveRepos
-      .filter(function (r) { return !r.fork && !r.archived; })
+      .filter(function (r) {
+        var topics = r.topics || [];
+        return !r.archived && (!r.fork || topics.indexOf("portfolio-included") !== -1) && topics.indexOf("portfolio-hidden") === -1;
+      })
       .map(function (r) {
-        var prev = bySnapshot[r.name] || {};
+        var prev = bySnapshot[String(r.id || r.name)] || {};
         return {
+          id: r.id,
           name: r.name,
           description: r.description,
           url: r.html_url,
           homepage: (r.homepage || "").trim() || null,
           language: r.language,
+          primaryLanguage: r.language,
+          languageBytes: prev.languageBytes || prev.languages || {},
           languages: prev.languages || {},
           topics: r.topics || prev.topics || [],
           stars: r.stargazers_count,
@@ -292,6 +302,9 @@
           license: (r.license && r.license.spdx_id) || null,
           createdAt: r.created_at,
           pushedAt: r.pushed_at,
+          archived: !!r.archived,
+          defaultBranch: r.default_branch || prev.defaultBranch || "main",
+          technologies: prev.technologies || [],
           lastCommit: prev.lastCommit || null
         };
       })
@@ -331,25 +344,36 @@
   }
 
   function goLive(snapshot) {
+    var stored = readCacheEntry();
     var cached = readCache();
     if (cached) {
-      render(merge(snapshot, cached), true);
+      render(merge(snapshot, cached.repos), true);
       return;
     }
-    fetch(API, { headers: { Accept: "application/vnd.github+json" } })
+    var headers = { Accept: "application/vnd.github+json" };
+    if (stored && stored.etag) headers["If-None-Match"] = stored.etag;
+    fetch(API, { headers: headers })
       .then(function (r) {
+        if (r.status === 304) return { notModified: true };
         if (!r.ok) throw new Error("gh " + r.status);   // 403 = rate limited
-        return r.json();
+        return r.json().then(function (live) { return { live: live, etag: r.headers.get("ETag") }; });
       })
-      .then(function (live) {
+      .then(function (result) {
+        if (result.notModified && stored) {
+          render(merge(snapshot, stored.repos), true);
+          return;
+        }
+        var live = result.live;
         if (!Array.isArray(live) || !live.length) return;
-        writeCache(live);
+        writeCache(live, result.etag);
         render(merge(snapshot, live), true);
       })
       .catch(function () {
-        /* Rate limited, offline, or blocked. The snapshot is already
-           rendered and correct, so there is nothing to report and nothing
-           for the visitor to do. */
+        var stamp = mount.querySelector("[data-github-stamp]");
+        if (stamp) {
+          stamp.textContent = "Snapshot · last synced " + relTime(snapshot.generatedAt);
+          stamp.classList.remove("is-live");
+        }
       });
   }
 
@@ -365,5 +389,7 @@
         grid.appendChild(el("p", "muted",
           "The project list could not be loaded. It is always readable at github.com/hassan200503."));
       }
+      var stamp = mount.querySelector("[data-github-stamp]");
+      if (stamp) stamp.textContent = "Snapshot unavailable · try again later";
     });
 })();

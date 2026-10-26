@@ -18,6 +18,7 @@ P2 data pipeline: snapshot contract and fixture-tested shaping are implemented; 
 - P2 technology detector: added pure language/file/manifest matching with repository-relative evidence URLs and fixture coverage (`f7134ea`). Live generator wiring remains intentionally next so it can be added with controlled API calls.
 - P2 live evidence wiring: the generator now reads recursive repository trees plus bounded manifest/config contents, applies `data/tech-map.json`, and drops detections without a proving file path. The latest snapshot has no null evidence paths.
 - P2 fallback hardening: malformed or unexpectedly empty candidates now preserve the existing snapshot; fixture coverage includes API-error and empty-candidate behavior.
+- P2 browser refresh: reduced metadata cache to 5 minutes, added ETag/304 handling, numeric-ID merging, topic filters, and visible last-snapshot status on API failure; `node --check github.js` passes.
 
 ## Blocked items
 
@@ -28,7 +29,7 @@ P2 data pipeline: snapshot contract and fixture-tested shaping are implemented; 
 ## Next three tasks
 
 1. P2 data pipeline: compute project statistics from repository evidence and add them to the snapshot.
-2. P2 data pipeline: migrate browser refresh/cache to numeric IDs with a five-minute cache and visible fallback status.
+2. P2 data pipeline: pre-render the project list and technology ledger into HTML so JavaScript-disabled readers never see Loading.
 3. P3 deployment workflow: design the build-and-deploy workflow proposal; stop at G2 before changing Pages source.
 
 ## Commands that work
