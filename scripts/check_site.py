@@ -47,7 +47,10 @@ for page in HTML_FILES:
         parts = urlsplit(href)
         if parts.scheme or href.startswith("//") or href.startswith("#"):
             continue
-        target = (page.parent / parts.path).resolve()
+        if parts.path.startswith("/"):
+            target = (ROOT / parts.path.lstrip("/")).resolve()
+        else:
+            target = (page.parent / parts.path).resolve()
         if not target.exists():
             errors.append(f"{page.relative_to(ROOT)}: missing local link {href}")
 
