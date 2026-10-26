@@ -16,6 +16,7 @@ P2 data pipeline: snapshot contract and fixture-tested shaping are implemented; 
 - P2 fixture tests: added `scripts/github_snapshot.py` and `tests/test_github_snapshot.py` covering HTML in descriptions, missing languages, forks, archived repositories, hidden repositories, numeric IDs, and aggregate data.
 - Regenerated `data/github.json` successfully from the public GitHub API locally; it reports 7 repositories and 10 languages at `2026-10-26T10:35:42Z`.
 - P2 technology detector: added pure language/file/manifest matching with repository-relative evidence URLs and fixture coverage (`f7134ea`). Live generator wiring remains intentionally next so it can be added with controlled API calls.
+- P2 live evidence wiring: the generator now reads recursive repository trees plus bounded manifest/config contents, applies `data/tech-map.json`, and drops detections without a proving file path. The latest snapshot has no null evidence paths.
 
 ## Blocked items
 
@@ -25,8 +26,8 @@ P2 data pipeline: snapshot contract and fixture-tested shaping are implemented; 
 
 ## Next three tasks
 
-1. P2 data pipeline: wire tree/manifest reads into the generator and populate live technology evidence.
-2. P2 data pipeline: add failure/fallback fixtures and snapshot-last-good behavior tests.
+1. P2 data pipeline: add failure/fallback fixtures and snapshot-last-good behavior tests.
+2. P2 data pipeline: compute project statistics from repository evidence and add them to the snapshot.
 3. P3 deployment workflow: design the build-and-deploy workflow proposal; stop at G2 before changing Pages source.
 
 ## Commands that work

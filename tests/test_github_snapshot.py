@@ -31,7 +31,7 @@ class GithubSnapshotTests(unittest.TestCase):
 
     def test_snapshot_is_keyed_by_numeric_id_and_aggregates(self):
         normalized = [normalize_repository(self.repos[0], {"Python": 10})]
-        normalized[0]["technologies"] = [{"technology": "Python", "category": "AI tooling", "evidence": []}]
+        normalized[0]["technologies"] = [{"technology": "Python", "category": "AI tooling", "evidence": [{"path": "main.py", "url": "https://github.com/hassan200503/safe-project/blob/main/main.py"}]}]
         snapshot = build_snapshot({"login": "hassan200503"}, normalized)
         self.assertEqual(snapshot["repos"][0]["id"], 101)
         self.assertEqual(snapshot["totals"]["languageBytes"]["Python"], 10)
@@ -46,7 +46,7 @@ class GithubSnapshotTests(unittest.TestCase):
         ]
         technologies = detect_technologies(
             repo,
-            ["Dockerfile", "pom.xml"],
+            ["Dockerfile", "pom.xml", "main.py"],
             {"pom.xml": "org.springframework.boot:spring-boot-starter-web"},
             signatures,
         )

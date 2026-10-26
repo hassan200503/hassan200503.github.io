@@ -47,7 +47,8 @@ def build_snapshot(profile, repositories):
             language_totals[language] += count
         for technology in repo.get("technologies") or []:
             name = technology.get("technology")
-            if not name:
+            evidence = [item for item in (technology.get("evidence") or []) if item.get("path")]
+            if not name or not evidence:
                 continue
             entry = technology_totals.setdefault(name, {
                 "technology": name,
@@ -60,7 +61,7 @@ def build_snapshot(profile, repositories):
             entry["repoCount"] += 1
             entry["firstUsed"] = min(filter(None, [entry["firstUsed"], repo.get("createdAt")]), default=None)
             entry["lastUsed"] = max(filter(None, [entry["lastUsed"], repo.get("pushedAt")]), default=None)
-            entry["evidence"].extend(technology.get("evidence") or [])
+            entry["evidence"].extend(evidence)
 
     return {
         "generatedAt": None,
@@ -111,11 +112,18 @@ def detect_technologies(repo, tree_paths, file_contents, signatures):
     language_names = set((repo.get("languages") or {}).keys())
     if repo.get("language"):
         language_names.add(repo["language"])
+    language_suffixes = {
+        "Java": (".java",), "TypeScript": (".ts", ".tsx"), "JavaScript": (".js", ".jsx"),
+        "Python": (".py",), "CSS": (".css",), "HTML": (".html",), "PLpgSQL": (".sql",),
+        "PowerShell": (".ps1",), "Shell": (".sh",),
+    }
     for signature in signatures:
         kind = signature.get("kind")
         match = signature.get("match", "")
         if kind == "language" and match in language_names:
-            add(signature)
+            candidates = [path for path in tree_paths if path.lower().endswith(language_suffixes.get(match, ())) ]
+            for path in candidates[:1]:
+                add(signature, path)
         elif kind == "file":
             for path in tree_paths:
                 if match.lower() in path.lower():

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-26T10:35:42Z",
+  "generatedAt": "2026-10-26T10:44:26Z",
   "source": "GitHub public API; generated during the site build",
   "user": {
     "login": "hassan200503",
@@ -28,7 +28,271 @@
     },
     "lastPush": "2026-10-26T06:32:35Z"
   },
-  "technologyLedger": [],
+  "technologyLedger": [
+    {
+      "technology": "Docker",
+      "category": "testing and delivery",
+      "repoCount": 2,
+      "firstUsed": "2026-06-11T16:44:44Z",
+      "lastUsed": "2026-10-25T14:05:39Z",
+      "evidence": [
+        {
+          "path": "Dockerfile",
+          "url": "https://github.com/hassan200503/rentmanager-backend/blob/main/Dockerfile"
+        },
+        {
+          "path": "Dockerfile",
+          "url": "https://github.com/hassan200503/rentmanager-frontend/blob/main/Dockerfile"
+        }
+      ]
+    },
+    {
+      "technology": "GitHub Actions",
+      "category": "testing and delivery",
+      "repoCount": 5,
+      "firstUsed": "2026-06-11T16:44:44Z",
+      "lastUsed": "2026-10-26T06:16:29Z",
+      "evidence": [
+        {
+          "path": ".github/workflows/github-data.yml",
+          "url": "https://github.com/hassan200503/hassan200503.github.io/blob/main/.github/workflows/github-data.yml"
+        },
+        {
+          "path": ".github/workflows/backup.yml",
+          "url": "https://github.com/hassan200503/rentmanager-backend/blob/main/.github/workflows/backup.yml"
+        },
+        {
+          "path": ".github/workflows/ci.yml",
+          "url": "https://github.com/hassan200503/rentmanager-backend/blob/main/.github/workflows/ci.yml"
+        },
+        {
+          "path": ".github/workflows/keep-awake-edge.yml",
+          "url": "https://github.com/hassan200503/rentmanager-backend/blob/main/.github/workflows/keep-awake-edge.yml"
+        },
+        {
+          "path": ".github/workflows/keep-awake.yml",
+          "url": "https://github.com/hassan200503/rentmanager-backend/blob/main/.github/workflows/keep-awake.yml"
+        },
+        {
+          "path": ".github/workflows/ci.yml",
+          "url": "https://github.com/hassan200503/rentmanager-frontend/blob/main/.github/workflows/ci.yml"
+        },
+        {
+          "path": ".github/workflows/cloudflare-deploy.yml",
+          "url": "https://github.com/hassan200503/rentmanager-frontend/blob/main/.github/workflows/cloudflare-deploy.yml"
+        },
+        {
+          "path": ".github/workflows/cloudflare-size-probe.yml",
+          "url": "https://github.com/hassan200503/rentmanager-frontend/blob/main/.github/workflows/cloudflare-size-probe.yml"
+        },
+        {
+          "path": ".github/workflows/ci.yml",
+          "url": "https://github.com/hassan200503/rentmanager-mobile/blob/main/.github/workflows/ci.yml"
+        },
+        {
+          "path": ".github/workflows/release.yml",
+          "url": "https://github.com/hassan200503/rentmanager-mobile/blob/main/.github/workflows/release.yml"
+        },
+        {
+          "path": ".github/workflows/ci.yml",
+          "url": "https://github.com/hassan200503/our-universe/blob/main/.github/workflows/ci.yml"
+        },
+        {
+          "path": ".github/workflows/ingest.yml",
+          "url": "https://github.com/hassan200503/our-universe/blob/main/.github/workflows/ingest.yml"
+        }
+      ]
+    },
+    {
+      "technology": "Java",
+      "category": "backend",
+      "repoCount": 1,
+      "firstUsed": "2026-06-11T16:44:44Z",
+      "lastUsed": "2026-10-25T14:05:39Z",
+      "evidence": [
+        {
+          "path": "src/main/java/com/rentmanager/RentManagerApplication.java",
+          "url": "https://github.com/hassan200503/rentmanager-backend/blob/main/src/main/java/com/rentmanager/RentManagerApplication.java"
+        }
+      ]
+    },
+    {
+      "technology": "JavaScript",
+      "category": "frontend and mobile",
+      "repoCount": 1,
+      "firstUsed": "2026-09-23T07:02:22Z",
+      "lastUsed": "2026-10-26T06:32:35Z",
+      "evidence": [
+        {
+          "path": "scripts/reflect-now.js",
+          "url": "https://github.com/hassan200503/personal-companion-bot/blob/main/scripts/reflect-now.js"
+        }
+      ]
+    },
+    {
+      "technology": "M-Pesa Daraja",
+      "category": "payments",
+      "repoCount": 2,
+      "firstUsed": "2026-06-11T16:44:44Z",
+      "lastUsed": "2026-10-25T14:05:39Z",
+      "evidence": [
+        {
+          "path": ".github/workflows/ci.yml",
+          "url": "https://github.com/hassan200503/rentmanager-backend/blob/main/.github/workflows/ci.yml"
+        },
+        {
+          "path": "deploy/docker-compose.yml",
+          "url": "https://github.com/hassan200503/rentmanager-backend/blob/main/deploy/docker-compose.yml"
+        },
+        {
+          "path": ".github/workflows/ci.yml",
+          "url": "https://github.com/hassan200503/rentmanager-mobile/blob/main/.github/workflows/ci.yml"
+        }
+      ]
+    },
+    {
+      "technology": "Next.js",
+      "category": "frontend and mobile",
+      "repoCount": 3,
+      "firstUsed": "2026-06-11T16:44:44Z",
+      "lastUsed": "2026-10-25T14:05:39Z",
+      "evidence": [
+        {
+          "path": ".github/workflows/keep-awake.yml",
+          "url": "https://github.com/hassan200503/rentmanager-backend/blob/main/.github/workflows/keep-awake.yml"
+        },
+        {
+          "path": "deploy/docker-compose.yml",
+          "url": "https://github.com/hassan200503/rentmanager-backend/blob/main/deploy/docker-compose.yml"
+        },
+        {
+          "path": ".github/workflows/cloudflare-deploy.yml",
+          "url": "https://github.com/hassan200503/rentmanager-frontend/blob/main/.github/workflows/cloudflare-deploy.yml"
+        },
+        {
+          "path": ".github/workflows/cloudflare-size-probe.yml",
+          "url": "https://github.com/hassan200503/rentmanager-frontend/blob/main/.github/workflows/cloudflare-size-probe.yml"
+        },
+        {
+          "path": "Dockerfile",
+          "url": "https://github.com/hassan200503/rentmanager-frontend/blob/main/Dockerfile"
+        },
+        {
+          "path": "package.json",
+          "url": "https://github.com/hassan200503/rentmanager-frontend/blob/main/package.json"
+        },
+        {
+          "path": ".github/workflows/ci.yml",
+          "url": "https://github.com/hassan200503/our-universe/blob/main/.github/workflows/ci.yml"
+        },
+        {
+          "path": "package.json",
+          "url": "https://github.com/hassan200503/our-universe/blob/main/package.json"
+        }
+      ]
+    },
+    {
+      "technology": "PostgreSQL",
+      "category": "data",
+      "repoCount": 1,
+      "firstUsed": "2026-06-11T16:44:44Z",
+      "lastUsed": "2026-10-25T14:05:39Z",
+      "evidence": [
+        {
+          "path": ".github/workflows/backup.yml",
+          "url": "https://github.com/hassan200503/rentmanager-backend/blob/main/.github/workflows/backup.yml"
+        },
+        {
+          "path": ".github/workflows/ci.yml",
+          "url": "https://github.com/hassan200503/rentmanager-backend/blob/main/.github/workflows/ci.yml"
+        },
+        {
+          "path": "deploy/docker-compose.yml",
+          "url": "https://github.com/hassan200503/rentmanager-backend/blob/main/deploy/docker-compose.yml"
+        },
+        {
+          "path": "docker-compose.yml",
+          "url": "https://github.com/hassan200503/rentmanager-backend/blob/main/docker-compose.yml"
+        },
+        {
+          "path": "pom.xml",
+          "url": "https://github.com/hassan200503/rentmanager-backend/blob/main/pom.xml"
+        }
+      ]
+    },
+    {
+      "technology": "React",
+      "category": "frontend and mobile",
+      "repoCount": 3,
+      "firstUsed": "2026-06-20T17:09:22Z",
+      "lastUsed": "2026-10-25T09:18:29Z",
+      "evidence": [
+        {
+          "path": "package.json",
+          "url": "https://github.com/hassan200503/rentmanager-frontend/blob/main/package.json"
+        },
+        {
+          "path": "package.json",
+          "url": "https://github.com/hassan200503/rentmanager-mobile/blob/main/package.json"
+        },
+        {
+          "path": "package.json",
+          "url": "https://github.com/hassan200503/our-universe/blob/main/package.json"
+        }
+      ]
+    },
+    {
+      "technology": "React Native",
+      "category": "frontend and mobile",
+      "repoCount": 1,
+      "firstUsed": "2026-09-15T20:05:14Z",
+      "lastUsed": "2026-10-17T12:37:17Z",
+      "evidence": [
+        {
+          "path": "package.json",
+          "url": "https://github.com/hassan200503/rentmanager-mobile/blob/main/package.json"
+        }
+      ]
+    },
+    {
+      "technology": "Spring Boot",
+      "category": "backend",
+      "repoCount": 1,
+      "firstUsed": "2026-06-11T16:44:44Z",
+      "lastUsed": "2026-10-25T14:05:39Z",
+      "evidence": [
+        {
+          "path": "Dockerfile",
+          "url": "https://github.com/hassan200503/rentmanager-backend/blob/main/Dockerfile"
+        },
+        {
+          "path": "pom.xml",
+          "url": "https://github.com/hassan200503/rentmanager-backend/blob/main/pom.xml"
+        }
+      ]
+    },
+    {
+      "technology": "TypeScript",
+      "category": "frontend and mobile",
+      "repoCount": 3,
+      "firstUsed": "2026-06-20T17:09:22Z",
+      "lastUsed": "2026-10-25T09:18:29Z",
+      "evidence": [
+        {
+          "path": "next.config.ts",
+          "url": "https://github.com/hassan200503/rentmanager-frontend/blob/main/next.config.ts"
+        },
+        {
+          "path": "app.config.ts",
+          "url": "https://github.com/hassan200503/rentmanager-mobile/blob/main/app.config.ts"
+        },
+        {
+          "path": "drizzle.config.ts",
+          "url": "https://github.com/hassan200503/our-universe/blob/main/drizzle.config.ts"
+        }
+      ]
+    }
+  ],
   "repos": [
     {
       "id": 1382929316,
@@ -59,7 +323,18 @@
       "archived": false,
       "defaultBranch": "main",
       "license": null,
-      "technologies": [],
+      "technologies": [
+        {
+          "technology": "JavaScript",
+          "category": "frontend and mobile",
+          "evidence": [
+            {
+              "path": "scripts/reflect-now.js",
+              "url": "https://github.com/hassan200503/personal-companion-bot/blob/main/scripts/reflect-now.js"
+            }
+          ]
+        }
+      ],
       "lastCommit": {
         "sha": "9459158",
         "message": "Update project title and description in README",
@@ -101,7 +376,18 @@
       "archived": false,
       "defaultBranch": "main",
       "license": null,
-      "technologies": [],
+      "technologies": [
+        {
+          "technology": "GitHub Actions",
+          "category": "testing and delivery",
+          "evidence": [
+            {
+              "path": ".github/workflows/github-data.yml",
+              "url": "https://github.com/hassan200503/hassan200503.github.io/blob/main/.github/workflows/github-data.yml"
+            }
+          ]
+        }
+      ],
       "lastCommit": {
         "sha": "ff1775e",
         "message": "Refresh GitHub snapshot",
@@ -147,7 +433,118 @@
       "archived": false,
       "defaultBranch": "main",
       "license": null,
-      "technologies": [],
+      "technologies": [
+        {
+          "technology": "Docker",
+          "category": "testing and delivery",
+          "evidence": [
+            {
+              "path": "Dockerfile",
+              "url": "https://github.com/hassan200503/rentmanager-backend/blob/main/Dockerfile"
+            }
+          ]
+        },
+        {
+          "technology": "GitHub Actions",
+          "category": "testing and delivery",
+          "evidence": [
+            {
+              "path": ".github/workflows/backup.yml",
+              "url": "https://github.com/hassan200503/rentmanager-backend/blob/main/.github/workflows/backup.yml"
+            },
+            {
+              "path": ".github/workflows/ci.yml",
+              "url": "https://github.com/hassan200503/rentmanager-backend/blob/main/.github/workflows/ci.yml"
+            },
+            {
+              "path": ".github/workflows/keep-awake-edge.yml",
+              "url": "https://github.com/hassan200503/rentmanager-backend/blob/main/.github/workflows/keep-awake-edge.yml"
+            },
+            {
+              "path": ".github/workflows/keep-awake.yml",
+              "url": "https://github.com/hassan200503/rentmanager-backend/blob/main/.github/workflows/keep-awake.yml"
+            }
+          ]
+        },
+        {
+          "technology": "Java",
+          "category": "backend",
+          "evidence": [
+            {
+              "path": "src/main/java/com/rentmanager/RentManagerApplication.java",
+              "url": "https://github.com/hassan200503/rentmanager-backend/blob/main/src/main/java/com/rentmanager/RentManagerApplication.java"
+            }
+          ]
+        },
+        {
+          "technology": "M-Pesa Daraja",
+          "category": "payments",
+          "evidence": [
+            {
+              "path": ".github/workflows/ci.yml",
+              "url": "https://github.com/hassan200503/rentmanager-backend/blob/main/.github/workflows/ci.yml"
+            },
+            {
+              "path": "deploy/docker-compose.yml",
+              "url": "https://github.com/hassan200503/rentmanager-backend/blob/main/deploy/docker-compose.yml"
+            }
+          ]
+        },
+        {
+          "technology": "Next.js",
+          "category": "frontend and mobile",
+          "evidence": [
+            {
+              "path": ".github/workflows/keep-awake.yml",
+              "url": "https://github.com/hassan200503/rentmanager-backend/blob/main/.github/workflows/keep-awake.yml"
+            },
+            {
+              "path": "deploy/docker-compose.yml",
+              "url": "https://github.com/hassan200503/rentmanager-backend/blob/main/deploy/docker-compose.yml"
+            }
+          ]
+        },
+        {
+          "technology": "PostgreSQL",
+          "category": "data",
+          "evidence": [
+            {
+              "path": ".github/workflows/backup.yml",
+              "url": "https://github.com/hassan200503/rentmanager-backend/blob/main/.github/workflows/backup.yml"
+            },
+            {
+              "path": ".github/workflows/ci.yml",
+              "url": "https://github.com/hassan200503/rentmanager-backend/blob/main/.github/workflows/ci.yml"
+            },
+            {
+              "path": "deploy/docker-compose.yml",
+              "url": "https://github.com/hassan200503/rentmanager-backend/blob/main/deploy/docker-compose.yml"
+            },
+            {
+              "path": "docker-compose.yml",
+              "url": "https://github.com/hassan200503/rentmanager-backend/blob/main/docker-compose.yml"
+            },
+            {
+              "path": "pom.xml",
+              "url": "https://github.com/hassan200503/rentmanager-backend/blob/main/pom.xml"
+            }
+          ]
+        },
+        {
+          "technology": "Spring Boot",
+          "category": "backend",
+          "evidence": [
+            {
+              "path": "Dockerfile",
+              "url": "https://github.com/hassan200503/rentmanager-backend/blob/main/Dockerfile"
+            },
+            {
+              "path": "pom.xml",
+              "url": "https://github.com/hassan200503/rentmanager-backend/blob/main/pom.xml"
+            }
+          ]
+        }
+      ],
       "lastCommit": {
         "sha": "5f66797",
         "message": "Add redundant edge API keep-alive",
@@ -207,7 +604,78 @@
       "archived": false,
       "defaultBranch": "main",
       "license": "MIT",
-      "technologies": [],
+      "technologies": [
+        {
+          "technology": "Docker",
+          "category": "testing and delivery",
+          "evidence": [
+            {
+              "path": "Dockerfile",
+              "url": "https://github.com/hassan200503/rentmanager-frontend/blob/main/Dockerfile"
+            }
+          ]
+        },
+        {
+          "technology": "GitHub Actions",
+          "category": "testing and delivery",
+          "evidence": [
+            {
+              "path": ".github/workflows/ci.yml",
+              "url": "https://github.com/hassan200503/rentmanager-frontend/blob/main/.github/workflows/ci.yml"
+            },
+            {
+              "path": ".github/workflows/cloudflare-deploy.yml",
+              "url": "https://github.com/hassan200503/rentmanager-frontend/blob/main/.github/workflows/cloudflare-deploy.yml"
+            },
+            {
+              "path": ".github/workflows/cloudflare-size-probe.yml",
+              "url": "https://github.com/hassan200503/rentmanager-frontend/blob/main/.github/workflows/cloudflare-size-probe.yml"
+            }
+          ]
+        },
+        {
+          "technology": "Next.js",
+          "category": "frontend and mobile",
+          "evidence": [
+            {
+              "path": ".github/workflows/cloudflare-deploy.yml",
+              "url": "https://github.com/hassan200503/rentmanager-frontend/blob/main/.github/workflows/cloudflare-deploy.yml"
+            },
+            {
+              "path": ".github/workflows/cloudflare-size-probe.yml",
+              "url": "https://github.com/hassan200503/rentmanager-frontend/blob/main/.github/workflows/cloudflare-size-probe.yml"
+            },
+            {
+              "path": "Dockerfile",
+              "url": "https://github.com/hassan200503/rentmanager-frontend/blob/main/Dockerfile"
+            },
+            {
+              "path": "package.json",
+              "url": "https://github.com/hassan200503/rentmanager-frontend/blob/main/package.json"
+            }
+          ]
+        },
+        {
+          "technology": "React",
+          "category": "frontend and mobile",
+          "evidence": [
+            {
+              "path": "package.json",
+              "url": "https://github.com/hassan200503/rentmanager-frontend/blob/main/package.json"
+            }
+          ]
+        },
+        {
+          "technology": "TypeScript",
+          "category": "frontend and mobile",
+          "evidence": [
+            {
+              "path": "next.config.ts",
+              "url": "https://github.com/hassan200503/rentmanager-frontend/blob/main/next.config.ts"
+            }
+          ]
+        }
+      ],
       "lastCommit": {
         "sha": "1c96ce5",
         "message": "ci: allow tests to continue on error to unblock pipeline",
@@ -247,7 +715,62 @@
       "archived": false,
       "defaultBranch": "main",
       "license": "MIT",
-      "technologies": [],
+      "technologies": [
+        {
+          "technology": "GitHub Actions",
+          "category": "testing and delivery",
+          "evidence": [
+            {
+              "path": ".github/workflows/ci.yml",
+              "url": "https://github.com/hassan200503/rentmanager-mobile/blob/main/.github/workflows/ci.yml"
+            },
+            {
+              "path": ".github/workflows/release.yml",
+              "url": "https://github.com/hassan200503/rentmanager-mobile/blob/main/.github/workflows/release.yml"
+            }
+          ]
+        },
+        {
+          "technology": "M-Pesa Daraja",
+          "category": "payments",
+          "evidence": [
+            {
+              "path": ".github/workflows/ci.yml",
+              "url": "https://github.com/hassan200503/rentmanager-mobile/blob/main/.github/workflows/ci.yml"
+            }
+          ]
+        },
+        {
+          "technology": "React",
+          "category": "frontend and mobile",
+          "evidence": [
+            {
+              "path": "package.json",
+              "url": "https://github.com/hassan200503/rentmanager-mobile/blob/main/package.json"
+            }
+          ]
+        },
+        {
+          "technology": "React Native",
+          "category": "frontend and mobile",
+          "evidence": [
+            {
+              "path": "package.json",
+              "url": "https://github.com/hassan200503/rentmanager-mobile/blob/main/package.json"
+            }
+          ]
+        },
+        {
+          "technology": "TypeScript",
+          "category": "frontend and mobile",
+          "evidence": [
+            {
+              "path": "app.config.ts",
+              "url": "https://github.com/hassan200503/rentmanager-mobile/blob/main/app.config.ts"
+            }
+          ]
+        }
+      ],
       "lastCommit": {
         "sha": "7ff7afb",
         "message": "Refine README to include missing env vars and clarify backend dependency",
@@ -309,7 +832,56 @@
       "archived": false,
       "defaultBranch": "main",
       "license": null,
-      "technologies": [],
+      "technologies": [
+        {
+          "technology": "GitHub Actions",
+          "category": "testing and delivery",
+          "evidence": [
+            {
+              "path": ".github/workflows/ci.yml",
+              "url": "https://github.com/hassan200503/our-universe/blob/main/.github/workflows/ci.yml"
+            },
+            {
+              "path": ".github/workflows/ingest.yml",
+              "url": "https://github.com/hassan200503/our-universe/blob/main/.github/workflows/ingest.yml"
+            }
+          ]
+        },
+        {
+          "technology": "Next.js",
+          "category": "frontend and mobile",
+          "evidence": [
+            {
+              "path": ".github/workflows/ci.yml",
+              "url": "https://github.com/hassan200503/our-universe/blob/main/.github/workflows/ci.yml"
+            },
+            {
+              "path": "package.json",
+              "url": "https://github.com/hassan200503/our-universe/blob/main/package.json"
+            }
+          ]
+        },
+        {
+          "technology": "React",
+          "category": "frontend and mobile",
+          "evidence": [
+            {
+              "path": "package.json",
+              "url": "https://github.com/hassan200503/our-universe/blob/main/package.json"
+            }
+          ]
+        },
+        {
+          "technology": "TypeScript",
+          "category": "frontend and mobile",
+          "evidence": [
+            {
+              "path": "drizzle.config.ts",
+              "url": "https://github.com/hassan200503/our-universe/blob/main/drizzle.config.ts"
+            }
+          ]
+        }
+      ],
       "lastCommit": {
         "sha": "ebd08c4",
         "message": "Calls never hang on \"Connectingâ€¦\"; show what each phone found (#5)",

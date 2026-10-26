@@ -17,9 +17,10 @@ import json
 import os
 import subprocess
 import sys
+import base64
 from datetime import datetime, timezone
 
-from github_snapshot import build_snapshot, include_repository, normalize_repository
+from github_snapshot import build_snapshot, detect_technologies, include_repository, normalize_repository
 
 USER = sys.argv[1] if len(sys.argv) > 1 else "hassan200503"
 OUT = sys.argv[2] if len(sys.argv) > 2 else os.path.join("data", "github.json")
@@ -39,6 +40,34 @@ def gh(path, default=None):
         return default
 
 
+def manifest_files(owner, repo):
+    """Read only likely manifests/config files for technology evidence."""
+    branch = repo.get("default_branch") or "main"
+    tree = gh("repos/%s/%s/git/trees/%s?recursive=1" % (owner, repo["name"], branch), {}) or {}
+    entries = tree.get("tree") or []
+    paths = [entry.get("path") for entry in entries if entry.get("type") == "blob" and entry.get("path")]
+    selected = []
+    known_names = {
+        "pom.xml", "build.gradle", "build.gradle.kts", "package.json", "Dockerfile",
+        "docker-compose.yml", "docker-compose.yaml", "requirements.txt", "wrangler.toml",
+        "vercel.json",
+    }
+    for path in paths:
+        name = path.rsplit("/", 1)[-1]
+        if name in known_names or path.startswith(".github/workflows/"):
+            selected.append(path)
+    contents = {}
+    for path in selected[:40]:
+        result = gh("repos/%s/%s/contents/%s?ref=%s" % (owner, repo["name"], path, branch))
+        if not isinstance(result, dict) or result.get("encoding") != "base64":
+            continue
+        try:
+            contents[path] = base64.b64decode(result.get("content", ""), validate=False).decode("utf-8", errors="replace")[:500_000]
+        except Exception as exc:  # noqa: BLE001
+            print("    ! could not decode %s: %s" % (path, exc))
+    return paths, contents
+
+
 print("profile: %s" % USER)
 profile = gh("users/%s" % USER)
 if not profile:
@@ -52,6 +81,11 @@ repos_raw = gh("users/%s/repos?per_page=100&sort=pushed" % USER, []) or []
 repos_raw = [r for r in repos_raw if include_repository(r)]
 
 repos = []
+tech_map_path = os.path.join(os.path.dirname(OUT), "tech-map.json")
+if not os.path.exists(tech_map_path):
+    tech_map_path = os.path.join("data", "tech-map.json")
+with open(tech_map_path, encoding="utf-8") as tech_map_file:
+    tech_signatures = json.load(tech_map_file).get("signatures", [])
 for r in repos_raw:
     name = r["name"]
     print("  - %s" % name)
@@ -73,6 +107,8 @@ for r in repos_raw:
     normalized = normalize_repository(r, languages)
     normalized["homepage"] = homepage
     normalized["lastCommit"] = last_commit
+    tree_paths, file_contents = manifest_files(USER, r)
+    normalized["technologies"] = detect_technologies(r, tree_paths, file_contents, tech_signatures)
     repos.append(normalized)
 
 repos.sort(key=lambda x: x.get("pushedAt") or "", reverse=True)
