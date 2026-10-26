@@ -4,7 +4,7 @@ Last updated: 2026-10-26
 
 ## Current task
 
-P2 data pipeline: snapshot contract and fixture-tested shaping are implemented; technology file detection remains next.
+G2 decision: approve the GitHub Pages deployment-source switch before the Actions deployment workflow is added.
 
 ## Completed work
 
@@ -21,6 +21,7 @@ P2 data pipeline: snapshot contract and fixture-tested shaping are implemented; 
 - P2 browser refresh: reduced metadata cache to 5 minutes, added ETag/304 handling, numeric-ID merging, topic filters, and visible last-snapshot status on API failure; `node --check github.js` passes.
 - P2 no-JavaScript baseline: the build now pre-renders GitHub stats, language footprint, technology ledger, and escaped repository cards into `index.html`; the JS layer enhances those hosts instead of owning their existence.
 - P2 computed project stats: generated `data/github.json` now carries migrations, modules, and test-source-file counts; the build replaces legacy hard-coded counts across the home, work, skills, and case-study pages. Latest backend values: 100 migrations, 21 modules, 262 test source files.
+- G2 proposal documented in `docs/DECISIONS/G2-pages-deployment.md`; no Pages settings or deployment workflow has been changed yet.
 
 ## Blocked items
 
@@ -69,4 +70,4 @@ P2 data pipeline: snapshot contract and fixture-tested shaping are implemented; 
 
 ## Handover note
 
-P0 evidence and P1 foundation are documented. Continue with snapshot schema/fixture work. Do not rely on visual quality or performance targets until the missing browser measurements have been run.
+P0–P2 evidence is documented. Work is paused at G2 pending approval to switch Pages deployment to GitHub Actions. Do not rely on visual quality or performance targets until the missing browser measurements have been run.
