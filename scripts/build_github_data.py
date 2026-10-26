@@ -19,6 +19,8 @@ import subprocess
 import sys
 from datetime import datetime, timezone
 
+from github_snapshot import build_snapshot, include_repository, normalize_repository
+
 USER = sys.argv[1] if len(sys.argv) > 1 else "hassan200503"
 OUT = sys.argv[2] if len(sys.argv) > 2 else os.path.join("data", "github.json")
 
@@ -47,7 +49,7 @@ repos_raw = gh("users/%s/repos?per_page=100&sort=pushed" % USER, []) or []
 
 # Forks and archived repos are excluded: this is a portfolio of what he built
 # and still maintains, not an inventory of the account.
-repos_raw = [r for r in repos_raw if not r.get("fork") and not r.get("archived")]
+repos_raw = [r for r in repos_raw if include_repository(r)]
 
 repos = []
 for r in repos_raw:
@@ -68,22 +70,10 @@ for r in repos_raw:
 
     homepage = (r.get("homepage") or "").strip() or None
 
-    repos.append({
-        "name": name,
-        "description": r.get("description"),
-        "url": r.get("html_url"),
-        "homepage": homepage,
-        "language": r.get("language"),
-        "languages": languages,
-        "topics": r.get("topics") or [],
-        "stars": r.get("stargazers_count", 0),
-        "forks": r.get("forks_count", 0),
-        "sizeKb": r.get("size", 0),
-        "license": (r.get("license") or {}).get("spdx_id"),
-        "createdAt": r.get("created_at"),
-        "pushedAt": r.get("pushed_at"),
-        "lastCommit": last_commit,
-    })
+    normalized = normalize_repository(r, languages)
+    normalized["homepage"] = homepage
+    normalized["lastCommit"] = last_commit
+    repos.append(normalized)
 
 repos.sort(key=lambda x: x.get("pushedAt") or "", reverse=True)
 
@@ -95,26 +85,8 @@ for r in repos:
         totals[lang] = totals.get(lang, 0) + count
 language_bytes = dict(sorted(totals.items(), key=lambda kv: -kv[1]))
 
-snapshot = {
-    "generatedAt": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-    "user": {
-        "login": profile.get("login"),
-        "name": profile.get("name"),
-        "bio": profile.get("bio"),
-        "avatarUrl": profile.get("avatar_url"),
-        "url": profile.get("html_url"),
-        "followers": profile.get("followers", 0),
-        "publicRepos": profile.get("public_repos", 0),
-        "createdAt": profile.get("created_at"),
-    },
-    "totals": {
-        "repos": len(repos),
-        "stars": sum(r["stars"] for r in repos),
-        "languageBytes": language_bytes,
-        "lastPush": max((r["pushedAt"] for r in repos if r["pushedAt"]), default=None),
-    },
-    "repos": repos,
-}
+snapshot = build_snapshot(profile, repos)
+snapshot["generatedAt"] = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
 os.makedirs(os.path.dirname(OUT) or ".", exist_ok=True)
 with open(OUT, "w", encoding="utf-8", newline="\n") as fh:

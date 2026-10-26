@@ -4,7 +4,7 @@ Last updated: 2026-10-26
 
 ## Current task
 
-P1 foundation: shared static build/template step is implemented and verified.
+P2 data pipeline: snapshot contract and fixture-tested shaping are implemented; technology file detection remains next.
 
 ## Completed work
 
@@ -12,6 +12,9 @@ P1 foundation: shared static build/template step is implemented and verified.
 - P1 data foundation slice: added `data/profile.json`, `data/tech-map.json`, schemas for both, and dependency-free validation in `scripts/validate_data.py`.
 - P1 CI smoke slice: added `scripts/check_site.py` and `.github/workflows/ci.yml` with read-only permissions; root-relative link handling was fixed after the first failing run (commits `e8872eb`, `d1df67a`); deployment workflow is unchanged.
 - G1 resolved with owner approval: `scripts/build_site.py` now renders all 9 published pages from shared header/footer partials and page-owned head/content/tail fragments. The generated output matched the existing pages before commit (`9628dfc`). No framework was added.
+- P2 snapshot contract: added `schemas/github.schema.json`, numeric repository IDs, visibility topic rules, source/technology-ledger fields, and `scripts/validate_github_snapshot.py`.
+- P2 fixture tests: added `scripts/github_snapshot.py` and `tests/test_github_snapshot.py` covering HTML in descriptions, missing languages, forks, archived repositories, hidden repositories, numeric IDs, and aggregate data.
+- Regenerated `data/github.json` successfully from the public GitHub API locally; it reports 7 repositories and 10 languages at `2026-10-26T10:35:42Z`.
 
 ## Blocked items
 
@@ -21,9 +24,9 @@ P1 foundation: shared static build/template step is implemented and verified.
 
 ## Next three tasks
 
-1. P1 foundation: add snapshot schema validation to CI and document the local build command.
-2. P2 data pipeline: redesign the snapshot schema and generator around numeric repository IDs, evidence links, technology detection, and computed project statistics.
-3. P2 data pipeline: add recorded GitHub fixtures and failure-path tests before changing live API behavior.
+1. P2 data pipeline: detect technologies from manifests/configuration and record file evidence by repository ID.
+2. P2 data pipeline: add failure/fallback fixtures and snapshot-last-good behavior tests.
+3. P3 deployment workflow: design the build-and-deploy workflow proposal; stop at G2 before changing Pages source.
 
 ## Commands that work
 
@@ -33,6 +36,8 @@ P1 foundation: shared static build/template step is implemented and verified.
 - `python scripts/validate_data.py`
 - `python scripts/check_site.py`
 - `python scripts/build_site.py --check`
+- `python scripts/validate_github_snapshot.py`
+- `python -m unittest discover -s tests -p 'test_*.py' -v`
 - `python -m compileall -q scripts`
 - `Get-Content` / `rg` for repository inspection
 
@@ -42,6 +47,7 @@ P1 foundation: shared static build/template step is implemented and verified.
 - Existing workflow does not include a monthly keep-alive, schema validation, test suite, or secret/link/accessibility/performance checks.
 - Browser refresh in `github.js` has no ETag handling and uses localStorage caching; it merges by repository name rather than numeric ID.
 - Technology ledger and manifest evidence are not generated.
+- Snapshot technology arrays and ledger are currently empty for live data; manifest/configuration detection is the next P2 slice.
 - The CI smoke check is intentionally not a full HTML, axe, Lighthouse, or schema validator yet.
 - Generated pages are now produced from shared shell partials; page-owned head/content/tail fragments remain intentionally separate.
 - Google Fonts, Lenis CSS, GSAP, ScrollTrigger, and Lenis are loaded from third parties; CSP/SRI and self-hosting are not implemented.

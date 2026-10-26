@@ -1,5 +1,6 @@
 {
-  "generatedAt": "2026-10-26T06:16:28Z",
+  "generatedAt": "2026-10-26T10:35:42Z",
+  "source": "GitHub public API; generated during the site build",
   "user": {
     "login": "hassan200503",
     "name": "Hassan Tsuma ",
@@ -25,52 +26,93 @@
       "Python": 4796,
       "Dockerfile": 4600
     },
-    "lastPush": "2026-10-26T01:12:20Z"
+    "lastPush": "2026-10-26T06:32:35Z"
   },
+  "technologyLedger": [],
   "repos": [
     {
+      "id": 1382929316,
+      "name": "personal-companion-bot",
+      "description": "Windows personal AI companion with local encrypted memory, permissioned PC actions, and free-tier provider failover. Legacy WhatsApp bot retained.",
+      "topics": [
+        "automation",
+        "baileys",
+        "freelance",
+        "nodejs",
+        "whatsapp"
+      ],
+      "primaryLanguage": "JavaScript",
+      "language": "JavaScript",
+      "languageBytes": {
+        "JavaScript": 46630
+      },
+      "languages": {
+        "JavaScript": 46630
+      },
+      "homepage": null,
+      "url": "https://github.com/hassan200503/personal-companion-bot",
+      "stars": 0,
+      "forks": 0,
+      "sizeKb": 94,
+      "createdAt": "2026-09-23T07:02:22Z",
+      "pushedAt": "2026-10-26T06:32:35Z",
+      "archived": false,
+      "defaultBranch": "main",
+      "license": null,
+      "technologies": [],
+      "lastCommit": {
+        "sha": "9459158",
+        "message": "Update project title and description in README",
+        "date": "2026-10-26T06:32:34Z",
+        "url": "https://github.com/hassan200503/personal-companion-bot/commit/9459158864758c255abc5852fcea6e72be92fe9e"
+      }
+    },
+    {
+      "id": 1370540140,
       "name": "hassan200503.github.io",
       "description": "Portfolio site for Hassan Tsuma",
-      "url": "https://github.com/hassan200503/hassan200503.github.io",
-      "homepage": "https://hassan200503.github.io",
-      "language": "HTML",
-      "languages": {
-        "HTML": 195125,
-        "CSS": 62640,
-        "JavaScript": 35825,
-        "Python": 4796
-      },
       "topics": [
         "css",
         "github-pages",
         "html",
         "portfolio"
       ],
+      "primaryLanguage": "HTML",
+      "language": "HTML",
+      "languageBytes": {
+        "HTML": 195125,
+        "CSS": 62640,
+        "JavaScript": 35825,
+        "Python": 4796
+      },
+      "languages": {
+        "HTML": 195125,
+        "CSS": 62640,
+        "JavaScript": 35825,
+        "Python": 4796
+      },
+      "homepage": "https://hassan200503.github.io",
+      "url": "https://github.com/hassan200503/hassan200503.github.io",
       "stars": 0,
       "forks": 0,
-      "sizeKb": 997,
-      "license": null,
+      "sizeKb": 998,
       "createdAt": "2026-09-14T20:38:01Z",
-      "pushedAt": "2026-10-26T01:12:20Z",
+      "pushedAt": "2026-10-26T06:16:29Z",
+      "archived": false,
+      "defaultBranch": "main",
+      "license": null,
+      "technologies": [],
       "lastCommit": {
-        "sha": "3997ea2",
+        "sha": "ff1775e",
         "message": "Refresh GitHub snapshot",
-        "date": "2026-10-26T01:12:19Z",
-        "url": "https://github.com/hassan200503/hassan200503.github.io/commit/3997ea2b1cd972a22b59150f0f7680aae49d5fdb"
+        "date": "2026-10-26T06:16:28Z",
+        "url": "https://github.com/hassan200503/hassan200503.github.io/commit/ff1775e9ce5cf37bf71c3c4c5f0059c284386cce"
       }
     },
     {
+      "id": 1266474261,
       "name": "rentmanager-backend",
       "description": "RentManager API: rental management for Kenyan landlords and renters. Spring Boot 3, Java 21, PostgreSQL, M-Pesa Daraja, Clerk auth, multi-tenant.",
-      "url": "https://github.com/hassan200503/rentmanager-backend",
-      "homepage": "https://www.rentmanagerke.workers.dev",
-      "language": "Java",
-      "languages": {
-        "Java": 4641260,
-        "PLpgSQL": 18917,
-        "Shell": 5504,
-        "Dockerfile": 2379
-      },
       "topics": [
         "java",
         "kenya",
@@ -81,12 +123,31 @@
         "saas",
         "spring-boot"
       ],
+      "primaryLanguage": "Java",
+      "language": "Java",
+      "languageBytes": {
+        "Java": 4641260,
+        "PLpgSQL": 18917,
+        "Shell": 5504,
+        "Dockerfile": 2379
+      },
+      "languages": {
+        "Java": 4641260,
+        "PLpgSQL": 18917,
+        "Shell": 5504,
+        "Dockerfile": 2379
+      },
+      "homepage": "https://www.rentmanagerke.workers.dev",
+      "url": "https://github.com/hassan200503/rentmanager-backend",
       "stars": 0,
       "forks": 0,
       "sizeKb": 2100,
-      "license": null,
       "createdAt": "2026-06-11T16:44:44Z",
       "pushedAt": "2026-10-25T14:05:39Z",
+      "archived": false,
+      "defaultBranch": "main",
+      "license": null,
+      "technologies": [],
       "lastCommit": {
         "sha": "5f66797",
         "message": "Add redundant edge API keep-alive",
@@ -95,19 +156,9 @@
       }
     },
     {
+      "id": 1275425118,
       "name": "rentmanager-frontend",
       "description": "Kenya's trusted rental platform | Full-stack Property Management SaaS with M-Pesa integration, digital leases, real-time analytics, and automated rent   collection | React + Node.js + PostgreSQL + Cloudflare",
-      "url": "https://github.com/hassan200503/rentmanager-frontend",
-      "homepage": "https://www.rentmanagerke.workers.dev",
-      "language": "TypeScript",
-      "languages": {
-        "TypeScript": 3170147,
-        "CSS": 178216,
-        "PowerShell": 10067,
-        "JavaScript": 9371,
-        "Shell": 3371,
-        "Dockerfile": 2221
-      },
       "topics": [
         "cloudflare-workers",
         "fintech",
@@ -128,12 +179,35 @@
         "tailwindcss",
         "typescipt"
       ],
+      "primaryLanguage": "TypeScript",
+      "language": "TypeScript",
+      "languageBytes": {
+        "TypeScript": 3170147,
+        "CSS": 178216,
+        "PowerShell": 10067,
+        "JavaScript": 9371,
+        "Shell": 3371,
+        "Dockerfile": 2221
+      },
+      "languages": {
+        "TypeScript": 3170147,
+        "CSS": 178216,
+        "PowerShell": 10067,
+        "JavaScript": 9371,
+        "Shell": 3371,
+        "Dockerfile": 2221
+      },
+      "homepage": "https://www.rentmanagerke.workers.dev",
+      "url": "https://github.com/hassan200503/rentmanager-frontend",
       "stars": 0,
       "forks": 0,
       "sizeKb": 103915,
-      "license": "MIT",
       "createdAt": "2026-06-20T17:09:22Z",
       "pushedAt": "2026-10-25T09:18:29Z",
+      "archived": false,
+      "defaultBranch": "main",
+      "license": "MIT",
+      "technologies": [],
       "lastCommit": {
         "sha": "1c96ce5",
         "message": "ci: allow tests to continue on error to unblock pipeline",
@@ -142,15 +216,9 @@
       }
     },
     {
+      "id": 1372052865,
       "name": "rentmanager-mobile",
       "description": "RentManager mobile app for landlords and renters in Kenya (Expo, React Native, TypeScript)",
-      "url": "https://github.com/hassan200503/rentmanager-mobile",
-      "homepage": null,
-      "language": "TypeScript",
-      "languages": {
-        "TypeScript": 266326,
-        "JavaScript": 4047
-      },
       "topics": [
         "expo",
         "kenya",
@@ -159,12 +227,27 @@
         "react-native",
         "typescript"
       ],
+      "primaryLanguage": "TypeScript",
+      "language": "TypeScript",
+      "languageBytes": {
+        "TypeScript": 266326,
+        "JavaScript": 4047
+      },
+      "languages": {
+        "TypeScript": 266326,
+        "JavaScript": 4047
+      },
+      "homepage": null,
+      "url": "https://github.com/hassan200503/rentmanager-mobile",
       "stars": 0,
       "forks": 0,
       "sizeKb": 816,
-      "license": "MIT",
       "createdAt": "2026-09-15T20:05:14Z",
       "pushedAt": "2026-10-17T12:37:17Z",
+      "archived": false,
+      "defaultBranch": "main",
+      "license": "MIT",
+      "technologies": [],
       "lastCommit": {
         "sha": "7ff7afb",
         "message": "Refine README to include missing env vars and clarify backend dependency",
@@ -173,19 +256,25 @@
       }
     },
     {
+      "id": 1181843687,
       "name": "hassan200503",
       "description": "Personal information",
-      "url": "https://github.com/hassan200503/hassan200503",
-      "homepage": null,
-      "language": null,
-      "languages": {},
       "topics": [],
+      "primaryLanguage": null,
+      "language": null,
+      "languageBytes": {},
+      "languages": {},
+      "homepage": null,
+      "url": "https://github.com/hassan200503/hassan200503",
       "stars": 0,
       "forks": 0,
       "sizeKb": 11,
-      "license": null,
       "createdAt": "2026-03-14T17:45:02Z",
       "pushedAt": "2026-10-14T20:58:39Z",
+      "archived": false,
+      "defaultBranch": "main",
+      "license": null,
+      "technologies": [],
       "lastCommit": {
         "sha": "e89442f",
         "message": "Update README with technology and module details",
@@ -194,57 +283,38 @@
       }
     },
     {
+      "id": 1390638891,
       "name": "our-universe",
       "description": "Our Universe: Hassan's world, Whitney's world, our story, and live discoveries from the real world.",
-      "url": "https://github.com/hassan200503/our-universe",
-      "homepage": "https://our-universe-gamma-green.vercel.app",
+      "topics": [],
+      "primaryLanguage": "TypeScript",
       "language": "TypeScript",
+      "languageBytes": {
+        "TypeScript": 854511,
+        "CSS": 25541,
+        "JavaScript": 12154
+      },
       "languages": {
         "TypeScript": 854511,
         "CSS": 25541,
         "JavaScript": 12154
       },
-      "topics": [],
+      "homepage": "https://our-universe-gamma-green.vercel.app",
+      "url": "https://github.com/hassan200503/our-universe",
       "stars": 0,
       "forks": 0,
       "sizeKb": 914,
-      "license": null,
       "createdAt": "2026-09-27T10:36:32Z",
       "pushedAt": "2026-09-29T19:53:33Z",
+      "archived": false,
+      "defaultBranch": "main",
+      "license": null,
+      "technologies": [],
       "lastCommit": {
         "sha": "ebd08c4",
-        "message": "Calls never hang on \"Connecting…\"; show what each phone found (#5)",
+        "message": "Calls never hang on \"Connectingâ€¦\"; show what each phone found (#5)",
         "date": "2026-09-29T19:53:33Z",
         "url": "https://github.com/hassan200503/our-universe/commit/ebd08c44cbff0071972c29f06b93588f8e7cef3d"
-      }
-    },
-    {
-      "name": "whatsapp-persona-bot",
-      "description": "Auto-replies to WhatsApp messages in your own voice while you're offline, learns your writing style over time, and pitches freelance work to leads.",
-      "url": "https://github.com/hassan200503/whatsapp-persona-bot",
-      "homepage": null,
-      "language": "JavaScript",
-      "languages": {
-        "JavaScript": 46630
-      },
-      "topics": [
-        "automation",
-        "baileys",
-        "freelance",
-        "nodejs",
-        "whatsapp"
-      ],
-      "stars": 0,
-      "forks": 0,
-      "sizeKb": 89,
-      "license": null,
-      "createdAt": "2026-09-23T07:02:22Z",
-      "pushedAt": "2026-09-29T09:16:33Z",
-      "lastCommit": {
-        "sha": "f0ec874",
-        "message": "Add voice: send a voice note to the companion, it replies spoken",
-        "date": "2026-09-29T09:16:23Z",
-        "url": "https://github.com/hassan200503/whatsapp-persona-bot/commit/f0ec8745a3e12f7a8e9c01a6399e642bd8d87ce8"
       }
     }
   ]
