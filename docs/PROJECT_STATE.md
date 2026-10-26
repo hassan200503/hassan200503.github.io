@@ -4,7 +4,7 @@ Last updated: 2026-10-26
 
 ## Current task
 
-G2 approved: Pages deployment workflow is prepared locally; owner must push it and select GitHub Actions as the Pages source.
+G3 decision: webhook relay code is complete and tested; owner must create/install the GitHub App, deploy the Worker, and add its secrets.
 
 ## Completed work
 
@@ -23,6 +23,7 @@ G2 approved: Pages deployment workflow is prepared locally; owner must push it a
 - P2 computed project stats: generated `data/github.json` now carries migrations, modules, and test-source-file counts; the build replaces legacy hard-coded counts across the home, work, skills, and case-study pages. Latest backend values: 100 migrations, 21 modules, 262 test source files.
 - G2 proposal documented in `docs/DECISIONS/G2-pages-deployment.md`; no Pages settings or deployment workflow has been changed yet.
 - G2 implementation: `.github/workflows/pages.yml` builds, validates, uploads, and deploys the site artifact; the old commit-back snapshot workflow was removed. Setup is documented in `docs/SETUP_DEPLOYMENT.md`.
+- G3 implementation: `worker/src/index.js` verifies signatures, filters events/actions, coalesces bursts, and dispatches refreshes; four signed-fixture tests pass. Owner setup is documented in `docs/SETUP_WEBHOOK.md`.
 
 ## Blocked items
 
@@ -32,9 +33,9 @@ G2 approved: Pages deployment workflow is prepared locally; owner must push it a
 
 ## Next three tasks
 
-1. P3 deployment workflow: design the build-and-deploy workflow proposal; stop at G2 before changing Pages source.
-2. P4 webhook relay: implement/test Worker code and setup docs; stop at G3 for owner App/secrets actions.
-3. P5 visual/accessibility refinement after the deployment architecture is approved.
+1. Owner G3 action: create/install the GitHub App, deploy the Worker, and add `WEBHOOK_SECRET` and `GITHUB_DISPATCH_TOKEN`.
+2. After G3: verify a real repository metadata change reaches one Pages workflow and measure latency.
+3. P5 visual/accessibility refinement and browser-based quality verification.
 
 ## Commands that work
 
@@ -71,4 +72,4 @@ G2 approved: Pages deployment workflow is prepared locally; owner must push it a
 
 ## Handover note
 
-P0–P2 evidence and the G2 implementation are documented. Local verification is complete; pushing and selecting GitHub Actions in Pages remain owner/external actions. Do not rely on visual quality or performance targets until the missing browser measurements have been run.
+P0–P2 evidence, G2 deployment, and G3 relay code are documented. Work is paused at G3 pending the owner’s App/Worker/secrets actions. Do not rely on visual quality or performance targets until the missing browser measurements have been run.

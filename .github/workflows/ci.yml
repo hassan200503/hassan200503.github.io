@@ -19,6 +19,8 @@ jobs:
         run: python scripts/validate_github_snapshot.py
       - name: Run snapshot fixture tests
         run: python -m unittest discover -s tests -p 'test_*.py' -v
+      - name: Test webhook relay
+        run: npm test --prefix worker
       - name: Verify generated pages
         run: python scripts/build_site.py --check
       - name: Check static HTML surface

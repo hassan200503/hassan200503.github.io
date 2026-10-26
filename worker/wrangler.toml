@@ -1,0 +1,9 @@
+name = "hassan-portfolio-refresh"
+main = "src/index.js"
+compatibility_date = "2026-10-26"
+
+[observability]
+enabled = true
+
+[vars]
+# Secret values are intentionally not stored here.
