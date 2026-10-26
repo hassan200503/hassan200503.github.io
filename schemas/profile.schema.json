@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hassan200503.github.io/schemas/profile.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "headline", "summary", "status", "availability", "careerStartYear", "location", "roles", "workModes", "links", "proficiencyTiers", "featuredProjects", "education", "certifications"],
+  "properties": {
+    "$schema": {"type": "string"},
+    "name": {"type": "string", "minLength": 1},
+    "headline": {"type": "string", "minLength": 1},
+    "summary": {"type": "string", "minLength": 1},
+    "status": {"type": "string", "minLength": 1},
+    "availability": {"type": "string", "minLength": 1},
+    "careerStartYear": {"type": "integer", "minimum": 1900},
+    "location": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["city", "country", "timezone", "utcOffset"],
+      "properties": {
+        "city": {"type": "string", "minLength": 1},
+        "country": {"type": "string", "minLength": 1},
+        "timezone": {"type": "string", "minLength": 1},
+        "utcOffset": {"type": "string", "pattern": "^UTC[+-][0-9]+$"}
+      }
+    },
+    "roles": {"type": "array", "items": {"type": "string", "minLength": 1}, "minItems": 1},
+    "workModes": {"type": "array", "items": {"type": "string", "minLength": 1}, "minItems": 1},
+    "links": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["github", "linkedin", "cv"],
+      "properties": {
+        "github": {"type": "string", "format": "uri"},
+        "linkedin": {"type": "string", "format": "uri"},
+        "cv": {"type": "string", "minLength": 1}
+      }
+    },
+    "proficiencyTiers": {"type": "object", "additionalProperties": {"type": "string", "enum": ["strongest", "shipped with", "learning"]}},
+    "featuredProjects": {"type": "array", "items": {"type": "object"}},
+    "education": {"type": "array", "items": {"type": "object"}},
+    "certifications": {"type": "array", "items": {"type": "object"}}
+  }
+}

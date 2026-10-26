@@ -1,0 +1,31 @@
+{
+  "$schema": "../schemas/profile.schema.json",
+  "name": "Hassan Tsuma Karungwa",
+  "headline": "Full-stack software engineer",
+  "summary": "I’m a full-stack software engineer and Computer Science student in Kenya.",
+  "status": "Open to work",
+  "availability": "Available immediately",
+  "careerStartYear": 2023,
+  "location": {
+    "city": "Homabay",
+    "country": "Kenya",
+    "timezone": "Africa/Nairobi",
+    "utcOffset": "UTC+3"
+  },
+  "roles": [
+    "Graduate software engineering roles",
+    "Junior software engineering roles",
+    "Internships",
+    "Contract work"
+  ],
+  "workModes": ["Remote anywhere", "On-site in Kenya", "Relocating"],
+  "links": {
+    "github": "https://github.com/hassan200503",
+    "linkedin": "https://www.linkedin.com/in/hassan-karungwa",
+    "cv": "files/Hassan-Tsuma-CV.pdf"
+  },
+  "proficiencyTiers": {},
+  "featuredProjects": [],
+  "education": [],
+  "certifications": []
+}

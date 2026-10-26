@@ -1,0 +1,17 @@
+{
+  "$schema": "../schemas/tech-map.schema.json",
+  "signatures": [
+    {"technology": "Java", "category": "backend", "kind": "language", "match": "Java"},
+    {"technology": "TypeScript", "category": "frontend and mobile", "kind": "language", "match": "TypeScript"},
+    {"technology": "JavaScript", "category": "frontend and mobile", "kind": "language", "match": "JavaScript"},
+    {"technology": "Python", "category": "AI tooling", "kind": "language", "match": "Python"},
+    {"technology": "Spring Boot", "category": "backend", "kind": "dependency", "match": "org.springframework.boot"},
+    {"technology": "Next.js", "category": "frontend and mobile", "kind": "dependency", "match": "next"},
+    {"technology": "React", "category": "frontend and mobile", "kind": "dependency", "match": "react"},
+    {"technology": "React Native", "category": "frontend and mobile", "kind": "dependency", "match": "react-native"},
+    {"technology": "PostgreSQL", "category": "data", "kind": "dependency", "match": "postgresql"},
+    {"technology": "Docker", "category": "testing and delivery", "kind": "file", "match": "Dockerfile"},
+    {"technology": "GitHub Actions", "category": "testing and delivery", "kind": "file", "match": ".github/workflows/"},
+    {"technology": "M-Pesa Daraja", "category": "payments", "kind": "text", "match": "daraja"}
+  ]
+}

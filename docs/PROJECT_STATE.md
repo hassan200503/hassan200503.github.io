@@ -8,7 +8,8 @@ P0 baseline and audit. The repository was cloned from `https://github.com/hassan
 
 ## Completed work
 
-- P0 repository inspection and baseline evidence recorded in `docs/AUDIT.md` (local commit pending).
+- P0 repository inspection and baseline evidence recorded in `docs/AUDIT.md` (commit `596e317`).
+- P1 data foundation slice: added `data/profile.json`, `data/tech-map.json`, schemas for both, and dependency-free validation in `scripts/validate_data.py`.
 
 ## Blocked items
 
@@ -18,8 +19,8 @@ P0 baseline and audit. The repository was cloned from `https://github.com/hassan
 
 ## Next three tasks
 
-1. P1 foundation: add hand-edited profile and technology-map data, schemas, and a minimal build/validation entry point without changing rendered content.
-2. P1 foundation: define shared partial/build strategy and CI validation skeleton; stop at G1 if a static-site generator becomes necessary.
+1. P1 foundation: define shared partial/build strategy and CI validation skeleton; stop at G1 if a static-site generator becomes necessary.
+2. P1 foundation: add snapshot schema validation and a build smoke check without changing rendered content.
 3. P2 data pipeline: redesign the snapshot schema and generator around numeric repository IDs, evidence links, technology detection, and computed project statistics.
 
 ## Commands that work
@@ -27,6 +28,7 @@ P0 baseline and audit. The repository was cloned from `https://github.com/hassan
 - `git status --short`
 - `git log -5 --oneline`
 - `python -c "import json; ..."` for inspecting the checked-in snapshot
+- `python scripts/validate_data.py`
 - `Get-Content` / `rg` for repository inspection
 
 ## Known defects

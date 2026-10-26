@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hassan200503.github.io/schemas/tech-map.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["signatures"],
+  "properties": {
+    "$schema": {"type": "string"},
+    "signatures": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["technology", "category", "kind", "match"],
+        "properties": {
+          "technology": {"type": "string", "minLength": 1},
+          "category": {"type": "string", "enum": ["backend", "data", "frontend and mobile", "payments", "testing and delivery", "AI tooling"]},
+          "kind": {"type": "string", "enum": ["language", "dependency", "file", "text"]},
+          "match": {"type": "string", "minLength": 1}
+        }
+      }
+    }
+  }
+}
