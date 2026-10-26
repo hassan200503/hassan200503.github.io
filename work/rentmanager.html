@@ -174,12 +174,12 @@
           <ul class="mt-16 measure" style="padding-left:20px; display:flex; flex-direction:column; gap:8px;">
             <li>System architecture: the modular-monolith boundary, the ports/adapters shape, the decision to keep it that way instead of splitting into services</li>
             <li>Backend: all 20 Spring Boot modules: domain models, application services, persistence, security</li>
-            <li>Database design: the schema and all 99 Flyway migrations, in order, none edited after they ran</li>
+            <li>Database design: the schema and all 100 Flyway migrations, in order, none edited after they ran</li>
             <li>Frontend: the Next.js application: the landlord dashboard, the tenant portal, the public listing and reservation flow, the platform-admin console</li>
             <li>Mobile: a 27-screen React Native (Expo) app sharing the same generated API client as the web app, with push notifications, offline detection and secure token storage</li>
             <li>Deployment: containerising the API and getting the whole stack live on free infrastructure: Render, Cloudflare, Neon, plus scheduled encrypted backups</li>
             <li>Integrations: <span class="nw">M-Pesa</span> Daraja (STK push and B2C), Africa’s Talking SMS, Clerk authentication</li>
-            <li>Testing: the backend’s 1,588 tests, the ArchUnit rule covering the property module’s layering, and the frontend’s Vitest suite</li>
+            <li>Testing: the backend’s 262 test source files, the ArchUnit rule covering the property module’s layering, and the frontend’s Vitest suite</li>
           </ul>
           <p class="mt-16 measure small faint">
             I use AI tools during development, the way most engineers now do. The architecture,
@@ -230,7 +230,7 @@
                 <text x="440" y="257">Next.js 16 (App Router)</text>
                 <text x="440" y="275" font-size="11" opacity="0.65">proxy.ts · fail-closed route policy</text>
                 <text x="440" y="374">Spring Boot · modular monolith</text>
-                <text x="440" y="392" font-size="11" opacity="0.65">20 modules, ports &amp; adapters</text>
+                <text x="440" y="392" font-size="11" opacity="0.65">21 modules, ports &amp; adapters</text>
                 <text x="440" y="408" font-size="11" fill="currentColor" opacity="0.85">TenantContext resolved from JWT claim only</text>
                 <text x="440" y="489">PostgreSQL</text>
                 <text x="440" y="507" font-size="11" opacity="0.65">Flyway V1 → V96</text>
@@ -414,7 +414,7 @@
         <div>
           <h2>Schema evolution and the ledger</h2>
           <p class="mt-16 measure">
-            PostgreSQL, with 99 sequential Flyway migrations as of this writing. Each one applied
+            PostgreSQL, with 100 sequential Flyway migrations as of this writing. Each one applied
             once and never edited afterward; a schema change is always a new migration, so the
             database’s own history stays an honest record of what actually happened, in what order.
             Money gets the strictest treatment in the schema: a database trigger makes
@@ -438,7 +438,7 @@
         <div>
           <h2>Testing strategy</h2>
           <p class="mt-16 measure">
-            1,588 backend tests as of the last full run, using real PostgreSQL via Testcontainers
+            262 backend test source files as of the last full run, using real PostgreSQL via Testcontainers
             rather than mocking the database for anything that touches persistence. A query that
             works against an in-memory fake and breaks against real Postgres is exactly the bug
             this catches. One ArchUnit rule runs at build time, so that particular layering violation

@@ -20,7 +20,7 @@ import sys
 import base64
 from datetime import datetime, timezone
 
-from github_snapshot import build_snapshot, detect_technologies, include_repository, keep_last_good_snapshot, normalize_repository
+from github_snapshot import build_snapshot, compute_project_stats, detect_technologies, include_repository, keep_last_good_snapshot, normalize_repository
 
 USER = sys.argv[1] if len(sys.argv) > 1 else "hassan200503"
 OUT = sys.argv[2] if len(sys.argv) > 2 else os.path.join("data", "github.json")
@@ -54,7 +54,8 @@ def manifest_files(owner, repo):
     }
     for path in paths:
         name = path.rsplit("/", 1)[-1]
-        if name in known_names or path.startswith(".github/workflows/"):
+        if (name in known_names or path.startswith(".github/workflows/") or
+                "/db/migration/" in "/" + path or "/src/test/" in "/" + path or "/test/" in "/" + path):
             selected.append(path)
     contents = {}
     for path in selected[:40]:
@@ -109,6 +110,7 @@ for r in repos_raw:
     normalized["lastCommit"] = last_commit
     tree_paths, file_contents = manifest_files(USER, r)
     normalized["technologies"] = detect_technologies(r, tree_paths, file_contents, tech_signatures)
+    normalized["projectStats"] = compute_project_stats(tree_paths, file_contents)
     repos.append(normalized)
 
 repos.sort(key=lambda x: x.get("pushedAt") or "", reverse=True)

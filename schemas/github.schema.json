@@ -15,7 +15,7 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["id", "name", "description", "topics", "primaryLanguage", "languageBytes", "url", "homepage", "stars", "forks", "sizeKb", "createdAt", "pushedAt", "archived", "defaultBranch", "license", "technologies", "lastCommit"],
+        "required": ["id", "name", "description", "topics", "primaryLanguage", "languageBytes", "url", "homepage", "stars", "forks", "sizeKb", "createdAt", "pushedAt", "archived", "defaultBranch", "license", "technologies", "projectStats", "lastCommit"],
         "properties": {
           "id": {"type": "integer", "minimum": 1},
           "name": {"type": "string", "minLength": 1},
@@ -36,6 +36,22 @@
           "defaultBranch": {"type": "string", "minLength": 1},
           "license": {"type": ["string", "null"]},
           "technologies": {"type": "array", "items": {"type": "object"}},
+          "projectStats": {
+            "type": "object",
+            "required": ["migrations", "modules", "tests"],
+            "properties": {
+              "migrations": {"type": "integer", "minimum": 0},
+              "modules": {"type": "integer", "minimum": 0},
+              "tests": {
+                "type": "object",
+                "required": ["count", "method"],
+                "properties": {
+                  "count": {"type": "integer", "minimum": 0},
+                  "method": {"type": "string"}
+                }
+              }
+            }
+          },
           "lastCommit": {"type": ["object", "null"]}
         }
       }

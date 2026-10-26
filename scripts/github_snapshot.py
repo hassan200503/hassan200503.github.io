@@ -1,5 +1,6 @@
 """Pure snapshot shaping logic; safe to exercise with recorded fixtures."""
 from collections import defaultdict
+import re
 
 
 def include_repository(repo):
@@ -43,7 +44,29 @@ def normalize_repository(repo, language_bytes=None, technologies=None):
         "defaultBranch": repo.get("default_branch") or "main",
         "license": license_info.get("spdx_id"),
         "technologies": technologies or [],
+        "projectStats": {"migrations": 0, "modules": 0, "tests": {"count": 0, "method": "test source files under test paths"}},
         "lastCommit": None,
+    }
+
+
+def compute_project_stats(tree_paths, file_contents):
+    migration_count = sum(1 for path in tree_paths if "/db/migration/" in path.replace("\\", "/") and path.lower().endswith(".sql"))
+    modules = set()
+    for path in tree_paths:
+        match = re.search(r"/modules/([^/]+)/", "/" + path.replace("\\", "/"))
+        if match:
+            modules.add(match.group(1))
+    test_count = 0
+    for path in tree_paths:
+        normalized = path.replace("\\", "/")
+        if "/src/test/" not in "/" + normalized and "/test/" not in "/" + normalized:
+            continue
+        if normalized.lower().endswith((".java", ".js", ".jsx", ".ts", ".tsx", ".py")):
+            test_count += 1
+    return {
+        "migrations": migration_count,
+        "modules": len(modules),
+        "tests": {"count": test_count, "method": "test source files under test paths"},
     }
 
 

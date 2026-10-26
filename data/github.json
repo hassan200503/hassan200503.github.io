@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-26T10:44:26Z",
+  "generatedAt": "2026-10-26T10:55:42Z",
   "source": "GitHub public API; generated during the site build",
   "user": {
     "login": "hassan200503",
@@ -145,6 +145,10 @@
           "url": "https://github.com/hassan200503/rentmanager-backend/blob/main/deploy/docker-compose.yml"
         },
         {
+          "path": "src/main/resources/db/migration/V28__add_daraja_credentials_to_tenants.sql",
+          "url": "https://github.com/hassan200503/rentmanager-backend/blob/main/src/main/resources/db/migration/V28__add_daraja_credentials_to_tenants.sql"
+        },
+        {
           "path": ".github/workflows/ci.yml",
           "url": "https://github.com/hassan200503/rentmanager-mobile/blob/main/.github/workflows/ci.yml"
         }
@@ -164,6 +168,14 @@
         {
           "path": "deploy/docker-compose.yml",
           "url": "https://github.com/hassan200503/rentmanager-backend/blob/main/deploy/docker-compose.yml"
+        },
+        {
+          "path": "src/main/resources/db/migration/V21__create_property_media_and_unit_media.sql",
+          "url": "https://github.com/hassan200503/rentmanager-backend/blob/main/src/main/resources/db/migration/V21__create_property_media_and_unit_media.sql"
+        },
+        {
+          "path": "src/main/resources/db/migration/V30__add_tenant_id_to_payment_intents.sql",
+          "url": "https://github.com/hassan200503/rentmanager-backend/blob/main/src/main/resources/db/migration/V30__add_tenant_id_to_payment_intents.sql"
         },
         {
           "path": ".github/workflows/cloudflare-deploy.yml",
@@ -335,6 +347,14 @@
           ]
         }
       ],
+      "projectStats": {
+        "migrations": 0,
+        "modules": 0,
+        "tests": {
+          "count": 0,
+          "method": "test source files under test paths"
+        }
+      },
       "lastCommit": {
         "sha": "9459158",
         "message": "Update project title and description in README",
@@ -388,6 +408,14 @@
           ]
         }
       ],
+      "projectStats": {
+        "migrations": 0,
+        "modules": 0,
+        "tests": {
+          "count": 0,
+          "method": "test source files under test paths"
+        }
+      },
       "lastCommit": {
         "sha": "ff1775e",
         "message": "Refresh GitHub snapshot",
@@ -487,6 +515,10 @@
             {
               "path": "deploy/docker-compose.yml",
               "url": "https://github.com/hassan200503/rentmanager-backend/blob/main/deploy/docker-compose.yml"
+            },
+            {
+              "path": "src/main/resources/db/migration/V28__add_daraja_credentials_to_tenants.sql",
+              "url": "https://github.com/hassan200503/rentmanager-backend/blob/main/src/main/resources/db/migration/V28__add_daraja_credentials_to_tenants.sql"
             }
           ]
         },
@@ -501,6 +533,14 @@
             {
               "path": "deploy/docker-compose.yml",
               "url": "https://github.com/hassan200503/rentmanager-backend/blob/main/deploy/docker-compose.yml"
+            },
+            {
+              "path": "src/main/resources/db/migration/V21__create_property_media_and_unit_media.sql",
+              "url": "https://github.com/hassan200503/rentmanager-backend/blob/main/src/main/resources/db/migration/V21__create_property_media_and_unit_media.sql"
+            },
+            {
+              "path": "src/main/resources/db/migration/V30__add_tenant_id_to_payment_intents.sql",
+              "url": "https://github.com/hassan200503/rentmanager-backend/blob/main/src/main/resources/db/migration/V30__add_tenant_id_to_payment_intents.sql"
             }
           ]
         },
@@ -545,6 +585,14 @@
           ]
         }
       ],
+      "projectStats": {
+        "migrations": 100,
+        "modules": 21,
+        "tests": {
+          "count": 262,
+          "method": "test source files under test paths"
+        }
+      },
       "lastCommit": {
         "sha": "5f66797",
         "message": "Add redundant edge API keep-alive",
@@ -676,6 +724,14 @@
           ]
         }
       ],
+      "projectStats": {
+        "migrations": 0,
+        "modules": 0,
+        "tests": {
+          "count": 0,
+          "method": "test source files under test paths"
+        }
+      },
       "lastCommit": {
         "sha": "1c96ce5",
         "message": "ci: allow tests to continue on error to unblock pipeline",
@@ -771,6 +827,14 @@
           ]
         }
       ],
+      "projectStats": {
+        "migrations": 0,
+        "modules": 0,
+        "tests": {
+          "count": 0,
+          "method": "test source files under test paths"
+        }
+      },
       "lastCommit": {
         "sha": "7ff7afb",
         "message": "Refine README to include missing env vars and clarify backend dependency",
@@ -798,6 +862,14 @@
       "defaultBranch": "main",
       "license": null,
       "technologies": [],
+      "projectStats": {
+        "migrations": 0,
+        "modules": 0,
+        "tests": {
+          "count": 0,
+          "method": "test source files under test paths"
+        }
+      },
       "lastCommit": {
         "sha": "e89442f",
         "message": "Update README with technology and module details",
@@ -882,6 +954,14 @@
           ]
         }
       ],
+      "projectStats": {
+        "migrations": 0,
+        "modules": 0,
+        "tests": {
+          "count": 0,
+          "method": "test source files under test paths"
+        }
+      },
       "lastCommit": {
         "sha": "ebd08c4",
         "message": "Calls never hang on \"Connectingâ€¦\"; show what each phone found (#5)",

@@ -19,6 +19,8 @@ P2 data pipeline: snapshot contract and fixture-tested shaping are implemented; 
 - P2 live evidence wiring: the generator now reads recursive repository trees plus bounded manifest/config contents, applies `data/tech-map.json`, and drops detections without a proving file path. The latest snapshot has no null evidence paths.
 - P2 fallback hardening: malformed or unexpectedly empty candidates now preserve the existing snapshot; fixture coverage includes API-error and empty-candidate behavior.
 - P2 browser refresh: reduced metadata cache to 5 minutes, added ETag/304 handling, numeric-ID merging, topic filters, and visible last-snapshot status on API failure; `node --check github.js` passes.
+- P2 no-JavaScript baseline: the build now pre-renders GitHub stats, language footprint, technology ledger, and escaped repository cards into `index.html`; the JS layer enhances those hosts instead of owning their existence.
+- P2 computed project stats: generated `data/github.json` now carries migrations, modules, and test-source-file counts; the build replaces legacy hard-coded counts across the home, work, skills, and case-study pages. Latest backend values: 100 migrations, 21 modules, 262 test source files.
 
 ## Blocked items
 
@@ -28,9 +30,9 @@ P2 data pipeline: snapshot contract and fixture-tested shaping are implemented; 
 
 ## Next three tasks
 
-1. P2 data pipeline: compute project statistics from repository evidence and add them to the snapshot.
-2. P2 data pipeline: pre-render the project list and technology ledger into HTML so JavaScript-disabled readers never see Loading.
-3. P3 deployment workflow: design the build-and-deploy workflow proposal; stop at G2 before changing Pages source.
+1. P3 deployment workflow: design the build-and-deploy workflow proposal; stop at G2 before changing Pages source.
+2. P4 webhook relay: implement/test Worker code and setup docs; stop at G3 for owner App/secrets actions.
+3. P5 visual/accessibility refinement after the deployment architecture is approved.
 
 ## Commands that work
 

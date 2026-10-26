@@ -8,6 +8,8 @@ shared. No framework or runtime dependency is introduced.
 from __future__ import annotations
 
 import argparse
+import html
+import json
 import re
 from pathlib import Path
 
@@ -135,7 +137,91 @@ def render(page: Path) -> str:
         else:
             nav = nav.replace(target, target + ' aria-current="page"', 1)
         output = output[:nav_start] + nav + output[nav_end:]
+    if page == Path("index.html"):
+        output = prerender_github(output)
+    elif (ROOT / "data/github.json").exists():
+        with (ROOT / "data/github.json").open(encoding="utf-8") as handle:
+            output = prerender_project_stats(output, json.load(handle))
     return output
+
+
+def prerender_project_stats(output, data):
+    backend = next((repo for repo in data.get("repos", []) if repo.get("name") == "rentmanager-backend"), None)
+    if not backend:
+        return output
+    stats = backend.get("projectStats", {})
+    migrations = int(stats.get("migrations", 0))
+    modules = int(stats.get("modules", 0))
+    tests = int((stats.get("tests") or {}).get("count", 0))
+    output = output.replace('data-count="1588" data-sep>1,588', f'data-count="{tests}" data-sep>{tests:,}')
+    output = output.replace('data-count="99">99', f'data-count="{migrations}">{migrations}')
+    output = output.replace("20 modules", f"{modules} modules")
+    output = output.replace("99 sequential migrations", f"{migrations} sequential migrations")
+    output = output.replace("99 sequential Flyway migrations", f"{migrations} sequential Flyway migrations")
+    output = output.replace("all 99 Flyway migrations", f"all {migrations} Flyway migrations")
+    output = output.replace("1,588 backend tests", f"{tests:,} backend test source files")
+    output = output.replace("1,588 tests", f"{tests:,} test source files")
+    output = output.replace("latest at V104, ", "")
+    return output
+
+
+def esc(value):
+    return html.escape("" if value is None else str(value), quote=True)
+
+
+def safe_link(value):
+    value = str(value or "")
+    return value if value.startswith("https://") else "#"
+
+
+def prerender_github(output):
+    data_path = ROOT / "data/github.json"
+    if not data_path.exists():
+        return output
+    with data_path.open(encoding="utf-8") as handle:
+        data = json.load(handle)
+    totals = data.get("totals", {})
+    stats = "".join(
+        '<div class="stat"><span class="n">%s</span><span class="label">%s</span></div>' % (esc(value), esc(label))
+        for value, label in (
+            (totals.get("repos", 0), "public repositories"),
+            (len(totals.get("languageBytes", {})), "languages in use"),
+            ((totals.get("lastPush") or "")[:10] or "—", "last push"),
+        )
+    )
+    language_items = "".join(
+        '<li><span class="mono">%s</span> <span class="muted">%s bytes</span></li>' % (esc(language), esc(bytes_))
+        for language, bytes_ in list(totals.get("languageBytes", {}).items())[:12]
+    )
+    footprint = '<ul class="footprint-key">%s</ul>' % language_items
+    ledger_items = []
+    for item in data.get("technologyLedger", []):
+        evidence = item.get("evidence", [])
+        links = " ".join(
+            '<a class="small" href="%s" target="_blank" rel="noopener">%s ↗</a>' % (esc(safe_link(e.get("url"))), esc(e.get("path")))
+            for e in evidence[:3]
+        )
+        ledger_items.append('<li><strong>%s</strong> <span class="muted">%s repos · %s</span><br>%s</li>' % (
+            esc(item.get("technology")), esc(item.get("repoCount", 0)), esc(item.get("category", "")), links
+        ))
+    ledger = '<ul class="stack-list">%s</ul>' % "".join(ledger_items)
+    cards = []
+    for repo in data.get("repos", []):
+        topics = "".join('<span class="topic">%s</span>' % esc(topic) for topic in (repo.get("topics") or [])[:6])
+        live = repo.get("homepage")
+        live_link = '<a class="repo-live" href="%s" target="_blank" rel="noopener">Live ↗</a>' % esc(safe_link(live)) if live else ""
+        cards.append(
+            '<article class="repo-card"><div class="repo-head"><h3><a href="%s" target="_blank" rel="noopener">%s</a></h3>%s</div><p class="repo-desc">%s</p><div class="repo-topics">%s</div><div class="repo-foot"><span>%s</span><span>updated %s</span></div></article>'
+            % (esc(safe_link(repo.get("url"))), esc(repo.get("name")), live_link, esc(repo.get("description") or "No description on the repository yet."), topics, esc(repo.get("primaryLanguage") or "No primary language"), esc((repo.get("pushedAt") or "")[:10] or "unknown"))
+        )
+    repos = "".join(cards)
+    stamp = '<span class="gh-stamp" data-github-stamp>Snapshot built %s</span>' % esc(data.get("generatedAt", "unknown"))
+    output = re.sub(r'<span class="gh-stamp" data-github-stamp>.*?</span>', stamp, output, count=1, flags=re.S)
+    output = output.replace('<div class="grid-3 mt-32" data-github-stats></div>', '<div class="grid-3 mt-32" data-github-stats>%s</div>' % stats)
+    output = output.replace('<div class="mt-16" data-github-footprint></div>', '<div class="mt-16" data-github-footprint>%s</div>' % footprint)
+    output = output.replace('<div class="mt-16" data-github-ledger></div>', '<div class="mt-16" data-github-ledger>%s</div>' % ledger)
+    output = output.replace('<div class="repo-grid mt-24" data-github-repos></div>', '<div class="repo-grid mt-24" data-github-repos>%s</div>' % repos)
+    return prerender_project_stats(output, data)
 
 
 def main() -> int:
