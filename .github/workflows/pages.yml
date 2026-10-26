@@ -1,0 +1,58 @@
+name: Build and deploy Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  repository_dispatch:
+    types: [refresh-github-data]
+  schedule:
+    - cron: "17 * * * *"
+    - cron: "47 * * * *"
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build GitHub snapshot
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/build_github_data.py hassan200503 data/github.json
+
+      - name: Validate data and fixtures
+        run: |
+          python scripts/validate_data.py
+          python scripts/validate_github_snapshot.py
+          python -m unittest discover -s tests -p 'test_*.py' -v
+
+      - name: Build static pages
+        run: python scripts/build_site.py
+
+      - name: Verify generated site
+        run: |
+          python scripts/build_site.py --check
+          python scripts/check_site.py
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - name: Deploy Pages artifact
+        id: deployment
+        uses: actions/deploy-pages@v4

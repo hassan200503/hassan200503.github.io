@@ -4,7 +4,7 @@ Last updated: 2026-10-26
 
 ## Current task
 
-G2 decision: approve the GitHub Pages deployment-source switch before the Actions deployment workflow is added.
+G2 approved: Pages deployment workflow is prepared locally; owner must push it and select GitHub Actions as the Pages source.
 
 ## Completed work
 
@@ -22,6 +22,7 @@ G2 decision: approve the GitHub Pages deployment-source switch before the Action
 - P2 no-JavaScript baseline: the build now pre-renders GitHub stats, language footprint, technology ledger, and escaped repository cards into `index.html`; the JS layer enhances those hosts instead of owning their existence.
 - P2 computed project stats: generated `data/github.json` now carries migrations, modules, and test-source-file counts; the build replaces legacy hard-coded counts across the home, work, skills, and case-study pages. Latest backend values: 100 migrations, 21 modules, 262 test source files.
 - G2 proposal documented in `docs/DECISIONS/G2-pages-deployment.md`; no Pages settings or deployment workflow has been changed yet.
+- G2 implementation: `.github/workflows/pages.yml` builds, validates, uploads, and deploys the site artifact; the old commit-back snapshot workflow was removed. Setup is documented in `docs/SETUP_DEPLOYMENT.md`.
 
 ## Blocked items
 
@@ -70,4 +71,4 @@ G2 decision: approve the GitHub Pages deployment-source switch before the Action
 
 ## Handover note
 
-P0–P2 evidence is documented. Work is paused at G2 pending approval to switch Pages deployment to GitHub Actions. Do not rely on visual quality or performance targets until the missing browser measurements have been run.
+P0–P2 evidence and the G2 implementation are documented. Local verification is complete; pushing and selecting GitHub Actions in Pages remain owner/external actions. Do not rely on visual quality or performance targets until the missing browser measurements have been run.
