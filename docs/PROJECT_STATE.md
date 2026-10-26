@@ -10,6 +10,7 @@ P0 baseline and audit. The repository was cloned from `https://github.com/hassan
 
 - P0 repository inspection and baseline evidence recorded in `docs/AUDIT.md` (commit `596e317`).
 - P1 data foundation slice: added `data/profile.json`, `data/tech-map.json`, schemas for both, and dependency-free validation in `scripts/validate_data.py`.
+- P1 CI smoke slice: added `scripts/check_site.py` and `.github/workflows/ci.yml` with read-only permissions; deployment workflow is unchanged.
 
 ## Blocked items
 
@@ -19,7 +20,7 @@ P0 baseline and audit. The repository was cloned from `https://github.com/hassan
 
 ## Next three tasks
 
-1. P1 foundation: define shared partial/build strategy and CI validation skeleton; stop at G1 if a static-site generator becomes necessary.
+1. P1 foundation: decide whether shared partials can be introduced with a small build script; stop at G1 if a static-site generator becomes necessary.
 2. P1 foundation: add snapshot schema validation and a build smoke check without changing rendered content.
 3. P2 data pipeline: redesign the snapshot schema and generator around numeric repository IDs, evidence links, technology detection, and computed project statistics.
 
@@ -29,6 +30,7 @@ P0 baseline and audit. The repository was cloned from `https://github.com/hassan
 - `git log -5 --oneline`
 - `python -c "import json; ..."` for inspecting the checked-in snapshot
 - `python scripts/validate_data.py`
+- `python scripts/check_site.py`
 - `Get-Content` / `rg` for repository inspection
 
 ## Known defects
@@ -37,6 +39,7 @@ P0 baseline and audit. The repository was cloned from `https://github.com/hassan
 - Existing workflow does not include a monthly keep-alive, schema validation, test suite, or secret/link/accessibility/performance checks.
 - Browser refresh in `github.js` has no ETag handling and uses localStorage caching; it merges by repository name rather than numeric ID.
 - Technology ledger and manifest evidence are not generated.
+- The CI smoke check is intentionally not a full HTML, axe, Lighthouse, or schema validator yet.
 - Shared header/footer markup is duplicated across eight HTML documents.
 - Google Fonts, Lenis CSS, GSAP, ScrollTrigger, and Lenis are loaded from third parties; CSP/SRI and self-hosting are not implemented.
 - Contact email and WhatsApp number are present in static HTML.
