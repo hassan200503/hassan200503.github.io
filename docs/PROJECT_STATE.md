@@ -24,6 +24,7 @@ G3 decision: webhook relay code is complete and tested; owner must create/instal
 - G2 proposal documented in `docs/DECISIONS/G2-pages-deployment.md`; no Pages settings or deployment workflow has been changed yet.
 - G2 implementation: `.github/workflows/pages.yml` builds, validates, uploads, and deploys the site artifact; the old commit-back snapshot workflow was removed. Setup is documented in `docs/SETUP_DEPLOYMENT.md`.
 - G3 implementation: `worker/src/index.js` verifies signatures, filters events/actions, coalesces bursts, and dispatches refreshes; four signed-fixture tests pass. Owner setup is documented in `docs/SETUP_WEBHOOK.md`.
+- Deployment verification: commit `a1bcfbe` is pushed; Site checks run `40312571360` and Pages deployment run `40312571367` both completed successfully. Pages API reports `build_type: workflow` and `status: built`.
 
 ## Blocked items
 
