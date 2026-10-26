@@ -10,7 +10,7 @@ P0 baseline and audit. The repository was cloned from `https://github.com/hassan
 
 - P0 repository inspection and baseline evidence recorded in `docs/AUDIT.md` (commit `596e317`).
 - P1 data foundation slice: added `data/profile.json`, `data/tech-map.json`, schemas for both, and dependency-free validation in `scripts/validate_data.py`.
-- P1 CI smoke slice: added `scripts/check_site.py` and `.github/workflows/ci.yml` with read-only permissions; deployment workflow is unchanged.
+- P1 CI smoke slice: added `scripts/check_site.py` and `.github/workflows/ci.yml` with read-only permissions; root-relative link handling was fixed after the first failing run (commits `e8872eb`, `d1df67a`); deployment workflow is unchanged.
 
 ## Blocked items
 
@@ -31,6 +31,7 @@ P0 baseline and audit. The repository was cloned from `https://github.com/hassan
 - `python -c "import json; ..."` for inspecting the checked-in snapshot
 - `python scripts/validate_data.py`
 - `python scripts/check_site.py`
+- `python -m compileall -q scripts`
 - `Get-Content` / `rg` for repository inspection
 
 ## Known defects
