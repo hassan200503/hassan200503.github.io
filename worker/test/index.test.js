@@ -50,8 +50,8 @@ test("valid delivery coalesces a burst and dispatches once", async () => {
   const body = JSON.stringify({ action: "edited" });
   const request = () => new Request("https://worker.test", { method: "POST", body, headers: { "x-hub-signature-256": "", "x-github-event": "repository" } });
   const signed = await signature(body);
-  const first = await handleWebhook(new Request("https://worker.test", { method: "POST", body, headers: { "x-hub-signature-256": signed, "x-github-event": "repository" } }), env, ctx, { fetchFn, delay: async () => {} });
-  const second = await handleWebhook(new Request("https://worker.test", { method: "POST", body, headers: { "x-hub-signature-256": signed, "x-github-event": "repository" } }), env, ctx, { fetchFn, delay: async () => {} });
+  const first = await handleWebhook(new Request("https://worker.test", { method: "POST", body, headers: { "x-hub-signature-256": signed, "x-github-event": "repository" } }), env, ctx, { fetchFn });
+  const second = await handleWebhook(new Request("https://worker.test", { method: "POST", body, headers: { "x-hub-signature-256": signed, "x-github-event": "repository" } }), env, ctx, { fetchFn });
   assert.equal(first.status, 202);
   assert.equal(second.status, 202);
   assert.equal(JSON.parse(await second.text()).debounced, true);

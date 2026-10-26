@@ -67,13 +67,11 @@ export async function handleWebhook(request, env, ctx, options = {}) {
   if (now < pendingUntil) return Response.json({ accepted: true, debounced: true }, { status: 202 });
   pendingUntil = now + DEBOUNCE_MS;
   const fetchFn = options.fetchFn || fetch;
-  const delay = options.delay || ((ms) => new Promise((resolve) => setTimeout(resolve, ms)));
-  const work = async () => {
-    await delay(DEBOUNCE_MS);
-    await dispatchRefresh(env, fetchFn);
-  };
+  // Dispatch immediately; the window suppresses duplicate bursts. Delaying
+  // work in waitUntil is not reliable on short-lived Worker invocations.
+  const work = dispatchRefresh(env, fetchFn);
   const waitUntil = ctx && ctx.waitUntil ? ctx.waitUntil.bind(ctx) : (promise) => promise.catch(() => {});
-  waitUntil(work());
+  waitUntil(work);
   return Response.json({ accepted: true, debounced: false }, { status: 202 });
 }
 
