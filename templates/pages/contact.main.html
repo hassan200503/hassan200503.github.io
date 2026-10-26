@@ -1,0 +1,120 @@
+<main id="main">
+  <section class="section" style="padding-top: clamp(48px,8vw,96px); padding-bottom: clamp(32px,4vw,48px);">
+    <div class="wrap">
+      <span class="eyebrow">Start a conversation</span>
+      <h1 class="mt-16" style="max-width:20ch;">Tell me about the role, or the thing you need built.</h1>
+      <p class="lede mt-24 measure">
+        I’m open to graduate and junior engineering roles, internships and contract work, whether
+        that’s remote in any timezone, on-site in Kenya, or relocating. WhatsApp is the fastest
+        way to reach me. I check it daily and usually reply the same day.
+      </p>
+      <div class="mt-24">
+        <span class="availability"><span class="pip" aria-hidden="true"></span> Open to work · available now</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: clamp(32px,4vw,48px);">
+    <div class="wrap grid-2" style="align-items:start;">
+
+      <div class="reveal">
+        <div class="card">
+          <h3>WhatsApp</h3>
+          <p class="muted mt-8">The quickest way to reach me. Tap through and the message is pre-filled.</p>
+          <a class="btn btn-primary mt-16" href="https://wa.me/254714931575?text=Hi%20Hassan%2C%20I%20found%20your%20portfolio%20and%20want%20to%20talk%20about%20a%20project." target="_blank" rel="noopener">Open WhatsApp →</a>
+        </div>
+        <div class="card mt-24">
+          <h3>Email</h3>
+          <p class="muted mt-8">Better for anything long: a job description, a spec, an attachment.</p>
+          <div class="mt-16 contact-row">
+            <a class="btn btn-ghost btn-sm" href="mailto:karungwahassan03@gmail.com">Open email</a>
+            <button class="copy-mail" type="button" data-copy="karungwahassan03@gmail.com" data-label="Copy address">Copy address</button>
+          </div>
+        </div>
+        <div class="card mt-24">
+          <h3>CV</h3>
+          <p class="muted mt-8">My experience, skills and projects as a PDF, ready for your applicant tracking system.</p>
+          <a class="btn btn-ghost mt-16" href="files/Hassan-Tsuma-CV.pdf" download>Download CV (PDF)</a>
+        </div>
+        <div class="card mt-24">
+          <h3>LinkedIn</h3>
+          <p class="muted mt-8">If it is easier to pass on to someone internally.</p>
+          <a class="btn btn-ghost mt-16" href="https://www.linkedin.com/in/hassan-karungwa" target="_blank" rel="noopener">linkedin.com/in/hassan-karungwa</a>
+        </div>
+        <div class="card mt-24">
+          <h3>Source code</h3>
+          <p class="muted mt-8">RentManager is public in three repositories, so you can check the claims yourself.</p>
+          <div class="mt-16 contact-row">
+            <a class="btn btn-ghost btn-sm" href="https://github.com/hassan200503/rentmanager-backend" target="_blank" rel="noopener">backend</a>
+            <a class="btn btn-ghost btn-sm" href="https://github.com/hassan200503/rentmanager-frontend" target="_blank" rel="noopener">web</a>
+            <a class="btn btn-ghost btn-sm" href="https://github.com/hassan200503/rentmanager-mobile" target="_blank" rel="noopener">mobile</a>
+          </div>
+        </div>
+        <div class="card mt-24">
+          <h3>See the work first</h3>
+          <p class="muted mt-8">RentManager is deployed, so you don’t have to take my word for any of this.</p>
+          <div class="mt-16 contact-row">
+            <a class="btn btn-ghost btn-sm" href="https://www.rentmanagerke.workers.dev/" target="_blank" rel="noopener">Open the live product ↗</a>
+            <a class="btn btn-ghost btn-sm" href="skills.html">Skills in detail</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <div class="card">
+          <h3>Compose a message</h3>
+          <p class="muted mt-8 small">
+            Write the message here and hit send — it lands directly in
+            <span class="nw">karungwahassan03@gmail.com</span>, my Gmail inbox, and I usually reply
+            the same day. If the send relay is ever unreachable, the form falls back to your email
+            app, and WhatsApp is always an option. Nothing disappears into a form that never arrives.
+          </p>
+
+          <form id="contact-form" class="mt-24 stack" style="gap:16px;" novalidate
+                action="https://formsubmit.co/karungwahassan03@gmail.com" method="POST">
+            <input type="hidden" name="_subject" value="Portfolio enquiry" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_next" value="https://hassan200503.github.io/contact.html" />
+            <input type="text" name="_honey" value="" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true" />
+            <div class="field">
+              <label for="f-name">Name *</label>
+              <input id="f-name" name="name" type="text" autocomplete="name" required />
+            </div>
+            <div class="field">
+              <label for="f-email">Email *</label>
+              <input id="f-email" name="email" type="email" autocomplete="email" required />
+            </div>
+            <div class="field">
+              <label for="f-project">Company or project (optional)</label>
+              <input id="f-project" name="project" type="text" />
+            </div>
+            <div class="field">
+              <label for="f-kind">What’s this about?</label>
+              <select id="f-kind" name="kind">
+                <option value="Role enquiry">A role (graduate or junior)</option>
+                <option value="Internship enquiry">An internship</option>
+                <option value="Project enquiry" selected>A project you need built</option>
+                <option value="Collaboration">Collaboration or open source</option>
+                <option value="Something else">Something else</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="f-details">Tell me about it *</label>
+              <textarea id="f-details" name="details" required placeholder="The role and what the team works on. Or what you're trying to build, and what makes it hard right now."></textarea>
+            </div>
+            <div>
+              <button type="submit" class="btn btn-primary">Send message</button>
+            </div>
+            <p id="contact-status" class="form-msg" role="status" hidden></p>
+            <div id="contact-handoff" class="contact-row" hidden>
+              <a class="btn btn-wa btn-sm" id="handoff-wa" href="https://wa.me/254714931575" target="_blank" rel="noopener">Send it on WhatsApp instead</a>
+              <button class="copy-mail" type="button" id="handoff-copy" data-copy="" data-label="Copy the message">Copy the message</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</main>

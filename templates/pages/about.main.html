@@ -1,0 +1,233 @@
+<main id="main">
+  <section class="section" style="padding-top: clamp(48px,8vw,96px);">
+    <div class="wrap">
+      <div class="ledger-row reveal">
+        <div class="ledger-index">— / ABOUT</div>
+        <div class="grid-photo">
+          <div class="profile-wrap">
+            <figure class="profile-card">
+              <div class="profile-photo">
+                <img src="images/hassan-square.jpg" width="600" height="600" decoding="async"
+                     alt="Hassan Tsuma Karungwa, photographed straight on against a plain light background." />
+              </div>
+              <figcaption class="profile-meta">
+                <dl class="profile-facts">
+                  <div><dt>Role</dt><dd>Full-stack software engineer</dd></div>
+                  <div><dt>Experience</dt><dd>3+ years · since 2023</dd></div>
+                  <div><dt>Based in</dt><dd>Homabay, Kenya</dd></div>
+                </dl>
+              </figcaption>
+            </figure>
+          </div>
+          <div>
+            <h1 style="max-width:16ch;">Hassan Tsuma Karungwa</h1>
+            <div class="mt-16">
+              <a class="availability" href="index.html#available"><span class="pip" aria-hidden="true"></span> Open to work · available now</a>
+            </div>
+            <p class="lede mt-24 measure">
+              I’m a full-stack software engineer in Kenya with more than three years of independent and
+              freelance experience, and still a Computer Science student. Most of what I know about building real software didn’t come from
+              coursework. It came from building RentManager on my own, end to end, and running
+              into the problems a tutorial never mentions.
+            </p>
+
+            <div class="mt-48 measure stack" style="gap:20px;">
+              <p>
+                I like problems where correctness matters more than shipping speed: money,
+                records, anything a business cannot afford to get wrong. RentManager started out
+                as “build a rental app” and became far more interesting the moment <span class="nw">M-Pesa</span>, Kenyan
+                tax law and multi-tenant data isolation came into it. I didn’t back away from
+                that. I read Safaricom’s merchant terms, read the Finance Act, and built a tax
+                module that fails closed by default, because I’d rather under-compute than get a
+                government filing wrong.
+              </p>
+              <p>
+                I won’t tell you I’m an expert across a long list of technologies. I’m not yet,
+                and the list wouldn’t be honest. What I can say is that I’ve built one real system
+                deeply enough to know where the hard problems live in software like this. It isn’t
+                the CRUD screens. It’s the tenant boundary, the ledger, the idempotency
+                guarantees, the things that are easy to get subtly wrong and expensive to have
+                gotten wrong. I’m building depth by taking on harder versions of that same
+                problem instead of collecting frameworks.
+              </p>
+              <p>
+                The part I’m proudest of isn’t a feature. It’s that the thing is
+                <a href="https://www.rentmanagerke.workers.dev/" target="_blank" rel="noopener">deployed and running</a>,
+                across a web app, a native mobile app and the API underneath both. Getting there
+                meant learning the parts nobody writes tutorials about: squeezing a Spring Boot
+                service into 512&nbsp;MB, keeping a free-tier container awake so <span class="nw">M-Pesa</span> callbacks
+                don’t hit a sleeping server, and scheduling the encrypted backups I still owe
+                myself a restore drill on.
+              </p>
+              <p>
+                Outside RentManager I’m still working through the fundamentals properly. Data
+                structures, algorithms and the JavaFX exercises on my GitHub are all part of
+                that, and none of it is portfolio polish. Judge me on RentManager. That’s the
+                real thing.
+              </p>
+            </div>
+
+            <div class="mt-48" id="ai">
+              <h3>What my days run on</h3>
+              <p class="mt-16 measure muted">
+                AI tools are part of how I work every day: automation for the repetitive edges of a
+                solo workload, research when I need to be fast <em>and</em> right, and agents inside
+                the editor. The judgment stays mine — I review every line before it ships, and I can
+                explain every decision it made.
+              </p>
+              <div class="ai-toolkit mt-32">
+                <div class="ai-row reveal">
+                  <span class="ai-kicker">Automation</span>
+                  <div class="ai-badges">
+                    <img src="https://img.shields.io/badge/Claude-D97757?logo=claude&amp;logoColor=white&amp;style=flat-square" alt="Claude" width="90" height="20" loading="lazy" />
+                    <img src="https://img.shields.io/badge/Zapier-FF4F00?logo=zapier&amp;logoColor=white&amp;style=flat-square" alt="Zapier" width="90" height="20" loading="lazy" />
+                  </div>
+                </div>
+                <div class="ai-row reveal">
+                  <span class="ai-kicker">Research</span>
+                  <div class="ai-badges">
+                    <img src="https://img.shields.io/badge/Perplexity-1FB8CD?logo=perplexity&amp;logoColor=white&amp;style=flat-square" alt="Perplexity" width="120" height="20" loading="lazy" />
+                    <img src="https://img.shields.io/badge/Gemini-8E75B2?logo=googlegemini&amp;logoColor=white&amp;style=flat-square" alt="Google Gemini" width="100" height="20" loading="lazy" />
+                  </div>
+                </div>
+                <div class="ai-row reveal">
+                  <span class="ai-kicker">Coding assistants</span>
+                  <div class="ai-badges">
+                    <img src="https://img.shields.io/badge/Claude%20Code-D97757?logo=claudecode&amp;logoColor=white&amp;style=flat-square" alt="Claude Code" width="140" height="20" loading="lazy" />
+                    <img src="https://img.shields.io/badge/Codex-412991?logo=openai&amp;logoColor=white&amp;style=flat-square" alt="OpenAI Codex" width="90" height="20" loading="lazy" />
+                    <img src="https://img.shields.io/badge/OpenCode-201D1D?logo=opencode&amp;logoColor=white&amp;style=flat-square" alt="OpenCode" width="120" height="20" loading="lazy" />
+                    <img src="https://img.shields.io/badge/Cline-18181B?logo=cline&amp;logoColor=white&amp;style=flat-square" alt="Cline" width="80" height="20" loading="lazy" />
+                    <img src="https://img.shields.io/badge/Kiro%20CLI-9046FF" alt="Kiro CLI" width="100" height="20" loading="lazy" />
+                  </div>
+                </div>
+              </div>
+              <p class="ai-colophon">
+                Badges link the tools as they are — colored by each vendor&rsquo;s own brand. The
+                line I keep from all of it: <span class="nw">AI drafts, human verifies.</span>
+              </p>
+            </div>
+
+            <div class="mt-48">
+              <h3>What I’m looking for</h3>
+              <p class="mt-16">
+                A full-time role on an engineering team, whether that’s junior, graduate or an
+                internship, backend or full-stack. I take on freelance and contract work
+                alongside it. I can work remotely in any timezone from UTC+3, on-site in Kenya,
+                or relocate for the right role. What I want most from the next step is to work
+                with engineers who’ll review my code and show me how a system behaves under real
+                load. Building alone could never teach me that.
+              </p>
+              <p class="mt-16"><a class="btn btn-ghost btn-sm" href="skills.html">See exactly what I can do →</a></p>
+            </div>
+
+
+            <div class="mt-48">
+              <h3>Experience</h3>
+              <div class="timeline mt-24">
+                <div class="tl-item is-current">
+                  <div class="tl-head">
+                    <strong>Full-stack software engineer · Independent / freelance</strong>
+                    <span class="tl-when">February 2023 – present</span>
+                  </div>
+                  <p>Designing, building and deploying complete systems in Java, Spring Boot,
+                     PostgreSQL, React, Next.js and TypeScript. Multi-tenant SaaS architecture,
+                     domain models built with Domain-Driven Design and Clean Architecture, and
+                     billing and payment workflows that are idempotent and transaction-safe.
+                     RentManager is the largest of these, and the one whose code is public.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-48">
+              <h3>Education</h3>
+              <p class="mt-16 measure muted">
+                Listed in full, including the national examinations, because in Kenya those
+                grades are part of how someone is read and leaving them out invites the
+                question anyway.
+              </p>
+              <div class="timeline mt-24">
+                <div class="tl-item is-current">
+                  <div class="tl-head">
+                    <strong>Tom Mboya University</strong>
+                    <span class="tl-when">Second year · expected 2028</span>
+                  </div>
+                  <p>BSc Computer Science. Most of what I can actually build I taught myself
+                     while the coursework ran alongside it, and I would rather be judged on the
+                     systems than on the transcript.</p>
+                </div>
+                <div class="tl-item">
+                  <div class="tl-head">
+                    <strong>Kenya Certificate of Secondary Education</strong>
+                    <span class="tl-when">KCSE</span>
+                  </div>
+                  <p>Completed secondary school before moving on to Computer Science.</p>
+                  <span class="grade"><strong>B+</strong> mean grade</span>
+                </div>
+                <div class="tl-item">
+                  <div class="tl-head">
+                    <strong>Kenya Certificate of Primary Education</strong>
+                    <span class="tl-when">KCPE</span>
+                  </div>
+                  <p>Primary school, and the first exam that counted for anything.</p>
+                  <span class="grade"><strong>B</strong> mean grade</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-48">
+              <h3>Outside the editor</h3>
+              <p class="mt-16 measure muted">
+                What I do with the rest of my time. Some of it feeds the work more directly
+                than it looks like it should.
+              </p>
+              <div class="interest" data-tilts mt-24">
+                <div class="interest reveal" data-tilt>
+                  <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 4.5a1.6 1.6 0 1 0 0-3.2 1.6 1.6 0 0 0 0 3.2z"/><path d="M8 22l2.2-6.2L8.4 13 7 17M13 6l-3 2-1.6 4.2L11 14l1.4 3.4L15 22M16 11l-3-2"/></svg></span>
+                  <h3>Nature walks</h3>
+                  <p>Long walks, usually alone. Most of the problems I have untangled were
+                     untangled a few kilometres from a keyboard.</p>
+                </div>
+                <div class="interest reveal" data-tilt>
+                  <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></span>
+                  <h3>Software engineering</h3>
+                  <p>It is the work and it is also the hobby. I read other people’s code and
+                     architecture decisions for the same reason other people read essays.</p>
+                </div>
+                <div class="interest reveal" data-tilt>
+                  <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></svg></span>
+                  <h3>Music</h3>
+                  <p>Listening, constantly, and usually while building. It sets the pace of a
+                     long session better than coffee does.</p>
+                </div>
+                <div class="interest reveal" data-tilt>
+                  <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="5" r="2.2"/><path d="M12 9v5M5 21c1.5-3.5 4-5 7-5s5.5 1.5 7 5M7.5 13.5 12 15l4.5-1.5"/></svg></span>
+                  <h3>Meditation</h3>
+                  <p>Sitting still on purpose. It is the habit that makes the difference
+                     between debugging carefully and debugging frantically.</p>
+                </div>
+                <div class="interest reveal" data-tilt>
+                  <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18M3.5 9h17M3.5 15h17"/></svg></span>
+                  <h3>Philosophy</h3>
+                  <p>Mostly questions about knowledge and ethics. Useful training for software,
+                     which is largely the practice of being precise about what you actually
+                     know.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-48">
+              <h3>Where to find me</h3>
+              <div class="mt-16" style="display:flex; gap:14px; flex-wrap:wrap;">
+                <a class="btn btn-ghost btn-sm" href="files/Hassan-Tsuma-CV.pdf" download>Download CV (PDF)</a>
+                <a class="btn btn-ghost btn-sm" href="https://github.com/hassan200503" target="_blank" rel="noopener">GitHub</a>
+                <a class="btn btn-ghost btn-sm" href="https://www.linkedin.com/in/hassan-karungwa" target="_blank" rel="noopener">LinkedIn</a>
+                <a class="btn btn-ghost btn-sm" href="mailto:karungwahassan03@gmail.com">Email</a>
+                <a class="btn btn-wa btn-sm" href="https://wa.me/254714931575?text=Hi%20Hassan%2C%20I%20read%20your%20about%20page%20and%20I'd%20like%20to%20talk." target="_blank" rel="noopener">WhatsApp</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
