@@ -4,13 +4,14 @@ Last updated: 2026-10-26
 
 ## Current task
 
-G1 decision: choose whether to introduce a small custom static build/template step for the duplicated page shell.
+P1 foundation: shared static build/template step is implemented and verified.
 
 ## Completed work
 
 - P0 repository inspection and baseline evidence recorded in `docs/AUDIT.md` (commit `596e317`).
 - P1 data foundation slice: added `data/profile.json`, `data/tech-map.json`, schemas for both, and dependency-free validation in `scripts/validate_data.py`.
 - P1 CI smoke slice: added `scripts/check_site.py` and `.github/workflows/ci.yml` with read-only permissions; root-relative link handling was fixed after the first failing run (commits `e8872eb`, `d1df67a`); deployment workflow is unchanged.
+- G1 resolved with owner approval: `scripts/build_site.py` now renders all 9 published pages from shared header/footer partials and page-owned head/content/tail fragments. The generated output matched the existing pages before commit (`9628dfc`). No framework was added.
 
 ## Blocked items
 
@@ -20,9 +21,9 @@ G1 decision: choose whether to introduce a small custom static build/template st
 
 ## Next three tasks
 
-1. P1 foundation: decide whether shared partials can be introduced with a small build script; stop at G1 if a static-site generator becomes necessary.
-2. P1 foundation: add snapshot schema validation and a build smoke check without changing rendered content.
-3. P2 data pipeline: redesign the snapshot schema and generator around numeric repository IDs, evidence links, technology detection, and computed project statistics.
+1. P1 foundation: add snapshot schema validation to CI and document the local build command.
+2. P2 data pipeline: redesign the snapshot schema and generator around numeric repository IDs, evidence links, technology detection, and computed project statistics.
+3. P2 data pipeline: add recorded GitHub fixtures and failure-path tests before changing live API behavior.
 
 ## Commands that work
 
@@ -31,6 +32,7 @@ G1 decision: choose whether to introduce a small custom static build/template st
 - `python -c "import json; ..."` for inspecting the checked-in snapshot
 - `python scripts/validate_data.py`
 - `python scripts/check_site.py`
+- `python scripts/build_site.py --check`
 - `python -m compileall -q scripts`
 - `Get-Content` / `rg` for repository inspection
 
@@ -41,7 +43,7 @@ G1 decision: choose whether to introduce a small custom static build/template st
 - Browser refresh in `github.js` has no ETag handling and uses localStorage caching; it merges by repository name rather than numeric ID.
 - Technology ledger and manifest evidence are not generated.
 - The CI smoke check is intentionally not a full HTML, axe, Lighthouse, or schema validator yet.
-- Shared header/footer markup is duplicated across eight HTML documents.
+- Generated pages are now produced from shared shell partials; page-owned head/content/tail fragments remain intentionally separate.
 - Google Fonts, Lenis CSS, GSAP, ScrollTrigger, and Lenis are loaded from third parties; CSP/SRI and self-hosting are not implemented.
 - Contact email and WhatsApp number are present in static HTML.
 
@@ -50,9 +52,9 @@ G1 decision: choose whether to introduce a small custom static build/template st
 - Owner approval is required before changing contact presentation (G5).
 - Owner approval is required before changing first-person factual copy or proficiency tiers (G5).
 - Owner decision is required before changing Pages deployment source (G2).
-- G1 is now reached: eight HTML pages each contain their own header/footer shell. A shared-partial implementation would require generated HTML or a template build step; no framework is required, but it is still a static-site-generator decision.
+- G1 is resolved: owner approved the framework-free custom build approach.
 - Owner must create/install the GitHub App and add Worker secrets at G3.
 
 ## Handover note
 
-P0 evidence and the initial P1 slices are documented. Work is paused at G1 pending the owner’s choice. Do not rely on visual quality or performance targets until the missing browser measurements have been run.
+P0 evidence and P1 foundation are documented. Continue with snapshot schema/fixture work. Do not rely on visual quality or performance targets until the missing browser measurements have been run.
