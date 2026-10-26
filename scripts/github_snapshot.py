@@ -84,3 +84,44 @@ def build_snapshot(profile, repositories):
         "technologyLedger": sorted(technology_totals.values(), key=lambda item: item["technology"].lower()),
         "repos": repositories,
     }
+
+
+def detect_technologies(repo, tree_paths, file_contents, signatures):
+    """Detect configured technologies and retain the proving path/URL.
+
+    `tree_paths` is a list of repository-relative paths. `file_contents` maps
+    paths to text for only the small set of manifests/config files selected by
+    the caller. GitHub text is never treated as HTML here.
+    """
+    detected = {}
+    base_url = (repo.get("html_url") or "").rstrip("/")
+    branch = repo.get("default_branch") or "main"
+
+    def add(signature, path=None):
+        technology = signature["technology"]
+        entry = detected.setdefault(technology, {
+            "technology": technology,
+            "category": signature["category"],
+            "evidence": [],
+        })
+        evidence = {"path": path, "url": f"{base_url}/tree/{branch}" if not path else f"{base_url}/blob/{branch}/{path}"}
+        if evidence not in entry["evidence"]:
+            entry["evidence"].append(evidence)
+
+    language_names = set((repo.get("languages") or {}).keys())
+    if repo.get("language"):
+        language_names.add(repo["language"])
+    for signature in signatures:
+        kind = signature.get("kind")
+        match = signature.get("match", "")
+        if kind == "language" and match in language_names:
+            add(signature)
+        elif kind == "file":
+            for path in tree_paths:
+                if match.lower() in path.lower():
+                    add(signature, path)
+        elif kind in {"dependency", "text"}:
+            for path, content in file_contents.items():
+                if match.lower() in content.lower():
+                    add(signature, path)
+    return sorted(detected.values(), key=lambda item: item["technology"].lower())
