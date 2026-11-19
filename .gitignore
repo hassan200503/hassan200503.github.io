@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Build-time only: optimised project screenshots. scripts/fetch_screenshots.py
+# writes these during the Pages build and the Pages artifact uploads the whole
+# working tree, so they ship with the site without ever being committed.
+images/projects/
+
+# Scratch output from build_github_data.py when a target path is unavailable.
+data/*.next.json
+
+# Local Cloudflare Worker state
+analytics-worker/.wrangler/
+worker/.wrangler/
+node_modules/
+.wrangler/

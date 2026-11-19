@@ -1,0 +1,41 @@
+name = "hassan-portfolio-analytics"
+main = "src/index.js"
+compatibility_date = "2026-11-19"
+workers_dev = true
+
+[observability]
+enabled = true
+
+# Create it once with:
+#   npx wrangler d1 create hassan_portfolio_analytics
+# then paste the printed database_id here. Apply the schema with:
+#   npx wrangler d1 execute hassan_portfolio_analytics --remote --file=./schema.sql
+[[d1_databases]]
+binding = "DB"
+database_name = "hassan_portfolio_analytics"
+database_id = "804a5303-9e47-4d9b-b721-a7d8c2257372"
+
+# Daily retention sweep at 03:17 UTC.
+[triggers]
+crons = ["17 3 * * *"]
+
+[vars]
+# Exact origins allowed to post visitor events. Never use "*".
+ALLOWED_ORIGINS = "https://hassan200503.github.io"
+# Days of visitor history kept before the daily sweep deletes it.
+RETENTION_DAYS = "180"
+# Where the dashboard commits the public profile photo. This is the exact file
+# the site already renders in the hero, the avatar badge and the About page, so
+# replacing it updates every one of those places at once.
+GITHUB_REPO = "hassan200503/hassan200503.github.io"
+GITHUB_PHOTO_PATH = "images/hassan-square.jpg"
+# Comma-separated IPs of the owner. Matching visits are flagged and excluded
+# from the headline figures. Leave empty to disable.
+OWNER_IPS = ""
+
+# Secrets — set with `npx wrangler secret put NAME`, never in this file:
+#   ADMIN_PASSPHRASE_HASH   base64 PBKDF2-SHA256 of the passphrase (npm run hash-passphrase)
+#   ADMIN_PASSPHRASE_SALT   the hex salt printed by the same script
+#   SESSION_SECRET          openssl rand -hex 32
+#   IPINFO_TOKEN            https://ipinfo.io account token
+#   GITHUB_CONTENTS_TOKEN   fine-grained PAT: Contents read+write on GITHUB_REPO only

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-26T10:55:42Z",
+  "generatedAt": "2026-11-19T15:24:56Z",
   "source": "GitHub public API; generated during the site build",
   "user": {
     "login": "hassan200503",
@@ -7,7 +7,7 @@
     "bio": " I am a full stack developer with 3 years of experience in building systems end to end  using  java for the backend, react & typescript for the frontend. ",
     "avatarUrl": "https://avatars.githubusercontent.com/u/235883538?v=4",
     "url": "https://github.com/hassan200503",
-    "followers": 16,
+    "followers": 15,
     "publicRepos": 7,
     "createdAt": "2025-10-03T12:17:31Z"
   },
@@ -15,18 +15,19 @@
     "repos": 7,
     "stars": 0,
     "languageBytes": {
+      "TypeScript": 5516586,
       "Java": 4641260,
-      "TypeScript": 4290984,
-      "CSS": 266397,
-      "HTML": 195125,
-      "JavaScript": 108027,
+      "HTML": 373400,
+      "CSS": 293045,
+      "JavaScript": 73856,
+      "Python": 33929,
+      "C#": 21545,
       "PLpgSQL": 18917,
-      "PowerShell": 10067,
+      "PowerShell": 13343,
       "Shell": 8875,
-      "Python": 4796,
       "Dockerfile": 4600
     },
-    "lastPush": "2026-10-26T06:32:35Z"
+    "lastPush": "2026-11-19T14:48:27Z"
   },
   "technologyLedger": [
     {
@@ -34,7 +35,7 @@
       "category": "testing and delivery",
       "repoCount": 2,
       "firstUsed": "2026-06-11T16:44:44Z",
-      "lastUsed": "2026-10-25T14:05:39Z",
+      "lastUsed": "2026-11-19T11:14:25Z",
       "evidence": [
         {
           "path": "Dockerfile",
@@ -49,13 +50,17 @@
     {
       "technology": "GitHub Actions",
       "category": "testing and delivery",
-      "repoCount": 5,
+      "repoCount": 6,
       "firstUsed": "2026-06-11T16:44:44Z",
-      "lastUsed": "2026-10-26T06:16:29Z",
+      "lastUsed": "2026-11-19T14:48:27Z",
       "evidence": [
         {
-          "path": ".github/workflows/github-data.yml",
-          "url": "https://github.com/hassan200503/hassan200503.github.io/blob/main/.github/workflows/github-data.yml"
+          "path": ".github/workflows/ci.yml",
+          "url": "https://github.com/hassan200503/LetsVibe/blob/main/.github/workflows/ci.yml"
+        },
+        {
+          "path": ".github/workflows/ingest.yml",
+          "url": "https://github.com/hassan200503/LetsVibe/blob/main/.github/workflows/ingest.yml"
         },
         {
           "path": ".github/workflows/backup.yml",
@@ -75,6 +80,14 @@
         },
         {
           "path": ".github/workflows/ci.yml",
+          "url": "https://github.com/hassan200503/rentmanager-mobile/blob/main/.github/workflows/ci.yml"
+        },
+        {
+          "path": ".github/workflows/release.yml",
+          "url": "https://github.com/hassan200503/rentmanager-mobile/blob/main/.github/workflows/release.yml"
+        },
+        {
+          "path": ".github/workflows/ci.yml",
           "url": "https://github.com/hassan200503/rentmanager-frontend/blob/main/.github/workflows/ci.yml"
         },
         {
@@ -87,19 +100,19 @@
         },
         {
           "path": ".github/workflows/ci.yml",
-          "url": "https://github.com/hassan200503/rentmanager-mobile/blob/main/.github/workflows/ci.yml"
+          "url": "https://github.com/hassan200503/automata/blob/main/.github/workflows/ci.yml"
         },
         {
           "path": ".github/workflows/release.yml",
-          "url": "https://github.com/hassan200503/rentmanager-mobile/blob/main/.github/workflows/release.yml"
+          "url": "https://github.com/hassan200503/automata/blob/main/.github/workflows/release.yml"
         },
         {
           "path": ".github/workflows/ci.yml",
-          "url": "https://github.com/hassan200503/our-universe/blob/main/.github/workflows/ci.yml"
+          "url": "https://github.com/hassan200503/hassan200503.github.io/blob/main/.github/workflows/ci.yml"
         },
         {
-          "path": ".github/workflows/ingest.yml",
-          "url": "https://github.com/hassan200503/our-universe/blob/main/.github/workflows/ingest.yml"
+          "path": ".github/workflows/pages.yml",
+          "url": "https://github.com/hassan200503/hassan200503.github.io/blob/main/.github/workflows/pages.yml"
         }
       ]
     },
@@ -108,7 +121,7 @@
       "category": "backend",
       "repoCount": 1,
       "firstUsed": "2026-06-11T16:44:44Z",
-      "lastUsed": "2026-10-25T14:05:39Z",
+      "lastUsed": "2026-11-19T11:14:25Z",
       "evidence": [
         {
           "path": "src/main/java/com/rentmanager/RentManagerApplication.java",
@@ -117,24 +130,11 @@
       ]
     },
     {
-      "technology": "JavaScript",
-      "category": "frontend and mobile",
-      "repoCount": 1,
-      "firstUsed": "2026-09-23T07:02:22Z",
-      "lastUsed": "2026-10-26T06:32:35Z",
-      "evidence": [
-        {
-          "path": "scripts/reflect-now.js",
-          "url": "https://github.com/hassan200503/personal-companion-bot/blob/main/scripts/reflect-now.js"
-        }
-      ]
-    },
-    {
       "technology": "M-Pesa Daraja",
       "category": "payments",
       "repoCount": 2,
       "firstUsed": "2026-06-11T16:44:44Z",
-      "lastUsed": "2026-10-25T14:05:39Z",
+      "lastUsed": "2026-11-19T11:14:25Z",
       "evidence": [
         {
           "path": ".github/workflows/ci.yml",
@@ -159,8 +159,16 @@
       "category": "frontend and mobile",
       "repoCount": 3,
       "firstUsed": "2026-06-11T16:44:44Z",
-      "lastUsed": "2026-10-25T14:05:39Z",
+      "lastUsed": "2026-11-19T14:48:27Z",
       "evidence": [
+        {
+          "path": ".github/workflows/ci.yml",
+          "url": "https://github.com/hassan200503/LetsVibe/blob/main/.github/workflows/ci.yml"
+        },
+        {
+          "path": "package.json",
+          "url": "https://github.com/hassan200503/LetsVibe/blob/main/package.json"
+        },
         {
           "path": ".github/workflows/keep-awake.yml",
           "url": "https://github.com/hassan200503/rentmanager-backend/blob/main/.github/workflows/keep-awake.yml"
@@ -192,14 +200,6 @@
         {
           "path": "package.json",
           "url": "https://github.com/hassan200503/rentmanager-frontend/blob/main/package.json"
-        },
-        {
-          "path": ".github/workflows/ci.yml",
-          "url": "https://github.com/hassan200503/our-universe/blob/main/.github/workflows/ci.yml"
-        },
-        {
-          "path": "package.json",
-          "url": "https://github.com/hassan200503/our-universe/blob/main/package.json"
         }
       ]
     },
@@ -208,7 +208,7 @@
       "category": "data",
       "repoCount": 1,
       "firstUsed": "2026-06-11T16:44:44Z",
-      "lastUsed": "2026-10-25T14:05:39Z",
+      "lastUsed": "2026-11-19T11:14:25Z",
       "evidence": [
         {
           "path": ".github/workflows/backup.yml",
@@ -235,13 +235,13 @@
     {
       "technology": "React",
       "category": "frontend and mobile",
-      "repoCount": 3,
+      "repoCount": 4,
       "firstUsed": "2026-06-20T17:09:22Z",
-      "lastUsed": "2026-10-25T09:18:29Z",
+      "lastUsed": "2026-11-19T14:48:27Z",
       "evidence": [
         {
           "path": "package.json",
-          "url": "https://github.com/hassan200503/rentmanager-frontend/blob/main/package.json"
+          "url": "https://github.com/hassan200503/LetsVibe/blob/main/package.json"
         },
         {
           "path": "package.json",
@@ -249,7 +249,11 @@
         },
         {
           "path": "package.json",
-          "url": "https://github.com/hassan200503/our-universe/blob/main/package.json"
+          "url": "https://github.com/hassan200503/rentmanager-frontend/blob/main/package.json"
+        },
+        {
+          "path": "apps/desktop/package.json",
+          "url": "https://github.com/hassan200503/automata/blob/main/apps/desktop/package.json"
         }
       ]
     },
@@ -258,7 +262,7 @@
       "category": "frontend and mobile",
       "repoCount": 1,
       "firstUsed": "2026-09-15T20:05:14Z",
-      "lastUsed": "2026-10-17T12:37:17Z",
+      "lastUsed": "2026-11-19T11:01:30Z",
       "evidence": [
         {
           "path": "package.json",
@@ -271,7 +275,7 @@
       "category": "backend",
       "repoCount": 1,
       "firstUsed": "2026-06-11T16:44:44Z",
-      "lastUsed": "2026-10-25T14:05:39Z",
+      "lastUsed": "2026-11-19T11:14:25Z",
       "evidence": [
         {
           "path": "Dockerfile",
@@ -286,113 +290,64 @@
     {
       "technology": "TypeScript",
       "category": "frontend and mobile",
-      "repoCount": 3,
+      "repoCount": 4,
       "firstUsed": "2026-06-20T17:09:22Z",
-      "lastUsed": "2026-10-25T09:18:29Z",
+      "lastUsed": "2026-11-19T14:48:27Z",
       "evidence": [
         {
-          "path": "next.config.ts",
-          "url": "https://github.com/hassan200503/rentmanager-frontend/blob/main/next.config.ts"
+          "path": "drizzle.config.ts",
+          "url": "https://github.com/hassan200503/LetsVibe/blob/main/drizzle.config.ts"
         },
         {
           "path": "app.config.ts",
           "url": "https://github.com/hassan200503/rentmanager-mobile/blob/main/app.config.ts"
         },
         {
-          "path": "drizzle.config.ts",
-          "url": "https://github.com/hassan200503/our-universe/blob/main/drizzle.config.ts"
+          "path": "next.config.ts",
+          "url": "https://github.com/hassan200503/rentmanager-frontend/blob/main/next.config.ts"
+        },
+        {
+          "path": "apps/desktop/src/main/index.ts",
+          "url": "https://github.com/hassan200503/automata/blob/main/apps/desktop/src/main/index.ts"
         }
       ]
     }
   ],
   "repos": [
     {
-      "id": 1382929316,
-      "name": "personal-companion-bot",
-      "description": "Windows personal AI companion with local encrypted memory, permissioned PC actions, and free-tier provider failover. Legacy WhatsApp bot retained.",
+      "id": 1390638891,
+      "name": "LetsVibe",
+      "description": "A private shared world for two: realtime chat, encrypted calls, synchronised watch/listen rooms, memories and live discoveries. Next.js + TypeScript, tested sync protocol, PGlite/Postgres.",
       "topics": [
-        "automation",
-        "baileys",
-        "freelance",
-        "nodejs",
-        "whatsapp"
+        "couples-app",
+        "drizzle-orm",
+        "nextjs",
+        "pwa",
+        "react",
+        "turborepo",
+        "typescript",
+        "watch-together",
+        "webrtc"
       ],
-      "primaryLanguage": "JavaScript",
-      "language": "JavaScript",
+      "primaryLanguage": "TypeScript",
+      "language": "TypeScript",
       "languageBytes": {
-        "JavaScript": 46630
+        "TypeScript": 854511,
+        "CSS": 25541,
+        "JavaScript": 12154
       },
       "languages": {
-        "JavaScript": 46630
+        "TypeScript": 854511,
+        "CSS": 25541,
+        "JavaScript": 12154
       },
-      "homepage": null,
-      "url": "https://github.com/hassan200503/personal-companion-bot",
+      "homepage": "https://our-universe-gamma-green.vercel.app",
+      "url": "https://github.com/hassan200503/LetsVibe",
       "stars": 0,
       "forks": 0,
-      "sizeKb": 94,
-      "createdAt": "2026-09-23T07:02:22Z",
-      "pushedAt": "2026-10-26T06:32:35Z",
-      "archived": false,
-      "defaultBranch": "main",
-      "license": null,
-      "technologies": [
-        {
-          "technology": "JavaScript",
-          "category": "frontend and mobile",
-          "evidence": [
-            {
-              "path": "scripts/reflect-now.js",
-              "url": "https://github.com/hassan200503/personal-companion-bot/blob/main/scripts/reflect-now.js"
-            }
-          ]
-        }
-      ],
-      "projectStats": {
-        "migrations": 0,
-        "modules": 0,
-        "tests": {
-          "count": 0,
-          "method": "test source files under test paths"
-        }
-      },
-      "lastCommit": {
-        "sha": "9459158",
-        "message": "Update project title and description in README",
-        "date": "2026-10-26T06:32:34Z",
-        "url": "https://github.com/hassan200503/personal-companion-bot/commit/9459158864758c255abc5852fcea6e72be92fe9e"
-      }
-    },
-    {
-      "id": 1370540140,
-      "name": "hassan200503.github.io",
-      "description": "Portfolio site for Hassan Tsuma",
-      "topics": [
-        "css",
-        "github-pages",
-        "html",
-        "portfolio"
-      ],
-      "primaryLanguage": "HTML",
-      "language": "HTML",
-      "languageBytes": {
-        "HTML": 195125,
-        "CSS": 62640,
-        "JavaScript": 35825,
-        "Python": 4796
-      },
-      "languages": {
-        "HTML": 195125,
-        "CSS": 62640,
-        "JavaScript": 35825,
-        "Python": 4796
-      },
-      "homepage": "https://hassan200503.github.io",
-      "url": "https://github.com/hassan200503/hassan200503.github.io",
-      "stars": 0,
-      "forks": 0,
-      "sizeKb": 998,
-      "createdAt": "2026-09-14T20:38:01Z",
-      "pushedAt": "2026-10-26T06:16:29Z",
+      "sizeKb": 1929,
+      "createdAt": "2026-09-27T10:36:32Z",
+      "pushedAt": "2026-11-19T14:48:27Z",
       "archived": false,
       "defaultBranch": "main",
       "license": null,
@@ -402,12 +357,51 @@
           "category": "testing and delivery",
           "evidence": [
             {
-              "path": ".github/workflows/github-data.yml",
-              "url": "https://github.com/hassan200503/hassan200503.github.io/blob/main/.github/workflows/github-data.yml"
+              "path": ".github/workflows/ci.yml",
+              "url": "https://github.com/hassan200503/LetsVibe/blob/main/.github/workflows/ci.yml"
+            },
+            {
+              "path": ".github/workflows/ingest.yml",
+              "url": "https://github.com/hassan200503/LetsVibe/blob/main/.github/workflows/ingest.yml"
+            }
+          ]
+        },
+        {
+          "technology": "Next.js",
+          "category": "frontend and mobile",
+          "evidence": [
+            {
+              "path": ".github/workflows/ci.yml",
+              "url": "https://github.com/hassan200503/LetsVibe/blob/main/.github/workflows/ci.yml"
+            },
+            {
+              "path": "package.json",
+              "url": "https://github.com/hassan200503/LetsVibe/blob/main/package.json"
+            }
+          ]
+        },
+        {
+          "technology": "React",
+          "category": "frontend and mobile",
+          "evidence": [
+            {
+              "path": "package.json",
+              "url": "https://github.com/hassan200503/LetsVibe/blob/main/package.json"
+            }
+          ]
+        },
+        {
+          "technology": "TypeScript",
+          "category": "frontend and mobile",
+          "evidence": [
+            {
+              "path": "drizzle.config.ts",
+              "url": "https://github.com/hassan200503/LetsVibe/blob/main/drizzle.config.ts"
             }
           ]
         }
       ],
+      "screenshots": [],
       "projectStats": {
         "migrations": 0,
         "modules": 0,
@@ -417,10 +411,10 @@
         }
       },
       "lastCommit": {
-        "sha": "ff1775e",
-        "message": "Refresh GitHub snapshot",
-        "date": "2026-10-26T06:16:28Z",
-        "url": "https://github.com/hassan200503/hassan200503.github.io/commit/ff1775e9ce5cf37bf71c3c4c5f0059c284386cce"
+        "sha": "cb0f5ac",
+        "message": "Update GitHub funding configuration",
+        "date": "2026-11-19T10:51:06Z",
+        "url": "https://github.com/hassan200503/LetsVibe/commit/cb0f5acbcb95252a9ce93e41d0f40e0cb373b4a6"
       }
     },
     {
@@ -455,9 +449,9 @@
       "url": "https://github.com/hassan200503/rentmanager-backend",
       "stars": 0,
       "forks": 0,
-      "sizeKb": 2100,
+      "sizeKb": 2102,
       "createdAt": "2026-06-11T16:44:44Z",
-      "pushedAt": "2026-10-25T14:05:39Z",
+      "pushedAt": "2026-11-19T11:14:25Z",
       "archived": false,
       "defaultBranch": "main",
       "license": null,
@@ -585,6 +579,7 @@
           ]
         }
       ],
+      "screenshots": [],
       "projectStats": {
         "migrations": 100,
         "modules": 21,
@@ -594,10 +589,130 @@
         }
       },
       "lastCommit": {
-        "sha": "5f66797",
-        "message": "Add redundant edge API keep-alive",
-        "date": "2026-10-25T14:05:19Z",
-        "url": "https://github.com/hassan200503/rentmanager-backend/commit/5f667979ce337e297b9f7471de9e3f9bbee08b84"
+        "sha": "b56b83e",
+        "message": "Add GitHub sponsor username to FUNDING.yml",
+        "date": "2026-11-19T11:14:25Z",
+        "url": "https://github.com/hassan200503/rentmanager-backend/commit/b56b83e6c15882334651f6a5b1eb3aa1addd82fa"
+      }
+    },
+    {
+      "id": 1372052865,
+      "name": "rentmanager-mobile",
+      "description": "RentManager mobile app for landlords and renters in Kenya (Expo, React Native, TypeScript)",
+      "topics": [
+        "expo",
+        "kenya",
+        "mpesa",
+        "property-management",
+        "react-native",
+        "typescript"
+      ],
+      "primaryLanguage": "TypeScript",
+      "language": "TypeScript",
+      "languageBytes": {
+        "TypeScript": 266326,
+        "JavaScript": 4047
+      },
+      "languages": {
+        "TypeScript": 266326,
+        "JavaScript": 4047
+      },
+      "homepage": null,
+      "url": "https://github.com/hassan200503/rentmanager-mobile",
+      "stars": 0,
+      "forks": 0,
+      "sizeKb": 931,
+      "createdAt": "2026-09-15T20:05:14Z",
+      "pushedAt": "2026-11-19T11:01:30Z",
+      "archived": false,
+      "defaultBranch": "main",
+      "license": "MIT",
+      "technologies": [
+        {
+          "technology": "GitHub Actions",
+          "category": "testing and delivery",
+          "evidence": [
+            {
+              "path": ".github/workflows/ci.yml",
+              "url": "https://github.com/hassan200503/rentmanager-mobile/blob/main/.github/workflows/ci.yml"
+            },
+            {
+              "path": ".github/workflows/release.yml",
+              "url": "https://github.com/hassan200503/rentmanager-mobile/blob/main/.github/workflows/release.yml"
+            }
+          ]
+        },
+        {
+          "technology": "M-Pesa Daraja",
+          "category": "payments",
+          "evidence": [
+            {
+              "path": ".github/workflows/ci.yml",
+              "url": "https://github.com/hassan200503/rentmanager-mobile/blob/main/.github/workflows/ci.yml"
+            }
+          ]
+        },
+        {
+          "technology": "React",
+          "category": "frontend and mobile",
+          "evidence": [
+            {
+              "path": "package.json",
+              "url": "https://github.com/hassan200503/rentmanager-mobile/blob/main/package.json"
+            }
+          ]
+        },
+        {
+          "technology": "React Native",
+          "category": "frontend and mobile",
+          "evidence": [
+            {
+              "path": "package.json",
+              "url": "https://github.com/hassan200503/rentmanager-mobile/blob/main/package.json"
+            }
+          ]
+        },
+        {
+          "technology": "TypeScript",
+          "category": "frontend and mobile",
+          "evidence": [
+            {
+              "path": "app.config.ts",
+              "url": "https://github.com/hassan200503/rentmanager-mobile/blob/main/app.config.ts"
+            }
+          ]
+        }
+      ],
+      "screenshots": [
+        {
+          "path": "screenshots/features/01-landing-page.jpg",
+          "alt": "Landing Page",
+          "url": "https://raw.githubusercontent.com/hassan200503/rentmanager-mobile/main/screenshots/features/01-landing-page.jpg"
+        },
+        {
+          "path": "screenshots/features/02-property-search.jpg",
+          "alt": "Property Search",
+          "url": "https://raw.githubusercontent.com/hassan200503/rentmanager-mobile/main/screenshots/features/02-property-search.jpg"
+        },
+        {
+          "path": "screenshots/features/03-home-screen.jpg",
+          "alt": "Home Screen",
+          "url": "https://raw.githubusercontent.com/hassan200503/rentmanager-mobile/main/screenshots/features/03-home-screen.jpg"
+        }
+      ],
+      "projectStats": {
+        "migrations": 0,
+        "modules": 0,
+        "tests": {
+          "count": 0,
+          "method": "test source files under test paths"
+        }
+      },
+      "lastCommit": {
+        "sha": "106aa38",
+        "message": "Add GitHub Sponsors username to FUNDING.yml",
+        "date": "2026-11-19T11:01:29Z",
+        "url": "https://github.com/hassan200503/rentmanager-mobile/commit/106aa381741255db27c9aebb4814ad7e7d3b4a18"
       }
     },
     {
@@ -646,9 +761,9 @@
       "url": "https://github.com/hassan200503/rentmanager-frontend",
       "stars": 0,
       "forks": 0,
-      "sizeKb": 103915,
+      "sizeKb": 103928,
       "createdAt": "2026-06-20T17:09:22Z",
-      "pushedAt": "2026-10-25T09:18:29Z",
+      "pushedAt": "2026-11-19T10:48:50Z",
       "archived": false,
       "defaultBranch": "main",
       "license": "MIT",
@@ -724,6 +839,23 @@
           ]
         }
       ],
+      "screenshots": [
+        {
+          "path": "assets/full-landing.png",
+          "alt": "RentManager Landing Page",
+          "url": "https://raw.githubusercontent.com/hassan200503/rentmanager-frontend/main/assets/full-landing.png"
+        },
+        {
+          "path": "assets/property-listings.png",
+          "alt": "Property Listings",
+          "url": "https://raw.githubusercontent.com/hassan200503/rentmanager-frontend/main/assets/property-listings.png"
+        },
+        {
+          "path": "assets/mobile-homepage.png",
+          "alt": "Mobile Homepage",
+          "url": "https://raw.githubusercontent.com/hassan200503/rentmanager-frontend/main/assets/mobile-homepage.png"
+        }
+      ],
       "projectStats": {
         "migrations": 0,
         "modules": 0,
@@ -733,41 +865,55 @@
         }
       },
       "lastCommit": {
-        "sha": "1c96ce5",
-        "message": "ci: allow tests to continue on error to unblock pipeline",
-        "date": "2026-10-25T08:21:25Z",
-        "url": "https://github.com/hassan200503/rentmanager-frontend/commit/1c96ce585be1b6f72f83ac9c171ecde8dfc19894"
+        "sha": "d0a2562",
+        "message": "Merge pull request #3 from hassan200503/hassan200503-patch-1",
+        "date": "2026-11-19T10:48:25Z",
+        "url": "https://github.com/hassan200503/rentmanager-frontend/commit/d0a2562e101337eb3700c39db31c4b2a5ea91c00"
       }
     },
     {
-      "id": 1372052865,
-      "name": "rentmanager-mobile",
-      "description": "RentManager mobile app for landlords and renters in Kenya (Expo, React Native, TypeScript)",
+      "id": 1382929316,
+      "name": "automata",
+      "description": "Automata — a Windows-first, voice-first personal AI companion by HassanTech. Speak or type; it runs real OS actions and is honest about what it did.",
       "topics": [
-        "expo",
-        "kenya",
-        "mpesa",
-        "property-management",
-        "react-native",
-        "typescript"
+        "ai-assistant",
+        "automata",
+        "automation",
+        "desktop-app",
+        "electron",
+        "open-source",
+        "os-control",
+        "privacy",
+        "react",
+        "typescript",
+        "voice-assistant",
+        "windows"
       ],
       "primaryLanguage": "TypeScript",
       "language": "TypeScript",
       "languageBytes": {
-        "TypeScript": 266326,
-        "JavaScript": 4047
+        "TypeScript": 1225602,
+        "CSS": 26648,
+        "C#": 21545,
+        "JavaScript": 3996,
+        "PowerShell": 3276,
+        "HTML": 984
       },
       "languages": {
-        "TypeScript": 266326,
-        "JavaScript": 4047
+        "TypeScript": 1225602,
+        "CSS": 26648,
+        "C#": 21545,
+        "JavaScript": 3996,
+        "PowerShell": 3276,
+        "HTML": 984
       },
-      "homepage": null,
-      "url": "https://github.com/hassan200503/rentmanager-mobile",
+      "homepage": "https://github.com/hassan200503/automata#readme",
+      "url": "https://github.com/hassan200503/automata",
       "stars": 0,
       "forks": 0,
-      "sizeKb": 816,
-      "createdAt": "2026-09-15T20:05:14Z",
-      "pushedAt": "2026-10-17T12:37:17Z",
+      "sizeKb": 23174,
+      "createdAt": "2026-09-23T07:02:22Z",
+      "pushedAt": "2026-11-19T09:58:18Z",
       "archived": false,
       "defaultBranch": "main",
       "license": "MIT",
@@ -778,21 +924,11 @@
           "evidence": [
             {
               "path": ".github/workflows/ci.yml",
-              "url": "https://github.com/hassan200503/rentmanager-mobile/blob/main/.github/workflows/ci.yml"
+              "url": "https://github.com/hassan200503/automata/blob/main/.github/workflows/ci.yml"
             },
             {
               "path": ".github/workflows/release.yml",
-              "url": "https://github.com/hassan200503/rentmanager-mobile/blob/main/.github/workflows/release.yml"
-            }
-          ]
-        },
-        {
-          "technology": "M-Pesa Daraja",
-          "category": "payments",
-          "evidence": [
-            {
-              "path": ".github/workflows/ci.yml",
-              "url": "https://github.com/hassan200503/rentmanager-mobile/blob/main/.github/workflows/ci.yml"
+              "url": "https://github.com/hassan200503/automata/blob/main/.github/workflows/release.yml"
             }
           ]
         },
@@ -801,18 +937,8 @@
           "category": "frontend and mobile",
           "evidence": [
             {
-              "path": "package.json",
-              "url": "https://github.com/hassan200503/rentmanager-mobile/blob/main/package.json"
-            }
-          ]
-        },
-        {
-          "technology": "React Native",
-          "category": "frontend and mobile",
-          "evidence": [
-            {
-              "path": "package.json",
-              "url": "https://github.com/hassan200503/rentmanager-mobile/blob/main/package.json"
+              "path": "apps/desktop/package.json",
+              "url": "https://github.com/hassan200503/automata/blob/main/apps/desktop/package.json"
             }
           ]
         },
@@ -821,10 +947,27 @@
           "category": "frontend and mobile",
           "evidence": [
             {
-              "path": "app.config.ts",
-              "url": "https://github.com/hassan200503/rentmanager-mobile/blob/main/app.config.ts"
+              "path": "apps/desktop/src/main/index.ts",
+              "url": "https://github.com/hassan200503/automata/blob/main/apps/desktop/src/main/index.ts"
             }
           ]
+        }
+      ],
+      "screenshots": [
+        {
+          "path": "docs/screenshots/main-interface.png",
+          "alt": "Talk view",
+          "url": "https://raw.githubusercontent.com/hassan200503/automata/main/docs/screenshots/main-interface.png"
+        },
+        {
+          "path": "docs/screenshots/talk-hero.png",
+          "alt": "Talk hero",
+          "url": "https://raw.githubusercontent.com/hassan200503/automata/main/docs/screenshots/talk-hero.png"
+        },
+        {
+          "path": "docs/screenshots/setup.png",
+          "alt": "Setup view",
+          "url": "https://raw.githubusercontent.com/hassan200503/automata/main/docs/screenshots/setup.png"
         }
       ],
       "projectStats": {
@@ -836,10 +979,10 @@
         }
       },
       "lastCommit": {
-        "sha": "7ff7afb",
-        "message": "Refine README to include missing env vars and clarify backend dependency",
-        "date": "2026-10-17T12:37:16Z",
-        "url": "https://github.com/hassan200503/rentmanager-mobile/commit/7ff7afb0187e95bb2ec0abb512a5ed6299507801"
+        "sha": "80ca268",
+        "message": "Add GitHub Sponsors username to FUNDING.yml",
+        "date": "2026-11-19T09:58:18Z",
+        "url": "https://github.com/hassan200503/automata/commit/80ca268adc59109f88ba45532420ecf5fe13abba"
       }
     },
     {
@@ -855,13 +998,14 @@
       "url": "https://github.com/hassan200503/hassan200503",
       "stars": 0,
       "forks": 0,
-      "sizeKb": 11,
+      "sizeKb": 15,
       "createdAt": "2026-03-14T17:45:02Z",
-      "pushedAt": "2026-10-14T20:58:39Z",
+      "pushedAt": "2026-10-31T15:37:05Z",
       "archived": false,
       "defaultBranch": "main",
       "license": null,
       "technologies": [],
+      "screenshots": [],
       "projectStats": {
         "migrations": 0,
         "modules": 0,
@@ -871,36 +1015,43 @@
         }
       },
       "lastCommit": {
-        "sha": "e89442f",
-        "message": "Update README with technology and module details",
-        "date": "2026-10-14T20:58:39Z",
-        "url": "https://github.com/hassan200503/hassan200503/commit/e89442fabd58038ef9b15d1e97d826f804ead604"
+        "sha": "5841893",
+        "message": "Update GitHub profile README with Companion AI and new skills",
+        "date": "2026-10-31T15:36:58Z",
+        "url": "https://github.com/hassan200503/hassan200503/commit/5841893d72a0eaefa8dc6eb251b618b9b95c405c"
       }
     },
     {
-      "id": 1390638891,
-      "name": "our-universe",
-      "description": "Our Universe: Hassan's world, Whitney's world, our story, and live discoveries from the real world.",
-      "topics": [],
-      "primaryLanguage": "TypeScript",
-      "language": "TypeScript",
+      "id": 1370540140,
+      "name": "hassan200503.github.io",
+      "description": "Portfolio site for Hassan Tsuma, Full Stack Java Developer",
+      "topics": [
+        "css",
+        "github-pages",
+        "html",
+        "portfolio"
+      ],
+      "primaryLanguage": "HTML",
+      "language": "HTML",
       "languageBytes": {
-        "TypeScript": 854511,
-        "CSS": 25541,
-        "JavaScript": 12154
+        "HTML": 372416,
+        "CSS": 62640,
+        "JavaScript": 44288,
+        "Python": 33929
       },
       "languages": {
-        "TypeScript": 854511,
-        "CSS": 25541,
-        "JavaScript": 12154
+        "HTML": 372416,
+        "CSS": 62640,
+        "JavaScript": 44288,
+        "Python": 33929
       },
-      "homepage": "https://our-universe-gamma-green.vercel.app",
-      "url": "https://github.com/hassan200503/our-universe",
+      "homepage": "https://hassan200503.github.io",
+      "url": "https://github.com/hassan200503/hassan200503.github.io",
       "stars": 0,
       "forks": 0,
-      "sizeKb": 914,
-      "createdAt": "2026-09-27T10:36:32Z",
-      "pushedAt": "2026-09-29T19:53:33Z",
+      "sizeKb": 1112,
+      "createdAt": "2026-09-14T20:38:01Z",
+      "pushedAt": "2026-10-26T12:14:57Z",
       "archived": false,
       "defaultBranch": "main",
       "license": null,
@@ -911,62 +1062,40 @@
           "evidence": [
             {
               "path": ".github/workflows/ci.yml",
-              "url": "https://github.com/hassan200503/our-universe/blob/main/.github/workflows/ci.yml"
+              "url": "https://github.com/hassan200503/hassan200503.github.io/blob/main/.github/workflows/ci.yml"
             },
             {
-              "path": ".github/workflows/ingest.yml",
-              "url": "https://github.com/hassan200503/our-universe/blob/main/.github/workflows/ingest.yml"
+              "path": ".github/workflows/pages.yml",
+              "url": "https://github.com/hassan200503/hassan200503.github.io/blob/main/.github/workflows/pages.yml"
             }
           ]
+        }
+      ],
+      "screenshots": [
+        {
+          "path": "images/landing-hero.jpg",
+          "alt": "Landing hero",
+          "url": "https://raw.githubusercontent.com/hassan200503/hassan200503.github.io/main/images/landing-hero.jpg"
         },
         {
-          "technology": "Next.js",
-          "category": "frontend and mobile",
-          "evidence": [
-            {
-              "path": ".github/workflows/ci.yml",
-              "url": "https://github.com/hassan200503/our-universe/blob/main/.github/workflows/ci.yml"
-            },
-            {
-              "path": "package.json",
-              "url": "https://github.com/hassan200503/our-universe/blob/main/package.json"
-            }
-          ]
-        },
-        {
-          "technology": "React",
-          "category": "frontend and mobile",
-          "evidence": [
-            {
-              "path": "package.json",
-              "url": "https://github.com/hassan200503/our-universe/blob/main/package.json"
-            }
-          ]
-        },
-        {
-          "technology": "TypeScript",
-          "category": "frontend and mobile",
-          "evidence": [
-            {
-              "path": "drizzle.config.ts",
-              "url": "https://github.com/hassan200503/our-universe/blob/main/drizzle.config.ts"
-            }
-          ]
+          "path": "images/landing-mobile.jpg",
+          "alt": "Landing mobile",
+          "url": "https://raw.githubusercontent.com/hassan200503/hassan200503.github.io/main/images/landing-mobile.jpg"
         }
       ],
       "projectStats": {
         "migrations": 0,
         "modules": 0,
         "tests": {
-          "count": 0,
+          "count": 1,
           "method": "test source files under test paths"
         }
       },
       "lastCommit": {
-        "sha": "ebd08c4",
-        "message": "Calls never hang on \"Connectingâ€¦\"; show what each phone found (#5)",
-        "date": "2026-09-29T19:53:33Z",
-        "url": "https://github.com/hassan200503/our-universe/commit/ebd08c44cbff0071972c29f06b93588f8e7cef3d"
+        "sha": "00594c0",
+        "message": "fix: dispatch webhook refresh immediately",
+        "date": "2026-10-26T12:14:53Z",
+        "url": "https://github.com/hassan200503/hassan200503.github.io/commit/00594c0cfb6031f6ff96fe25ffa952406a13e133"
       }
     }
   ]

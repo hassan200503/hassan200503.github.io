@@ -14,13 +14,18 @@ for key in ("generatedAt", "source", "user", "totals", "technologyLedger", "repo
 
 ids = []
 for repo in snapshot["repos"]:
-    for key in ("id", "name", "description", "topics", "primaryLanguage", "languageBytes", "defaultBranch", "archived", "technologies", "projectStats"):
+    for key in ("id", "name", "description", "topics", "primaryLanguage", "languageBytes", "defaultBranch", "archived", "technologies", "screenshots", "projectStats"):
         if key not in repo:
             raise SystemExit(f"repository {repo.get('name', '<unknown>')} missing key: {key}")
     if not isinstance(repo["id"], int) or repo["id"] < 1:
         raise SystemExit("repository id must be a positive integer")
     if repo["projectStats"].get("tests", {}).get("count", -1) < 0:
         raise SystemExit("project test count must be non-negative")
+    for shot in repo["screenshots"]:
+        if not str(shot.get("url", "")).startswith("https://raw.githubusercontent.com/"):
+            raise SystemExit(f"repository {repo['name']} has a screenshot outside raw.githubusercontent.com")
+        if not shot.get("path"):
+            raise SystemExit(f"repository {repo['name']} has a screenshot without a path")
     ids.append(repo["id"])
 
 if len(ids) != len(set(ids)):

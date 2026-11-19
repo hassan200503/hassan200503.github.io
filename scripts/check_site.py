@@ -6,7 +6,12 @@ from urllib.parse import urlsplit
 
 
 ROOT = Path(__file__).resolve().parents[1]
-HTML_FILES = sorted(ROOT.glob("*.html")) + sorted((ROOT / "work").glob("*.html"))
+# "work" still holds the two redirect stubs that keep the old URLs alive.
+HTML_FILES = (
+    sorted(ROOT.glob("*.html"))
+    + sorted((ROOT / "projects").glob("*.html"))
+    + sorted((ROOT / "work").glob("*.html"))
+)
 
 
 class PageParser(HTMLParser):

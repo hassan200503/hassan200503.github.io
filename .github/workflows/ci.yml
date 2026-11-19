@@ -21,6 +21,8 @@ jobs:
         run: python -m unittest discover -s tests -p 'test_*.py' -v
       - name: Test webhook relay
         run: npm test --prefix worker
+      - name: Test visitor analytics Worker
+        run: npm test --prefix analytics-worker
       - name: Verify generated pages
         run: python scripts/build_site.py --check
       - name: Check static HTML surface

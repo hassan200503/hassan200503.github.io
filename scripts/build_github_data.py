@@ -20,10 +20,12 @@ import sys
 import base64
 from datetime import datetime, timezone
 
-from github_snapshot import build_snapshot, compute_project_stats, detect_technologies, include_repository, keep_last_good_snapshot, normalize_repository
+from github_snapshot import build_snapshot, compute_project_stats, detect_technologies, discover_screenshots, include_repository, keep_last_good_snapshot, normalize_repository
 
 USER = sys.argv[1] if len(sys.argv) > 1 else "hassan200503"
 OUT = sys.argv[2] if len(sys.argv) > 2 else os.path.join("data", "github.json")
+
+README_NAMES = ("readme.md", "readme.markdown", "readme.rst", "readme.txt", "readme")
 
 
 def gh(path, default=None):
@@ -69,6 +71,27 @@ def manifest_files(owner, repo):
     return paths, contents
 
 
+def read_readme(owner, repo, tree_paths):
+    """The repository's README, used only to find the screenshots it shows.
+
+    Deliberately kept out of the technology-evidence map: a README is prose,
+    and prose is a weak claim about what a project uses.
+    """
+    branch = repo.get("default_branch") or "main"
+    candidates = [p for p in tree_paths if p.lower().rsplit("/", 1)[-1] in README_NAMES]
+    candidates.sort(key=lambda p: (p.count("/"), p.lower()))
+    if not candidates:
+        return ""
+    result = gh("repos/%s/%s/contents/%s?ref=%s" % (owner, repo["name"], candidates[0], branch))
+    if not isinstance(result, dict) or result.get("encoding") != "base64":
+        return ""
+    try:
+        return base64.b64decode(result.get("content", ""), validate=False).decode("utf-8", errors="replace")[:200_000]
+    except Exception as exc:  # noqa: BLE001
+        print("    ! could not decode README: %s" % exc)
+        return ""
+
+
 print("profile: %s" % USER)
 profile = gh("users/%s" % USER)
 if not profile:
@@ -111,6 +134,7 @@ for r in repos_raw:
     tree_paths, file_contents = manifest_files(USER, r)
     normalized["technologies"] = detect_technologies(r, tree_paths, file_contents, tech_signatures)
     normalized["projectStats"] = compute_project_stats(tree_paths, file_contents)
+    normalized["screenshots"] = discover_screenshots(r, tree_paths, read_readme(USER, r, tree_paths))
     repos.append(normalized)
 
 repos.sort(key=lambda x: x.get("pushedAt") or "", reverse=True)

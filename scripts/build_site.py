@@ -20,15 +20,21 @@ PARTIAL_ROOT = TEMPLATE_ROOT / "partials"
 PAGE_ROOT = TEMPLATE_ROOT / "pages"
 PAGES = [
     Path("index.html"),
-    Path("work.html"),
+    Path("projects.html"),
     Path("skills.html"),
     Path("services.html"),
     Path("about.html"),
     Path("documents.html"),
     Path("contact.html"),
     Path("404.html"),
-    Path("work/rentmanager.html"),
+    Path("projects/rentmanager.html"),
 ]
+# Pages that carry the live GitHub repository grid. Both sit at the site root,
+# so the snapshot paths they embed need no {{base}} prefix.
+GITHUB_PAGES = {Path("index.html"), Path("projects.html")}
+# One cover plus two thumbnails. Mirrors SCREENSHOT_LIMIT in github_snapshot.py
+# and LIMIT in fetch_screenshots.py; changing one means changing all three.
+REPO_SHOT_LIMIT = 3
 
 
 def read(path: Path) -> str:
@@ -54,7 +60,7 @@ def normalize_shell(shell: str, page: Path) -> str:
     """Turn root-page shell links into relative-path and active-page tokens."""
     if page.name == "404.html":
         shell = shell.replace('href="/index.html', 'href="{{base}}index.html')
-        shell = shell.replace('href="/work', 'href="{{base}}work')
+        shell = shell.replace('href="/projects', 'href="{{base}}projects')
         shell = shell.replace('href="/skills', 'href="{{base}}skills')
         shell = shell.replace('href="/services', 'href="{{base}}services')
         shell = shell.replace('href="/about', 'href="{{base}}about')
@@ -63,7 +69,7 @@ def normalize_shell(shell: str, page: Path) -> str:
         shell = shell.replace('href="/files', 'href="{{base}}files')
     else:
         shell = shell.replace('href="../index.html', 'href="{{base}}index.html')
-        shell = shell.replace('href="../work', 'href="{{base}}work')
+        shell = shell.replace('href="../projects', 'href="{{base}}projects')
         shell = shell.replace('href="../skills', 'href="{{base}}skills')
         shell = shell.replace('href="../services', 'href="{{base}}services')
         shell = shell.replace('href="../about', 'href="{{base}}about')
@@ -71,7 +77,7 @@ def normalize_shell(shell: str, page: Path) -> str:
         shell = shell.replace('href="../contact', 'href="{{base}}contact')
         shell = shell.replace('href="../files', 'href="{{base}}files')
         shell = shell.replace('href="files/', 'href="{{base}}files/')
-        for name in ("index", "work", "skills", "services", "about", "documents", "contact"):
+        for name in ("index", "projects", "skills", "services", "about", "documents", "contact"):
             shell = shell.replace(f'href="{name}.html', f'href="{{{{base}}}}{name}.html')
     shell = shell.replace('<div class="progress-rail" aria-hidden="true"></div>', '{{progress}}')
     shell = re.sub(r' aria-current="page"', "", shell)
@@ -125,8 +131,8 @@ def render(page: Path) -> str:
         output = output.replace("{{progress}}\n", "")
     else:
         output = output.replace("{{progress}}", '<div class="progress-rail" aria-hidden="true"></div>')
-    current_page = "work" if page.parent.name == "work" else page.stem
-    if current_page in {"index", "work", "skills", "services", "about", "documents", "contact"}:
+    current_page = "projects" if page.parent.name == "projects" else page.stem
+    if current_page in {"index", "projects", "skills", "services", "about", "documents", "contact"}:
         nav_start = output.index('<nav class="nav-links"')
         nav_end = output.index("</nav>", nav_start)
         nav = output[nav_start:nav_end]
@@ -137,7 +143,7 @@ def render(page: Path) -> str:
         else:
             nav = nav.replace(target, target + ' aria-current="page"', 1)
         output = output[:nav_start] + nav + output[nav_end:]
-    if page == Path("index.html"):
+    if page in GITHUB_PAGES:
         output = prerender_github(output)
     elif (ROOT / "data/github.json").exists():
         with (ROOT / "data/github.json").open(encoding="utf-8") as handle:
@@ -155,7 +161,9 @@ def prerender_project_stats(output, data):
     tests = int((stats.get("tests") or {}).get("count", 0))
     output = output.replace('data-count="1588" data-sep>1,588', f'data-count="{tests}" data-sep>{tests:,}')
     output = output.replace('data-count="99">99', f'data-count="{migrations}">{migrations}')
+    output = output.replace('data-count="20">20', f'data-count="{modules}">{modules}')
     output = output.replace("20 modules", f"{modules} modules")
+    output = output.replace('<span class="label">backend tests</span>', '<span class="label">backend test source files</span>')
     output = output.replace("99 sequential migrations", f"{migrations} sequential migrations")
     output = output.replace("99 sequential Flyway migrations", f"{migrations} sequential Flyway migrations")
     output = output.replace("all 99 Flyway migrations", f"all {migrations} Flyway migrations")
@@ -172,6 +180,70 @@ def esc(value):
 def safe_link(value):
     value = str(value or "")
     return value if value.startswith("https://") else "#"
+
+
+def include_in_grid(repo):
+    """Repositories that belong on a card, by the same rules github.js applies.
+
+    The portfolio repository itself is real work, but listing the site you are
+    reading among "projects" is noise. Mirrors the filters in github.js so the
+    prerendered grid and the live one never disagree.
+    """
+    if repo.get("archived"):
+        return False
+    if repo.get("name") in {"hassan200503", "hassan200503.github.io"}:
+        return False
+    return "portfolio-hidden" not in (repo.get("topics") or [])
+
+
+def shot_name(repo_name, index):
+    """Where fetch_screenshots.py puts the optimised copy. Mirrored in github.js."""
+    return "images/projects/%s-%d.webp" % (repo_name, index)
+
+
+def repo_initials(name):
+    """Two-letter monogram used when a repository has no screenshots."""
+    parts = [part for part in re.split(r"[-_.\s]+", name or "") if part]
+    if len(parts) >= 2:
+        return (parts[0][0] + parts[1][0]).upper()
+    return (name or "?")[:2].upper()
+
+
+def shots_markup(repo):
+    """The screenshot strip on a repository card.
+
+    The first image is the cover; up to two more become thumbnails. Both are
+    buttons, and both carry data-shot-full — the original GitHub URL — which
+    the delegated error handler in github.js swaps in if the optimised local
+    copy is not there. A repository without screenshots gets a quiet ledger
+    placeholder so its card keeps the same visual weight as its neighbours.
+    """
+    name = repo.get("name") or ""
+    shots = [s for s in (repo.get("screenshots") or []) if s.get("url")]
+    if not shots:
+        return (
+            '<div class="repo-shots"><div class="repo-cover repo-cover-empty" aria-hidden="true">'
+            '<span class="repo-mono">%s</span><span class="repo-cover-label">Code only</span></div></div>'
+            % esc(repo_initials(name))
+        )
+    shown = shots[:REPO_SHOT_LIMIT]
+    parts = []
+    for index, shot in enumerate(shown):
+        alt = shot.get("alt") or name
+        cls = "repo-cover" if index == 0 else "repo-shot-thumb"
+        badge = (
+            '<span class="shot-badge">1 / %d</span><span class="shot-zoom">Expand</span>' % len(shown)
+            if index == 0 and len(shown) > 1
+            else ('<span class="shot-zoom">Expand</span>' if index == 0 else "")
+        )
+        parts.append(
+            '<button type="button" class="%s" data-shot-index="%d" aria-label="Open screenshot: %s">'
+            '<img src="%s" alt="%s" loading="lazy" decoding="async" width="1200" height="750" data-shot-full="%s">%s</button>'
+            % (cls, index, esc(alt), esc(shot_name(name, index)), esc(alt), esc(safe_link(shot.get("url"))), badge)
+        )
+    cover, thumbs = parts[0], parts[1:]
+    rail = '<div class="repo-shot-rail">%s</div>' % "".join(thumbs) if thumbs else ""
+    return '<div class="repo-shots">%s%s</div>' % (cover, rail)
 
 
 def prerender_github(output):
@@ -197,22 +269,37 @@ def prerender_github(output):
     ledger_items = []
     for item in data.get("technologyLedger", []):
         evidence = item.get("evidence", [])
-        links = " ".join(
-            '<a class="small" href="%s" target="_blank" rel="noopener">%s ↗</a>' % (esc(safe_link(e.get("url"))), esc(e.get("path")))
+        links = "".join(
+            '<a href="%s" target="_blank" rel="noopener" title="%s">%s ↗</a>' % (
+                esc(safe_link(e.get("url"))), esc(e.get("path")), esc(e.get("path"))
+            )
             for e in evidence[:3]
         )
-        ledger_items.append('<li><strong>%s</strong> <span class="muted">%s repos · %s</span><br>%s</li>' % (
-            esc(item.get("technology")), esc(item.get("repoCount", 0)), esc(item.get("category", "")), links
-        ))
+        ledger_items.append(
+            '<li class="tech-card"><div class="tech-card-top"><strong>%s</strong>'
+            '<span class="tech-count">%s repos</span></div>'
+            '<span class="tech-cat">%s</span><div class="tech-evidence">%s</div></li>' % (
+                esc(item.get("technology")), esc(item.get("repoCount", 0)),
+                esc(item.get("category") or "in the code"), links
+            )
+        )
     ledger = '<ul class="stack-list">%s</ul>' % "".join(ledger_items)
     cards = []
     for repo in data.get("repos", []):
+        if not include_in_grid(repo):
+            continue
         topics = "".join('<span class="topic">%s</span>' % esc(topic) for topic in (repo.get("topics") or [])[:6])
         live = repo.get("homepage")
         live_link = '<a class="repo-live" href="%s" target="_blank" rel="noopener">Live ↗</a>' % esc(safe_link(live)) if live else ""
         cards.append(
-            '<article class="repo-card"><div class="repo-head"><h3><a href="%s" target="_blank" rel="noopener">%s</a></h3>%s</div><p class="repo-desc">%s</p><div class="repo-topics">%s</div><div class="repo-foot"><span>%s</span><span>updated %s</span></div></article>'
-            % (esc(safe_link(repo.get("url"))), esc(repo.get("name")), live_link, esc(repo.get("description") or "No description on the repository yet."), topics, esc(repo.get("primaryLanguage") or "No primary language"), esc((repo.get("pushedAt") or "")[:10] or "unknown"))
+            '<article class="repo-card" data-repo-lang="%s" data-repo-live="%s"><div class="repo-head"><h3><a href="%s" target="_blank" rel="noopener">%s</a></h3>%s</div>%s<p class="repo-desc">%s</p><div class="repo-topics">%s</div><div class="repo-foot"><span>%s</span><span>updated %s</span></div></article>'
+            % (
+                esc(repo.get("primaryLanguage") or ""), "1" if live else "0",
+                esc(safe_link(repo.get("url"))), esc(repo.get("name")), live_link,
+                shots_markup(repo), esc(repo.get("description") or "No description on the repository yet."),
+                topics, esc(repo.get("primaryLanguage") or "No primary language"),
+                esc((repo.get("pushedAt") or "")[:10] or "unknown")
+            )
         )
     repos = "".join(cards)
     stamp = '<span class="gh-stamp" data-github-stamp>Snapshot built %s</span>' % esc(data.get("generatedAt", "unknown"))

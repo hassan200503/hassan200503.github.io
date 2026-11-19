@@ -58,6 +58,13 @@
     });
   }
 
+  // ---- mobile dock: mark the current page ----
+  var dockKey = window.location.pathname.split("/").pop().replace(/\.html$/, "");
+  if (!dockKey || dockKey === "404") dockKey = "index";
+  if (dockKey === "rentmanager") dockKey = "projects";
+  var dockLink = document.querySelector('.mobile-dock a[data-dock="' + dockKey + '"]');
+  if (dockLink) dockLink.setAttribute("aria-current", "page");
+
   // ---- scroll progress rail ----
   var rail = document.querySelector(".progress-rail");
   if (rail) {

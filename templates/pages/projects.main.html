@@ -1,14 +1,56 @@
 <main id="main">
   <section class="section" style="padding-top: clamp(48px, 8vw, 96px);">
     <div class="wrap">
-      <span class="eyebrow">Selected work</span>
-      <h1 class="mt-16" style="max-width:20ch;">One deep case study instead of a dozen thin ones.</h1>
+      <span class="eyebrow">Projects</span>
+      <h1 class="mt-16" style="max-width:22ch;">One deep case study, and everything else I’m building — live.</h1>
       <p class="lede mt-24 measure">
         RentManager is the real body of work. I designed it, built it end to end, and shipped it.
         It runs on three surfaces now: a web app, a native mobile app, and the API behind both.
-        I’d rather show you that properly than pad this page with smaller exercises that don’t
-        represent what I can build.
+        I’d rather show you that properly than pad this page with smaller exercises — so below
+        the case study, this page reads my public GitHub directly and lists the rest as it
+        stands today, screenshots and all.
       </p>
+    </div>
+  </section>
+
+  <section class="section stories-section">
+    <div class="wrap">
+      <div class="stories-head">
+        <span class="eyebrow">Stories</span>
+        <p>Tap a ring — a case study, a live product, or the code behind it.</p>
+      </div>
+      <div class="stories-rail" aria-label="Project stories">
+        <a class="story" href="projects/rentmanager.html">
+          <span class="story-ring"><img src="images/projects/rentmanager-frontend-0.webp" width="92" height="92" loading="lazy" alt="" data-shot-full="https://raw.githubusercontent.com/hassan200503/rentmanager-frontend/main/assets/full-landing.png" /></span>
+          <span class="story-name">RentManager</span>
+          <span class="story-tag">Case study</span>
+        </a>
+        <a class="story" href="https://www.rentmanagerke.workers.dev/" target="_blank" rel="noopener">
+          <span class="story-ring"><img src="images/projects/rentmanager-mobile-0.webp" width="92" height="92" loading="lazy" alt="" data-shot-full="https://raw.githubusercontent.com/hassan200503/rentmanager-mobile/main/screenshots/features/01-landing-page.jpg" /></span>
+          <span class="story-name">RentManager</span>
+          <span class="story-tag">Live product</span>
+        </a>
+        <a class="story" href="https://github.com/hassan200503/automata" target="_blank" rel="noopener">
+          <span class="story-ring"><img src="images/projects/automata-0.webp" width="92" height="92" loading="lazy" alt="" data-shot-full="https://raw.githubusercontent.com/hassan200503/automata/main/docs/screenshots/main-interface.png" /></span>
+          <span class="story-name">Automata</span>
+          <span class="story-tag">AI desktop</span>
+        </a>
+        <a class="story" href="https://github.com/hassan200503/LetsVibe" target="_blank" rel="noopener">
+          <span class="story-ring"><span class="story-mono" aria-hidden="true">LV</span></span>
+          <span class="story-name">LetsVibe</span>
+          <span class="story-tag">Private world</span>
+        </a>
+        <a class="story" href="https://github.com/hassan200503/whatsapp-persona-bot" target="_blank" rel="noopener">
+          <span class="story-ring"><span class="story-mono" aria-hidden="true">WA</span></span>
+          <span class="story-name">WhatsApp bot</span>
+          <span class="story-tag">Personal tool</span>
+        </a>
+        <a class="story" href="https://github.com/hassan200503" target="_blank" rel="noopener">
+          <span class="story-ring"><span class="story-mono" aria-hidden="true">GH</span></span>
+          <span class="story-name">GitHub</span>
+          <span class="story-tag">All repos</span>
+        </a>
+      </div>
     </div>
   </section>
 
@@ -48,38 +90,16 @@
         <div class="grid-4 mt-32">
           <div class="stat"><span class="n mono" data-count="20">20</span><span class="label">backend modules</span></div>
           <div class="stat"><span class="n mono" data-count="99">99</span><span class="label">database migrations</span></div>
-          <div class="stat"><span class="n mono" data-count="1588" data-sep>1,588</span><span class="label">backend tests</span></div>
+          <div class="stat"><span class="n mono" data-count="262" data-sep>262</span><span class="label">backend test source files</span></div>
           <div class="stat"><span class="n mono" data-count="3">3</span><span class="label">shipped surfaces (web, mobile, API)</span></div>
         </div>
         <div class="mt-32" style="display:flex; gap:14px; flex-wrap:wrap;">
-          <a class="btn btn-primary" href="work/rentmanager.html">Read the engineering case study →</a>
+          <a class="btn btn-primary" href="projects/rentmanager.html">Read the engineering case study →</a>
           <a class="btn btn-ghost" href="https://www.rentmanagerke.workers.dev/" target="_blank" rel="noopener">Open the live product ↗</a>
         </div>
       </div>
     </div>
   </section>
-
-  <section class="section">
-    <div class="wrap">
-      <div class="ledger-row reveal">
-        <div class="ledger-index">— / ALSO</div>
-        <div>
-          <h3>Read the code</h3>
-          <p class="muted mt-16 measure">
-            All three RentManager repositories are public, and they are the evidence behind every
-            figure on this page:
-            <a href="https://github.com/hassan200503/rentmanager-backend" target="_blank" rel="noopener">backend</a>,
-            <a href="https://github.com/hassan200503/rentmanager-frontend" target="_blank" rel="noopener">web</a> and
-            <a href="https://github.com/hassan200503/rentmanager-mobile" target="_blank" rel="noopener">mobile</a>.
-            Earlier exercises like small JavaFX applications and data-structure practice also sit on my
-            <a href="https://github.com/hassan200503" target="_blank" rel="noopener">profile</a>.
-            They don’t reflect what I build now, so I’ve left them off this page.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
 
   <section class="section">
     <div class="wrap">
@@ -117,6 +137,53 @@
     </div>
   </section>
 
+  <section class="section" id="github" data-github>
+    <div class="wrap">
+      <div class="ledger-row reveal">
+        <div class="ledger-index">— / LIVE</div>
+        <div>
+          <div class="flex-between">
+            <h2 data-split>Everything else, read from the source</h2>
+            <span class="gh-stamp" data-github-stamp>Loading…</span>
+          </div>
+          <p class="lede mt-16 measure">
+            This section is not a list I maintain by hand. It reads my public repositories
+            directly and takes each project’s screenshots from that repository’s own readme,
+            so a project I push tonight — or a screenshot I replace — is on this page tonight,
+            and a claim I stop being able to back disappears on its own. It is the same live
+            grid that runs on the
+            <a href="index.html#github">home page</a>, and the profile is at
+            <a href="https://github.com/hassan200503" target="_blank" rel="noopener">github.com/hassan200503</a>.
+          </p>
+
+          <div class="grid-3 mt-32" data-github-stats></div>
+
+          <h3 class="mt-48">Language footprint</h3>
+          <p class="small muted mt-8 measure">
+            Share of bytes across every public repository. It is a measure of where my time
+            has gone, not a measure of skill, and it is counted rather than claimed.
+          </p>
+          <div class="mt-16" data-github-footprint></div>
+
+          <h3 class="mt-48">Technology ledger</h3>
+          <div class="mt-16" data-github-ledger></div>
+
+          <h3 class="mt-48">Repositories</h3>
+          <p class="small muted mt-8 measure">
+            Every card is a live repository. The screenshots are the ones that repository shows
+            in its own readme; click any of them to open it full size.
+          </p>
+          <div class="repo-filter mt-24" data-github-filters role="group" aria-label="Filter repositories" hidden></div>
+          <div class="repo-grid mt-24" data-github-repos></div>
+
+          <p class="mt-32">
+            <a class="btn btn-ghost btn-sm" href="https://github.com/hassan200503" target="_blank" rel="noopener">See the profile on GitHub ↗</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="section">
     <div class="wrap">
       <div class="cta-band center reveal">
@@ -127,7 +194,7 @@
           Remote anywhere, on-site in Kenya, or relocating.
         </p>
         <div class="mt-32" style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap;">
-          <a class="btn btn-wa" href="https://wa.me/254714931575?text=Hi%20Hassan%2C%20I%20saw%20your%20work%20page%20and%20I'd%20like%20to%20talk." target="_blank" rel="noopener">Message me on WhatsApp</a>
+          <a class="btn btn-wa" href="https://wa.me/254714931575?text=Hi%20Hassan%2C%20I%20saw%20your%20projects%20page%20and%20I'd%20like%20to%20talk." target="_blank" rel="noopener">Message me on WhatsApp</a>
           <a class="btn btn-ghost" href="files/Hassan-Tsuma-CV.pdf" download>Download CV (PDF)</a>
           <a class="btn btn-ghost" href="skills.html">See my skills in detail →</a>
         </div>

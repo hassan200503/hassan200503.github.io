@@ -1,0 +1,9 @@
+{
+  "name": "hassan-portfolio-analytics",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test",
+    "hash-passphrase": "node tools/hash-passphrase.mjs"
+  }
+}

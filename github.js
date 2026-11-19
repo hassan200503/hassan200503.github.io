@@ -25,6 +25,190 @@
   var CACHE_TTL_MS = 5 * 60 * 1000;
 
   var mount = document.querySelector("[data-github]");
+  var SHOT_LIMIT = 3;
+  var SHOT_DIR = "images/projects/";
+
+  // ---- screenshots ------------------------------------------------------
+
+  /* The optimised copy of a screenshot is written by scripts/fetch_screenshots.py
+   * during the build as <repository>-<index>.webp. The name is derived in both
+   * places rather than recorded, so nothing has to be kept in sync; the original
+   * GitHub URL always travels with the image in data-shot-full, and if the local
+   * copy is missing the error handler below puts the original in its place.
+   * Delegated on the document, capture phase, because error does not bubble. */
+  document.addEventListener("error", function (event) {
+    var img = event.target;
+    if (!img || img.tagName !== "IMG") return;
+    var full = img.getAttribute("data-shot-full");
+    var src = img.getAttribute("src") || "";
+    if (!full || src.indexOf(SHOT_DIR) !== 0) return;
+    img.setAttribute("src", full);
+  }, true);
+
+  function shotLocal(repoName, index) {
+    return SHOT_DIR + repoName + "-" + index + ".webp";
+  }
+
+  function shotFrame(repo, shot, index, count) {
+    var frame = el("button", index === 0 ? "repo-cover" : "repo-shot-thumb");
+    frame.type = "button";
+    frame.setAttribute("data-shot-index", String(index));
+    frame.setAttribute("aria-label", "Open screenshot: " + (shot.alt || repo.name));
+
+    var img = el("img");
+    img.src = shotLocal(repo.name, index);
+    img.alt = shot.alt || repo.name;
+    img.width = 1200;
+    img.height = 750;
+    img.loading = "lazy";
+    img.decoding = "async";
+    img.setAttribute("data-shot-full", shot.url);
+    frame.appendChild(img);
+
+    if (index === 0) {
+      if (count > 1) frame.appendChild(el("span", "shot-badge", "1 / " + count));
+      frame.appendChild(el("span", "shot-zoom", "Expand"));
+    }
+    return frame;
+  }
+
+  function repoInitials(name) {
+    var parts = String(name || "").split(/[-_.\s]+/).filter(Boolean);
+    if (parts.length > 1) return (parts[0][0] + parts[1][0]).toUpperCase();
+    return String(name || "?").slice(0, 2).toUpperCase();
+  }
+
+  function repoShots(repo) {
+    var shots = (repo.screenshots || []).filter(function (s) { return s && s.url; }).slice(0, SHOT_LIMIT);
+    if (!shots.length) {
+      var placeholder = el("div", "repo-shots");
+      var empty = el("div", "repo-cover repo-cover-empty");
+      empty.setAttribute("aria-hidden", "true");
+      empty.appendChild(el("span", "repo-mono", repoInitials(repo.name)));
+      empty.appendChild(el("span", "repo-cover-label", "Code only"));
+      placeholder.appendChild(empty);
+      return placeholder;
+    }
+
+    var wrap = el("div", "repo-shots");
+    wrap.appendChild(shotFrame(repo, shots[0], 0, shots.length));
+    if (shots.length > 1) {
+      var rail = el("div", "repo-shot-rail");
+      shots.slice(1).forEach(function (s, i) { rail.appendChild(shotFrame(repo, s, i + 1, shots.length)); });
+      wrap.appendChild(rail);
+    }
+    return wrap;
+  }
+
+  /* ---- lightbox --------------------------------------------------------
+   * Built once, reused for every card. The gallery is read from the DOM —
+   * every frame inside the same .repo-shots container — so the prerendered
+   * cards and the live cards need no extra data on the page. */
+  var box = null;
+
+  function buildBox() {
+    var dialog = el("dialog", "shotbox");
+    var fig = el("figure", "shotbox-fig");
+    var img = el("img", "shotbox-img");
+    img.alt = "";
+    var cap = el("figcaption", "shotbox-cap");
+    var prev = el("button", "shotbox-btn shotbox-prev");
+    prev.type = "button";
+    prev.setAttribute("aria-label", "Previous screenshot");
+    prev.textContent = "←";
+    var next = el("button", "shotbox-btn shotbox-next");
+    next.type = "button";
+    next.setAttribute("aria-label", "Next screenshot");
+    next.textContent = "→";
+    var close = el("button", "shotbox-btn shotbox-close");
+    close.type = "button";
+    close.setAttribute("aria-label", "Close");
+    close.textContent = "✕";
+    fig.appendChild(img);
+    fig.appendChild(cap);
+    dialog.appendChild(fig);
+    dialog.appendChild(prev);
+    dialog.appendChild(next);
+    dialog.appendChild(close);
+    document.body.appendChild(dialog);
+
+    var state = { items: [], at: 0 };
+
+    function show(i) {
+      var n = state.items.length;
+      if (!n) return;
+      state.at = ((i % n) + n) % n;
+      var item = state.items[state.at];
+      img.src = item.full;
+      img.alt = item.alt;
+      cap.textContent = "";
+      var strong = document.createElement("b");
+      strong.textContent = item.alt;
+      cap.appendChild(strong);
+      cap.appendChild(document.createTextNode(" · " + (state.at + 1) + " / " + n));
+      if (item.repo) {
+        cap.appendChild(document.createTextNode(" · "));
+        var link = document.createElement("a");
+        link.href = item.repo;
+        link.target = "_blank";
+        link.rel = "noopener";
+        link.textContent = "repository ↗";
+        cap.appendChild(link);
+      }
+    }
+
+    prev.addEventListener("click", function () { show(state.at - 1); });
+    next.addEventListener("click", function () { show(state.at + 1); });
+    close.addEventListener("click", function () { dialog.close(); });
+    dialog.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowLeft") { e.preventDefault(); show(state.at - 1); }
+      if (e.key === "ArrowRight") { e.preventDefault(); show(state.at + 1); }
+    });
+    // Clicking the backdrop. The figure covers the whole dialog, so a hit on
+    // the dialog itself means the padding around the image was clicked.
+    dialog.addEventListener("click", function (e) {
+      if (e.target === dialog || e.target === fig) dialog.close();
+    });
+    dialog.addEventListener("close", function () {
+      document.body.classList.remove("shotbox-open");
+      img.removeAttribute("src");
+    });
+
+    return {
+      open: function (items, at) {
+        state.items = items;
+        dialog.setAttribute("data-count", String(items.length));
+        show(at);
+        if (typeof dialog.showModal === "function") dialog.showModal();
+        else dialog.setAttribute("open", "");
+        document.body.classList.add("shotbox-open");
+        close.focus();
+      }
+    };
+  }
+
+  document.addEventListener("click", function (event) {
+    var frame = event.target.closest ? event.target.closest("[data-shot-index]") : null;
+    if (!frame) return;
+    var group = frame.closest(".repo-shots");
+    if (!group) return;
+    var frames = [].slice.call(group.querySelectorAll("[data-shot-index]"));
+    var items = frames.map(function (f) {
+      var image = f.querySelector("img");
+      var card = f.closest(".repo-card");
+      var anchor = card ? card.querySelector(".repo-head h3 a") : null;
+      return {
+        full: image ? image.getAttribute("data-shot-full") : "",
+        alt: image ? (image.getAttribute("alt") || "") : "",
+        repo: anchor ? anchor.getAttribute("href") : ""
+      };
+    }).filter(function (i) { return i.full; });
+    if (!items.length) return;
+    event.preventDefault();
+    if (!box) box = buildBox();
+    box.open(items, Number(frame.getAttribute("data-shot-index")) || 0);
+  });
+
   if (!mount) return;
 
   // ---- helpers ----------------------------------------------------------
@@ -108,6 +292,8 @@
   function repoCard(repo) {
     var card = el("article", "repo-card reveal");
     card.setAttribute("data-tilt", "");
+    card.setAttribute("data-repo-lang", repo.primaryLanguage || repo.language || "");
+    card.setAttribute("data-repo-live", repo.homepage ? "1" : "0");
 
     var head = el("div", "repo-head");
     var title = el("h3");
@@ -126,6 +312,9 @@
       head.appendChild(live);
     }
     card.appendChild(head);
+
+    var shots = repoShots(repo);
+    if (shots) card.appendChild(shots);
 
     card.appendChild(el("p", "repo-desc",
       repo.description || "No description on the repository yet."));
@@ -198,14 +387,101 @@
     return wrap;
   }
 
+  function technologyLedger(items) {
+    var list = el("ul", "stack-list");
+    (items || []).forEach(function (item) {
+      var li = el("li", "tech-card");
+      var top = el("div", "tech-card-top");
+      top.appendChild(el("strong", null, item.technology || ""));
+      top.appendChild(el("span", "tech-count", (item.repoCount || 0) + " repos"));
+      li.appendChild(top);
+      li.appendChild(el("span", "tech-cat", item.category || "in the code"));
+      var evidence = el("div", "tech-evidence");
+      (item.evidence || []).slice(0, 3).forEach(function (e) {
+        var a = el("a", null, (e.path || "source") + " ↗");
+        a.href = e.url || "#";
+        a.target = "_blank";
+        a.rel = "noopener";
+        a.title = e.path || "";
+        evidence.appendChild(a);
+      });
+      li.appendChild(evidence);
+      list.appendChild(li);
+    });
+    return list;
+  }
+
+  function applyFilter(value) {
+    var grid = mount.querySelector("[data-github-repos]");
+    if (!grid) return;
+    var visible = 0;
+    grid.querySelectorAll(".repo-card").forEach(function (card) {
+      var show = value === "all" ||
+        (value === "live"
+          ? card.getAttribute("data-repo-live") === "1"
+          : card.getAttribute("data-repo-lang") === value);
+      card.hidden = !show;
+      if (show) visible += 1;
+    });
+    var empty = grid.querySelector(".repo-empty");
+    if (!visible && !empty) {
+      grid.appendChild(el("p", "repo-empty", "No repositories in this filter yet."));
+    } else if (visible && empty) {
+      empty.remove();
+    }
+  }
+
+  function buildFilters(repos) {
+    var host = mount.querySelector("[data-github-filters]");
+    if (!host) return;
+    host.innerHTML = "";
+    var langs = {};
+    repos.forEach(function (r) {
+      var l = r.primaryLanguage || r.language;
+      if (l) langs[l] = (langs[l] || 0) + 1;
+    });
+    var options = [["all", "All", repos.length]];
+    var liveCount = repos.filter(function (r) { return !!r.homepage; }).length;
+    if (liveCount) options.push(["live", "Deployed", liveCount]);
+    Object.keys(langs).sort(function (a, b) { return langs[b] - langs[a]; }).slice(0, 4)
+      .forEach(function (l) { options.push([l, l, langs[l]]); });
+
+    options.forEach(function (o, i) {
+      var btn = el("button", "filter-chip" + (i === 0 ? " is-active" : ""), o[1]);
+      btn.type = "button";
+      btn.setAttribute("data-filter", o[0]);
+      btn.setAttribute("aria-pressed", i === 0 ? "true" : "false");
+      btn.appendChild(el("span", "count", String(o[2])));
+      host.appendChild(btn);
+    });
+    host.hidden = false;
+    if (host.getAttribute("data-bound") !== "1") {
+      host.setAttribute("data-bound", "1");
+      host.addEventListener("click", function (event) {
+        var btn = event.target.closest(".filter-chip");
+        if (!btn) return;
+        host.querySelectorAll(".filter-chip").forEach(function (b) {
+          var on = b === btn;
+          b.classList.toggle("is-active", on);
+          b.setAttribute("aria-pressed", on ? "true" : "false");
+        });
+        applyFilter(btn.getAttribute("data-filter"));
+      });
+    }
+    applyFilter("all");
+  }
+
   function render(data, isLive) {
     var repos = (data.repos || []).slice();
 
     // The portfolio repository itself is real work, but listing the site you
     // are currently reading among "projects" is noise. Kept in the totals,
-    // dropped from the grid.
+    // dropped from the grid. Same rules as include_in_grid() in build_site.py,
+    // so the snapshot grid and the live grid always agree.
     var shown = repos.filter(function (r) {
-      return r.name !== "hassan200503.github.io" && r.name !== "hassan200503";
+      if (r.archived) return false;
+      if (r.name === "hassan200503.github.io" || r.name === "hassan200503") return false;
+      return (r.topics || []).indexOf("portfolio-hidden") === -1;
     });
 
     var statsHost = mount.querySelector("[data-github-stats]");
@@ -230,12 +506,19 @@
       fpHost.appendChild(footprint(data.totals.languageBytes));
     }
 
+    var ledgerHost = mount.querySelector("[data-github-ledger]");
+    if (ledgerHost && Array.isArray(data.technologyLedger) && data.technologyLedger.length) {
+      ledgerHost.innerHTML = "";
+      ledgerHost.appendChild(technologyLedger(data.technologyLedger));
+    }
+
     var grid = mount.querySelector("[data-github-repos]");
     if (grid) {
       grid.innerHTML = "";
       shown.forEach(function (r) { grid.appendChild(repoCard(r)); });
       if (window.htTilt) grid.querySelectorAll("[data-tilt]").forEach(window.htTilt);
       if (window.htReveal) window.htReveal(grid);
+      buildFilters(shown);
     }
 
     var stamp = mount.querySelector("[data-github-stamp]");
@@ -305,6 +588,10 @@
           archived: !!r.archived,
           defaultBranch: r.default_branch || prev.defaultBranch || "main",
           technologies: prev.technologies || [],
+          // Screenshots are discovered by the build from each repository's README
+          // and tree, which one API request cannot reproduce. They come from the
+          // snapshot or not at all, so a live refresh never empties a card.
+          screenshots: prev.screenshots || [],
           lastCommit: prev.lastCommit || null
         };
       })
@@ -339,6 +626,7 @@
         languageBytes: ordered,
         lastPush: merged.length ? merged[0].pushedAt : snapshot.totals.lastPush
       },
+      technologyLedger: snapshot.technologyLedger || [],
       repos: merged
     };
   }
