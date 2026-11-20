@@ -11,7 +11,7 @@
   var fineHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
   var root = document.documentElement;
   var hasGSAP = !!(window.gsap && window.ScrollTrigger);
-  if (hasGSAP) {
+  if (hasGSAP && !reduceMotion) {
     root.classList.add("js-gsap");
     window.gsap.registerPlugin(window.ScrollTrigger);
     try { window.ScrollTrigger.config({ ignoreMobileResize: true }); } catch (e) {}

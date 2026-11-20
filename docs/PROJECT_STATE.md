@@ -8,9 +8,10 @@ The portfolio is live at <https://hassan200503.github.io/>. GitHub Pages is buil
 and deployed by `.github/workflows/pages.yml`; the private analytics dashboard is
 a separate Cloudflare Worker, and the GitHub webhook relay is deployed as well.
 
-- Pages: verified runs `44757811192`, `44758660861`, and `44760861423`; the live
-  site served a snapshot stamped `2026-11-20T15:12:46Z` with 7 repositories and
-  11 languages. Scheduled runs resumed at 10:34 and 12:55 after the earlier gap.
+- Pages: verified runs include `44757811192`, `44758660861`, and `44760861423`;
+  the live site serves the latest workflow-generated snapshot with 7 repositories
+  and 11 languages. Scheduled runs resumed at 10:34 and 12:55 after the earlier
+  gap.
 - Analytics: <https://hassan-portfolio-analytics.rentmanagerke.workers.dev>;
   `/healthz` returned `{"ok":true,"storage":true}`, `/admin` served the sign-in
   page, and a wrong passphrase returned 401. The canonical-signature build is
@@ -50,17 +51,21 @@ a separate Cloudflare Worker, and the GitHub webhook relay is deployed as well.
 - Analytics session hardening: `verifySession` now rejects non-canonical
   base64url payload and signature encodings; all 27 analytics-worker tests pass.
   The Worker was redeployed after the fix and the dashboard still authenticates.
+- Browser QA: desktop and mobile layouts, light and dark themes, keyboard skip
+  navigation, reduced motion, and no-JavaScript rendering were checked with
+  Playwright and axe. Fixed the reduced-motion hero that was left invisible,
+  several contrast failures, skip-link focus, and “1 repos” pluralisation.
 
 ## Open work
 
-- Browser-based Lighthouse, axe, keyboard, mobile, and no-JavaScript visual
-  checks have not been run in this environment.
+- No known blocking work. Optional follow-up: rerun the browser QA after major
+  copy or layout changes and keep the analytics review current.
 
 ## Next three tasks
 
-1. Run the browser-based quality pass against the deployed site.
-2. Keep the snapshot and CV figures current when RentManager’s counts change.
-3. Review the first week of analytics for obvious bot traffic or tracking gaps.
+1. Keep the snapshot and CV figures current when RentManager’s counts change.
+2. Review the first week of analytics for obvious bot traffic or tracking gaps.
+3. Rerun the desktop/mobile accessibility pass after significant design changes.
 
 ## Commands that work
 
@@ -88,6 +93,8 @@ a separate Cloudflare Worker, and the GitHub webhook relay is deployed as well.
 - Contact email and WhatsApp number are present in static HTML by design.
 - Google Fonts are self-hosted; GSAP, ScrollTrigger, and Lenis are served from
   `vendor/`.
+- The inline CV preview uses the browser’s PDF viewer; browsers without one get
+  the explicit open/download fallback.
 
 ## Open questions
 

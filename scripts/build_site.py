@@ -274,11 +274,12 @@ def prerender_github(output):
             )
             for e in evidence[:3]
         )
+        count = item.get("repoCount", 0)
         ledger_items.append(
             '<li class="tech-card"><div class="tech-card-top"><strong>%s</strong>'
-            '<span class="tech-count">%s repos</span></div>'
+            '<span class="tech-count">%s repo%s</span></div>'
             '<span class="tech-cat">%s</span><div class="tech-evidence">%s</div></li>' % (
-                esc(item.get("technology")), esc(item.get("repoCount", 0)),
+                esc(item.get("technology")), esc(count), "" if count == 1 else "s",
                 esc(item.get("category") or "in the code"), links
             )
         )

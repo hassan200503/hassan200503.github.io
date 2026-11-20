@@ -1,11 +1,15 @@
 #!/usr/bin/env python3
 """Dependency-free checks for the static site's local HTML surface."""
+import re
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import urlsplit
 
 
 ROOT = Path(__file__).resolve().parents[1]
+BAD_SINGULAR_PLURALS = re.compile(
+    r"\b1 (?:repos|public repositories|languages|modules|migrations|routes|screens|tests|surfaces|years)\b"
+)
 # "work" still holds the two redirect stubs that keep the old URLs alive.
 HTML_FILES = (
     sorted(ROOT.glob("*.html"))
@@ -42,10 +46,13 @@ class PageParser(HTMLParser):
 
 errors = []
 for page in HTML_FILES:
+    text = page.read_text(encoding="utf-8")
     parser = PageParser()
-    parser.feed(page.read_text(encoding="utf-8"))
+    parser.feed(text)
     if not parser.title.strip():
         errors.append(f"{page.relative_to(ROOT)}: missing title")
+    for match in BAD_SINGULAR_PLURALS.finditer(text):
+        errors.append(f"{page.relative_to(ROOT)}: bad singular/plural {match.group(0)!r}")
     if page.name != "404.html" and not parser.has_main:
         errors.append(f"{page.relative_to(ROOT)}: missing main landmark")
     for href in parser.links:
