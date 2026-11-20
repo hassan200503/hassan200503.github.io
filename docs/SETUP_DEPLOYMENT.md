@@ -5,7 +5,7 @@
 - Public site: <https://hassan200503.github.io/>
 - Pages workflow: `.github/workflows/pages.yml`
 - Pages source: **GitHub Actions**; no commit-back snapshot loop
-- Latest verified Pages run: `44757811192` (2026-11-20)
+- Verified Pages runs: `44757811192`, `44758660861`, `44760861423` (2026-11-20)
 - Public artifact: `_site/`, assembled by `scripts/stage_site.py`
 
 The workflow builds the GitHub snapshot and static pages, validates them, stages

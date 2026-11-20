@@ -8,9 +8,9 @@ The portfolio is live at <https://hassan200503.github.io/>. GitHub Pages is buil
 and deployed by `.github/workflows/pages.yml`; the private analytics dashboard is
 a separate Cloudflare Worker, and the GitHub webhook relay is deployed as well.
 
-- Pages: latest verified successful run `44757811192`; the live site served a
-  snapshot stamped `2026-11-20T14:54:08Z` with 7 repositories and 11 languages.
-  Scheduled runs resumed at 10:34 and 12:55 after the earlier gap.
+- Pages: verified runs `44757811192`, `44758660861`, and `44760861423`; the live
+  site served a snapshot stamped `2026-11-20T15:12:46Z` with 7 repositories and
+  11 languages. Scheduled runs resumed at 10:34 and 12:55 after the earlier gap.
 - Analytics: <https://hassan-portfolio-analytics.rentmanagerke.workers.dev>;
   `/healthz` returned `{"ok":true,"storage":true}`, `/admin` served the sign-in
   page, and a wrong passphrase returned 401. The canonical-signature build is
