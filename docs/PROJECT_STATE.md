@@ -8,8 +8,9 @@ The portfolio is live at <https://hassan200503.github.io/>. GitHub Pages is buil
 and deployed by `.github/workflows/pages.yml`; the private analytics dashboard is
 a separate Cloudflare Worker, and the GitHub webhook relay is deployed as well.
 
-- Pages: latest verified successful run `44666926490`; the live site served a
-  snapshot stamped `2026-11-20T03:20:06Z` with 7 repositories and 11 languages.
+- Pages: latest verified successful run `44757811192`; the live site served a
+  snapshot stamped `2026-11-20T14:54:08Z` with 7 repositories and 11 languages.
+  Scheduled runs resumed at 10:34 and 12:55 after the earlier gap.
 - Analytics: <https://hassan-portfolio-analytics.rentmanagerke.workers.dev>;
   `/healthz` returned `{"ok":true,"storage":true}`, `/admin` served the sign-in
   page, and a wrong passphrase returned 401.
@@ -55,17 +56,13 @@ a separate Cloudflare Worker, and the GitHub webhook relay is deployed as well.
   or `npx wrangler login` on this machine.
 - Browser-based Lighthouse, axe, keyboard, mobile, and no-JavaScript visual
   checks have not been run in this environment.
-- GitHub scheduled Pages runs stopped after `2026-11-20T03:19` in the last
-  observed window. The workflow is active and webhook dispatches still work;
-  monitor the next scheduled run before treating this as a repository defect.
 
 ## Next three tasks
 
 1. Deploy the analytics Worker after authenticating Wrangler, then re-run
    `npm test --prefix analytics-worker` and check `/healthz` and `/admin`.
 2. Run the browser-based quality pass against the deployed site.
-3. Confirm the scheduled Pages runs resume; if they do not, inspect the
-   repository's Actions scheduling separately from the webhook path.
+3. Keep the snapshot and CV figures current when RentManager’s counts change.
 
 ## Commands that work
 
