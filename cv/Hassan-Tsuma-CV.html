@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hassan Tsuma Karungwa — CV</title>
+<meta name="author" content="Hassan Tsuma Karungwa">
+<meta name="description" content="Full-Stack Software Engineer — Java, Spring Boot, PostgreSQL, React, Next.js">
+<style>
+  @page { size: A4; margin: 10mm 12mm; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 9pt;
+    line-height: 1.25;
+    color: #151515;
+  }
+  a { color: #0b4f6c; text-decoration: none; }
+  .header h1 { margin: 0; font-size: 21pt; line-height: 1.05; letter-spacing: -0.02em; }
+  .role { margin: 3px 0 4px; font-size: 9.8pt; font-weight: 600; color: #0b4f6c; }
+  .contact { font-size: 8.5pt; color: #333; }
+  .contact span + span::before { content: " | "; color: #888; }
+  .availability { margin-top: 3px; font-size: 8.4pt; color: #555; }
+  .summary { margin: 6px 0 4px; }
+  h2 {
+    margin: 7px 0 3px;
+    padding-bottom: 2px;
+    border-bottom: 1px solid #c9d6dd;
+    font-size: 8.7pt;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #0b4f6c;
+  }
+  .role-line { display: flex; justify-content: space-between; gap: 12px; font-weight: 700; }
+  .role-line .meta { font-weight: 400; color: #555; font-size: 8.5pt; white-space: nowrap; }
+  ul { margin: 2px 0 0; padding-left: 13px; }
+  li { margin: 0 0 1px; }
+  .project { margin-top: 3px; }
+  .project-title { font-weight: 700; }
+  .project-sub { font-size: 8.5pt; color: #555; }
+  .tech { font-size: 8.5pt; color: #333; }
+  .skills { display: grid; grid-template-columns: 26mm 1fr; gap: 1px 6px; margin: 0; font-size: 8.8pt; }
+  .skills dt { font-weight: 700; }
+  .skills dd { margin: 0; }
+  .footer { display: flex; justify-content: space-between; margin-top: 7px; font-size: 7.8pt; color: #666; }
+</style>
+</head>
+<body>
+  <header class="header">
+    <h1>Hassan Tsuma Karungwa</h1>
+    <p class="role">Full-Stack Software Engineer | Java, Spring Boot, PostgreSQL, React, Next.js</p>
+    <p class="contact">
+      <span>Homabay, Kenya</span>
+      <span>+254 714 931 575</span>
+      <span><a href="mailto:karungwahassan03@gmail.com">karungwahassan03@gmail.com</a></span>
+    </p>
+    <p class="contact">
+      <span><a href="https://www.rentmanagerke.workers.dev">www.rentmanagerke.workers.dev</a></span>
+      <span><a href="https://github.com/hassan200503">github.com/hassan200503</a></span>
+      <span><a href="https://hassan200503.github.io">hassan200503.github.io</a></span>
+      <span><a href="https://linkedin.com/in/hassan-karungwa">linkedin.com/in/hassan-karungwa</a></span>
+    </p>
+    <p class="availability">Available immediately · Remote (UTC+3), on-site in Kenya, or relocation</p>
+  </header>
+
+  <p class="summary">
+    Full-stack software engineer with 3+ years of independent experience building and deploying
+    complete systems: Java 21, Spring Boot and PostgreSQL on the backend; React, Next.js and
+    TypeScript on the web; React Native on mobile. Sole engineer of RentManager, a deployed
+    multi-tenant rental-management platform with M-Pesa Daraja payments, 1,588 automated backend
+    tests and a public live demo. Strongest where correctness matters most: payments, ledgers and
+    records a business cannot afford to get wrong.
+  </p>
+
+  <h2>Experience</h2>
+  <div class="role-line">
+    <span>Full-Stack Software Engineer - Independent / Freelance</span>
+    <span class="meta">Feb 2023 - Present | Remote</span>
+  </div>
+  <ul>
+    <li>Design, build and deploy full-stack systems end to end: data model, Spring Boot APIs, React / Next.js and React Native (Expo) clients, and cloud hosting.</li>
+    <li>Architect multi-tenant SaaS with Domain-Driven Design and Clean Architecture, keeping business rules independent of the framework and the database.</li>
+    <li>Build idempotent, transaction-safe billing and payment workflows (M-Pesa STK Push and B2C), test critical paths against real PostgreSQL, and ship in small, reviewed increments with Git and GitHub Actions CI.</li>
+  </ul>
+
+  <h2>Projects</h2>
+  <div class="project">
+    <div class="project-title">RentManager - Multi-tenant property management SaaS</div>
+    <div class="project-sub">Live: <a href="https://www.rentmanagerke.workers.dev">www.rentmanagerke.workers.dev</a> | Source: <a href="https://github.com/hassan200503/rentmanager-backend">backend</a> | <a href="https://github.com/hassan200503/rentmanager-frontend">web</a> | <a href="https://github.com/hassan200503/rentmanager-mobile">mobile</a></div>
+    <div class="tech">Java 21 | Spring Boot 3 | PostgreSQL | Flyway | Next.js 16 | React 19 | TypeScript | React Native (Expo) | Clerk | M-Pesa Daraja</div>
+    <ul>
+      <li>Designed, built and deployed the whole product alone: a modular monolith of 21 modules (ports and adapters) covering properties, leases, rent, deposits, reservations, maintenance, tax and platform administration.</li>
+      <li>Integrated M-Pesa Daraja both ways, STK Push for rent collection and B2C for landlord payouts (sandbox), with idempotency guards and duplicate-callback handling that never drops a payment already made.</li>
+      <li>Designed an append-only rent ledger where a correction is a linked reversal, never an edit, and evolved the schema through 100 Flyway migrations, none edited after running.</li>
+      <li>Enforced tenant isolation from the verified JWT claim, never a client header, at the authorization and repository layers.</li>
+      <li>Wrote 1,588 backend tests with JUnit 5, Mockito, Testcontainers and ArchUnit, covering the money paths first.</li>
+      <li>Delivered a 63-route Next.js web app and a 27-screen React Native app sharing one OpenAPI-generated typed client.</li>
+      <li>Operated with health checks, Prometheus metrics, GitHub Actions CI, Sentry crash reporting in the mobile app and encrypted off-site database backups kept for 90 days.</li>
+    </ul>
+  </div>
+
+  <div class="project">
+    <div class="project-title">Lovora - A private shared world for two</div>
+    <div class="project-sub">Live: <a href="https://our-universe-gamma-green.vercel.app">our-universe-gamma-green.vercel.app</a> | Source: <a href="https://github.com/hassan200503/Lovora">github.com/hassan200503/Lovora</a></div>
+    <div class="tech">Next.js | TypeScript | WebRTC | PGlite / PostgreSQL | Web Push</div>
+    <ul>
+      <li>Built realtime chat, encrypted peer-to-peer audio and video calls, synchronised listening and watching, memories, and live discoveries on one shared TypeScript codebase.</li>
+      <li>Implemented a tested sync protocol, device-made message ids for idempotent retries, and a single visibility rule for private, shared and public content over PGlite locally and Postgres in production.</li>
+    </ul>
+  </div>
+
+  <div class="project">
+    <div class="project-title">Automata - Windows-first, voice-first AI companion</div>
+    <div class="project-sub">Source: <a href="https://github.com/hassan200503/automata">github.com/hassan200503/automata</a></div>
+    <div class="tech">C# | TypeScript | Windows desktop | local automation</div>
+    <ul>
+      <li>Built a voice-and-text desktop companion that runs real OS actions and reports honestly what it did, with the action layer kept separate from the model call.</li>
+    </ul>
+  </div>
+
+  <h2>Technical Skills</h2>
+  <dl class="skills">
+    <dt>Languages</dt><dd>Java, TypeScript, JavaScript, SQL, C#</dd>
+    <dt>Backend</dt><dd>Spring Boot, Spring Security, Spring Data JPA / Hibernate, REST, OpenAPI, JWT</dd>
+    <dt>Data &amp; payments</dt><dd>PostgreSQL, Flyway, append-only ledgers, M-Pesa Daraja (STK Push, B2C)</dd>
+    <dt>Web &amp; mobile</dt><dd>React, Next.js, TanStack Query, React Native (Expo), WebRTC</dd>
+    <dt>Architecture</dt><dd>SOLID, Clean Architecture, Domain-Driven Design, multi-tenancy, transactional outbox</dd>
+    <dt>Testing</dt><dd>JUnit 5, Mockito, Testcontainers, ArchUnit, Vitest, Jest</dd>
+    <dt>Delivery</dt><dd>Docker, Git, GitHub Actions, Render, Cloudflare Workers, Vercel, Neon, Agile; AI-assisted development with every change reviewed</dd>
+  </dl>
+
+  <h2>Education</h2>
+  <p style="margin:0;">BSc Computer Science - Tom Mboya University, Homabay, Kenya | Expected 2028</p>
+
+  <div class="footer">
+    <span>Hassan Tsuma Karungwa</span>
+    <span>Updated November 2026</span>
+  </div>
+</body>
+</html>

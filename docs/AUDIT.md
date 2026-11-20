@@ -2,6 +2,10 @@
 
 Date: 2026-10-26
 
+> Historical baseline. Many findings below were addressed by the Pages, snapshot,
+> and analytics work documented in `docs/PROJECT_STATE.md`; keep this file as the
+> original evidence, not as the current deployment description.
+
 Repository: `hassan200503.github.io`, branch `main`, inspected from the local clone. No site files were changed for this audit.
 
 ## Structure and deployment

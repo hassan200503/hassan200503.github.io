@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-19T15:24:56Z",
+  "generatedAt": "2026-11-20T07:15:22Z",
   "source": "GitHub public API; generated during the site build",
   "user": {
     "login": "hassan200503",
@@ -7,7 +7,7 @@
     "bio": " I am a full stack developer with 3 years of experience in building systems end to end  using  java for the backend, react & typescript for the frontend. ",
     "avatarUrl": "https://avatars.githubusercontent.com/u/235883538?v=4",
     "url": "https://github.com/hassan200503",
-    "followers": 15,
+    "followers": 16,
     "publicRepos": 7,
     "createdAt": "2025-10-03T12:17:31Z"
   },
@@ -15,19 +15,19 @@
     "repos": 7,
     "stars": 0,
     "languageBytes": {
-      "TypeScript": 5516586,
+      "TypeScript": 6012356,
       "Java": 4641260,
-      "HTML": 373400,
-      "CSS": 293045,
-      "JavaScript": 73856,
-      "Python": 33929,
+      "HTML": 423584,
+      "CSS": 325637,
+      "JavaScript": 250241,
+      "Python": 51286,
+      "PLpgSQL": 22121,
       "C#": 21545,
-      "PLpgSQL": 18917,
       "PowerShell": 13343,
-      "Shell": 8875,
+      "Shell": 11441,
       "Dockerfile": 4600
     },
-    "lastPush": "2026-11-19T14:48:27Z"
+    "lastPush": "2026-11-20T05:30:39Z"
   },
   "technologyLedger": [
     {
@@ -52,15 +52,27 @@
       "category": "testing and delivery",
       "repoCount": 6,
       "firstUsed": "2026-06-11T16:44:44Z",
-      "lastUsed": "2026-11-19T14:48:27Z",
+      "lastUsed": "2026-11-20T05:30:39Z",
       "evidence": [
         {
           "path": ".github/workflows/ci.yml",
-          "url": "https://github.com/hassan200503/LetsVibe/blob/main/.github/workflows/ci.yml"
+          "url": "https://github.com/hassan200503/Lovora/blob/main/.github/workflows/ci.yml"
         },
         {
           "path": ".github/workflows/ingest.yml",
-          "url": "https://github.com/hassan200503/LetsVibe/blob/main/.github/workflows/ingest.yml"
+          "url": "https://github.com/hassan200503/Lovora/blob/main/.github/workflows/ingest.yml"
+        },
+        {
+          "path": ".github/workflows/security.yml",
+          "url": "https://github.com/hassan200503/Lovora/blob/main/.github/workflows/security.yml"
+        },
+        {
+          "path": ".github/workflows/ci.yml",
+          "url": "https://github.com/hassan200503/hassan200503.github.io/blob/main/.github/workflows/ci.yml"
+        },
+        {
+          "path": ".github/workflows/pages.yml",
+          "url": "https://github.com/hassan200503/hassan200503.github.io/blob/main/.github/workflows/pages.yml"
         },
         {
           "path": ".github/workflows/backup.yml",
@@ -105,14 +117,6 @@
         {
           "path": ".github/workflows/release.yml",
           "url": "https://github.com/hassan200503/automata/blob/main/.github/workflows/release.yml"
-        },
-        {
-          "path": ".github/workflows/ci.yml",
-          "url": "https://github.com/hassan200503/hassan200503.github.io/blob/main/.github/workflows/ci.yml"
-        },
-        {
-          "path": ".github/workflows/pages.yml",
-          "url": "https://github.com/hassan200503/hassan200503.github.io/blob/main/.github/workflows/pages.yml"
         }
       ]
     },
@@ -159,15 +163,19 @@
       "category": "frontend and mobile",
       "repoCount": 3,
       "firstUsed": "2026-06-11T16:44:44Z",
-      "lastUsed": "2026-11-19T14:48:27Z",
+      "lastUsed": "2026-11-20T05:30:39Z",
       "evidence": [
         {
           "path": ".github/workflows/ci.yml",
-          "url": "https://github.com/hassan200503/LetsVibe/blob/main/.github/workflows/ci.yml"
+          "url": "https://github.com/hassan200503/Lovora/blob/main/.github/workflows/ci.yml"
         },
         {
-          "path": "package.json",
-          "url": "https://github.com/hassan200503/LetsVibe/blob/main/package.json"
+          "path": ".github/workflows/security.yml",
+          "url": "https://github.com/hassan200503/Lovora/blob/main/.github/workflows/security.yml"
+        },
+        {
+          "path": "apps/web/package.json",
+          "url": "https://github.com/hassan200503/Lovora/blob/main/apps/web/package.json"
         },
         {
           "path": ".github/workflows/keep-awake.yml",
@@ -237,11 +245,11 @@
       "category": "frontend and mobile",
       "repoCount": 4,
       "firstUsed": "2026-06-20T17:09:22Z",
-      "lastUsed": "2026-11-19T14:48:27Z",
+      "lastUsed": "2026-11-20T05:30:39Z",
       "evidence": [
         {
-          "path": "package.json",
-          "url": "https://github.com/hassan200503/LetsVibe/blob/main/package.json"
+          "path": "apps/web/package.json",
+          "url": "https://github.com/hassan200503/Lovora/blob/main/apps/web/package.json"
         },
         {
           "path": "package.json",
@@ -292,11 +300,11 @@
       "category": "frontend and mobile",
       "repoCount": 4,
       "firstUsed": "2026-06-20T17:09:22Z",
-      "lastUsed": "2026-11-19T14:48:27Z",
+      "lastUsed": "2026-11-20T05:30:39Z",
       "evidence": [
         {
-          "path": "drizzle.config.ts",
-          "url": "https://github.com/hassan200503/LetsVibe/blob/main/drizzle.config.ts"
+          "path": "apps/web/drizzle.config.ts",
+          "url": "https://github.com/hassan200503/Lovora/blob/main/apps/web/drizzle.config.ts"
         },
         {
           "path": "app.config.ts",
@@ -316,7 +324,7 @@
   "repos": [
     {
       "id": 1390638891,
-      "name": "LetsVibe",
+      "name": "Lovora",
       "description": "A private shared world for two: realtime chat, encrypted calls, synchronised watch/listen rooms, memories and live discoveries. Next.js + TypeScript, tested sync protocol, PGlite/Postgres.",
       "topics": [
         "couples-app",
@@ -332,22 +340,26 @@
       "primaryLanguage": "TypeScript",
       "language": "TypeScript",
       "languageBytes": {
-        "TypeScript": 854511,
-        "CSS": 25541,
-        "JavaScript": 12154
+        "TypeScript": 1350281,
+        "CSS": 42224,
+        "JavaScript": 35702,
+        "PLpgSQL": 3204,
+        "Shell": 2566
       },
       "languages": {
-        "TypeScript": 854511,
-        "CSS": 25541,
-        "JavaScript": 12154
+        "TypeScript": 1350281,
+        "CSS": 42224,
+        "JavaScript": 35702,
+        "PLpgSQL": 3204,
+        "Shell": 2566
       },
       "homepage": "https://our-universe-gamma-green.vercel.app",
-      "url": "https://github.com/hassan200503/LetsVibe",
+      "url": "https://github.com/hassan200503/Lovora",
       "stars": 0,
       "forks": 0,
-      "sizeKb": 1929,
+      "sizeKb": 2703,
       "createdAt": "2026-09-27T10:36:32Z",
-      "pushedAt": "2026-11-19T14:48:27Z",
+      "pushedAt": "2026-11-20T05:30:39Z",
       "archived": false,
       "defaultBranch": "main",
       "license": null,
@@ -358,11 +370,15 @@
           "evidence": [
             {
               "path": ".github/workflows/ci.yml",
-              "url": "https://github.com/hassan200503/LetsVibe/blob/main/.github/workflows/ci.yml"
+              "url": "https://github.com/hassan200503/Lovora/blob/main/.github/workflows/ci.yml"
             },
             {
               "path": ".github/workflows/ingest.yml",
-              "url": "https://github.com/hassan200503/LetsVibe/blob/main/.github/workflows/ingest.yml"
+              "url": "https://github.com/hassan200503/Lovora/blob/main/.github/workflows/ingest.yml"
+            },
+            {
+              "path": ".github/workflows/security.yml",
+              "url": "https://github.com/hassan200503/Lovora/blob/main/.github/workflows/security.yml"
             }
           ]
         },
@@ -372,11 +388,15 @@
           "evidence": [
             {
               "path": ".github/workflows/ci.yml",
-              "url": "https://github.com/hassan200503/LetsVibe/blob/main/.github/workflows/ci.yml"
+              "url": "https://github.com/hassan200503/Lovora/blob/main/.github/workflows/ci.yml"
             },
             {
-              "path": "package.json",
-              "url": "https://github.com/hassan200503/LetsVibe/blob/main/package.json"
+              "path": ".github/workflows/security.yml",
+              "url": "https://github.com/hassan200503/Lovora/blob/main/.github/workflows/security.yml"
+            },
+            {
+              "path": "apps/web/package.json",
+              "url": "https://github.com/hassan200503/Lovora/blob/main/apps/web/package.json"
             }
           ]
         },
@@ -385,8 +405,8 @@
           "category": "frontend and mobile",
           "evidence": [
             {
-              "path": "package.json",
-              "url": "https://github.com/hassan200503/LetsVibe/blob/main/package.json"
+              "path": "apps/web/package.json",
+              "url": "https://github.com/hassan200503/Lovora/blob/main/apps/web/package.json"
             }
           ]
         },
@@ -395,8 +415,8 @@
           "category": "frontend and mobile",
           "evidence": [
             {
-              "path": "drizzle.config.ts",
-              "url": "https://github.com/hassan200503/LetsVibe/blob/main/drizzle.config.ts"
+              "path": "apps/web/drizzle.config.ts",
+              "url": "https://github.com/hassan200503/Lovora/blob/main/apps/web/drizzle.config.ts"
             }
           ]
         }
@@ -411,10 +431,87 @@
         }
       },
       "lastCommit": {
-        "sha": "cb0f5ac",
-        "message": "Update GitHub funding configuration",
-        "date": "2026-11-19T10:51:06Z",
-        "url": "https://github.com/hassan200503/LetsVibe/commit/cb0f5acbcb95252a9ce93e41d0f40e0cb373b4a6"
+        "sha": "6d1613b",
+        "message": "Merge pull request #11 from hassan200503/autonomous/couples-v2",
+        "date": "2026-11-20T05:30:38Z",
+        "url": "https://github.com/hassan200503/Lovora/commit/6d1613b4f7d428057c46cd0c7f7519622053c991"
+      }
+    },
+    {
+      "id": 1370540140,
+      "name": "hassan200503.github.io",
+      "description": "Portfolio site for Hassan Tsuma, Full Stack Java Developer",
+      "topics": [
+        "css",
+        "github-pages",
+        "html",
+        "portfolio"
+      ],
+      "primaryLanguage": "HTML",
+      "language": "HTML",
+      "languageBytes": {
+        "HTML": 422600,
+        "JavaScript": 197125,
+        "CSS": 78549,
+        "Python": 51286
+      },
+      "languages": {
+        "HTML": 422600,
+        "JavaScript": 197125,
+        "CSS": 78549,
+        "Python": 51286
+      },
+      "homepage": "https://hassan200503.github.io",
+      "url": "https://github.com/hassan200503/hassan200503.github.io",
+      "stars": 0,
+      "forks": 0,
+      "sizeKb": 1463,
+      "createdAt": "2026-09-14T20:38:01Z",
+      "pushedAt": "2026-11-19T20:01:46Z",
+      "archived": false,
+      "defaultBranch": "main",
+      "license": null,
+      "technologies": [
+        {
+          "technology": "GitHub Actions",
+          "category": "testing and delivery",
+          "evidence": [
+            {
+              "path": ".github/workflows/ci.yml",
+              "url": "https://github.com/hassan200503/hassan200503.github.io/blob/main/.github/workflows/ci.yml"
+            },
+            {
+              "path": ".github/workflows/pages.yml",
+              "url": "https://github.com/hassan200503/hassan200503.github.io/blob/main/.github/workflows/pages.yml"
+            }
+          ]
+        }
+      ],
+      "screenshots": [
+        {
+          "path": "images/landing-hero.jpg",
+          "alt": "Landing hero",
+          "url": "https://raw.githubusercontent.com/hassan200503/hassan200503.github.io/main/images/landing-hero.jpg"
+        },
+        {
+          "path": "images/landing-mobile.jpg",
+          "alt": "Landing mobile",
+          "url": "https://raw.githubusercontent.com/hassan200503/hassan200503.github.io/main/images/landing-mobile.jpg"
+        }
+      ],
+      "projectStats": {
+        "migrations": 0,
+        "modules": 0,
+        "tests": {
+          "count": 2,
+          "method": "test source files under test paths"
+        }
+      },
+      "lastCommit": {
+        "sha": "e9b2851",
+        "message": "feat: ship redesigned portfolio with live GitHub and visitor analytics",
+        "date": "2026-11-19T20:00:42Z",
+        "url": "https://github.com/hassan200503/hassan200503.github.io/commit/e9b285156a285666ef00586558c0cf48095b5e03"
       }
     },
     {
@@ -1019,83 +1116,6 @@
         "message": "Update GitHub profile README with Companion AI and new skills",
         "date": "2026-10-31T15:36:58Z",
         "url": "https://github.com/hassan200503/hassan200503/commit/5841893d72a0eaefa8dc6eb251b618b9b95c405c"
-      }
-    },
-    {
-      "id": 1370540140,
-      "name": "hassan200503.github.io",
-      "description": "Portfolio site for Hassan Tsuma, Full Stack Java Developer",
-      "topics": [
-        "css",
-        "github-pages",
-        "html",
-        "portfolio"
-      ],
-      "primaryLanguage": "HTML",
-      "language": "HTML",
-      "languageBytes": {
-        "HTML": 372416,
-        "CSS": 62640,
-        "JavaScript": 44288,
-        "Python": 33929
-      },
-      "languages": {
-        "HTML": 372416,
-        "CSS": 62640,
-        "JavaScript": 44288,
-        "Python": 33929
-      },
-      "homepage": "https://hassan200503.github.io",
-      "url": "https://github.com/hassan200503/hassan200503.github.io",
-      "stars": 0,
-      "forks": 0,
-      "sizeKb": 1112,
-      "createdAt": "2026-09-14T20:38:01Z",
-      "pushedAt": "2026-10-26T12:14:57Z",
-      "archived": false,
-      "defaultBranch": "main",
-      "license": null,
-      "technologies": [
-        {
-          "technology": "GitHub Actions",
-          "category": "testing and delivery",
-          "evidence": [
-            {
-              "path": ".github/workflows/ci.yml",
-              "url": "https://github.com/hassan200503/hassan200503.github.io/blob/main/.github/workflows/ci.yml"
-            },
-            {
-              "path": ".github/workflows/pages.yml",
-              "url": "https://github.com/hassan200503/hassan200503.github.io/blob/main/.github/workflows/pages.yml"
-            }
-          ]
-        }
-      ],
-      "screenshots": [
-        {
-          "path": "images/landing-hero.jpg",
-          "alt": "Landing hero",
-          "url": "https://raw.githubusercontent.com/hassan200503/hassan200503.github.io/main/images/landing-hero.jpg"
-        },
-        {
-          "path": "images/landing-mobile.jpg",
-          "alt": "Landing mobile",
-          "url": "https://raw.githubusercontent.com/hassan200503/hassan200503.github.io/main/images/landing-mobile.jpg"
-        }
-      ],
-      "projectStats": {
-        "migrations": 0,
-        "modules": 0,
-        "tests": {
-          "count": 1,
-          "method": "test source files under test paths"
-        }
-      },
-      "lastCommit": {
-        "sha": "00594c0",
-        "message": "fix: dispatch webhook refresh immediately",
-        "date": "2026-10-26T12:14:53Z",
-        "url": "https://github.com/hassan200503/hassan200503.github.io/commit/00594c0cfb6031f6ff96fe25ffa952406a13e133"
       }
     }
   ]

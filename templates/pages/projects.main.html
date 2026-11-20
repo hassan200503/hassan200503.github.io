@@ -35,15 +35,10 @@
           <span class="story-name">Automata</span>
           <span class="story-tag">AI desktop</span>
         </a>
-        <a class="story" href="https://github.com/hassan200503/LetsVibe" target="_blank" rel="noopener">
+        <a class="story" href="https://github.com/hassan200503/Lovora" target="_blank" rel="noopener">
           <span class="story-ring"><span class="story-mono" aria-hidden="true">LV</span></span>
-          <span class="story-name">LetsVibe</span>
+          <span class="story-name">Lovora</span>
           <span class="story-tag">Private world</span>
-        </a>
-        <a class="story" href="https://github.com/hassan200503/whatsapp-persona-bot" target="_blank" rel="noopener">
-          <span class="story-ring"><span class="story-mono" aria-hidden="true">WA</span></span>
-          <span class="story-name">WhatsApp bot</span>
-          <span class="story-tag">Personal tool</span>
         </a>
         <a class="story" href="https://github.com/hassan200503" target="_blank" rel="noopener">
           <span class="story-ring"><span class="story-mono" aria-hidden="true">GH</span></span>
@@ -107,30 +102,24 @@
         <div class="ledger-index">— / ALSO BUILT</div>
         <div>
           <div class="flex-between">
-            <h3>whatsapp-persona-bot</h3>
-            <span class="tag">Personal tool · runs locally</span>
+            <h3>Lovora</h3>
+            <span class="tag">Private product · live</span>
           </div>
           <p class="muted mt-16 measure">
-            A WhatsApp auto-responder that replies in my own voice while I’m offline. It
-            connects as a linked device, learns my writing style from the messages I actually
-            send, and uses the Claude API to answer incoming messages, including first
-            responses to freelance leads.
+            A private shared world for two: realtime chat, encrypted peer-to-peer calls,
+            synchronised listening and watching, memories, and discoveries from the real
+            world. It is a Next.js and TypeScript app with a tested sync protocol underneath
+            the room.
           </p>
           <p class="muted mt-16 measure">
-            The interesting part is the guard rails rather than the AI call. Replies are capped
-            per chat per hour and sent after a randomised delay. The bot goes quiet in any chat
-            the moment I reply myself, and by default it stays out of group chats and never answers
-            numbers on an ignore list. It is instructed never to quote prices or commit to deadlines, and every
-            message it sends is logged so I can review it. Node.js 20, Baileys, the Anthropic
-            SDK and pino, kept running under pm2.
-          </p>
-          <p class="muted mt-16 measure">
-            It’s a small tool I built for myself, about 450 lines with no test suite, so judge
-            my engineering on RentManager. I’m including it because it’s how I handle AI in
-            practice: useful, but kept on a short leash.
+            The engineering that matters is in the quiet parts. Messages carry a device-made
+            id so a retry is stored once, call audio and video go directly between browsers,
+            and every personal item has a visibility rule enforced in one place rather than
+            at each screen. The data layer runs on PGlite locally and Postgres in production.
           </p>
           <p class="mt-24">
-            <a class="btn btn-ghost btn-sm" href="https://github.com/hassan200503/whatsapp-persona-bot" target="_blank" rel="noopener">Read the code ↗</a>
+            <a class="btn btn-ghost btn-sm" href="https://github.com/hassan200503/Lovora" target="_blank" rel="noopener">Read the code ↗</a>
+            <a class="btn btn-ghost btn-sm" href="https://our-universe-gamma-green.vercel.app" target="_blank" rel="noopener">Open the live app ↗</a>
           </p>
         </div>
       </div>

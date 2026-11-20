@@ -32,7 +32,7 @@ def gh(path, default=None):
     """One gh api call. Returns `default` rather than raising, because a
     single unreachable endpoint must not cost us the whole snapshot."""
     try:
-        r = subprocess.run(["gh", "api", path], capture_output=True, text=True, timeout=60)
+        r = subprocess.run(["gh", "api", path], capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=60)
         if r.returncode != 0:
             print("    ! %s -> %s" % (path, (r.stderr or "").strip()[:90]))
             return default

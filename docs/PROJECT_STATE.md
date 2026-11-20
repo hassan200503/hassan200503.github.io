@@ -1,76 +1,112 @@
 # Project state
 
-Last updated: 2026-10-26
+Last updated: 2026-11-20
 
-## Current task
+## Current state
 
-G3 decision: webhook relay code is complete and tested; owner must create/install the GitHub App, deploy the Worker, and add its secrets.
+The portfolio is live at <https://hassan200503.github.io/>. GitHub Pages is built
+and deployed by `.github/workflows/pages.yml`; the private analytics dashboard is
+a separate Cloudflare Worker, and the GitHub webhook relay is deployed as well.
+
+- Pages: latest verified successful run `44666926490`; the live site served a
+  snapshot stamped `2026-11-20T03:20:06Z` with 7 repositories and 11 languages.
+- Analytics: <https://hassan-portfolio-analytics.rentmanagerke.workers.dev>;
+  `/healthz` returned `{"ok":true,"storage":true}`, `/admin` served the sign-in
+  page, and a wrong passphrase returned 401.
+- Webhook relay: <https://hassan-portfolio-refresh.rentmanagerke.workers.dev/>;
+  `GET` returns 405 by design, and repository-dispatch runs have completed.
+- D1 database: `hassan_portfolio_analytics`, id
+  `804a5303-9e47-4d9b-b721-a7d8c2257372`.
 
 ## Completed work
 
-- P0 repository inspection and baseline evidence recorded in `docs/AUDIT.md` (commit `596e317`).
-- P1 data foundation slice: added `data/profile.json`, `data/tech-map.json`, schemas for both, and dependency-free validation in `scripts/validate_data.py`.
-- P1 CI smoke slice: added `scripts/check_site.py` and `.github/workflows/ci.yml` with read-only permissions; root-relative link handling was fixed after the first failing run (commits `e8872eb`, `d1df67a`); deployment workflow is unchanged.
-- G1 resolved with owner approval: `scripts/build_site.py` now renders all 9 published pages from shared header/footer partials and page-owned head/content/tail fragments. The generated output matched the existing pages before commit (`9628dfc`). No framework was added.
-- P2 snapshot contract: added `schemas/github.schema.json`, numeric repository IDs, visibility topic rules, source/technology-ledger fields, and `scripts/validate_github_snapshot.py`.
-- P2 fixture tests: added `scripts/github_snapshot.py` and `tests/test_github_snapshot.py` covering HTML in descriptions, missing languages, forks, archived repositories, hidden repositories, numeric IDs, and aggregate data.
-- Regenerated `data/github.json` successfully from the public GitHub API locally; it reports 7 repositories and 10 languages at `2026-10-26T10:35:42Z`.
-- P2 technology detector: added pure language/file/manifest matching with repository-relative evidence URLs and fixture coverage (`f7134ea`). Live generator wiring remains intentionally next so it can be added with controlled API calls.
-- P2 live evidence wiring: the generator now reads recursive repository trees plus bounded manifest/config contents, applies `data/tech-map.json`, and drops detections without a proving file path. The latest snapshot has no null evidence paths.
-- P2 fallback hardening: malformed or unexpectedly empty candidates now preserve the existing snapshot; fixture coverage includes API-error and empty-candidate behavior.
-- P2 browser refresh: reduced metadata cache to 5 minutes, added ETag/304 handling, numeric-ID merging, topic filters, and visible last-snapshot status on API failure; `node --check github.js` passes.
-- P2 no-JavaScript baseline: the build now pre-renders GitHub stats, language footprint, technology ledger, and escaped repository cards into `index.html`; the JS layer enhances those hosts instead of owning their existence.
-- P2 computed project stats: generated `data/github.json` now carries migrations, modules, and test-source-file counts; the build replaces legacy hard-coded counts across the home, work, skills, and case-study pages. Latest backend values: 100 migrations, 21 modules, 262 test source files.
-- G2 proposal documented in `docs/DECISIONS/G2-pages-deployment.md`; no Pages settings or deployment workflow has been changed yet.
-- G2 implementation: `.github/workflows/pages.yml` builds, validates, uploads, and deploys the site artifact; the old commit-back snapshot workflow was removed. Setup is documented in `docs/SETUP_DEPLOYMENT.md`.
-- G3 implementation: `worker/src/index.js` verifies signatures, filters events/actions, coalesces bursts, and dispatches refreshes; four signed-fixture tests pass. Owner setup is documented in `docs/SETUP_WEBHOOK.md`.
-- Deployment verification: commit `a1bcfbe` is pushed; Site checks run `40312571360` and Pages deployment run `40312571367` both completed successfully. Pages API reports `build_type: workflow` and `status: built`.
+- P0 repository inspection and baseline evidence recorded in `docs/AUDIT.md`.
+- P1 data foundation: `data/profile.json`, `data/tech-map.json`, schemas, and
+  dependency-free validation in `scripts/validate_data.py`.
+- P1 CI: `scripts/check_site.py` and `.github/workflows/ci.yml` with read-only
+  permissions.
+- G1: `scripts/build_site.py` renders all 9 published pages from shared partials
+  and page-owned head/content/tail fragments.
+- P2 snapshot contract, fixture tests, technology detection with evidence URLs,
+  fallback hardening, browser refresh with ETag/304 handling, and no-JavaScript
+  prerendering.
+- P2 computed project stats: `data/github.json` carries migrations, modules, and
+  test-source-file counts; the build updates the legacy hard-coded figures.
+  Current RentManager values: 100 migrations, 21 modules, 262 test source files.
+- G2: Pages builds, validates, and deploys an artifact without committing
+  generated data. The workflow uses the built-in `GITHUB_TOKEN` only for read
+  access and Pages deployment.
+- G3: the relay verifies `X-Hub-Signature-256`, filters repository events,
+  coalesces bursts, and dispatches `refresh-github-data`. The Worker and App are
+  deployed and a real dispatch has completed.
+- Security hardening: `scripts/stage_site.py` now assembles `_site/` from an
+  explicit public allowlist, and `scripts/check_artifact.py` fails the build if
+  internals, source files, hidden files, or non-public JSON reach the artifact.
+- Stale-content cleanup: the site now links to the current `Lovora` repository
+  instead of `LetsVibe`; the removed WhatsApp-bot copy is gone; the CV is
+  regenerated with 21 modules, 100 migrations, 63 routes, Lovora, and Automata.
+- Analytics session hardening: `verifySession` now rejects non-canonical
+  base64url payload and signature encodings; all 27 analytics-worker tests pass.
 
-## Blocked items
+## Open work
 
-- Browser-based Lighthouse, axe, screenshot, keyboard, mobile, and no-JavaScript visual checks were not run because no browser automation or audit runner is available in the repository/environment.
-- GitHub App and Cloudflare Worker remain decision gate G3 and require owner action.
-- Pages deployment-source changes remain decision gate G2.
+- Redeploy the analytics Worker with the canonical-signature fix. The live
+  Worker still runs the previous build; deployment needs a Cloudflare API token
+  or `npx wrangler login` on this machine.
+- Browser-based Lighthouse, axe, keyboard, mobile, and no-JavaScript visual
+  checks have not been run in this environment.
+- GitHub scheduled Pages runs stopped after `2026-11-20T03:19` in the last
+  observed window. The workflow is active and webhook dispatches still work;
+  monitor the next scheduled run before treating this as a repository defect.
 
 ## Next three tasks
 
-1. Owner G3 action: create/install the GitHub App, deploy the Worker, and add `WEBHOOK_SECRET` and `GITHUB_DISPATCH_TOKEN`.
-2. After G3: verify a real repository metadata change reaches one Pages workflow and measure latency.
-3. P5 visual/accessibility refinement and browser-based quality verification.
+1. Deploy the analytics Worker after authenticating Wrangler, then re-run
+   `npm test --prefix analytics-worker` and check `/healthz` and `/admin`.
+2. Run the browser-based quality pass against the deployed site.
+3. Confirm the scheduled Pages runs resume; if they do not, inspect the
+   repository's Actions scheduling separately from the webhook path.
 
 ## Commands that work
 
 - `git status --short`
 - `git log -5 --oneline`
-- `python -c "import json; ..."` for inspecting the checked-in snapshot
 - `python scripts/validate_data.py`
-- `python scripts/check_site.py`
-- `python scripts/build_site.py --check`
 - `python scripts/validate_github_snapshot.py`
 - `python -m unittest discover -s tests -p 'test_*.py' -v`
+- `npm test --prefix worker`
+- `npm test --prefix analytics-worker`
+- `python scripts/build_site.py`
+- `python scripts/build_site.py --check`
+- `python scripts/check_site.py`
+- `python scripts/stage_site.py`
+- `python scripts/check_artifact.py`
+- `python scripts/build_cv.py`
 - `python -m compileall -q scripts`
-- `Get-Content` / `rg` for repository inspection
 
-## Known defects
+## Known defects and intentional behavior
 
-- Existing workflow has `contents: write`, commits generated snapshots, and pushes from Actions.
-- Existing workflow does not include a monthly keep-alive, schema validation, test suite, or secret/link/accessibility/performance checks.
-- Browser refresh in `github.js` has no ETag handling and uses localStorage caching; it merges by repository name rather than numeric ID.
-- Technology ledger and manifest evidence are not generated.
-- Snapshot technology arrays and ledger are currently empty for live data; manifest/configuration detection is the next P2 slice.
-- The CI smoke check is intentionally not a full HTML, axe, Lighthouse, or schema validator yet.
-- Generated pages are now produced from shared shell partials; page-owned head/content/tail fragments remain intentionally separate.
-- Google Fonts, Lenis CSS, GSAP, ScrollTrigger, and Lenis are loaded from third parties; CSP/SRI and self-hosting are not implemented.
-- Contact email and WhatsApp number are present in static HTML.
+- The live analytics Worker predates the canonical base64url signature check
+  until it is redeployed.
+- The daily retention cron and the public tracker are working; the dashboard is
+  same-origin only, `noindex`, and not linked from the public site.
+- `work.html` and `work/rentmanager.html` are intentional `noindex` redirect
+  stubs for old URLs.
+- Contact email and WhatsApp number are present in static HTML by design.
+- Google Fonts are self-hosted; GSAP, ScrollTrigger, and Lenis are served from
+  `vendor/`.
 
 ## Open questions
 
-- Owner approval is required before changing contact presentation (G5).
-- Owner approval is required before changing first-person factual copy or proficiency tiers (G5).
-- Owner decision is required before changing Pages deployment source (G2).
-- G1 is resolved: owner approved the framework-free custom build approach.
-- Owner must create/install the GitHub App and add Worker secrets at G3.
+- Owner approval is required before changing first-person factual copy or
+  proficiency tiers (G5).
+- A Cloudflare credential is required to redeploy the analytics Worker from this
+  environment.
 
 ## Handover note
 
-P0–P2 evidence, G2 deployment, and G3 relay code are documented. Work is paused at G3 pending the owner’s App/Worker/secrets actions. Do not rely on visual quality or performance targets until the missing browser measurements have been run.
+Deploy the site by committing to `main`; Pages rebuilds the snapshot, stages
+`_site/`, verifies the artifact surface, and deploys it. The analytics Worker and
+webhook relay are separate Cloudflare deployments under `analytics-worker/` and
+`worker/`. See `docs/SETUP_DEPLOYMENT.md` and `docs/SETUP_WEBHOOK.md` for the
+current deployed URLs and redeploy steps.

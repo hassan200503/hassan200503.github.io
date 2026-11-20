@@ -169,7 +169,6 @@ def prerender_project_stats(output, data):
     output = output.replace("all 99 Flyway migrations", f"all {migrations} Flyway migrations")
     output = output.replace("1,588 backend tests", f"{tests:,} backend test source files")
     output = output.replace("1,588 tests", f"{tests:,} test source files")
-    output = output.replace("latest at V104, ", "")
     return output
 
 

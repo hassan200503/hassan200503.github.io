@@ -3,9 +3,12 @@ __pycache__/
 *.py[cod]
 
 # Build-time only: optimised project screenshots. scripts/fetch_screenshots.py
-# writes these during the Pages build and the Pages artifact uploads the whole
-# working tree, so they ship with the site without ever being committed.
+# writes these during the Pages build; scripts/stage_site.py copies them into
+# _site/ so they ship without ever being committed.
 images/projects/
+
+# Public Pages artifact assembled by scripts/stage_site.py.
+_site/
 
 # Scratch output from build_github_data.py when a target path is unavailable.
 data/*.next.json

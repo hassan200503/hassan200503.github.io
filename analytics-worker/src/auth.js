@@ -98,16 +98,24 @@ export async function verifySession(env, token, now = Date.now()) {
   if (parts.length !== 3 || parts[0] !== SESSION_VERSION) return null;
   const segment = `${parts[0]}.${parts[1]}`;
   let supplied;
+  let payloadBytes;
   try {
     supplied = base64UrlToBytes(parts[2]);
+    payloadBytes = base64UrlToBytes(parts[1]);
   } catch {
     return null;
   }
+  /* Base64url has several encodings for the same bytes when the final
+   * character's unused bits are set. Accepting one would let a tampered
+   * token share a signature with the real one, so require the canonical
+   * spelling on both segments. */
+  if (bytesToBase64Url(supplied) !== parts[2]) return null;
+  if (bytesToBase64Url(payloadBytes) !== parts[1]) return null;
   const expected = base64UrlToBytes(await sign(segment, env.SESSION_SECRET));
   if (!constantTimeEqual(supplied, expected)) return null;
   let payload;
   try {
-    payload = JSON.parse(new TextDecoder().decode(base64UrlToBytes(parts[1])));
+    payload = JSON.parse(new TextDecoder().decode(payloadBytes));
   } catch {
     return null;
   }

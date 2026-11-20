@@ -27,5 +27,9 @@ jobs:
         run: python scripts/build_site.py --check
       - name: Check static HTML surface
         run: python scripts/check_site.py
+      - name: Stage public site
+        run: python scripts/stage_site.py
+      - name: Verify artifact surface
+        run: python scripts/check_artifact.py
       - name: Compile Python scripts
         run: python -m compileall -q scripts
