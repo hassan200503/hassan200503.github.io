@@ -13,7 +13,8 @@ a separate Cloudflare Worker, and the GitHub webhook relay is deployed as well.
   Scheduled runs resumed at 10:34 and 12:55 after the earlier gap.
 - Analytics: <https://hassan-portfolio-analytics.rentmanagerke.workers.dev>;
   `/healthz` returned `{"ok":true,"storage":true}`, `/admin` served the sign-in
-  page, and a wrong passphrase returned 401.
+  page, and a wrong passphrase returned 401. The canonical-signature build is
+  deployed as version `4cb96f2d-348b-4070-b3a2-379d049304aa`.
 - Webhook relay: <https://hassan-portfolio-refresh.rentmanagerke.workers.dev/>;
   `GET` returns 405 by design, and repository-dispatch runs have completed.
 - D1 database: `hassan_portfolio_analytics`, id
@@ -48,21 +49,18 @@ a separate Cloudflare Worker, and the GitHub webhook relay is deployed as well.
   regenerated with 21 modules, 100 migrations, 63 routes, Lovora, and Automata.
 - Analytics session hardening: `verifySession` now rejects non-canonical
   base64url payload and signature encodings; all 27 analytics-worker tests pass.
+  The Worker was redeployed after the fix and the dashboard still authenticates.
 
 ## Open work
 
-- Redeploy the analytics Worker with the canonical-signature fix. The live
-  Worker still runs the previous build; deployment needs a Cloudflare API token
-  or `npx wrangler login` on this machine.
 - Browser-based Lighthouse, axe, keyboard, mobile, and no-JavaScript visual
   checks have not been run in this environment.
 
 ## Next three tasks
 
-1. Deploy the analytics Worker after authenticating Wrangler, then re-run
-   `npm test --prefix analytics-worker` and check `/healthz` and `/admin`.
-2. Run the browser-based quality pass against the deployed site.
-3. Keep the snapshot and CV figures current when RentManager’s counts change.
+1. Run the browser-based quality pass against the deployed site.
+2. Keep the snapshot and CV figures current when RentManager’s counts change.
+3. Review the first week of analytics for obvious bot traffic or tracking gaps.
 
 ## Commands that work
 
@@ -83,8 +81,6 @@ a separate Cloudflare Worker, and the GitHub webhook relay is deployed as well.
 
 ## Known defects and intentional behavior
 
-- The live analytics Worker predates the canonical base64url signature check
-  until it is redeployed.
 - The daily retention cron and the public tracker are working; the dashboard is
   same-origin only, `noindex`, and not linked from the public site.
 - `work.html` and `work/rentmanager.html` are intentional `noindex` redirect
@@ -97,8 +93,6 @@ a separate Cloudflare Worker, and the GitHub webhook relay is deployed as well.
 
 - Owner approval is required before changing first-person factual copy or
   proficiency tiers (G5).
-- A Cloudflare credential is required to redeploy the analytics Worker from this
-  environment.
 
 ## Handover note
 

@@ -58,6 +58,7 @@ Current deployment:
 - Health: <https://hassan-portfolio-analytics.rentmanagerke.workers.dev/healthz>
 - D1: `hassan_portfolio_analytics`, id
   `804a5303-9e47-4d9b-b721-a7d8c2257372`
+- Deployed version: `4cb96f2d-348b-4070-b3a2-379d049304aa` (2026-11-20)
 - Configured secrets: `ADMIN_PASSPHRASE_HASH`, `ADMIN_PASSPHRASE_SALT`,
   `SESSION_SECRET`, `IPINFO_TOKEN`, `GITHUB_CONTENTS_TOKEN`
 - Optional: `GITHUB_DISPATCH_TOKEN` for immediate rebuilds after a photo upload
