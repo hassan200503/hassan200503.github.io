@@ -35,6 +35,7 @@ REQUIRED = (
     "sitemap.xml",
     "fonts/fonts.css",
     "images/hassan-square.jpg",
+    "images/hassan-portrait.webp",
     "files/Hassan-Tsuma-CV.pdf",
 )
 
